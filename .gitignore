@@ -4,7 +4,7 @@
 /public/css
 /public/js
 /public/vendor
-/public/themes
+/public/
 /storage/*.key
 /vendor
 /.idea
@@ -18,8 +18,6 @@ yarn-error.log
 /ignorables/*
 composer.lock
 package-lock.json
-<<<<<<< HEAD
-=======
 
 vendor/
 node_modules/
@@ -42,4 +40,3 @@ Homestead.json
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 
->>>>>>> 6a355eafba24af79227e98a93afb4abf292e0ec8
