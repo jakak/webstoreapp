@@ -4,7 +4,6 @@
 /public/css
 /public/js
 /public/vendor
-/public/
 /storage/*.key
 /vendor
 /.idea
