@@ -1,0 +1,18 @@
+[15-Mar-2019 22:39:03 UTC] PHP Warning:  require(/home/klingaccess/public_html/public/installer/install.php): failed to open stream: No such file or directory in /home/klingaccess/public_html/public/index.php on line 3
+[15-Mar-2019 22:39:03 UTC] PHP Stack trace:
+[15-Mar-2019 22:39:03 UTC] PHP   1. {main}() /home/klingaccess/public_html/public/index.php:0
+[15-Mar-2019 22:39:03 UTC] PHP Fatal error:  require(): Failed opening required '/home/klingaccess/public_html/public/installer/install.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/klingaccess/public_html/public/index.php on line 3
+[15-Mar-2019 22:39:03 UTC] PHP Stack trace:
+[15-Mar-2019 22:39:03 UTC] PHP   1. {main}() /home/klingaccess/public_html/public/index.php:0
+[15-Mar-2019 22:39:08 UTC] PHP Warning:  require(/home/klingaccess/public_html/public/installer/install.php): failed to open stream: No such file or directory in /home/klingaccess/public_html/public/index.php on line 3
+[15-Mar-2019 22:39:08 UTC] PHP Stack trace:
+[15-Mar-2019 22:39:08 UTC] PHP   1. {main}() /home/klingaccess/public_html/public/index.php:0
+[15-Mar-2019 22:39:08 UTC] PHP Fatal error:  require(): Failed opening required '/home/klingaccess/public_html/public/installer/install.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/klingaccess/public_html/public/index.php on line 3
+[15-Mar-2019 22:39:08 UTC] PHP Stack trace:
+[15-Mar-2019 22:39:08 UTC] PHP   1. {main}() /home/klingaccess/public_html/public/index.php:0
+[15-Mar-2019 22:39:50 UTC] PHP Warning:  require(/home/klingaccess/public_html/public/installer/install.php): failed to open stream: No such file or directory in /home/klingaccess/public_html/public/index.php on line 3
+[15-Mar-2019 22:39:50 UTC] PHP Stack trace:
+[15-Mar-2019 22:39:50 UTC] PHP   1. {main}() /home/klingaccess/public_html/public/index.php:0
+[15-Mar-2019 22:39:50 UTC] PHP Fatal error:  require(): Failed opening required '/home/klingaccess/public_html/public/installer/install.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/klingaccess/public_html/public/index.php on line 3
+[15-Mar-2019 22:39:50 UTC] PHP Stack trace:
+[15-Mar-2019 22:39:50 UTC] PHP   1. {main}() /home/klingaccess/public_html/public/index.php:0
