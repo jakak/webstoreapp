@@ -32037,7 +32037,7 @@ exports = module.exports = __webpack_require__(47)(false);
 
 
 // module
-exports.push([module.i, "\n.slide-enter-active {\n\n    -webkit-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);\n\n    transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n.slide-leave-active {\n\n    -webkit-transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);\n\n    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n.slide-enter, .slide-leave-to {\n\n    -webkit-transform: scaleY(0) translateZ(0);\n    transform: scaleY(0) translateZ(0);\n    opacity: 0.5;\n}\n\n", ""]);
+exports.push([module.i, "\n.overlay {\n    background-color: black;\n}\n.slide-enter-active {\n\n    -webkit-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);\n\n    transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);\n}\n.slide-leave-active {\n\n    -webkit-transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);\n\n    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);\n}\n.slide-enter, .slide-leave-to {\n\n    -webkit-transform: scaleY(0) translateZ(0);\n    transform: scaleY(0) translateZ(0);\n    opacity: 0.5;\n}\n\n", ""]);
 
 // exports
 
@@ -32410,6 +32410,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -32541,6 +32542,8 @@ var render = function() {
                       staticClass: "slider-item",
                       attrs: { src: image }
                     }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "overlay" }),
                     _vm._v(" "),
                     _c("div", {
                       key: index,

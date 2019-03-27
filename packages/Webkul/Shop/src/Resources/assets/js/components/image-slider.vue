@@ -5,6 +5,7 @@
         <ul class="slider-images">
             <li v-for="(image, index) in images" :key="index" v-bind:class="{'show': index==currentIndex}">
                 <img class="slider-item" :src="image" />
+                <div class="overlay"></div>
                 <div class="show-content" v-bind:class="{'show': index==currentIndex}" :key="index" v-html="content[index]"></div>
             </li>
         </ul>
@@ -110,6 +111,10 @@ export default {
 };
 </script>
 <style>
+    .overlay {
+        background-color: black;
+    }
+
     .slide-enter-active {
 
         transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
