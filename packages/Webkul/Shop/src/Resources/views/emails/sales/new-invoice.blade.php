@@ -30,7 +30,7 @@
             {{ __('shop::app.mail.invoice.summary') }}
         </div>
 
-        <div style="display: flex;flex-direction: row;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
+        <div style="display: flex;flex-direction: column;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
             <div style="line-height: 25px;">
                 <div style="font-weight: bold;font-size: 16px;color: #242424;">
                     {{ __('shop::app.mail.order.shipping-address') }}

@@ -2,6 +2,7 @@
 
 namespace Webkul\Customer\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
@@ -67,7 +68,7 @@ class RegistrationController extends Controller
 
         $data['channel_id'] = core()->getCurrentChannel()->id;
 
-        $data['is_verified'] = 1;
+        $data['is_verified'] = 0;
 
         $data['customer_group_id'] = 1;
 
@@ -76,17 +77,16 @@ class RegistrationController extends Controller
         $data['token'] = $verificationData['token'];
 
         Event::fire('customer.registration.before');
-
         $customer = $this->customer->create($data);
-
         Event::fire('customer.registration.after', $customer);
 
         if ($customer) {
             try {
                 session()->flash('success', trans('shop::app.customer.signup-form.success'));
-
+                
                 Mail::send(new VerificationEmail($verificationData));
             } catch(\Exception $e) {
+                dd($e->getMessage());
                 session()->flash('info', trans('shop::app.customer.signup-form.success-verify-email-not-sent'));
 
                 return redirect()->route($this->_config['redirect']);
@@ -111,7 +111,8 @@ class RegistrationController extends Controller
 
         if ($customer) {
             $customer->update(['is_verified' => 1, 'token' => 'NULL']);
-
+            
+            Mail::send(new WelcomeMail($customer));
             session()->flash('success', trans('shop::app.customer.signup-form.verified'));
         } else {
             session()->flash('warning', trans('shop::app.customer.signup-form.verify-failed'));

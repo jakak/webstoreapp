@@ -5,29 +5,21 @@
         </a>
     </div>
 
-    <?php $order = $shipment->order; ?>
-
     <div style="padding: 30px;">
         <div style="font-size: 20px;color: #242424;line-height: 30px;margin-bottom: 34px;">
             <span style="font-weight: bold;">
-                {{ __('shop::app.mail.shipment.heading', ['order_id' => $order->id, 'shipment_id' => $shipment->id]) }}
+                New Order To Be Shipped
             </span> <br>
 
             <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {{ __('shop::app.mail.order.dear', ['customer_name' => $order->customer_full_name]) }},
+                A new order has been placed by {{ $order->customer_full_name }}. <br>
+                View full order details <a href="{{ route('admin.sales.orders.view', $order->id) }}" style="color: #0041FF; font-weight: bold;">here</a>
             </p>
 
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {!! __('shop::app.mail.order.greeting', [
-                    'order_id' => '<a href="' . route('customer.orders.view', $order->id) . '" style="color: #0041FF; font-weight: bold;">#' . $order->id . '</a>',
-                    'created_at' => $order->created_at
-                    ]) 
-                !!}
-            </p>
         </div>
 
         <div style="font-weight: bold;font-size: 20px;color: #242424;line-height: 30px;margin-bottom: 20px !important;">
-            {{ __('shop::app.mail.shipment.summary') }}
+            {{ __('shop::app.mail.order.summary') }}
         </div>
 
         <div style="display: flex;flex-direction: column;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
@@ -58,18 +50,8 @@
                     {{ __('shop::app.mail.order.shipping') }}
                 </div>
 
-                <div style="font-size: 16px;color: #242424;">
-                    <div style="font-weight: bold;">
-                        {{ $order->shipping_title }}
-                    </div>
-
-                    <div style="margin-top: 5px;">
-                        <span style="font-weight: bold;">{{ __('shop::app.mail.shipment.carrier') }} : </span>{{ $shipment->carrier_title }}
-                    </div>
-
-                    <div style="margin-top: 5px;">
-                        <span style="font-weight: bold;">{{ __('shop::app.mail.shipment.tracking-number') }} : </span>{{ $shipment->track_number }}
-                    </div>
+                <div style="font-weight: bold;font-size: 16px;color: #242424;">
+                    {{ $order->shipping_title }}
                 </div>
             </div>
 
@@ -106,7 +88,7 @@
             </div>
         </div>
 
-        @foreach ($shipment->items as $item)
+        @foreach ($order->items as $item)
             <div style="background: #FFFFFF;border: 1px solid #E8E8E8;border-radius: 3px;padding: 20px;margin-bottom: 10px">
                 <p style="font-size: 18px;color: #242424;line-height: 24px;margin-top: 0;margin-bottom: 10px;font-weight: bold;">
                     {{ $item->name }}
@@ -126,7 +108,7 @@
                         {{ __('shop::app.mail.order.quantity') }}
                     </label>
                     <span style="font-size: 18px;color: #242424;margin-left: 40px;font-weight: bold;">
-                        {{ $item->qty }}
+                        {{ $item->qty_ordered }}
                     </span>
                 </div>
                 
@@ -140,18 +122,35 @@
             </div>
         @endforeach
 
-        <div style="margin-top: 20px;font-size: 16px;color: #5E5E5E;line-height: 24px;display: inline-block;width: 100%">
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {!! 
-                    __('shop::app.mail.order.help', [
-                        'support_email' => '<a style="color:#0041FF" href="mailto:' . config('mail.from.address') . '">' . config('mail.from.address'). '</a>'
-                        ]) 
-                !!}
-            </p>
+        <div style="font-size: 16px;color: #242424;line-height: 30px;float: right;width: 40%;margin-top: 20px;">
+            <div>
+                <span>{{ __('shop::app.mail.order.subtotal') }}</span>
+                <span style="float: right;">
+                    {{ core()->formatPrice($order->sub_total, $order->order_currency_code) }}
+                </span>
+            </div>
 
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {{ __('shop::app.mail.order.thanks') }}
-            </p>
+            <div>
+                <span>{{ __('shop::app.mail.order.shipping-handling') }}</span>
+                <span style="float: right;">
+                    {{ core()->formatPrice($order->shipping_amount, $order->order_currency_code) }}
+                </span>
+            </div>
+
+            <div>
+                <span>{{ __('shop::app.mail.order.tax') }}</span>
+                <span style="float: right;">
+                    {{ core()->formatPrice($order->tax_amount, $order->order_currency_code) }}
+                </span>
+            </div>
+
+            <div style="font-weight: bold">
+                <span>{{ __('shop::app.mail.order.grand-total') }}</span>
+                <span style="float: right;">
+                    {{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}
+                </span>
+            </div>
         </div>
+
     </div>
 @endcomponent

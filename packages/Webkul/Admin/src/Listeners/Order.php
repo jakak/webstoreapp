@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use Webkul\Admin\Mail\NewOrderNotification;
 use Webkul\Admin\Mail\NewInvoiceNotification;
 use Webkul\Admin\Mail\NewShipmentNotification;
+use App\Mail\NewOrder;
 
 /**
  * Order event handler
@@ -24,6 +25,9 @@ class Order {
     {
         try {
             Mail::send(new NewOrderNotification($order));
+
+            // Notify store manager
+            Mail::send(new NewOrder($order));
         } catch (\Exception $e) {
 
         }
