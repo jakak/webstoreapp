@@ -79,10 +79,19 @@
 
                     <div class="button-group">
 
-                        <button type="button" class="btn btn-lg btn-primary" @click="validateForm('payment-form')" :disabled="disable_button">
+                        <button type="button" class="btn btn-lg btn-primary" v-if="selected_payment_method.method != 'paystack_payments'" @click="validateForm('payment-form')" :disabled="disable_button">
                             {{ __('shop::app.checkout.onepage.continue') }}
                         </button>
-
+                    <paystack-component 
+                        :email="'{{ $cart['customer_email'] }}'" 
+                        :amount="'{{ $cart['grand_total'] * 100 }}'" 
+                        :publicKey="'{{ core()->getConfigData('sales.paymentmethods.paystack_payments.public_key') }}'" 
+                        :referenceCode="'{{ $cart['customer_first_name'] . '-' . $cart['customer_last_name'] . '-' . $cart['id'] . '-' . $cart['grand_total']}}'" 
+                        class="btn btn-lg btn-primary" 
+                        v-if="selected_payment_method.method == 'paystack_payments'"
+                        :disabled="disable_button"
+                        >
+                    </paystack-component>
                     </div>
 
                 </div>
@@ -379,6 +388,13 @@
                     method: ""
                 },
             }),
+
+            
+            computed: {
+                showPaymentButton() {
+                    return this.selected_payment_method == 'paystack_payments';
+                }
+            },
 
             staticRenderFns: paymentTemplateRenderFns,
 

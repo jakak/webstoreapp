@@ -1,8 +1,11 @@
-window.jQuery = window.$ = $ = require("jquery");
+window.jQuery = window.$ = require("jquery");
 window.Vue = require("vue");
 window.VeeValidate = require("vee-validate");
 window.axios = require("axios");
 require("./bootstrap");
+
+import paystack from 'vue-paystack';
+import paymentComponent from './components/payment-component';
 
 Vue.use(VeeValidate);
 Vue.prototype.$http = axios
@@ -14,6 +17,8 @@ Vue.component("category-item", require("./components/category-item.vue"));
 Vue.component("image-slider", require("./components/image-slider.vue"));
 Vue.component("vue-slider", require("vue-slider-component"));
 Vue.component("custom-footer", require("./components/customFooter.vue"));
+Vue.component('paystack', paystack);
+Vue.component('paystack-component', paymentComponent);
 
 $(document).ready(function () {
 

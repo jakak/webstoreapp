@@ -71,7 +71,7 @@ class ConfigurationController extends Controller
         }
 
         $tree->items = core()->sortItems($tree->items);
-
+        // dd($tree);
         $this->configTree = $tree;
     }
 

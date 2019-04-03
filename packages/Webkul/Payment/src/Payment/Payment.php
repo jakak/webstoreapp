@@ -55,6 +55,9 @@ abstract class Payment
      */
     public function getDescription()
     {
+        if (isset($this->description)) {
+            return $this->description;
+        }
         return $this->getConfigData('description');
     }
 

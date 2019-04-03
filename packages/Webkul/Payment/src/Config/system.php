@@ -77,7 +77,7 @@ return [
                 'validation' => 'required'
             ]
         ]
-    ], [
+    ],/*  [
         'key' => 'sales.paymentmethods.paypal_standard',
         'name' => 'Paypal Standard',
         'sort' => 3,
@@ -101,6 +101,50 @@ return [
                 'type' => 'select',
                 'type' => 'text',
                 'validation' => 'required'
+            ],  [
+                'name' => 'active',
+                'title' => 'Status',
+                'type' => 'select',
+                'options' => [
+                    [
+                        'title' => 'Active',
+                        'value' => true
+                    ], [
+                        'title' => 'Inactive',
+                        'value' => false
+                    ]
+                ],
+                'validation' => 'required'
+            ]
+        ],
+    ], */
+
+        [
+        'key' => 'sales.paymentmethods.paystack_payments',
+        'name' => 'Paystack Payments',
+        'sort' => 3,
+        'fields' => [
+            [
+                'name' => 'paystack_account',
+                'title' => 'Paystack Account',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'public_key',
+                'title' => 'Public Key',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
+            ],  [
+                'name' => 'secret_key',
+                'title' => 'Secret Key',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
             ],  [
                 'name' => 'active',
                 'title' => 'Status',

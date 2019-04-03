@@ -16,7 +16,7 @@ return [
         'active' => true
     ],
 
-    'paypal_standard' => [
+    /* 'paypal_standard' => [
         'code' => 'paypal_standard',
         'title' => 'Paypal Standard',
         'description' => 'Paypal Standard',
@@ -24,5 +24,14 @@ return [
         'sandbox' => true,
         'active' => true,
         'business_account' => 'test@webkul.com'
+    ], */
+    'paystack_payments' => [
+        'code' => 'paystack_payments',
+        'title' => 'Paystack Payments',
+        'class' => 'App\Payment\Paystack',
+        'description' => 'Pay securely using paystack',
+        'public_key' => '',
+        'secret_key' => '',
+        'active' => false
     ]
 ];

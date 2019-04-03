@@ -3,6 +3,7 @@
 namespace Webkul\Payment;
 
 use Illuminate\Support\Facades\Config;
+use Webkul\Checkout\Facades\Cart;
 
 class Payment
 {
@@ -27,10 +28,20 @@ class Payment
                 ];
             }
         }
-
+        $cart = Cart::getCart();
+        $paystack_key = core()->getConfigData('sales.paymentmethods.paystack_payments.public_key');
+        // return $cart;
+        $data = [
+            'paymentMethods'    => $paymentMethods,
+            'cart'              => [
+                'customer_email' => $cart->customer_email,
+                'customer_name'  => $cart->customer_name,
+            ],
+        ];
+        
         return [
                 'jump_to_section' => 'payment',
-                'html' => view('shop::checkout.onepage.payment', compact('paymentMethods'))->render()
+                'html' => view('shop::checkout.onepage.payment', $data)->render()
             ];
     }
 
