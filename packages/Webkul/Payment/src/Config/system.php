@@ -125,26 +125,25 @@ return [
         'sort' => 3,
         'fields' => [
             [
-                'name' => 'paystack_account',
-                'title' => 'Paystack Account',
-                'type' => 'text',
-                'validation' => 'required',
-                'channel_based' => false,
-                'locale_based' => true
-            ], [
-                'name' => 'public_key',
-                'title' => 'Public Key',
+                'name' => 'secret_key',
+                'title' => 'Live Secret Key',
                 'type' => 'text',
                 'validation' => 'required',
                 'channel_based' => false,
                 'locale_based' => true
             ],  [
-                'name' => 'secret_key',
-                'title' => 'Secret Key',
+                'name' => 'public_key',
+                'title' => 'Live Public Key',
                 'type' => 'text',
                 'validation' => 'required',
                 'channel_based' => false,
                 'locale_based' => true
+            ], [
+                'name' => 'description',
+                'title' => 'Description',
+                'type' => 'textarea',
+                'channel_based' => false,
+                'validation' => 'required'
             ],  [
                 'name' => 'active',
                 'title' => 'Status',
