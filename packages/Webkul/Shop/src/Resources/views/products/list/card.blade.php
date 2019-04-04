@@ -14,7 +14,7 @@
 
     <div class="product-image">
         <a href="{{ route('shop.products.index', $product->url_key) }}" title="{{ $product->name }}">
-            <img src="{{ $productBaseImage['medium_image_url'] }}" />
+            <img src="{{ $productBaseImage['original_image_url'] }}" />
         </a>
     </div>
 
