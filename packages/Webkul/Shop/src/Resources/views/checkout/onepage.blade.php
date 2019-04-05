@@ -83,10 +83,10 @@
                             {{ __('shop::app.checkout.onepage.continue') }}
                         </button>
                     <paystack-component 
-                        :email="'{{ $cart['customer_email'] }}'" 
-                        :amount="'{{ $cart['grand_total'] * 100 }}'" 
+                        :email="'{{ $cart->customer_email }}'" 
+                        :amount="{{ $cart->grand_total * 100 }}" 
                         :publicKey="'{{ core()->getConfigData('sales.paymentmethods.paystack_payments.public_key') }}'" 
-                        :referenceCode="'{{ $cart['customer_first_name'] . '-' . $cart['customer_last_name'] . '-' . $cart['id'] . '-' . $cart['grand_total']}}'" 
+                        :referenceCode="'{{ str_replace(' ', '', $cart->customer_first_name) . '-' . str_replace(' ', '', $cart->customer_last_name) . '-' . $cart->id . '-' . $cart->grand_total}}'" 
                         class="btn btn-lg btn-primary" 
                         v-if="selected_payment_method.method == 'paystack_payments'"
                         :disabled="disable_button"
