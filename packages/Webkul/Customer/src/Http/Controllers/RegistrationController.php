@@ -81,16 +81,15 @@ class RegistrationController extends Controller
         Event::fire('customer.registration.after', $customer);
 
         if ($customer) {
-            try {
+            /* try { */
                 session()->flash('success', trans('shop::app.customer.signup-form.success'));
                 
                 Mail::send(new VerificationEmail($verificationData));
-            } catch(\Exception $e) {
-                dd($e->getMessage());
+            /* } catch(\Exception $e) {
                 session()->flash('info', trans('shop::app.customer.signup-form.success-verify-email-not-sent'));
 
                 return redirect()->route($this->_config['redirect']);
-            }
+            } */
 
             return redirect()->route($this->_config['redirect']);
         } else {
