@@ -23,7 +23,7 @@
 
         <div  style="margin-top: 40px; text-align: center">
             <a href="{{ route('customer.verify', $data['token']) }}" style="font-size: 16px;
-            color: #FFFFFF; text-align: center; background: #0031F0; padding: 10px 100px;text-decoration: none;">Verify Your Account</a>
+            color: #FFFFFF; text-align: center; background: #0031F0; padding: 10px 30px;text-decoration: none;">Verify Your Account</a>
         </div>
         <p>
             <em>By clicking the button, you agree to the Terms of Service and the Privacy Policy on KlingBakeShop.</em>
