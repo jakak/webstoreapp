@@ -3,7 +3,7 @@
     <div>
         <div style="text-align: center;">
             <a href="{{ config('app.url') }}">
-                <img src="{{ bagisto_asset('images/logo.svg') }}">
+                <img src="{{ bagisto_asset('images/logo.svg') }}" style="width: 260px">
             </a>
         </div>
 

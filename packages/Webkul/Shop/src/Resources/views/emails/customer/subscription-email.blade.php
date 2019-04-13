@@ -3,7 +3,7 @@
     <div>
         <div style="text-align: center;">
             <a href="{{ config('app.url') }}">
-                <img src="{{ bagisto_asset('images/logo.svg') }}">
+                <img src="{{ bagisto_asset('images/logo.svg') }}" style="width: 260px">
             </a>
         </div>
 
@@ -19,7 +19,7 @@
 
         <div  style="margin-top: 40px; text-align: center">
             <a href="{{ route('shop.unsubscribe', $data['token']) }}" style="font-size: 16px;
-            color: #FFFFFF; text-align: center; background: #0031F0; padding: 10px 100px;text-decoration: none;">Unsubscribe</a>
+            color: #FFFFFF; text-align: center; background: #B670AF; padding: 10px 100px;text-decoration: none;">Unsubscribe</a>
         </div>
     </div>
 
