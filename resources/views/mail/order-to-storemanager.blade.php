@@ -1,7 +1,7 @@
 @component('shop::emails.layouts.master')
     <div style="text-align: center;">
         <a href="{{ config('app.url') }}">
-            <img src="{{ bagisto_asset('images/logo.svg') }}" style="width: 260px">
+            <img src="{{ bagisto_asset('images/logo.png') }}" style="width: 260px">
         </a>
     </div>
 
