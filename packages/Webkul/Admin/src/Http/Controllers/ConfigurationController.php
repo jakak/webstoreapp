@@ -10,6 +10,7 @@ use Webkul\Core\Repositories\CoreConfigRepository as CoreConfig;
 use Webkul\Core\Tree;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
 use Illuminate\Support\Facades\Storage;
+use App\Location;
 
 /**
  * Configuration controller
@@ -69,7 +70,7 @@ class ConfigurationController extends Controller
         foreach (config('core') as $item) {
             $tree->add($item);
         }
-
+        // dd(config('core'));
         $tree->items = core()->sortItems($tree->items);
         // dd($tree);
         $this->configTree = $tree;
@@ -159,5 +160,24 @@ class ConfigurationController extends Controller
         $config = $this->coreConfig->findOneByField('value', $fileName);
 
         return Storage::download($config['value']);
+    }
+
+    public function newLocation (Request $request) 
+    {
+        return view ( 'admin::configuration.location', ['config' => $this->configTree]);
+    }
+
+    public function saveLocation (Request $request)
+    {
+        $location = Location::where('location', $request->location)->first();
+
+        if ($location) {
+            $location->update($request->all());
+        } else {
+            $location = Location::create($request->all());
+        }
+
+        session()->flash('success', trans('admin::app.configuration.save-message'));
+        return redirect()->back();
     }
 }

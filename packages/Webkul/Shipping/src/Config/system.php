@@ -3,11 +3,11 @@
 return [
     [
         'key' => 'sales',
-        'name' => 'Sales',
+        'name' => 'Shipping',
         'sort' => 1
     ], [
         'key' => 'sales.carriers',
-        'name' => 'Shipping Methods',
+        'name' => 'Free Shipping',
         'sort' => 1,
     ], [
         'key' => 'sales.carriers.free',
@@ -43,7 +43,7 @@ return [
                 'validation' => 'required'
             ]
         ]
-    ], [
+    ], /* [
         'key' => 'sales.carriers.flatrate',
         'name' => 'Flat Rate Shipping',
         'sort' => 2,
@@ -97,40 +97,20 @@ return [
                 'validation' => 'required'
             ]
         ]
-    ], [
+    ], */ [
         'key' => 'sales.shipping',
-        'name' => 'Shipping',
+        'name' => 'Shipping Origin',
         'sort' => 0
     ], [
         'key' => 'sales.shipping.origin',
         'name' => 'Origin',
         'sort' => 0,
         'fields' => [
-            [
-                'name' => 'country',
-                'title' => 'Country',
-                'type' => 'country',
-                'validation' => 'required',
-                'channel_based' => true,
-                'locale_based' => true
-            ], [
-                'name' => 'state',
-                'title' => 'State',
-                'type' => 'state',
-                'validation' => 'required',
-                'channel_based' => true,
-                'locale_based' => true
-            ], [
-                'name' => 'address1',
-                'title' => 'Address Line 1',
+             [
+                'name' => 'street',
+                'title' => 'Street Address',
                 'type' => 'text',
                 'validation' => 'required',
-                'channel_based' => true,
-                'locale_based' => false
-            ], [
-                'name' => 'address2',
-                'title' => 'Address Line 2',
-                'type' => 'text',
                 'channel_based' => true,
                 'locale_based' => false
             ], [
@@ -147,7 +127,39 @@ return [
                 'validation' => 'required',
                 'channel_based' => true,
                 'locale_based' => false
-            ]
+            ], [
+                'name' => 'state',
+                'title' => 'State',
+                'type' => 'state',
+                'validation' => 'required',
+                'channel_based' => true,
+                'locale_based' => true
+            ], [
+                'name' => 'country',
+                'title' => 'Country',
+                'type' => 'country',
+                'validation' => 'required',
+                'channel_based' => true,
+                'locale_based' => true
+            ], 
         ]
+    ], [
+        'key'   => 'sales.othermethods',
+        'name'  => 'Other Shipping Methods',
+        'sort'  => 2
+    ], [
+        'key'   =>  'sales.othermethods.addlocation',
+        'name'  =>  'Location',
+        'sort'  =>  0,
+        'field_type' => 'table',
+        'table_columns' => [
+            'location',
+            'state',
+            'country',
+            'rate',
+            'type',
+            'status',
+            'actions'
+        ] 
     ]
 ];

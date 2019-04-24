@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'flatrate' => [
+    /* 'flatrate' => [
         'code' => 'flatrate',
         'title' => 'Flat Rate',
         'description' => 'This is a flat rate',
@@ -9,7 +9,7 @@ return [
         'default_rate' => '10',
         'type' => 'per_unit',
         'class' => 'Webkul\Shipping\Carriers\FlatRate',
-    ],
+    ], */
 
     'free' => [
         'code' => 'free',

@@ -400,7 +400,7 @@
                                 </div>
 
                                 <div class="box-content">
-                                    {{ core()->getConfigData('sales.paymentmethods.' . $order->payment->method . '.title') }}
+                                    {{ core()->getConfigData('payment.paymentmethods.' . $order->payment->method . '.title') }}
                                 </div>
                             </div>
                         </div>

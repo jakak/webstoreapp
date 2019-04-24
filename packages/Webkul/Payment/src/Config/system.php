@@ -2,6 +2,124 @@
 
 return [
     [
+        'key'   => 'payment',
+        'name'  => 'Payments',
+        'sort'  => 3
+    ], [
+        'key'   => 'payment.paymentmethods',
+        'name'  => 'Payment Methods',
+        'sort'  => 1
+    ], [
+        'key' => 'payment.paymentmethods.cashondelivery',
+        'name' => 'Cash On Delivery',
+        'sort' => 1,
+        'fields' => [
+            [
+                'name' => 'title',
+                'title' => 'Title',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'description',
+                'title' => 'Description',
+                'type' => 'textarea',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'active',
+                'title' => 'Status',
+                'type' => 'select',
+                'options' => [
+                    [
+                        'title' => 'Active',
+                        'value' => true
+                    ], [
+                        'title' => 'Inactive',
+                        'value' => false
+                    ]
+                ],
+                'validation' => 'required'
+            ]
+        ]
+    ], [
+        'key' => 'payment.paymentmethods.moneytransfer',
+        'name' => 'Money Transfer',
+        'sort' => 2,
+        'fields' => [
+            [
+                'name' => 'title',
+                'title' => 'Title',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'description',
+                'title' => 'Description',
+                'type' => 'textarea',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'active',
+                'title' => 'Status',
+                'type' => 'select',
+                'options' => [
+                    [
+                        'title' => 'Active',
+                        'value' => true
+                    ], [
+                        'title' => 'Inactive',
+                        'value' => false
+                    ]
+                ],
+                'validation' => 'required'
+            ]
+        ]
+    ],  [
+        'key' => 'payment.paymentmethods.paystack_payments',
+        'name' => 'Paystack Payments',
+        'sort' => 3,
+        'fields' => [
+            [
+                'name' => 'secret_key',
+                'title' => 'Live Secret Key',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
+            ],  [
+                'name' => 'public_key',
+                'title' => 'Live Public Key',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'description',
+                'title' => 'Description',
+                'type' => 'textarea',
+                'channel_based' => false,
+                'validation' => 'required'
+            ],  [
+                'name' => 'active',
+                'title' => 'Status',
+                'type' => 'select',
+                'options' => [
+                    [
+                        'title' => 'Active',
+                        'value' => true
+                    ], [
+                        'title' => 'Inactive',
+                        'value' => false
+                    ]
+                ],
+                'validation' => 'required'
+            ]
+        ]
+    ]
+    /* [
         'key' => 'sales',
         'name' => 'Sales',
         'sort' => 1
@@ -77,49 +195,7 @@ return [
                 'validation' => 'required'
             ]
         ]
-    ],/*  [
-        'key' => 'sales.paymentmethods.paypal_standard',
-        'name' => 'Paypal Standard',
-        'sort' => 3,
-        'fields' => [
-            [
-                'name' => 'title',
-                'title' => 'Title',
-                'type' => 'text',
-                'validation' => 'required',
-                'channel_based' => false,
-                'locale_based' => true
-            ], [
-                'name' => 'description',
-                'title' => 'Description',
-                'type' => 'textarea',
-                'channel_based' => false,
-                'locale_based' => true
-            ],  [
-                'name' => 'business_account',
-                'title' => 'Business Account',
-                'type' => 'select',
-                'type' => 'text',
-                'validation' => 'required'
-            ],  [
-                'name' => 'active',
-                'title' => 'Status',
-                'type' => 'select',
-                'options' => [
-                    [
-                        'title' => 'Active',
-                        'value' => true
-                    ], [
-                        'title' => 'Inactive',
-                        'value' => false
-                    ]
-                ],
-                'validation' => 'required'
-            ]
-        ],
-    ], */
-
-        [
+    ],  [
         'key' => 'sales.paymentmethods.paystack_payments',
         'name' => 'Paystack Payments',
         'sort' => 3,
@@ -160,5 +236,5 @@ return [
                 'validation' => 'required'
             ]
         ]
-    ]
+    ] */
 ];
