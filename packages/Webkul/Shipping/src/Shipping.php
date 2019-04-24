@@ -4,6 +4,7 @@ namespace Webkul\Shipping;
 
 use Illuminate\Support\Facades\Config;
 use Webkul\Checkout\Facades\Cart;
+use App\Location;
 
 /**
  * Class Shipping.
@@ -43,10 +44,15 @@ class Shipping
         }
 
         $this->saveAllShippingRates();
+        $availableLocation = Location::where('status', 'enabled')->get();
+        // return $availableLocation;
 
         return [
                 'jump_to_section' => 'shipping',
-                'html' => view('shop::checkout.onepage.shipping', ['shippingRateGroups' => $this->getGroupedAllShippingRates()])->render()
+                'html' => view('shop::checkout.onepage.shipping', [
+                    'shippingRateGroups' => $this->getGroupedAllShippingRates(),
+                    'location' => $availableLocation
+                ])->render()
             ];
     }
 

@@ -4,80 +4,248 @@
     {{ __('admin::app.configuration.title') }}
 @stop
 
+@section('css')
+    <style>
+        .d-none {
+            display: none;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="content">
         <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
         <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
+        {{-- {{ dd(request()->url()) }} --}}
+        @if (strpos(request()->url(), 'othermethod') !== false)
+            <div class="content" id="locationPage">
+                <div class="page-header">
 
-        <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
+                    <div class="page-title">
+                        <h1>
+                            Location
+                        </h1>
 
-            <div class="page-header">
+                        <div class="control-group">
+                            <select class="control" id="channel-switcher" name="channel">
+                                @foreach (core()->getAllChannels() as $channelModel)
 
-                <div class="page-title">
-                    <h1>
-                        {{ __('admin::app.configuration.title') }}
-                    </h1>
+                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
+                                        {{ $channelModel->name }}
+                                    </option>
 
-                    <div class="control-group">
-                        <select class="control" id="channel-switcher" name="channel">
-                            @foreach (core()->getAllChannels() as $channelModel)
+                                @endforeach
+                            </select>
+                        </div>
 
-                                <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
-                                    {{ $channelModel->name }}
-                                </option>
+                        <div class="control-group">
+                            <select class="control" id="locale-switcher" name="locale">
+                                @foreach (core()->getAllLocales() as $localeModel)
 
-                            @endforeach
-                        </select>
+                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                        {{ $localeModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="control-group">
-                        <select class="control" id="locale-switcher" name="locale">
-                            @foreach (core()->getAllLocales() as $localeModel)
-
-                                <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                    {{ $localeModel->name }}
-                                </option>
-
-                            @endforeach
-                        </select>
+                    <div class="page-action">
+                        <button id="addLocation" class="btn btn-lg btn-primary">
+                            Add Location
+                        </button>
                     </div>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-lg btn-primary">
-                        {{ __('admin::app.configuration.save-btn-title') }}
-                    </button>
+                <div class="page-content">
+                    @inject('locationGrid', 'App\DataGrids\ShippingLocationDataGrid')
+                    {!! $locationGrid->render() !!}
                 </div>
             </div>
+            <form method="POST" action="{{ route('admin.configuration.location') }}" class="d-none" id="addLocationPage">
+                <div class="page-header">
 
-            <div class="page-content">
-                <div class="form-container">
-                    @csrf()
+                    <div class="page-title">
+                        <h1>
+                            {{ __('admin::app.configuration.title') }}
+                        </h1>
 
-                    @if ($groups = array_get($config->items, request()->route('slug') . '.children.' . request()->route('slug2') . '.children'))
+                        <div class="control-group">
+                            <select class="control" id="channel-switcher" name="channel">
+                                @foreach (core()->getAllChannels() as $channelModel)
 
-                        @foreach ($groups as $key => $item)
+                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
+                                        {{ $channelModel->name }}
+                                    </option>
 
-                            <accordian :title="'{{ __($item['name']) }}'" :active="true">
-                                <div slot="body">
+                                @endforeach
+                            </select>
+                        </div>
 
-                                    @foreach ($item['fields'] as $field)
+                        <div class="control-group">
+                            <select class="control" id="locale-switcher" name="locale">
+                                @foreach (core()->getAllLocales() as $localeModel)
 
-                                        @include ('admin::configuration.field-type', ['field' => $field])
+                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                        {{ $localeModel->name }}
+                                    </option>
 
-                                    @endforeach
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
+                    <div class="page-action">
+                        <button type="submit" class="btn btn-lg btn-primary">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="form-container">
+                        @csrf
+                        <accordian :title="'New Shipping Location'" :active="true">
+                            <div slot="body">
+                                <div class="control-group text" :class="">
+
+                                    <label for="" class="required" >
+                                        Location
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <input type="text" required v-validate="'required'" class="control" id="location" name="location" value="{{ old('location') ?: $location??null }}" data-vv-as="location">
                                 </div>
-                            </accordian>
+                                <div class="control-group text" :class="">
 
-                        @endforeach
+                                    <label for="" class="required" >
+                                        State
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <input type="text" required v-validate="'required'" class="control" id="state" name="state" value="{{ old('state') ?: $state??null }}" data-vv-as="state">
+                                </div>
+                                <div class="control-group text" :class="">
 
-                    @endif
+                                    <label for="" class="required" >
+                                        Country
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <country></country>
+                                </div>
+                                <div class="control-group text" :class="">
 
+                                    <label for="rate">
+                                        Rate
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <input type="text" required v-validate="'required'" class="control" id="rate" name="rate" value="{{ old('rate') ?: $rate??null }}" data-vv-as="rate">
+                                </div>
+                                <div class="control-group text" :class="">
+
+                                    <label for="" class="required" >
+                                        Type
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <select type="text" v-validate="'required'" class="control" id="country" name="type">
+                                        <option value="per order">Per Order</option>
+                                        <option value="per item">Per Item</option>
+                                    </select>
+                                </div>
+                                <div class="control-group text" :class="">
+
+                                    <label for="">
+                                        Description
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <textarea v-validate="''" class="control" id="description" name="description" data-vv-as="'description'">{{ old('description') ?: '' }}</textarea>
+                                </div>
+                                <div class="control-group text" :class="">
+
+                                    <label for="" class="required" >
+                                        Status
+                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
+                                    </label>
+                                    <select type="text" v-validate="'required'" class="control" id="status" name="status">
+                                        <option value="enabled">Enabled</option>
+                                        <option value="disabled">Disabled</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </accordian>
+                    </div>
                 </div>
-            </div>
+            </form>
+        @else
+        
+            <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
-        </form>
+                <div class="page-header">
+
+                    <div class="page-title">
+                        <h1>
+                            {{ __('admin::app.configuration.title') }}
+                        </h1>
+
+                        <div class="control-group">
+                            <select class="control" id="channel-switcher" name="channel">
+                                @foreach (core()->getAllChannels() as $channelModel)
+
+                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
+                                        {{ $channelModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <select class="control" id="locale-switcher" name="locale">
+                                @foreach (core()->getAllLocales() as $localeModel)
+
+                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                        {{ $localeModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="page-action">
+                        <button type="submit" class="btn btn-lg btn-primary">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="page-content">
+                    <div class="form-container">
+                        @csrf()
+
+                        @if ($groups = array_get($config->items, request()->route('slug') . '.children.' . request()->route('slug2') . '.children'))
+
+                            @foreach ($groups as $key => $item)
+
+                                <accordian :title="'{{ __($item['name']) }}'" :active="true">
+                                    <div slot="body">
+
+                                        @foreach ($item['fields'] as $field)
+
+                                            @include ('admin::configuration.field-type', ['field' => $field])
+
+                                        @endforeach
+
+                                    </div>
+                                </accordian>
+
+                            @endforeach
+
+                        @endif
+
+                    </div>
+                </div>
+
+            </form>
+        @endif
     </div>
 @stop
 
@@ -90,6 +258,70 @@
 
                 window.location.href = "{{ route('admin.configuration.index', [request()->route('slug'), request()->route('slug2')]) }}" + query;
             })
+            
+            document.querySelector('#addLocation').addEventListener('click', function addLocation (evt) {
+                document.querySelector('#addLocationPage').classList.remove('d-none');
+                document.querySelector('#locationPage').classList.add('d-none');
+            })
+
+            document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
+                btn.addEventListener('click', evt => {
+                    evt.preventDefault();
+                    
+                    // Show edit page
+                    setupEditPage(btn.parentElement.parentElement.parentElement.parentElement.cells);
+                });
+            });
+
+            function setupEditPage(cells) {
+                for (let index = 0; index < cells.length; index++) {
+                    document.querySelectorAll('.control')[6 + index].value = cells[index].innerText;
+                }
+            }
+        });
+
+    </script>
+
+    <script type="text/x-template" id="country-template">
+
+        <div>
+            <select type="text" v-validate="'required'" class="control" id="country" name="country" v-model="country" data-vv-as="&quot;{{ __('admin::app.customers.customers.country') }}&quot;" @change="someHandler">
+                <option value=""></option>
+
+                @foreach (core()->countries() as $country)
+
+                    <option value="{{ $country->name }}">{{ $country->name }}</option>
+
+                @endforeach
+            </select>
+        </div>
+
+    </script>
+
+    <script>
+        Vue.component('country', {
+
+            template: '#country-template',
+
+            inject: ['$validator'],
+
+            props: ['code'],
+
+            data: () => ({
+                country: "",
+            }),
+
+            mounted() {
+                this.country = this.code;
+                this.someHandler()
+            },
+
+            methods: {
+                someHandler() {
+                    this.$root.$emit('sendCountryCode', this.country)
+                },
+            }
         });
     </script>
+
 @endpush

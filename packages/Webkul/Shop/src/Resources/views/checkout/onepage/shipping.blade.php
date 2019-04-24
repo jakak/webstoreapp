@@ -31,3 +31,12 @@
         </div>
     </div>
 </form>
+<script>
+    function () {
+        const locations = @json($location);
+        console.log(locations);
+        document.querySelector('#selected_location').addEventListener('change', function (evt) {
+            document.querySelector('#selected_label').innerHTML = "NGN";
+        })
+    }();
+</script>

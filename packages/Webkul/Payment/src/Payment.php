@@ -29,7 +29,7 @@ class Payment
             }
         }
         $cart = Cart::getCart();
-        $paystack_key = core()->getConfigData('sales.paymentmethods.paystack_payments.public_key');
+        $paystack_key = core()->getConfigData('payment.paymentmethods.paystack_payments.public_key');
         // return $cart;
         $data = [
             'paymentMethods'    => $paymentMethods,
