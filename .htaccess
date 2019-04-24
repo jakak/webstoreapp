@@ -1,11 +1,11 @@
 
-RewriteOptions inherit
-
 RewriteEngine on
+
+RewriteOptions inherit
 RewriteCond %{HTTP_HOST} ^.*$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^storemanager\/?(.*)$ "http\:\/\/klingbakeshop\.com\/public\/admin\/login$1" [R=301,L]
+RewriteRule ^storemanager\/?(.*)$ "https\:\/\/klingbakeshop\.com\/public\/admin\/login$1" [R=301,L]
