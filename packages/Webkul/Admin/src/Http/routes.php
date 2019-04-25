@@ -81,7 +81,9 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::configuration.index'
             ])->name('admin.configuration.index');
 
+            Route::get('/configuration/sales/othermethods/addlocation/{location}/details', 'Webkul\Admin\Http\Controllers\ConfigurationController@getLocationDetails');
             Route::get('/configuration/sales/othermethods/addlocation/edit', 'Webkul\Admin\Http\Controllers\ConfigurationController@newLocation')->name('admin.configuration.location.edit');
+            Route::get('/configuration/sales/othermethods/addlocation/{location}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deleteLocation')->name('admin.configuration.location.delete');
             Route::post('/configuration/sales/othermethods/addlocation', 'Webkul\Admin\Http\Controllers\ConfigurationController@saveLocation')->name('admin.configuration.location');
 
             Route::post('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@store')->defaults('_config', [

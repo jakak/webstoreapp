@@ -169,9 +169,8 @@ class ConfigurationController extends Controller
 
     public function saveLocation (Request $request)
     {
-        $location = Location::where('location', $request->location)->first();
-
-        if ($location) {
+        if ($request->has('id')) {
+            $location = Location::find($request->all()['id']);
             $location->update($request->all());
         } else {
             $location = Location::create($request->all());
@@ -179,5 +178,24 @@ class ConfigurationController extends Controller
 
         session()->flash('success', trans('admin::app.configuration.save-message'));
         return redirect()->back();
+    }
+
+    public function deleteLocation ($location) 
+    {
+        $location = Location::where('location', $location)->first();
+        
+        if ($location) {
+            $location->delete();
+        }
+
+        session()->flash('success', 'Location successfully deleted');
+        return redirect()->back();
+    }
+
+    public function getLocationDetails ($location)
+    {
+        $location = Location::where('location', $location)->first();
+
+        return $location;
     }
 }

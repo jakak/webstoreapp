@@ -13,7 +13,7 @@ return [
 
     'free' => [
         'code' => 'free',
-        'title' => 'Free Shipping',
+        'title' => 'Store Pickup',
         'description' => 'This is a free shipping',
         'active' => true,
         'class' => 'Webkul\Shipping\Carriers\Free',
