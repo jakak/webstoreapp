@@ -7,11 +7,11 @@ return [
         'sort' => 1
     ], [
         'key' => 'sales.carriers',
-        'name' => 'Free Shipping',
+        'name' => 'Store Pickup',
         'sort' => 1,
     ], [
         'key' => 'sales.carriers.free',
-        'name' => 'Free Shipping',
+        'name' => 'Store Pickup',
         'sort' => 1,
         'fields' => [
             [
@@ -145,7 +145,7 @@ return [
         ]
     ], [
         'key'   => 'sales.othermethods',
-        'name'  => 'Other Shipping Methods',
+        'name'  => 'Shipping Methods',
         'sort'  => 2
     ], [
         'key'   =>  'sales.othermethods.addlocation',

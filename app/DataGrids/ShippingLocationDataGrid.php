@@ -81,7 +81,7 @@ class ShippingLocationDataGrid extends DataGrid
 
         $this->addAction([
             'type' => 'Delete',
-            'route' => 'admin.configuration.location.edit',
+            'route' => 'admin.configuration.location.delete',
             'icon' => 'icon trash-icon'
         ]);
     }

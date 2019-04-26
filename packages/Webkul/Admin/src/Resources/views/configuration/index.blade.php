@@ -269,14 +269,30 @@
                     evt.preventDefault();
                     
                     // Show edit page
-                    setupEditPage(btn.parentElement.parentElement.parentElement.parentElement.cells);
+                    setupEditPage(btn.parentElement);
                 });
             });
 
-            function setupEditPage(cells) {
-                for (let index = 0; index < cells.length; index++) {
-                    document.querySelectorAll('.control')[6 + index].value = cells[index].innerText;
-                }
+            function setupEditPage(url) {
+                fetch('/admin/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(response => {
+                        for (const key in response) {
+                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                document.querySelector('[name='+key+']').value = response[key];
+                            }
+                        } 
+                        const inp = document.createElement('input');
+                        inp.type="hidden";
+                        inp.value = response.id;
+                        inp.name = "id"
+                        document.querySelector('#addLocationPage').appendChild(inp);
+                        document.querySelector('#addLocation').click();
+                    })
+                ;
+                
             }
         });
 

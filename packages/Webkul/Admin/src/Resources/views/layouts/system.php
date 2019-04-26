@@ -11,7 +11,7 @@ return [
         'sort' => 1,
     ], [
         'key' => 'sales.carriers.free',
-        'name' => 'Free Shipping',
+        'name' => 'Store Pickup',
         'sort' => 1,
         'fields' => [
             [
