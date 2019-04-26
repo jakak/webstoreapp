@@ -126,11 +126,20 @@
                 </div>
 
                 <div class="text">
-                    {{ core()->currency($cart->selected_shipping_rate->base_price) }}
+                    @if (is_null($location))
+                        {{ core()->currency($cart->selected_shipping_rate->base_price) }}
 
-                    <div class="info">
-                        {{ $cart->selected_shipping_rate->method_title }}
-                    </div>
+                        <div class="info">
+                            {{ $cart->selected_shipping_rate->method_title }}
+                        </div>    
+                    @else
+                        {{ core()->currency($location->rate) }}
+
+                        <div class="info">
+                            {{ $location->location }}
+                        </div>
+                    @endif
+                    
                 </div>
             </div>
 

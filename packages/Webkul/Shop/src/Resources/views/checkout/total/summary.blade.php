@@ -15,6 +15,11 @@
             <label>{{ __('shop::app.checkout.total.delivery-charges') }}</label>
             <label class="right">{{ core()->currency($cart->selected_shipping_rate->price) }}</label>
         </div>
+    @elseif ($cart->shipping_method && $cart->shipping_method !== 'free_free')
+        <div class="item-detail">
+            <label>{{ __('shop::app.checkout.total.delivery-charges') }}</label>
+            <label class="right">{{ core()->currency(\App\Location::find($cart->shipping_method)->rate) }}</label>
+        </div>
     @endif
 
     @if ($cart->base_tax_total)

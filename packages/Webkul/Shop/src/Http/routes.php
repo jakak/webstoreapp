@@ -72,6 +72,9 @@ Route::group(['middleware' => ['web', 'theme', 'locale', 'currency']], function 
     //Checkout Save Shipping Address Form Store
     Route::post('/checkout/save-shipping', 'Webkul\Shop\Http\Controllers\OnepageController@saveShipping')->name('shop.checkout.save-shipping');
 
+    //Checkout Get Shipping Summary Form Store
+    Route::get('/checkout/get-shipping-summary', 'Webkul\Shop\Http\Controllers\OnepageController@getSummary')->name('shop.checkout.get-shipping-summary');
+
     //Checkout Save Payment Method Form
     Route::post('/checkout/save-payment', 'Webkul\Shop\Http\Controllers\OnepageController@savePayment')->name('shop.checkout.save-payment');
 

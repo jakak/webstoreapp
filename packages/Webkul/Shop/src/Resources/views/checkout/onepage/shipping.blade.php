@@ -7,8 +7,21 @@
         <div class="shipping-methods">
 
             <div class="control-group" :class="[errors.has('shipping-form.shipping_method') ? 'has-error' : '']">
-
-                @foreach ($shippingRateGroups as $rateGroup)
+                <select type="text" v-model="selected_shipping_method" v-validate="'required'" class="control" id="country" name="shipping_method" @change="methodSelected()">
+                    @foreach ($shippingRateGroups as $rateGroup)
+                        <optgroup label="{{ $rateGroup['carrier_title'] }}">
+                            @foreach ($rateGroup['rates'] as $rate)
+                                <option value="{{ $rate->method }}"> {{ $rate->method_title }}</option>
+                            @endforeach
+                        </optgroup>
+                    @endforeach
+                    <optgroup label="Select Delivery Location">
+                        @foreach ($location as $loc)
+                            <option value="{{ $loc->id }}">{{ $loc->location }}</option>    
+                        @endforeach
+                    </optgroup>
+                </select>
+                {{-- @foreach ($shippingRateGroups as $rateGroup)
                     <h4 for="">{{ $rateGroup['carrier_title'] }}</h4>
 
                     @foreach ($rateGroup['rates'] as $rate)
@@ -20,7 +33,7 @@
                         </span>
                     @endforeach
 
-                @endforeach
+                @endforeach --}}
 
                 <span class="control-error" v-if="errors.has('shipping-form.shipping_method')">
                     @{{ errors.first('shipping-form.shipping_method') }}

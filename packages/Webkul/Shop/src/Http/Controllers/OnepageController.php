@@ -11,6 +11,7 @@ use Webkul\Shipping\Facades\Shipping;
 use Webkul\Payment\Facades\Payment;
 use Webkul\Checkout\Http\Requests\CustomerAddressForm;
 use Webkul\Sales\Repositories\OrderRepository;
+use App\Location;
 
 /**
  * Chekout controller for the customer and guest for placing order
@@ -57,7 +58,10 @@ class OnepageController extends Controller
         if (Cart::hasError())
             return redirect()->route('shop.checkout.cart.index');
 
-        return view($this->_config['view'])->with('cart', Cart::getCart());
+        $location = Location::select('id','location', 'rate')->get();
+        $cart = Cart::getCart();
+
+        return view($this->_config['view'], compact('cart', 'location'));
     }
 
     /**
@@ -106,10 +110,14 @@ class OnepageController extends Controller
             return response()->json(['redirect_url' => route('shop.checkout.cart.index')], 403);
 
         $cart = Cart::getCart();
-
+        
+        $location = null;
+        if ($cart->shipping_method !== 'free_free') {
+            $location = Location::find($cart->shipping_method);
+        }
         return response()->json([
                 'jump_to_section' => 'review',
-                'html' => view('shop::checkout.onepage.review', compact('cart'))->render()
+                'html' => view('shop::checkout.onepage.review', compact('cart', 'location'))->render()
             ]);
     }
 
@@ -177,7 +185,7 @@ class OnepageController extends Controller
             throw new \Exception(trans('Please check billing address.'));
         }
 
-        if (! $cart->selected_shipping_rate) {
+        if (! $cart->selected_shipping_rate && is_null(Location::find($cart->shipping_method))) {
             throw new \Exception(trans('Please specify shipping method.'));
         }
 

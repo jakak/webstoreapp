@@ -84,7 +84,7 @@
                         </button>
                     <paystack-component 
                         :email="address.billing.email" 
-                        :amount="{{ $cart->grand_total * 100 }}" 
+                        :amount="newTotal * 100" 
                         :publicKey="'{{ core()->getConfigData('payment.paymentmethods.paystack_payments.public_key') }}'" 
                         :referenceCode="`${address.billing.first_name.replace(/\s/g, '')}-${address.billing.last_name.replace(/\s/g, '')}-`+ '{{  $cart->id . '-' . $cart->grand_total}}'" 
                         class="btn btn-lg btn-primary" 
@@ -127,6 +127,10 @@
         var reviewHtml = '';
         var summaryHtml = Vue.compile(`<?php echo view('shop::checkout.total.summary', ['cart' => $cart])->render(); ?>`);
         var customerAddress = null;
+        var locations = @json($location);
+        var base_price = Number({{ $cart->base_sub_total}});
+        var newTotal = 0;
+        
         @auth('customer')
             @if (auth('customer')->user()->default_address)
                 customerAddress = @json(auth('customer')->user()->default_address);
@@ -148,6 +152,8 @@
                 currentStep: 1,
 
                 completedStep: 0,
+
+                newTotal: 0,
 
                 address: {
                     billing: {
@@ -305,6 +311,41 @@
 
                 shippingMethodSelected (shippingMethod) {
                     this.selected_shipping_method = shippingMethod;
+
+                    let currLocation = locations.find(loc => {
+                        return loc.id == shippingMethod;
+                    });
+                    if (!currLocation) {
+                        currLocation = {
+                            location: 'Store Pickup',
+                            rate: 0.00
+                        }
+                    }
+
+                    let detailsHTML = document.createElement('div');
+                    detailsHTML.classList.add('item-detail');
+                    detailsHTML.innerHTML = `
+                        <label>Delivery Charges</label>
+                        <label class="right">NGN${currLocation.rate}</label>
+                        `
+                    let details = document.querySelectorAll('.item-detail');
+                    
+                    if (details.length == 2) {
+                        details[0].insertAdjacentElement('afterend', detailsHTML);
+                    } else if (details.length == 3) {
+                        document.querySelector('.order-summary').removeChild(details[1]);
+                        details[0].insertAdjacentElement('afterend', detailsHTML);
+                    }
+
+                    let payableAmountDisplay = document.querySelector('.payble-amount').querySelector('.right');
+                    const formatter = new Intl.NumberFormat('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                    newTotal = formatter.format(base_price + Number(currLocation.rate));
+                    this.newTotal = base_price + Number(currLocation.rate);
+                    payableAmountDisplay.innerHTML = `NGN${newTotal}`;
+                    
                 },
 
                 paymentMethodSelected (paymentMethod) {
@@ -357,7 +398,7 @@
             mounted() {
                 this.templateRender = shippingHtml.render;
                 for (var i in shippingHtml.staticRenderFns) {
-                    shippingTemplateRenderFns.unshift(shippingHtml.staticRenderFns[i]);
+                    shippingTemplateRenderFns.push(shippingHtml.staticRenderFns[i]);
                 }
             },
 

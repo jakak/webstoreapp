@@ -11,6 +11,7 @@ use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Tax\Repositories\TaxCategoryRepository;
 use Webkul\Checkout\Models\CartPayment;
 use Webkul\Customer\Repositories\WishlistRepository;
+use App\Location;
 
 /**
  * Facades handler for all the methods to be implemented in Cart.
@@ -569,7 +570,11 @@ class Cart {
 
         $data['billing_address'] = current($data['billing_address']);
 
-        $data['selected_shipping_rate'] = $cart->selected_shipping_rate->toArray();
+        if ($cart->selected_shipping_rate) {
+            $data['selected_shipping_rate'] = $cart->selected_shipping_rate->toArray();
+        } else {
+            $data['selected_shipping_rate'] = Location::find($cart->shipping_method);
+        }
 
         return $data;
     }
@@ -740,6 +745,14 @@ class Cart {
         if ($shipping = $cart->selected_shipping_rate) {
             $cart->grand_total = (float) $cart->grand_total + $shipping->price;
             $cart->base_grand_total = (float) $cart->base_grand_total + $shipping->base_price;
+        }
+        if ($cart->shipping_method != 'free_free') {
+            $shipping = Location::find($cart->shipping_method);
+            
+            if ($shipping) {
+                $cart->grand_total = (float) $cart->grand_total + $shipping->rate;
+                $cart->base_grand_total = (float) $cart->base_grand_total + $shipping->rate;
+            }
         }
 
         $quantities = 0;
@@ -938,6 +951,14 @@ class Cart {
     public function prepareDataForOrder()
     {
         $data = $this->toArray();
+        if ($data['shipping_method'] !== '' && $data ['shipping_method'] !== 'free_free') {
+            $shippingPrice = Location::find($data['shipping_method'])->rate;
+            $baseShippingPrice = Location::find($data['shipping_method'])->rate;
+        } else {
+            $shippingPrice = $data['selected_shipping_rate']['price'];
+            $baseShippingPrice = $data['selected_shipping_rate']['base_price'];
+        }
+        
 
         $finalData = [
             'cart_id' => $this->getCart()->id,
@@ -952,8 +973,8 @@ class Cart {
             'shipping_method' => $data['selected_shipping_rate']['method'],
             'shipping_title' => $data['selected_shipping_rate']['carrier_title'] . ' - ' . $data['selected_shipping_rate']['method_title'],
             'shipping_description' => $data['selected_shipping_rate']['method_description'],
-            'shipping_amount' => $data['selected_shipping_rate']['price'],
-            'base_shipping_amount' => $data['selected_shipping_rate']['base_price'],
+            'shipping_amount' => $shippingPrice,
+            'base_shipping_amount' => $baseShippingPrice,
 
             'total_item_count' => $data['items_count'],
             'total_qty_ordered' => $data['items_qty'],
