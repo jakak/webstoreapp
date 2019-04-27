@@ -319,7 +319,7 @@
                         currLocation = {
                             location: 'Store Pickup',
                             rate: 0.00,
-                            description: "{!! core()->getConfigData('sales.carriers.free.description') !!}"
+                            description: `{!! core()->getConfigData('sales.carriers.free.description') !!}`
                         }
                     }
 
