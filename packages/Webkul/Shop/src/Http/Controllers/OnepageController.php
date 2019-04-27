@@ -58,7 +58,7 @@ class OnepageController extends Controller
         if (Cart::hasError())
             return redirect()->route('shop.checkout.cart.index');
 
-        $location = Location::select('id','location', 'rate')->get();
+        $location = Location::select('id','location', 'rate', 'description')->get();
         $cart = Cart::getCart();
 
         return view($this->_config['view'], compact('cart', 'location'));

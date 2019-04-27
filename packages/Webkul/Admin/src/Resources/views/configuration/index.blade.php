@@ -9,6 +9,9 @@
         .d-none {
             display: none;
         }
+        .capitalize-tr tr {
+            text-transform: capitalize;
+        }
     </style>
 @endsection
 
@@ -58,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="page-content">
+                <div class="page-content capitalize-tr">
                     @inject('locationGrid', 'App\DataGrids\ShippingLocationDataGrid')
                     {!! $locationGrid->render() !!}
                 </div>

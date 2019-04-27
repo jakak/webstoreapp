@@ -318,7 +318,8 @@
                     if (!currLocation) {
                         currLocation = {
                             location: 'Store Pickup',
-                            rate: 0.00
+                            rate: 0.00,
+                            description: "{{ core()->getConfigData('sales.carriers.free.description') }}"
                         }
                     }
 
@@ -337,6 +338,7 @@
                         details[0].insertAdjacentElement('afterend', detailsHTML);
                     }
 
+                    document.querySelector('#shippingLabel').innerHTML = currLocation.description;
                     let payableAmountDisplay = document.querySelector('.payble-amount').querySelector('.right');
                     const formatter = new Intl.NumberFormat('en-US', {
                         minimumFractionDigits: 2,
