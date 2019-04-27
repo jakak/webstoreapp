@@ -115,7 +115,7 @@ return [
                 'locale_based' => false
             ], [
                 'name' => 'zipcode',
-                'title' => 'Zip',
+                'title' => 'Zip Code',
                 'type' => 'text',
                 'validation' => 'required',
                 'channel_based' => true,
