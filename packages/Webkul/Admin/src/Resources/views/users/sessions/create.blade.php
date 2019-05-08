@@ -24,13 +24,13 @@
                     </div>
 
                     <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
-                        <label for="password">{{ __('admin::app.users.sessions.password') }}</label>
+                        <label for="password" style="display: flex; justify-content: space-between; width: 100%">
+                            <span>{{ __('admin::app.users.sessions.password') }}</span>
+                            <a href="{{ route('admin.forget-password.create') }}" class="primary">Reset</a>
+                        </label>
+                        
                         <input type="password" v-validate="'required|min:6'" class="control" id="password" name="password" data-vv-as="&quot;{{ __('admin::app.users.sessions.password') }}&quot;"/>
                         <span class="control-error" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
-                    </div>
-
-                    <div class="control-group">
-                        <a href="{{ route('admin.forget-password.create') }}">{{ __('admin::app.users.sessions.forget-password-link-title') }}</a>
                     </div>
 
                     <div class="button-group">
