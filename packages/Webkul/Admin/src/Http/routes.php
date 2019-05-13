@@ -487,6 +487,9 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::get('/channels/delete/{id}', 'Webkul\Core\Http\Controllers\ChannelController@destroy')->name('admin.channels.delete');
 
+            Route::get('/theme-manager', function () {
+                return "Theme manager! <br> Coming soon!";
+            })->name('admin.themes.index');
 
             // Admin Profile route
             Route::get('/account', 'Webkul\User\Http\Controllers\AccountController@edit')->defaults('_config', [

@@ -32,24 +32,74 @@
                     <accordian :title="'{{ __('admin::app.settings.channels.general') }}'" :active="true">
                         <div slot="body">
 
-                            <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
-                                <label for="code" class="required">{{ __('admin::app.settings.channels.code') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="code" name="code" data-vv-as="&quot;{{ __('admin::app.settings.channels.code') }}&quot;" value="{{ $channel->code }}" disabled="disabled"/>
-                                <input type="hidden" name="code" value="{{ $channel->code }}"/>
-                                <span class="control-error" v-if="errors.has('code')">@{{ errors.first('code') }}</span>
-                            </div>
-
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
-                                <label for="name" class="required">{{ __('admin::app.settings.channels.name') }}</label>
-                                <input v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.settings.channels.name') }}&quot;" value="{{ old('name') ?: $channel->name }}"/>
+                                <label for="name" class="required">{{ __('admin::app.settings.channels.code') }}</label>
+                                <input type="text" v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.settings.channels.code') }}&quot;" value="{{ $channel->name }}" />
+                                <input type="hidden" name="code" value="{{ $channel->code }}"/>
                                 <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
                             </div>
 
-                            <div class="control-group">
+                            <div class="control-group" :class="[errors.has('business_name') ? 'has-error' : '']">
+                                <label for="business_name" class="required">{{ __('admin::app.settings.channels.business_name') }}</label>
+                                <input v-validate="'required'" class="control" id="business_name" name="business_name" data-vv-as="&quot;{{ __('admin::app.settings.channels.business_name') }}&quot;" value="{{ old('business_name') ?: $channel->business_name }}"/>
+                                <span class="control-error" v-if="errors.has('business_name')">@{{ errors.first('business_name') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']" >
+                                <label for="email" class="required">{{ __('admin::app.settings.channels.email') }}</label>
+                                <input v-validate="'required'" class="control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.settings.channels.email') }}&quot;" value="{{ old('email') ?: $channel->email }}"/>
+                                <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('phone_number') ? 'has-error' : '']" >
+                                <label for="phone_number" class="required">{{ __('admin::app.settings.channels.phone_number') }}</label>
+                                <input v-validate="'required'" class="control" id="phone_number" name="phone_number" data-vv-as="&quot;{{ __('admin::app.settings.channels.phone_number') }}&quot;" value="{{ old('phone_number') ?: $channel->phone_number }}"/>
+                                <span class="control-error" v-if="errors.has('phone_number')">@{{ errors.first('phone_number') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('address') ? 'has-error' : '']" >
+                                <label for="address" class="required">{{ __('admin::app.settings.channels.address') }}</label>
+                                <input v-validate="'required'" class="control" id="address" name="address" data-vv-as="&quot;{{ __('admin::app.settings.channels.address') }}&quot;" value="{{ old('address') ?: $channel->address }}"/>
+                                <span class="control-error" v-if="errors.has('address')">@{{ errors.first('address') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']" >
+                                <label for="city" class="required">{{ __('admin::app.settings.channels.city') }}</label>
+                                <input v-validate="'required'" class="control" id="city" name="city" data-vv-as="&quot;{{ __('admin::app.settings.channels.city') }}&quot;" value="{{ old('city') ?: $channel->city }}"/>
+                                <span class="control-error" v-if="errors.has('city')">@{{ errors.first('city') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('postal_code') ? 'has-error' : '']" >
+                                <label for="postal_code" class="required">{{ __('admin::app.settings.channels.postal_code') }}</label>
+                                <input v-validate="'required'" class="control" id="postal_code" name="postal_code" data-vv-as="&quot;{{ __('admin::app.settings.channels.postal_code') }}&quot;" value="{{ old('postal_code') ?: $channel->postal_code }}"/>
+                                <span class="control-error" v-if="errors.has('postal_code')">@{{ errors.first('postal_code') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('state') ? 'has-error' : '']" >
+                                <label for="state" class="required">{{ __('admin::app.settings.channels.state') }}</label>
+                                <input v-validate="'required'" class="control" id="state" name="state" data-vv-as="&quot;{{ __('admin::app.settings.channels.state') }}&quot;" value="{{ old('state') ?: $channel->state }}"/>
+                                <span class="control-error" v-if="errors.has('state')">@{{ errors.first('state') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('country') ? 'has-error' : '']" >
+                                <label for="country" class="required">{{ __('admin::app.settings.channels.country') }}</label>
+                                <select type="text" v-validate="'required'" class="control" id="country" name="country" data-vv-as="&quot;{{ __('admin::app.customers.customers.country') }}&quot;">
+                                    <option value=""></option>
+
+                                    @foreach (core()->countries() as $country)
+
+                                        <option value="{{ $country->name }}" {{ $country->name == $channel->country? 'selected' : '' }}>{{ $country->name }}</option>
+
+                                    @endforeach
+                                </select>
+                                <span class="control-error" v-if="errors.has('country')">@{{ errors.first('country') }}</span>
+                            </div>
+
+{{--                             <div class="control-group">
                                 <label for="description">{{ __('admin::app.settings.channels.description') }}</label>
                                 <textarea class="control" id="description" name="description">{{ old('description') ?: $channel->description }}</textarea>
                             </div>
-
+ --}}
                             <div class="control-group" :class="[errors.has('inventory_sources[]') ? 'has-error' : '']">
                                 <label for="inventory_sources" class="required">{{ __('admin::app.settings.channels.inventory_sources') }}</label>
                                 <?php $selectedOptionIds = old('inventory_sources') ?: $channel->inventory_sources->pluck('id')->toArray() ?>
@@ -137,47 +187,6 @@
                                     @endforeach
                                 </select>
                                 <span class="control-error" v-if="errors.has('base_currency_id')">@{{ errors.first('base_currency_id') }}</span>
-                            </div>
-
-                        </div>
-                    </accordian>
-
-                    <accordian :title="'{{ __('admin::app.settings.channels.design') }}'" :active="true">
-                        <div slot="body">
-                            <div class="control-group">
-                                <label for="theme">{{ __('admin::app.settings.channels.theme') }}</label>
-
-                                <?php $selectedOption = old('theme') ?: $channel->theme ?>
-
-                                <select class="control" id="theme" name="theme">
-                                    @foreach (themes()->all() as $theme)
-                                        <option value="{{ $theme->code }}" {{ $selectedOption == $theme->code ? 'selected' : '' }}>
-                                            {{ $theme->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="home_page_content">{{ __('admin::app.settings.channels.home_page_content') }}</label>
-                                <textarea class="control" id="home_page_content" name="home_page_content">{{ old('home_page_content') ?: $channel->home_page_content }}</textarea>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="footer_content">{{ __('admin::app.settings.channels.footer_content') }}</label>
-                                <textarea class="control" id="footer_content" name="footer_content">{{ old('footer_content') ?: $channel->footer_content }}</textarea>
-                            </div>
-
-                            <div class="control-group">
-                                <label>{{ __('admin::app.settings.channels.logo') }}
-
-                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url }}"'></image-wrapper>
-                            </div>
-
-                            <div class="control-group">
-                                <label>{{ __('admin::app.settings.channels.favicon') }}
-
-                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url }}"'></image-wrapper>
                             </div>
 
                         </div>

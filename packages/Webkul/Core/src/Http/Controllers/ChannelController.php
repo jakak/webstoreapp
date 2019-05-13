@@ -50,7 +50,7 @@ class ChannelController extends Controller
      */
     public function index()
     {
-        return view($this->_config['view']);
+        return view($this->_config['view'])->with('channel', $this->channel->first());
     }
 
     /**
