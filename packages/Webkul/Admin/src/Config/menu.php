@@ -136,8 +136,20 @@ return [
         'icon-class' => '',
     ], [
         'key' => 'settings.theme',
-        'name' => 'admin::app.layouts.thememanager',
+        'name' => 'admin::app.layouts.theme-manager',
         'route' => 'admin.themes.index',
+        'sort' => 2,
+        'icon-class' => '',
+    ], [
+        'key' => 'settings.theme.design',
+        'name' => 'admin::app.layouts.theme-design',
+        'route' => 'admin.themes.customize',
+        'sort' => 1,
+        'icon-class' => '',
+    ], [
+        'key' => 'settings.theme.sliders',
+        'name' => 'admin::app.layouts.theme-sliders',
+        'route' => 'admin.sliders.index',
         'sort' => 2,
         'icon-class' => '',
     ], [
@@ -157,12 +169,6 @@ return [
         'name' => 'admin::app.layouts.roles',
         'route' => 'admin.roles.index',
         'sort' => 2,
-        'icon-class' => '',
-    ], [
-        'key' => 'settings.sliders',
-        'name' => 'admin::app.layouts.sliders',
-        'route' => 'admin.sliders.index',
-        'sort' => 9,
         'icon-class' => '',
     ], [
         'key' => 'settings.taxes',

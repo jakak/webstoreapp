@@ -34,7 +34,9 @@ return [
         'exchange-rates' => 'Exchange Rates',
         'inventory-sources' => 'Inventory Sources',
         'channels' => 'Webstore Channel',
-        'thememanager' => 'Theme Manager',
+        'theme-manager' => 'Theme Manager',
+        'theme-design' => 'Theme Design',
+        'theme-sliders' => 'Sliders',
         'users' => 'Staff Accounts',
         'roles' => 'Roles',
         'sliders' => 'Sliders',
@@ -505,6 +507,10 @@ return [
     ],
 
     'settings' => [
+        'themes' => [
+            'title' => 'Theme Manager',
+            'design' => 'Web Spaced Theme',
+        ],
         'locales' => [
             'title' => 'Locales',
             'add-title' => 'Add Locale',
