@@ -5,7 +5,7 @@ namespace Webkul\Tax\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
-use Webkul\Channel as Channel;
+use Webkul\Core\Models\Channel as Channel;
 use Webkul\Tax\Repositories\TaxCategoryRepository as TaxCategory;
 use Webkul\Tax\Repositories\TaxRateRepository as TaxRate;
 use Webkul\Tax\Repositories\TaxMapRepository as TaxMap;
@@ -89,9 +89,9 @@ class TaxCategoryController extends Controller
     public function create()
     {
         $data = request()->input();
+        $data['channel_id'] = Channel::first()->id;
 
         $this->validate(request(), [
-            'channel_id' => 'required|numeric',
             'code' => 'required|string|unique:tax_categories,id',
             'name' => 'required|string|unique:tax_categories,name',
             'description' => 'required|string',
@@ -134,7 +134,6 @@ class TaxCategoryController extends Controller
     public function update($id)
     {
         $this->validate(request(), [
-            'channel_id' => 'required|numeric',
             'code' => 'required|string|unique:tax_categories,code,'.$id,
             'name' => 'required|string|unique:tax_categories,name,'.$id,
             'description' => 'required|string',
@@ -142,7 +141,8 @@ class TaxCategoryController extends Controller
         ]);
 
         $data = request()->input();
-
+        $data['channel_id'] = Channel::first()->id;
+        
         Event::fire('tax.tax_category.update.before', $id);
 
         $taxCategory = $this->taxCategory->update($data, $id);
