@@ -26,7 +26,7 @@
         </div>
         <div class="page-content">
             <div class="page-img">
-                <img src="/images/webstore-theme-manager.svg" alt="">
+                <img src="{{ asset('/images/webstore-theme-manager.svg') }}" alt="">
             </div>
             <div class="table">
                 <table class="table">
