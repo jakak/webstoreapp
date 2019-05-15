@@ -11,7 +11,10 @@ use Webkul\Inventory\Models\InventorySource;
 
 class Channel extends Model
 {
-    protected $fillable = ['code', 'name', 'email', 'business_name', 'phone_number', 'address', 'city', 'postal_code', 'state', 'country', 'status', 'description', 'theme', 'home_page_content', 'footer_content', 'hostname', 'default_locale_id', 'base_currency_id', 'root_category_id'];
+    protected $fillable = ['code', 'name', 'email', 'business_name', 'phone_number', 
+        'address', 'city', 'postal_code', 'state', 'country', 'status', 'description', 
+        'theme', 'home_page_content', 'footer_content', 'hostname', 'default_locale_id', 
+        'base_currency_id', 'root_category_id', 'receives_notification'];
 
     /**
      * Get the channel locales.

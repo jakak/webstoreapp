@@ -51,6 +51,15 @@
                                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                             </div>
 
+                            <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
+                                <span class="checkbox">
+                                    <input type="checkbox" id="receives_notification"  name="receives_notification" {{ $channel->receives_notification ? 'checked' : '' }}>
+
+                                    <label class="checkbox-view" for="receives_notification"></label>
+                                        Get notified when a customer places an order.
+                                </span>
+                            </div>
+
                             <div class="control-group" :class="[errors.has('phone_number') ? 'has-error' : '']" >
                                 <label for="phone_number" class="required">{{ __('admin::app.settings.channels.phone_number') }}</label>
                                 <input v-validate="'required'" class="control" id="phone_number" name="phone_number" data-vv-as="&quot;{{ __('admin::app.settings.channels.phone_number') }}&quot;" value="{{ old('phone_number') ?: $channel->phone_number }}"/>

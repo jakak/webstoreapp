@@ -129,9 +129,17 @@ class ChannelController extends Controller
         ]);
 
         Event::fire('core.channel.update.before', $id);
+        
+        $data = request()->all();
+        
+        if ($request->receives_notification == "on") {
+            $data['receives_notification'] = 1;
+        } else {
+           $data['receives_notification'] = 0; 
+        }
 
-        $channel = $this->channel->update(request()->all(), $id);
-
+        $channel = $this->channel->update($data, $id);
+        // dd($channel);
         Event::fire('core.channel.update.after', $channel);
 
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Channel']));

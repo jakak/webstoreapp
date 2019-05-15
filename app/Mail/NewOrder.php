@@ -12,14 +12,16 @@ class NewOrder extends Mailable
     use Queueable, SerializesModels;
 
     public $order;
+    private $email;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($order, $email)
     {
         $this->order = $order;
+        $this->email = $email;
     }
 
     /**
@@ -29,7 +31,7 @@ class NewOrder extends Mailable
      */
     public function build()
     {
-        return $this->to(env('MAIL_FROM_ADDRESS', 'admin@klingbakeshop.com'))
+        return $this->to($this->email)
                     ->subject('New Order To Be Shipped')
                     ->view('mail.order-to-storemanager');
     }
