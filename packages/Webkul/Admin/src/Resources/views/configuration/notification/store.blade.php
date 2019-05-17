@@ -18,3 +18,16 @@
         {!! $locationGrid->render() !!}
     </div>
 </div>
+<script>
+    setTimeout(() => {
+        
+    let nodes = document.querySelectorAll('.table tr td:nth-child(3)')
+    
+    nodes.forEach(elem => {
+        elem.innerHTML = `<button id="recep-create-btn" class="btn btn-lg btn-primary">
+                            Test Now
+                        </button>`;
+    })
+    }, 1000);
+    
+</script>
