@@ -61,10 +61,10 @@ class StoreNotificationDataGrid extends DataGrid
             'icon' => 'icon pencil-lg-icon'
         ]);
 
-        // $this->addAction([
-        //     'type' => 'Delete',
-        //     'route' => 'admin.notification.del-recipient',
-        //     'icon' => 'icon trash-icon'
-        // ]);
+        $this->addAction([
+            'type' => 'Delete',
+            'route' => 'admin.notification.del-recipient',
+            'icon' => 'icon trash-icon'
+        ]);
     }
 }
