@@ -11,6 +11,7 @@ use Webkul\Core\Tree;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
 use Illuminate\Support\Facades\Storage;
 use App\Location;
+use App\StoreNotification;
 
 /**
  * Configuration controller
@@ -197,5 +198,28 @@ class ConfigurationController extends Controller
         $location = Location::where('location', $location)->first();
 
         return $location;
+    }
+
+    public function addRecipient(Request $request)
+    {
+        $admin = \Webkul\User\Models\Admin::find($request->user);
+        
+        if ($admin) {
+            StoreNotification::create([
+                'name' => $admin->name,
+                'email' => $admin->email,
+                'test_btn' => ' Button will show here',
+                'status' => $request->status,
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function delRecipient($email)
+    {
+        StoreNotification::where('email', $email)->first()->delete();
+
+        return redirect()->back();
     }
 }

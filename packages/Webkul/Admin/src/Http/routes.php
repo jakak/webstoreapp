@@ -86,6 +86,10 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/configuration/sales/othermethods/addlocation/{location}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deleteLocation')->name('admin.configuration.location.delete');
             Route::post('/configuration/sales/othermethods/addlocation', 'Webkul\Admin\Http\Controllers\ConfigurationController@saveLocation')->name('admin.configuration.location');
 
+            Route::post('/configuration/notifications/store/recipient/add', 'Webkul\Admin\Http\Controllers\ConfigurationController@addRecipient')
+                ->name('admin.notification.add-recipient');
+            
+
             Route::post('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@store')->defaults('_config', [
                 'redirect' => 'admin.configuration.index'
             ])->name('admin.configuration.index.store');

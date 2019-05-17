@@ -177,6 +177,23 @@
                     </div>
                 </div>
             </form>
+        @elseif(strpos(request()->url(), 'notifications') !== false)
+        
+            @include('admin::configuration.notification.create') 
+            @include('admin::configuration.notification.store')
+            @include('admin::configuration.notification.edit')
+
+            <script>
+                document.querySelector('#recep-create').classList.add('d-none');
+                // document.querySelector('#recep-edit').classList.add('d-none');
+
+                let goToRecepPage = function () {
+                    document.querySelector('#recep-main').classList.add('d-none')
+                    document.querySelector('#recep-create').classList.remove('d-none');   
+                }
+
+            </script>
+
         @else
         
             <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
