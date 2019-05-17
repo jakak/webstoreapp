@@ -30,8 +30,8 @@
                     <div class="control-group">
                         <label for="status" class="required">Status</label>
                         <select type="text" v-validate="'required'" class="control" id="status" name="status">
-                            <option value="enable" selected>Enable</option>
-                            <option value="disable">Disable</option>
+                            <option value="enabled" selected>Enable</option>
+                            <option value="disabled">Disable</option>
                         </select>
                     </div>
                 </div>
