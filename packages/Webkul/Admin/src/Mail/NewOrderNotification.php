@@ -23,15 +23,17 @@ class NewOrderNotification extends Mailable
      * @var Order
      */
     public $order;
+    private $channel;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($order, $channel)
     {
         $this->order = $order;
+        $this->channel = $channel;
     }
 
     /**
@@ -42,7 +44,8 @@ class NewOrderNotification extends Mailable
     public function build()
     {
         return $this->to($this->order->customer_email, $this->order->customer_full_name)
-                ->subject(trans('shop::app.mail.order.subject'))
-                ->view('shop::emails.sales.new-order');
+                    ->from($this->channel->email, $this->channel->name)
+                    ->subject(trans('shop::app.mail.order.subject'))
+                    ->view('shop::emails.sales.new-order');
     }
 }

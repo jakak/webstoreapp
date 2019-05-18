@@ -90,6 +90,9 @@ Route::group(['middleware' => ['web']], function () {
                 ->name('admin.notification.add-recipient');
             Route::get('/configuration/notifications/store/recipient/{email}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@delRecipient')
                 ->name('admin.notification.del-recipient');
+            Route::get('/configuration/notifications/store/recipient/{email}/', 'Webkul\Admin\Http\Controllers\ConfigurationController@getRecipient')
+                ->name('admin.notification.get-recipient');
+            Route::get('/configuration/notifications/store/recipient/{email}/testMail', 'Webkul\Admin\Http\Controllers\ConfigurationController@sendTestEmail');
 
             Route::post('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@store')->defaults('_config', [
                 'redirect' => 'admin.configuration.index'

@@ -32,11 +32,11 @@ class Order {
     public function sendNewOrderMail($order)
     {
         try {
-            Mail::send(new NewOrderNotification($order));
+            Mail::send(new NewOrderNotification($order, $this->channel));
 
             if ($this->channel->receives_notification) {
                 // Notify store manager
-                Mail::send(new NewOrder($order, $this->channel->email));
+                Mail::send(new NewOrder($order, $this->channel));
             }
         } catch (\Exception $e) {
 

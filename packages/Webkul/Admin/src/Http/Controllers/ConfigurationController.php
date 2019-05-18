@@ -11,7 +11,9 @@ use Webkul\Core\Tree;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
 use Illuminate\Support\Facades\Storage;
 use App\Location;
+use App\Mail\TestNotificationMail;
 use App\StoreNotification;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Configuration controller
@@ -203,15 +205,38 @@ class ConfigurationController extends Controller
     public function addRecipient(Request $request)
     {
         $admin = \Webkul\User\Models\Admin::find($request->user);
-        
-        if ($admin) {
-            StoreNotification::create([
+        if ($request->has('id') && $admin) {
+            
+            $recipient = StoreNotification::find($request->id)->first();
+
+            $recipient->update([
                 'name' => $admin->name,
                 'email' => $admin->email,
                 'test_btn' => ' Button will show here',
                 'status' => $request->status,
             ]);
+
+            session()->flash('success', 'Recipient updated successfully');
+        } else {
+            if ($admin) {
+                $recipient = StoreNotification::where('email', $admin->email)->first();
+                if ($recipient) {
+                    session()->flash('error', 'User is already a recipient');
+                    return redirect()->back();
+                }
+                
+                
+                StoreNotification::create([
+                    'name' => $admin->name,
+                    'email' => $admin->email,
+                    'test_btn' => ' Button will show here',
+                    'status' => $request->status,
+                ]);
+
+                session()->flash('success', 'Recipient added successfully');
+            }
         }
+        
 
         return redirect()->back();
     }
@@ -220,6 +245,27 @@ class ConfigurationController extends Controller
     {
         StoreNotification::where('email', $email)->first()->delete();
 
+        return redirect()->back();
+    }
+
+    public function getRecipient($email)
+    {
+        $admin = \Webkul\User\Models\Admin::where('email', $email)->first();
+
+        $recipient = StoreNotification::where('email', $email)->first();
+
+        return response()->json([
+            'id' => $recipient->id,
+            'user' => $admin->id,
+            'status' => $recipient->status
+        ]);
+    }
+
+    public function sendTestEmail($email) 
+    {
+        Mail::to($email)->send(new TestNotificationMail());
+
+        session()->flash('success', 'Email sent successfully');
         return redirect()->back();
     }
 }

@@ -177,22 +177,51 @@
                     </div>
                 </div>
             </form>
+            <script>
+                function locationPageSetup() {
+                    console.log(document.querySelector('#addLocation'));
+                    document.querySelector('#addLocation').addEventListener('click', function addLocation (evt) {
+                        document.querySelector('#addLocationPage').classList.remove('d-none');
+                        document.querySelector('#locationPage').classList.add('d-none');
+                    });
+
+                    document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
+                        btn.addEventListener('click', evt => {
+                            evt.preventDefault();
+                            
+                            // Show edit page
+                            setupEditPage(btn.parentElement);
+                        });
+                    });
+
+                    function setupEditPage(url) {
+                        fetch('/public/admin/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                            .then(response => {
+                                return response.json();
+                            })
+                            .then(response => {
+                                for (const key in response) {
+                                    if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                        document.querySelector('[name='+key+']').value = response[key];
+                                    }
+                                } 
+                                const inp = document.createElement('input');
+                                inp.type="hidden";
+                                inp.value = response.id;
+                                inp.name = "id"
+                                document.querySelector('#addLocationPage').appendChild(inp);
+                                document.querySelector('#addLocation').click();
+                            })
+                        ;
+                        
+                    }
+                }
+            </script>
         @elseif(strpos(request()->url(), 'notifications') !== false)
         
             @include('admin::configuration.notification.create') 
             @include('admin::configuration.notification.store')
             @include('admin::configuration.notification.edit')
-
-            <script>
-                document.querySelector('#recep-create').classList.add('d-none');
-                // document.querySelector('#recep-edit').classList.add('d-none');
-
-                let goToRecepPage = function () {
-                    document.querySelector('#recep-main').classList.add('d-none')
-                    document.querySelector('#recep-create').classList.remove('d-none');   
-                }
-
-            </script>
 
         @else
         
@@ -278,42 +307,12 @@
 
                 window.location.href = "{{ route('admin.configuration.index', [request()->route('slug'), request()->route('slug2')]) }}" + query;
             })
-            
-            document.querySelector('#addLocation').addEventListener('click', function addLocation (evt) {
-                document.querySelector('#addLocationPage').classList.remove('d-none');
-                document.querySelector('#locationPage').classList.add('d-none');
-            })
-
-            document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
-                btn.addEventListener('click', evt => {
-                    evt.preventDefault();
-                    
-                    // Show edit page
-                    setupEditPage(btn.parentElement);
-                });
-            });
-
-            function setupEditPage(url) {
-                fetch('/public/admin/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
-                    .then(response => {
-                        return response.json();
-                    })
-                    .then(response => {
-                        for (const key in response) {
-                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
-                                document.querySelector('[name='+key+']').value = response[key];
-                            }
-                        } 
-                        const inp = document.createElement('input');
-                        inp.type="hidden";
-                        inp.value = response.id;
-                        inp.name = "id"
-                        document.querySelector('#addLocationPage').appendChild(inp);
-                        document.querySelector('#addLocation').click();
-                    })
-                ;
+            try {
+                locationPageSetup();
+            } catch (error) {
                 
             }
+            
         });
 
     </script>

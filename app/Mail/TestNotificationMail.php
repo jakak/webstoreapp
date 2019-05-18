@@ -8,21 +8,19 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Webkul\Core\Models\Channel;
 
-class WelcomeMail extends Mailable
+class TestNotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
     private $channel;
 
     /**
      * Create a new message instance.
      *
-     * @param $user
+     * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
         $this->channel = Channel::first();
     }
 
@@ -33,9 +31,7 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->to($this->user->email)
-                    ->from($this->channel->email, $this->channel->name)
-                    ->subject('Email verified - Welcome to KlingBakeShop')
-                    ->view('mail.welcome');
+        return $this->from($this->channel->email, $this->channel->name)
+                    ->view('mail.test');
     }
 }
