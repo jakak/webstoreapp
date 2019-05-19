@@ -43,8 +43,8 @@ width:100% !important;}}
 <td align="center" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
 <div class="C752d718b4c914b32aa8a5857807b2c77" style="padding:5px;">
 <div style="text-align:left;">
-<span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {Store_Name},<br>
-A new order has been placed by {Customer_Name}.<br>
+<span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello!,<br>
+A new order has been placed by a customer.<br>
 
 </div>
 
@@ -74,8 +74,8 @@ A new order has been placed by {Customer_Name}.<br>
 <div class="Cd9599da565774f09b4ed13a375d23084" style="padding:5px;">
 <div style="text-align:left;">
 <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;"><b>Sun Screen Lotion<br>
-</b>Quantity &nbsp&nbsp&nbsp&nbsp&nbsp 2<br>
-Price &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN1,800.00<br>
+</b>Quantity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>
+Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NGN1,800.00<br>
 
 </div>
 
@@ -83,8 +83,8 @@ Price &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN1,800.00<br>
 <div class="Cb6926ec7857346ca858223528fe8c7f8" style="padding:5px;">
 <div style="text-align:left;">
 <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;"><b>Banana Face Cream<br>
-</b>Quantity &nbsp&nbsp&nbsp&nbsp&nbsp 1<br>
-Price &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN1,800.00<br>
+</b>Quantity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>
+Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NGN1,800.00<br>
 
 </div>
 
@@ -140,10 +140,10 @@ Nigeria, 500272<br>
 <td align="center" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
 <div class="C49f22cef2e8e40dd95d5564545c85a9d" style="padding:5px;">
 <div style="text-align:left;">
-<span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#FFFFFF;">Subtotal &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN3,600.00<br>
-Shipping &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN1,500.00<br>
-Tax &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN0.00<br>
-Grand Total &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp NGN5,100.00<br>
+<span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#FFFFFF;">Subtotal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NGN3,600.00<br>
+Shipping &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NGN1,500.00<br>
+Tax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NGN0.00<br>
+Grand Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NGN5,100.00<br>
 
 </div>
 
