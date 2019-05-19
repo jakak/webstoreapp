@@ -27,7 +27,7 @@ class NewOrder extends Mailable
         $recipients = [];
         foreach (StoreNotification::all() as $notif) {
             if ($notif->status = 'enabled') {
-                array_push($recipients);
+                array_push($recipients, $notif);
             }
         }
         $this->recipients = $recipients;
