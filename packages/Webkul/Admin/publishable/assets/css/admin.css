@@ -112,7 +112,7 @@
 }
 
 .navbar-left ul.menubar li.menu-item.active a {
-  color: #0041ff;
+  color: #0675B6;
 }
 
 .content-container {
@@ -301,7 +301,7 @@
 }
 
 .dashboard .card .card-info ul li .description .name {
-  color: #0041FF;
+  color: #0675B6;
 }
 
 .dashboard .card .card-info ul li .description .info {
@@ -357,7 +357,7 @@
 .dashboard .dashboard-stats .dashboard-card .data {
   padding-top: 3px;
   font-size: 22px;
-  color: #0041FF;
+  color: #0675B6;
 }
 
 .dashboard .dashboard-stats .dashboard-card .data .progress {
