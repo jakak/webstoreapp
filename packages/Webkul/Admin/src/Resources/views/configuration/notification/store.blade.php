@@ -56,11 +56,11 @@
     }
 
     const testMail = email => {
-        location.assign(`/admin/configuration/notifications/store/recipient/${email}/testMail`);
+        location.assign(`/public/admin/configuration/notifications/store/recipient/${email}/testMail`);
     }
 
     const setupEditPage = url => {
-        fetch(`/admin/configuration/notifications/store/recipient/${url.search.substring(1)}/`)
+        fetch(`/public/admin/configuration/notifications/store/recipient/${url.search.substring(1)}/`)
             .then(response => {
                 return response.json();
             })
