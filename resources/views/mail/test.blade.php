@@ -43,8 +43,8 @@ width:100% !important;}}
 <td align="center" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
 <div class="C752d718b4c914b32aa8a5857807b2c77" style="padding:5px;">
 <div style="text-align:left;">
-<span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello!,<br>
-A new order has been placed by a customer.<br>
+<span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {Store Name}!,<br>
+A new order has been placed by {Customer Name}.<br>
 
 </div>
 

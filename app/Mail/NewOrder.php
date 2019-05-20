@@ -44,6 +44,6 @@ class NewOrder extends Mailable
                     ->from($this->channel->email, $this->channel->name)
                     ->cc($this->recipients)
                     ->subject('New Order To Be Shipped')
-                    ->view('mail.order-to-storemanager');
+                    ->view('mail.new-order-to-storemanager');
     }
 }
