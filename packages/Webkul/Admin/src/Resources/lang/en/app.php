@@ -720,8 +720,8 @@ return [
         ],
 
         'subscribers' => [
-            'title' => 'News Letter Subscribers',
-            'title-edit' => 'Edit News Letter Subscriber',
+            'title' => 'Newsletter Subscribers',
+            'title-edit' => 'Edit Newsletter Subscriber',
             'email' => 'Email',
             'is_subscribed' => 'Subscribed',
             'edit-btn-title' => 'Update Subscriber',

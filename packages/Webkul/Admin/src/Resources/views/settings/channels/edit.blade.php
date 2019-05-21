@@ -36,6 +36,7 @@
                                 <label for="name" class="required">{{ __('admin::app.settings.channels.code') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.settings.channels.code') }}&quot;" value="{{ $channel->name }}" />
                                 <input type="hidden" name="code" value="{{ $channel->code }}"/>
+                                <span>*Maximum of 20 Characters</span>
                                 <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
                             </div>
 
@@ -51,14 +52,14 @@
                                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                             </div>
 
-                            <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
+                            {{-- <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
                                 <span class="checkbox">
                                     <input type="checkbox" id="receives_notification"  name="receives_notification" {{ $channel->receives_notification ? 'checked' : '' }}>
 
                                     <label class="checkbox-view" for="receives_notification"></label>
                                         Get notified when a customer places an order.
                                 </span>
-                            </div>
+                            </div> --}}
 
                             <div class="control-group" :class="[errors.has('phone_number') ? 'has-error' : '']" >
                                 <label for="phone_number" class="required">{{ __('admin::app.settings.channels.phone_number') }}</label>
