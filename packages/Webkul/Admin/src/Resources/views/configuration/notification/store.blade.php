@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="page-content capitalize-tr">
+    <div class="page-content">
         @inject('locationGrid', 'App\DataGrids\StoreNotificationDataGrid')
         {!! $locationGrid->render() !!}
     </div>

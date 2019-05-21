@@ -60,13 +60,6 @@ return [
                 'channel_based' => true,
                 'locale_based' => false
             ], [
-                'name' => 'zipcode',
-                'title' => 'Zip Code',
-                'type' => 'text',
-                'validation' => 'required',
-                'channel_based' => true,
-                'locale_based' => false
-            ], [
                 'name' => 'city',
                 'title' => 'City',
                 'type' => 'text',
@@ -80,6 +73,13 @@ return [
                 'validation' => 'required',
                 'channel_based' => true,
                 'locale_based' => true
+            ], [
+                'name' => 'zipcode',
+                'title' => 'Zip Code',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => true,
+                'locale_based' => false
             ], [
                 'name' => 'country',
                 'title' => 'Country',

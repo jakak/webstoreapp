@@ -13,8 +13,7 @@
     }
     .page-img img {
         width: 65%;
-        height: 100%;
-        
+        height: 65%;
     }
 </style>
 @section('content')
