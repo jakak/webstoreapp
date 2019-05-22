@@ -7,10 +7,11 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Webkul\Core\Models\Channel;
+use App\Traits\HelpsMail;
 
 class WelcomeMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, HelpsMail;
 
     public $user;
     private $channel;
@@ -22,6 +23,7 @@ class WelcomeMail extends Mailable
      */
     public function __construct($user)
     {
+        $this->setConfig();
         $this->user = $user;
         $this->channel = Channel::first();
     }

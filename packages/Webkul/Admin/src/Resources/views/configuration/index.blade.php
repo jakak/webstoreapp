@@ -199,6 +199,12 @@
             @include('admin::configuration.notification.store')
             @include('admin::configuration.notification.edit')
 
+        @elseif(strpos(request()->url(), 'mail') !== false)
+            @php
+                $emailConfig = \App\MailSetting::first();
+            @endphp
+            @include('admin::configuration.email.smtp')
+
         @else
         
             <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">

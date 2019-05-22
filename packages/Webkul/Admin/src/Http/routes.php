@@ -93,6 +93,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/configuration/notifications/store/recipient/{email}/', 'Webkul\Admin\Http\Controllers\ConfigurationController@getRecipient')
                 ->name('admin.notification.get-recipient');
             Route::get('/configuration/notifications/store/recipient/{email}/testMail', 'Webkul\Admin\Http\Controllers\ConfigurationController@sendTestEmail');
+            Route::post('/configuration/email/smtp', 'Webkul\Admin\Http\Controllers\ConfigurationController@saveEmailSettings')
+                ->name('admin.configuration.email');
 
             Route::post('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@store')->defaults('_config', [
                 'redirect' => 'admin.configuration.index'

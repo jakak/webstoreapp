@@ -36,14 +36,24 @@
                                 <label for="name" class="required">{{ __('admin::app.settings.channels.code') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.settings.channels.code') }}&quot;" value="{{ $channel->name }}" />
                                 <input type="hidden" name="code" value="{{ $channel->code }}"/>
-                                <span>*Maximum of 20 Characters</span>
+                                <br><span >*Maximum of 20 Characters</span>
                                 <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('business_name') ? 'has-error' : '']">
                                 <label for="business_name" class="required">{{ __('admin::app.settings.channels.business_name') }}</label>
-                                <input v-validate="'required'" class="control" id="business_name" name="business_name" data-vv-as="&quot;{{ __('admin::app.settings.channels.business_name') }}&quot;" value="{{ old('business_name') ?: $channel->business_name }}"/>
+                                <input v-validate="'required'" class="control" id="business_name" name="business_name" 
+                                    data-vv-as="&quot;{{ __('admin::app.settings.channels.business_name') }}&quot;" 
+                                    value="{{ old('business_name') ?: $channel->business_name }}"/>
                                 <span class="control-error" v-if="errors.has('business_name')">@{{ errors.first('business_name') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('description') ? 'has-error' : '']">
+                                <label for="description" class="required">{{ __('admin::app.settings.channels.description') }}</label>
+                                <input v-validate="'required'" class="control" id="description" name="description" 
+                                    data-vv-as="&quot;{{ __('admin::app.settings.channels.description') }}&quot;" 
+                                    value="{{ old('description') ?: $channel->description }}"/>
+                                <span class="control-error" v-if="errors.has('description')">@{{ errors.first('description') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']" >

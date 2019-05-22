@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Traits\HelpsMail;
 
 /**
  * New Order Mail class
@@ -15,7 +16,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  */
 class NewOrderNotification extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, HelpsMail;
     
     /**
      * The order instance.
@@ -32,6 +33,7 @@ class NewOrderNotification extends Mailable
      */
     public function __construct($order, $channel)
     {
+        $this->setConfig();
         $this->order = $order;
         $this->channel = $channel;
     }

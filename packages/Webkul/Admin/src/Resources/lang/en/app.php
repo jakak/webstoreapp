@@ -583,7 +583,7 @@ return [
             'save-btn-title' => 'Save Channel',
             'general' => 'General Details',
             'code' => 'Webstore Name',
-            'business_name' => 'Registered Business Name',
+            'business_name' => 'Webstore Title',
             'email' => 'Email Address',
             'phone_number' => 'Business Mobile Number',
             'address' => 'Address',
@@ -591,7 +591,7 @@ return [
             'postal_code' => 'Postal Code',
             'state' => 'State',
             'country' => 'Country',
-            'description' => 'Description',
+            'description' => 'Webstore Description',
             'hostname' => 'Hostname',
             'currencies-and-locales' => 'Currencies and Locales',
             'locales' => 'Locales',
@@ -674,6 +674,15 @@ return [
             'update-error' => 'Error! Tax Rate Cannot Be Updated',
             'delete' => 'Tax Rate Deleted Successfully',
             'atleast-one' => 'Cannot Delete Last Tax Rate'
+        ],
+
+        'email' => [
+            'logo' => 'Email Logo',
+            'host' => 'SMTP Host',
+            'username' => 'SMTP Username',
+            'security' => 'SMTP Security',
+            'port' => 'SMPT Port',
+            'password' => 'SMTP Password'
         ]
     ],
 

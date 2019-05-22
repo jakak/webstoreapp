@@ -14,6 +14,7 @@ use App\Location;
 use App\Mail\TestNotificationMail;
 use App\StoreNotification;
 use Illuminate\Support\Facades\Mail;
+use App\MailSetting;
 
 /**
  * Configuration controller
@@ -266,6 +267,35 @@ class ConfigurationController extends Controller
         Mail::to($email)->send(new TestNotificationMail());
 
         session()->flash('success', 'Email sent successfully');
+        return redirect()->back();
+    }
+
+    public function saveEmailSettings(Request $request)
+    {
+
+        $settings = MailSetting::first();
+        $data = $request->all();
+        $data['logo'] = '/url';
+
+        if ($settings) {
+            $settings->update($data);
+        } else {
+            $settings = MailSetting::create($data);
+        }
+
+        foreach ($request->logo as $imageId => $image) {
+            $file = 'logo' . '.' . $imageId;
+            $dir = 'mail/settings/' . random_int(12, 4999);
+            
+            if ($request->hasFile($file)) { 
+                if ($settings->logo != '/url') {
+                    Storage::delete($settings->logo);
+                }
+                $settings->logo = 'storage/'.request()->file($file)->store($dir);
+                $settings->save();
+            }
+        }
+        
         return redirect()->back();
     }
 }
