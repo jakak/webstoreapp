@@ -7,10 +7,11 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\StoreNotification;
+use App\Traits\HelpsMail;
 
 class NewOrder extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, HelpsMail;
 
     public $order;
     private $channel;
@@ -31,6 +32,7 @@ class NewOrder extends Mailable
             }
         }
         $this->recipients = $recipients;
+        $this->setConfig();
     }
 
     /**

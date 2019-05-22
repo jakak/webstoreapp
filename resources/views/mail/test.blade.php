@@ -29,7 +29,7 @@ width:100% !important;}}
 <table border=0 cellspacing=0 cellpadding=0 width="100%" align="center" style="padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
 <tr>
 <td align="left" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
-<img src="email/logo.png" alt="" title="" width='199' height='34' style="margin:5px;">
+<img src="{{ asset($mailSetting->logo) }}" alt="" title="" width='199' height='34' style="margin:5px;">
 <!--[if (IE)|(mso 11)|(mso 12)|(mso 14)|(mso 15)]>
 </div>
 <![endif]-->

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Traits\HelpsMail;
 
 /**
  * New Invoice Mail class
@@ -15,7 +16,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  */
 class NewInvoiceNotification extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, HelpsMail;
     
     /**
      * The invoice instance.
@@ -32,6 +33,7 @@ class NewInvoiceNotification extends Mailable
      */
     public function __construct($invoice)
     {
+        $this->setConfig();
         $this->invoice = $invoice;
     }
 

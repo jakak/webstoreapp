@@ -119,6 +119,14 @@ return [
         'key' => 'notifications.customer',
         'name' => 'Customer Notifications',
         'sort' => 2
-    ]
+    ], [
+        'key' => 'email',
+        'name' => 'Email Configuration',
+        'sort' => 4
+    ], [
+        'key' => 'email.smtp',
+        'name' => 'SMTP Protocol',
+        'sort' => 1
+    ],
     
 ];
