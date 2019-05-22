@@ -681,7 +681,7 @@ return [
             'host' => 'SMTP Host',
             'username' => 'SMTP Username',
             'encryption' => 'SMTP Security',
-            'port' => 'SMPT Port',
+            'port' => 'SMTP Port',
             'password' => 'SMTP Password'
         ]
     ],
