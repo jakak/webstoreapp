@@ -680,7 +680,7 @@ return [
             'logo' => 'Email Logo',
             'host' => 'SMTP Host',
             'username' => 'SMTP Username',
-            'security' => 'SMTP Security',
+            'encryption' => 'SMTP Security',
             'port' => 'SMPT Port',
             'password' => 'SMTP Password'
         ]
