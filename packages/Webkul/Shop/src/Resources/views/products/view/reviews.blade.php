@@ -30,7 +30,7 @@
             </div>
 
             @auth('customer')
-            <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary">
+            <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-md btn-primary">
                 {{ __('shop::app.products.write-review-btn') }}
             </a>
             @endauth
@@ -79,7 +79,7 @@
     @auth('customer')
         <div class="rating-reviews">
             <div class="rating-header">
-                <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-md btn-primary">
                     {{ __('shop::app.products.write-review-btn') }}
                 </a>
             </div>

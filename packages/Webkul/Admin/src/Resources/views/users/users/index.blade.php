@@ -12,7 +12,7 @@
                 <h1>{{ __('admin::app.users.users.title') }}</h1>
             </div>
             <div class="page-action">
-                <a href="{{ route('admin.users.create') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.users.create') }}" class="btn btn-md btn-primary">
                     {{ __('Add User') }}
                 </a>
             </div>

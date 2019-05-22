@@ -13,7 +13,7 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.channels.edit', $channel->id) }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.channels.edit', $channel->id) }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.settings.channels.edit-title') }}
                 </a>
             </div>

@@ -11,7 +11,7 @@
                 <h1>{{ __('admin::app.customers.customers.title') }}</h1>
             </div>
             <div class="page-action">
-                <a href="{{ route('admin.customer.create') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.customers.customers.add-title') }}
                 </a>
             </div>

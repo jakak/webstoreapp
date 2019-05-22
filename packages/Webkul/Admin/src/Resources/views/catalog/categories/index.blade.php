@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.catalog.categories.create') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.catalog.categories.create') }}" class="btn btn-md btn-primary">
                     {{ __('Add Category') }}
                 </a>
             </div>

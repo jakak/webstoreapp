@@ -42,7 +42,7 @@
 
             {!! view_render_event('bagisto.shop.customers.reset_password_form_controls.before') !!}
 
-            <input class="btn btn-primary btn-lg" type="submit" value="{{ __('shop::app.customer.reset-password.submit-btn-title') }}">
+            <input class="btn btn-primary btn-md" type="submit" value="{{ __('shop::app.customer.reset-password.submit-btn-title') }}">
 
         </div>
     </form>

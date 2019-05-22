@@ -113,12 +113,12 @@
                             <a href="{{ route('shop.home.index') }}" class="link">{{ __('shop::app.checkout.cart.continue-shopping') }}</a>
 
                             <div>
-                                <button type="submit" class="btn btn-lg btn-primary">
+                                <button type="submit" class="btn btn-md btn-primary">
                                     {{ __('shop::app.checkout.cart.update-cart') }}
                                 </button>
 
                                 @if (! cart()->hasError())
-                                    <a href="{{ route('shop.checkout.onepage.index') }}" class="btn btn-lg btn-primary">
+                                    <a href="{{ route('shop.checkout.onepage.index') }}" class="btn btn-md btn-primary">
                                         {{ __('shop::app.checkout.cart.proceed-to-checkout') }}
                                     </a>
                                 @endif
@@ -150,7 +150,7 @@
                 </p>
 
                 <p style="display: inline-block;">
-                    <a style="display: inline-block;" href="{{ route('shop.home.index') }}" class="btn btn-lg btn-primary">{{ __('shop::app.checkout.cart.continue-shopping') }}</a>
+                    <a style="display: inline-block;" href="{{ route('shop.home.index') }}" class="btn btn-md btn-primary">{{ __('shop::app.checkout.cart.continue-shopping') }}</a>
                 </p>
             </div>
 

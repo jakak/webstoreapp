@@ -7,7 +7,7 @@
         </div>
 
         <div class="page-action">
-            <button id="recep-create-btn" onclick="goToRecepPage()" class="btn btn-lg btn-primary">
+            <button id="recep-create-btn" onclick="goToRecepPage()" class="btn btn-md btn-primary">
                 Add Recipient
             </button>
         </div>
@@ -39,7 +39,7 @@
     
         nodes.forEach(elem => {
             elem.innerHTML = `
-            <button id="recep-create-btn" onclick="testMail('${elem.previousElementSibling.innerHTML}')" class="btn btn-lg btn-primary">
+            <button id="recep-create-btn" onclick="testMail('${elem.previousElementSibling.innerHTML}')" class="btn btn-md btn-primary">
                 Test Now
             </button>`;
         });

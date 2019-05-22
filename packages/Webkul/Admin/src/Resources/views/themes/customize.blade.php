@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-action">
-                <button onclick="document.querySelector('#submit').click()" class="btn btn-lg btn-primary">
+                <button onclick="document.querySelector('#submit').click()" class="btn btn-md btn-primary">
                     Save
                 </button>
             </div>

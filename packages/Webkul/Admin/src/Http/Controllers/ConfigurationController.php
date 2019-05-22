@@ -15,6 +15,7 @@ use App\Mail\TestNotificationMail;
 use App\StoreNotification;
 use Illuminate\Support\Facades\Mail;
 use App\MailSetting;
+use App\Traits\HelpsMail;
 
 /**
  * Configuration controller
@@ -24,6 +25,7 @@ use App\MailSetting;
  */
 class ConfigurationController extends Controller
 {
+    use HelpsMail;
     /**
      * Display a listing of the resource.
      *
@@ -264,6 +266,7 @@ class ConfigurationController extends Controller
 
     public function sendTestEmail($email) 
     {
+        $this->setConfig();
         Mail::to($email)->send(new TestNotificationMail());
 
         session()->flash('success', 'Email sent successfully');
@@ -272,30 +275,43 @@ class ConfigurationController extends Controller
 
     public function saveEmailSettings(Request $request)
     {
+        $request->validate([
+            'logo.*' => 'required'
+        ]);
 
         $settings = MailSetting::first();
         $data = $request->all();
-        $data['logo'] = '/url';
-
+        
         if ($settings) {
+            $this->uploadImage($request, $settings);
+            if ($data['logo']) {
+                unset($data['logo']);
+            }
             $settings->update($data);
         } else {
+            if ($data['logo']) {
+                unset($data['logo']);
+            }
             $settings = MailSetting::create($data);
         }
 
+        return redirect()->back();
+    }
+
+    public function uploadImage(Request $request, $settings)
+    {
         foreach ($request->logo as $imageId => $image) {
             $file = 'logo' . '.' . $imageId;
             $dir = 'mail/settings/' . random_int(12, 4999);
-            
-            if ($request->hasFile($file)) { 
+
+            if ($request->hasFile($file)) {
                 if ($settings->logo != '/url') {
                     Storage::delete($settings->logo);
                 }
-                $settings->logo = 'storage/'.request()->file($file)->store($dir);
+                $settings->logo = 'storage/' . request()->file($file)->store($dir);
                 $settings->save();
             }
         }
         
-        return redirect()->back();
     }
 }

@@ -9,7 +9,7 @@
             </div>
 
             <div class="page-action">
-                <button id="addLocation" class="btn btn-lg btn-primary">
+                <button id="addLocation" class="btn btn-md btn-primary">
                     Save
                 </button>
             </div>
