@@ -19,7 +19,7 @@
                     </span>
                 </div>
 
-                <a href="{{ route('admin.customer.create') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.customer.create') }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.customers.customers.add-title') }}
                 </a>
             </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-lg btn-primary" @click="closeModal">
+        <button type="submit" class="btn btn-md btn-primary" @click="closeModal">
             {{ __('admin::app.export.export') }}
         </button>
 

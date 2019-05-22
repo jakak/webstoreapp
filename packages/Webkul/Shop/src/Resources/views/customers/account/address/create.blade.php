@@ -61,8 +61,8 @@
                     {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.after') !!}
 
                     <div class="button-group">
-                        <input class="btn btn-primary btn-lg" type="submit" value="{{ __('shop::app.customer.account.address.create.submit') }}">
-                        {{-- <button class="btn btn-primary btn-lg" type="submit">
+                        <input class="btn btn-primary btn-md" type="submit" value="{{ __('shop::app.customer.account.address.create.submit') }}">
+                        {{-- <button class="btn btn-primary btn-md" type="submit">
                             {{ __('shop::app.customer.account.address.edit.submit') }}
                         </button> --}}
                     </div>

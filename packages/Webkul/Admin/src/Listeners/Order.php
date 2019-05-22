@@ -8,6 +8,7 @@ use Webkul\Admin\Mail\NewInvoiceNotification;
 use Webkul\Admin\Mail\NewShipmentNotification;
 use App\Mail\NewOrder;
 use Webkul\Core\Models\Channel;
+use App\MailSetting;
 
 /**
  * Order event handler
@@ -21,6 +22,11 @@ class Order {
 
     function __construct()
     {
+        $setting = MailSetting::first();
+        if (!$setting->logo || !$setting->port || !$setting->username || !$setting->password
+            || !$setting->host) {
+            throw new Exception("Email settings missing or incomplete", 1);
+        }
         $this->channel = Channel::first();
     }
 

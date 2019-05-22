@@ -9,7 +9,7 @@
             </div>
 
             <div class="page-action">
-                <button class="btn btn-lg btn-primary">
+                <button class="btn btn-md btn-primary">
                     Save
                 </button>
             </div>
@@ -40,11 +40,11 @@
 
             <div class="control-group" :class="[errors.has('encryption') ? 'has-error' : '']">
                 <label for="encryption" class="required">{{ __('admin::app.settings.email.encryption') }}</label>
-                <select name="encryption" class="control" value = "{{ old('encryption' ?: $emailConfig->encryption ?? '') }}" id="">
-                    <option value="TLS">
+                <select name="encryption" class="control" id="">
+                    <option value="TLS" {{ $emailConfig->encryption == 'TLS' ? 'selected' : '' }}>
                         TLS
                     </option>
-                    <option value="SSL">
+                    <option value="SSL" {{ $emailConfig->encryption == 'SSL' ? 'selected' : '' }}>
                         SSL
                     </option>
                 </select>

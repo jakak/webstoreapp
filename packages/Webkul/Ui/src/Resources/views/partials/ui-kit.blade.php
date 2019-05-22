@@ -69,7 +69,7 @@
         <div class="styleguide-wrapper">
             <button class="btn btn-sm btn-primary">Button Small</button>
             <button class="btn btn-md btn-primary">Button Medium</button>
-            <button class="btn btn-lg btn-primary">Button Large</button>
+            <button class="btn btn-md btn-primary">Button Large</button>
             <button class="btn btn-xl btn-primary">Button Extra Large</button>
         </div>
 

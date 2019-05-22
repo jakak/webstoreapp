@@ -40,7 +40,7 @@
             {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.before') !!}
 
             <div class="button-group">
-                <input class="btn btn-primary btn-lg" type="submit" value="{{ __('shop::app.customer.forgot-password.submit') }}">
+                <input class="btn btn-primary btn-md" type="submit" value="{{ __('shop::app.customer.forgot-password.submit') }}">
             </div>
 
             <div class="control-group" style="margin-bottom: 0px;">

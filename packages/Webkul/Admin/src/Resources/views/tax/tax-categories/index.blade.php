@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.tax-categories.show') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.tax-categories.show') }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.settings.tax-categories.add-title') }}
                 </a>
             </div>

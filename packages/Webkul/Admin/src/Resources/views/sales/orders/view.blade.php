@@ -20,19 +20,19 @@
 
             <div class="page-action">
                 @if ($order->canCancel())
-                    <a href="{{ route('admin.sales.orders.cancel', $order->id) }}" class="btn btn-lg btn-primary" v-alert:message="'{{ __('admin::app.sales.orders.cancel-confirm-msg') }}'">
+                    <a href="{{ route('admin.sales.orders.cancel', $order->id) }}" class="btn btn-md btn-primary" v-alert:message="'{{ __('admin::app.sales.orders.cancel-confirm-msg') }}'">
                         {{ __('admin::app.sales.orders.cancel-btn-title') }}
                     </a>
                 @endif
 
                 @if ($order->canInvoice())
-                    <a href="{{ route('admin.sales.invoices.create', $order->id) }}" class="btn btn-lg btn-primary">
+                    <a href="{{ route('admin.sales.invoices.create', $order->id) }}" class="btn btn-md btn-primary">
                         {{ __('admin::app.sales.orders.invoice-btn-title') }}
                     </a>
                 @endif
 
                 @if ($order->canShip())
-                    <a href="{{ route('admin.sales.shipments.create', $order->id) }}" class="btn btn-lg btn-primary">
+                    <a href="{{ route('admin.sales.shipments.create', $order->id) }}" class="btn btn-md btn-primary">
                         {{ __('admin::app.sales.orders.shipment-btn-title') }}
                     </a>
                 @endif

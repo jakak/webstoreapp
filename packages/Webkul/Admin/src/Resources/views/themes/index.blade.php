@@ -41,7 +41,7 @@
                     </thead>
                     <tbody>
                         <td>Web Space Theme</td>
-                        <td><a href="{{ route('admin.themes.customize') }}" class="btn btn-lg btn-primary">Customize</a></td>
+                        <td><a href="{{ route('admin.themes.customize') }}" class="btn btn-md btn-primary">Customize</a></td>
                     </tbody>
                 </table>
             </div>

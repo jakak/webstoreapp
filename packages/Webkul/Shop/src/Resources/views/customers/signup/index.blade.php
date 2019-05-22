@@ -73,7 +73,7 @@
                 <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>
             </div> --}}
 
-            <button class="btn btn-primary btn-lg" type="submit">
+            <button class="btn btn-primary btn-md" type="submit">
                 {{ __('shop::app.customer.signup-form.button_title') }}
             </button>
 

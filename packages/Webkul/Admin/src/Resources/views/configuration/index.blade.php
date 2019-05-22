@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="page-action">
-                        <button id="addLocation" class="btn btn-lg btn-primary">
+                        <button id="addLocation" class="btn btn-md btn-primary">
                             Add Location
                         </button>
                     </div>
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="page-action">
-                        <button type="submit" class="btn btn-lg btn-primary">
+                        <button type="submit" class="btn btn-md btn-primary">
                             {{ __('admin::app.configuration.save-btn-title') }}
                         </button>
                     </div>
@@ -230,7 +230,7 @@
                     </div>
 
                     <div class="page-action">
-                        <button type="submit" class="btn btn-lg btn-primary">
+                        <button type="submit" class="btn btn-md btn-primary">
                             {{ __('admin::app.configuration.save-btn-title') }}
                         </button>
                     </div>

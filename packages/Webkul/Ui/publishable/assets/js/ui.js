@@ -5037,7 +5037,7 @@ var render = function() {
     _c(
       "label",
       {
-        staticClass: "btn btn-lg btn-primary",
+        staticClass: "btn btn-md btn-primary",
         staticStyle: { display: "inline-block", width: "auto" },
         on: { click: _vm.createFileType }
       },

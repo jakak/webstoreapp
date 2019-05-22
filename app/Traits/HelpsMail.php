@@ -13,10 +13,12 @@ Trait HelpsMail
             return;
         }
         $this->mailSetting = $settings;
-        config([ 'mail.host' => $settings->host ]);
-        config([ 'mail.port' => $settings->port ]);
-        config([ 'mail.encryption' => $settings->encryption ]);
-        config([ 'mail.username' => $settings->username ]);
-        config([ 'mail.password' => $settings->password ]);
+        if (
+            !$settings->logo || !$settings->port || !$settings->username || !$settings->password
+            || !$settings->host
+        ) {
+            throw new \Exception("Email settings missing or incomplete", 1);
+        }
+        
     }
 }

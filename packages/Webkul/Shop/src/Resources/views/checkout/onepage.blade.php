@@ -51,7 +51,7 @@
 
                     <div class="button-group">
 
-                        <button type="button" class="btn btn-lg btn-primary" @click="validateForm('address-form')" :disabled="disable_button">
+                        <button type="button" class="btn btn-md btn-primary" @click="validateForm('address-form')" :disabled="disable_button">
                             {{ __('shop::app.checkout.onepage.continue') }}
                         </button>
 
@@ -65,7 +65,7 @@
 
                     <div class="button-group">
 
-                        <button type="button" class="btn btn-lg btn-primary" @click="validateForm('shipping-form')" :disabled="disable_button">
+                        <button type="button" class="btn btn-md btn-primary" @click="validateForm('shipping-form')" :disabled="disable_button">
                             {{ __('shop::app.checkout.onepage.continue') }}
                         </button>
 
@@ -79,7 +79,7 @@
 
                     <div class="button-group">
 
-                        <button type="button" class="btn btn-lg btn-primary" v-if="selected_payment_method.method != 'paystack_payments'" @click="validateForm('payment-form')" :disabled="disable_button">
+                        <button type="button" class="btn btn-md btn-primary" v-if="selected_payment_method.method != 'paystack_payments'" @click="validateForm('payment-form')" :disabled="disable_button">
                             {{ __('shop::app.checkout.onepage.continue') }}
                         </button>
                     <paystack-component 
@@ -87,7 +87,7 @@
                         :amount="newTotal * 100" 
                         :publicKey="'{{ core()->getConfigData('payment.paymentmethods.paystack_payments.public_key') }}'" 
                         :referenceCode="`${address.billing.first_name.replace(/\s/g, '')}-${address.billing.last_name.replace(/\s/g, '')}-`+ '{{  $cart->id . '-' . $cart->grand_total}}'" 
-                        class="btn btn-lg btn-primary" 
+                        class="btn btn-md btn-primary" 
                         v-if="selected_payment_method.method == 'paystack_payments'"
                         :disabled="disable_button"
                         >
@@ -102,7 +102,7 @@
 
                     <div class="button-group">
 
-                        <button type="button" class="btn btn-lg btn-primary" @click="placeOrder()" :disabled="disable_button">
+                        <button type="button" class="btn btn-md btn-primary" @click="placeOrder()" :disabled="disable_button">
                             {{ __('shop::app.checkout.onepage.place-order') }}
                         </button>
 

@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="page-action">
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn-md btn-primary">
                         {{ __('admin::app.sales.invoices.save-btn-title') }}
                     </button>
                 </div>
