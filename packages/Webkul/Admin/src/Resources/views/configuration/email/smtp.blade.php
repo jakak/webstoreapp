@@ -19,7 +19,7 @@
             <div class="control-group">
                 <label>{{ __('admin::app.settings.email.logo') }}
 
-                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ asset($emailConfig->logo) ?? '' }}"'></image-wrapper>
+                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ asset($emailConfig->logo ?? '') }}"'></image-wrapper>
             </div>
 
             <div class="control-group" :class="[errors.has('host') ? 'has-error' : '']">
