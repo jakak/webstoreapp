@@ -17,7 +17,7 @@ Trait HelpsMail
             !$settings->logo || !$settings->port || !$settings->username || !$settings->password
             || !$settings->host
         ) {
-            throw new \Exception("Email settings missing or incomplete", 1);
+            throw new \Exception("Email settings not set or incomplete", 1);
         }
         
     }

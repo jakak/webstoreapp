@@ -364,7 +364,8 @@
 
 .search-filter .control {
   background: #ffffff;
-  border: 2px solid #C7C7C7;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #C7C7C7;
   border-right: none;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -381,7 +382,8 @@
 }
 
 .search-filter .icon-wrapper {
-  border: 2px solid #C7C7C7;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #C7C7C7;
   border-radius: 3px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -407,10 +409,11 @@
           align-items: center;
   height: 36px;
   width: 202px;
-  border: 2px solid #C7C7C7;
-  border-radius: 3px;
   color: #8E8E8E;
   padding: 0px 5px 0px 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #C7C7C7;
+  border-radius: 3px;
 }
 
 .dropdown-header .arrow-icon-down {
