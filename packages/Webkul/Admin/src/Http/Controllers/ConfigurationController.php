@@ -266,8 +266,12 @@ class ConfigurationController extends Controller
 
     public function sendTestEmail($email) 
     {
-        $this->setConfig();
-        Mail::to($email)->send(new TestNotificationMail());
+        try {
+            Mail::to($email)->send(new TestNotificationMail());
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
 
         session()->flash('success', 'Email sent successfully');
         return redirect()->back();
@@ -276,9 +280,12 @@ class ConfigurationController extends Controller
     public function saveEmailSettings(Request $request)
     {
         $request->validate([
-            'logo.*' => 'required'
+            'host' => 'required',
+            'port' => 'required|numeric',
+            'username' => 'required|email',
+            'password' => 'required',
+            'encryption' => 'required'
         ]);
-
         $settings = MailSetting::first();
         $data = $request->all();
         
@@ -288,13 +295,12 @@ class ConfigurationController extends Controller
                 unset($data['logo']);
             }
             $settings->update($data);
+            session()->flash('success', 'Settings updated successfully');
         } else {
-            if ($data['logo']) {
-                unset($data['logo']);
-            }
+            $data['logo'] = $this->uploadNewImage($request);
             $settings = MailSetting::create($data);
+            session()->flash('success', 'Settings updated successfully');
         }
-
         return redirect()->back();
     }
 
@@ -312,6 +318,17 @@ class ConfigurationController extends Controller
                 $settings->save();
             }
         }
-        
+    }
+
+    public function uploadNewImage(Request $request)
+    {
+        foreach ($request->logo as $imageId => $image) {
+            $file = 'logo' . '.' . $imageId;
+            $dir = 'mail/settings/' . random_int(12, 4999);
+
+            if ($request->hasFile($file)) {
+                return 'storage/' . request()->file($file)->store($dir);
+            }
+        }
     }
 }
