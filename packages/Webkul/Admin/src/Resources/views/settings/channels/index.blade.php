@@ -43,7 +43,7 @@
                             <td>{{ $channel->name }}</td>
                             <td>{{ $channel->business_name }}</td>
                             <td>{{ $channel->hostname }}</td>
-                            <td>{{ $channel->status }}</td>
+                            <td style="text-transform: capitalize">{{ $channel->status }}</td>
                         </tr>
                     </tbody>
                 </table>

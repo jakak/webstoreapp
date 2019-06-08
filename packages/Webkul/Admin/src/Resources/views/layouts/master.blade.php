@@ -15,6 +15,8 @@
 
         @yield('css')
 
+        @stack('styles')
+
         {!! view_render_event('bagisto.admin.layout.head') !!}
 
     </head>

@@ -14,10 +14,19 @@
     </div>
 
     <div class="page-content">
-        @inject('locationGrid', 'App\DataGrids\StoreNotificationDataGrid')
-        {!! $locationGrid->render() !!}
+        @inject('notificationGrid', 'App\DataGrids\StoreNotificationDataGrid')
+        {!! $notificationGrid->render() !!}
     </div>
 </div>
+@push('styles')
+    <style>
+        td:nth-child(4) {
+            text-transform: capitalize;
+        }
+    </style>
+@endpush
+
+@push('scripts')    
 <script>
     document.querySelector('#recep-create').classList.add('d-none');
     // document.querySelector('#recep-edit').classList.add('d-none');
@@ -88,3 +97,4 @@
     }
     
 </script>
+@endpush

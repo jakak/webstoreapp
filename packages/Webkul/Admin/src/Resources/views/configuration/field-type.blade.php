@@ -22,29 +22,12 @@
         $method = end($temp);
         $value = $class->$method();
     }
-
-    $channel_locale = [];
-
-    if (isset($field['channel_based']) && $field['channel_based'])
-    {
-        array_push($channel_locale, $channel);
-    }
-
-    if (isset($field['locale_based']) && $field['locale_based']) {
-        array_push($channel_locale, $locale);
-    }
 ?>
 
     <div class="control-group {{ $field['type'] }}" :class="[errors.has('{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]') ? 'has-error' : '']">
 
         <label for="{{ $name }}" {{ !isset($field['validation']) || strpos('required', $field['validation']) < 0 ? '' : 'class=required' }}>
-
             {{ trans($field['title']) }}
-
-            @if (count($channel_locale))
-                <span class="locale">[{{ implode(' - ', $channel_locale) }}]</span>
-            @endif
-
         </label>
 
         @if ($field['type'] == 'text')

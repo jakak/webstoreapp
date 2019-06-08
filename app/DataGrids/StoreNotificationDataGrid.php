@@ -3,7 +3,6 @@
 namespace App\DataGrids;
 
 use Webkul\Ui\DataGrid\DataGrid;
-use App\StoreNotification;
 use DB;
 
 class StoreNotificationDataGrid extends DataGrid
