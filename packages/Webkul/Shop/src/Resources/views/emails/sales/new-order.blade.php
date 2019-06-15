@@ -144,7 +144,7 @@
       <tbody>
         <tr>
           <td colspan="2">
-            $order->shipping_title
+            {{$order->shipping_title}}
           </td>
         </tr>
         <tr>

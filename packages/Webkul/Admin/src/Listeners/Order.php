@@ -37,14 +37,9 @@ class Order {
      */
     public function sendNewOrderMail($order)
     {
-        // try {
-            Mail::send(new NewOrderNotification($order, $this->channel));
-            // Notify store manager
-            Mail::send(new NewOrder($order, $this->channel));
-        
-        /* } catch (\Exception $e) {
-
-        } */
+        Mail::send(new NewOrderNotification($order, $this->channel));
+        // Notify store manager
+        Mail::send(new NewOrder($order, $this->channel));
     }
 
     /**
