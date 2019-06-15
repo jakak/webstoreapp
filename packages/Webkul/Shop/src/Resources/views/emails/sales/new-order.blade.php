@@ -48,13 +48,13 @@
     <table>
       <tr>
         <td align="center" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
-          <div class="C752d718b4c914b32aa8a5857807b2c77" style="padding:5px;">
+          <div class="C752d718b4c914b32aa8a5857807b2c77">
             <div style="text-align:left;">
               <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {{core()->getCurrentChannel()->name}},<br>
               Thanks for your Order placed on {{$order->created_at->->toDateTimeString()}}
             </div>
           </div>
-          <div class="Cd70d9736a8d8451fb4275c2e239f1531" style="padding:5px;">
+          <div class="Cd70d9736a8d8451fb4275c2e239f1531">
             <div style="text-align:left;">
               <a href="{{ route('admin.sales.orders.view', $order->id) }}" style="font-family:'Segoe UI'; font-size: 10.5pt;color:#4362CA;">View Complete Order Details</a>
             </div>
