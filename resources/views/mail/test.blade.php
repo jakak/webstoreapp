@@ -167,20 +167,20 @@
     <div class="footer">
       <table border=0 cellspacing=0 cellpadding=0 width="100%" align="center" style="background-color:#4362CA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
         <tr>
-          <td width="120px">Subtotal</td>
-          <td>NGN3,600.00</td>
+          <td width="120px" style="color: #FFFFFF">Subtotal</td>
+          <td style="color: #FFFFFF">NGN3,600.00</td>
         </tr>
         <tr>
-          <td width="120px">Shipping</td>
-          <td>NGN1,500.00</td>
+          <td width="120px" style="color: #FFFFFF">Shipping</td>
+          <td style="color: #FFFFFF">NGN1,500.00</td>
         </tr>
         <tr>
-          <td width="120px">Tax</td>
-          <td>NGN0.00</td>
+          <td width="120px" style="color: #FFFFFF">Tax</td>
+          <td style="color: #FFFFFF">NGN0.00</td>
         </tr>
         <tr>
-          <td width="120px"><b>Grand Total</b></td>
-          <td><b>NGN5,100.00</b></td>
+          <td width="120px" style="color: #FFFFFF"><b>Grand Total</b></td>
+          <td style="color: #FFFFFF"><b>NGN5,100.00</b></td>
         </tr>
         
       </table>

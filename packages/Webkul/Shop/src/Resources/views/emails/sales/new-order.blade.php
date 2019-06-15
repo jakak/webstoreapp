@@ -1,179 +1,187 @@
-@component('shop::emails.layouts.master')
-    <div style="text-align: center;">
-        <a href="{{ config('app.url') }}">
-            <img src="{{ bagisto_asset('images/logo.png') }}" style="width: 260px">
-        </a>
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style type="text/css">
+      table {
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      th, td {
+        text-align: left;
+        font-family:'Segoe UI';
+        font-size: 10.5pt;
+        color:#000000;
+      }
+      .footer table{
+        margin-left: 0px;
+      }
+      .footer td {
+        color:#FFFFFF;
+      }
+      .content tbody td {
+        padding-right: 20px;
+      }
+      @media only screen and (max-width: 480px){
+        .columnContainer{
+          display:block !important;
+          width:100% !important;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body style='margin:0;padding:0;'>
+    <table>
+      <tr>
+        <td align="left" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
+          <img src="{{ asset($mailSetting->logo) }}" alt="" title="" height='50px' style="margin:5px;">
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td align="center" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
+          <div class="C752d718b4c914b32aa8a5857807b2c77" style="padding:5px;">
+            <div style="text-align:left;">
+              <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {{core()->getCurrentChannel()->name}},<br>
+              A new order has been placed by {{ $order->customer_full_name }}.<br>
+            </div>
+          </div>
+          <div class="Cd70d9736a8d8451fb4275c2e239f1531" style="padding:5px;">
+            <div style="text-align:left;">
+              <a href="{{ route('admin.sales.orders.view', $order->id) }}" style="font-family:'Segoe UI'; font-size: 10.5pt;color:#4362CA;">View Complete Order Details</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div class="content">
+      <table>
+        <tr>
+          <th>
+            <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;"><b>SUMMARY OF ORDER<br>
+          </th>
+        </tr>
+      </table>
+
+      @foreach ($order->items as $item)
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">
+                <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;"><b>{{ $item->name }}<br></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quantity</td>
+              <td><b>{{ $item->qty_ordered }}</b></td>
+            </tr>
+            <tr>
+              <td>Price </td>
+              <td><b>{{ core()->formatPrice($item->price, $order->order_currency_code) }}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      @endforeach
     </div>
 
-    <div style="padding: 30px;">
-        <div style="font-size: 20px;color: #242424;line-height: 30px;margin-bottom: 34px;">
-            <span style="font-weight: bold;">
-                {{ __('shop::app.mail.order.heading') }}
-            </span> <br>
+    <table>
+      <thead>
+        <tr>
+          <th>Payment Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{ core()->getConfigData('payment.paymentmethods.' . $order->payment->method . '.title') }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {{ __('shop::app.mail.order.dear', ['customer_name' => $order->customer_full_name]) }},
-            </p>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Shipping Address
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $order->shipping_address->name }}</td>
+        </tr>
+        <tr>
+          <td>
+            {{ $order->shipping_address->address1 }}, {{ $order->shipping_address->state }}
+          </td>
+        </tr>
+        <tr>
+          <td>{{ country()->name($order->shipping_address->country) }}, {{ $order->shipping_address->postcode }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {!! __('shop::app.mail.order.greeting', [
-                    'order_id' => '<a href="' . route('customer.orders.view', $order->id) . '" style="color: #0041FF; font-weight: bold;">#' . $order->id . '</a>',
-                    'created_at' => $order->created_at
-                    ]) 
-                !!}
-            </p>
-        </div>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">
+            Shipping Location
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">
+            $order->shipping_title
+          </td>
+        </tr>
+        <tr>
+          <td>Mobile:</td>
+          <td><b>{{ $order->shipping_address->phone }} </b></td>
+        </tr>
+      </tbody>
+    </table>
 
-        <div style="font-weight: bold;font-size: 20px;color: #242424;line-height: 30px;margin-bottom: 20px !important;">
-            {{ __('shop::app.mail.order.summary') }}
-        </div>
-
-        <div style="display: flex;flex-direction: column;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
-            <div style="line-height: 25px;">
-                <div style="font-weight: bold;font-size: 16px;color: #242424;">
-                    {{ __('shop::app.mail.order.shipping-address') }}
-                </div>
-
-                <div>
-                    {{ $order->shipping_address->name }}
-                </div>
-
-                <div>
-                    {{ $order->shipping_address->address1 }}, {{ $order->shipping_address->address2 ? $order->shipping_address->address2 . ',' : '' }} {{ $order->shipping_address->state }}
-                </div>
-
-                <div>
-                    {{ country()->name($order->shipping_address->country) }} {{ $order->shipping_address->postcode }}
-                </div>
-
-                <div>---</div>
-
-                <div style="margin-bottom: 40px;">
-                    {{ __('shop::app.mail.order.contact') }} : {{ $order->shipping_address->phone }} 
-                </div>
-
-                <div style="font-size: 16px;color: #242424;">
-                    {{ __('shop::app.mail.order.shipping') }}
-                </div>
-
-                <div style="font-weight: bold;font-size: 16px;color: #242424;">
-                    {{ $order->shipping_title }}
-                </div>
-            </div>
-
-            <div style="line-height: 25px;">
-                <div style="font-weight: bold;font-size: 16px;color: #242424;">
-                    {{ __('shop::app.mail.order.billing-address') }}
-                </div>
-
-                <div>
-                    {{ $order->billing_address->name }}
-                </div>
-
-                <div>
-                    {{ $order->billing_address->address1 }}, {{ $order->billing_address->address2 ? $order->billing_address->address2 . ',' : '' }} {{ $order->billing_address->state }}
-                </div>
-
-                <div>
-                    {{ country()->name($order->billing_address->country) }} {{ $order->billing_address->postcode }}
-                </div>
-
-                <div>---</div>
-
-                <div style="margin-bottom: 40px;">
-                    {{ __('shop::app.mail.order.contact') }} : {{ $order->billing_address->phone }} 
-                </div>
-
-                <div style="font-size: 16px; color: #242424;">
-                    {{ __('shop::app.mail.order.payment') }}
-                </div>
-
-                <div style="font-weight: bold;font-size: 16px; color: #242424;">
-                    {{ core()->getConfigData('payment.paymentmethods.' . $order->payment->method . '.title') }}
-                </div>
-            </div>
-        </div>
-
-        @foreach ($order->items as $item)
-            <div style="background: #FFFFFF;border: 1px solid #E8E8E8;border-radius: 3px;padding: 20px;margin-bottom: 10px">
-                <p style="font-size: 18px;color: #242424;line-height: 24px;margin-top: 0;margin-bottom: 10px;font-weight: bold;">
-                    {{ $item->name }}
-                </p>
-
-                <div style="margin-bottom: 10px;">
-                    <label style="font-size: 16px;color: #5E5E5E;">
-                        {{ __('shop::app.mail.order.price') }}
-                    </label>
-                    <span style="font-size: 18px;color: #242424;margin-left: 40px;font-weight: bold;">
-                        {{ core()->formatPrice($item->price, $order->order_currency_code) }}
-                    </span>
-                </div>
-
-                <div style="margin-bottom: 10px;">
-                    <label style="font-size: 16px;color: #5E5E5E;">
-                        {{ __('shop::app.mail.order.quantity') }}
-                    </label>
-                    <span style="font-size: 18px;color: #242424;margin-left: 40px;font-weight: bold;">
-                        {{ $item->qty_ordered }}
-                    </span>
-                </div>
-                
-                @if ($html = $item->getOptionDetailHtml())
-                    <div style="">
-                        <label style="margin-top: 10px; font-size: 16px;color: #5E5E5E; display: block;">
-                            {{ $html }}
-                        </label>
-                    </div>
-                @endif
-            </div>
-        @endforeach
-
-        <div style="font-size: 16px;color: #242424;line-height: 30px;float: right;width: 40%;margin-top: 20px;">
-            <div>
-                <span>{{ __('shop::app.mail.order.subtotal') }}</span>
-                <span style="float: right;">
-                    {{ core()->formatPrice($order->sub_total, $order->order_currency_code) }}
-                </span>
-            </div>
-
-            <div>
-                <span>{{ __('shop::app.mail.order.shipping-handling') }}</span>
-                <span style="float: right;">
-                    {{ core()->formatPrice($order->shipping_amount, $order->order_currency_code) }}
-                </span>
-            </div>
-
-            <div>
-                <span>{{ __('shop::app.mail.order.tax') }}</span>
-                <span style="float: right;">
-                    {{ core()->formatPrice($order->tax_amount, $order->order_currency_code) }}
-                </span>
-            </div>
-
-            <div style="font-weight: bold">
-                <span>{{ __('shop::app.mail.order.grand-total') }}</span>
-                <span style="float: right;">
-                    {{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}
-                </span>
-            </div>
-        </div>
-
-        <div style="margin-top: 65px;font-size: 16px;color: #5E5E5E;line-height: 24px;display: inline-block">
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {{ __('shop::app.mail.order.final-summary') }}
-            </p>
-
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {!! 
-                    __('shop::app.mail.order.help', [
-                        'support_email' => '<a style="color:#0041FF" href="mailto:' . config('mail.from.address') . '">' . config('mail.from.address'). '</a>'
-                        ]) 
-                !!}
-            </p>
-
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {{ __('shop::app.mail.order.thanks') }}
-            </p>
-        </div>
+    <div class="footer">
+      <table border=0 cellspacing=0 cellpadding=0 width="100%" align="center" style="background-color:#4362CA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+        <tr>
+          <td width="120px" style="color: #FFFFFF">Subtotal</td>
+          <td style="color: #FFFFFF">{{ core()->formatPrice($order->sub_total, $order->order_currency_code) }}</td>
+        </tr>
+        <tr>
+          <td width="120px" style="color: #FFFFFF">Shipping</td>
+          <td style="color: #FFFFFF">{{ core()->formatPrice($order->shipping_amount, $order->order_currency_code) }}</td>
+        </tr>
+        <tr>
+          <td width="120px" style="color: #FFFFFF">Tax</td>
+          <td style="color: #FFFFFF">{{ core()->formatPrice($order->tax_amount, $order->order_currency_code) }}</td>
+        </tr>
+        <tr>
+          <td width="120px" style="color: #FFFFFF"><b>Grand Total</b></td>
+          <td style="color: #FFFFFF"><b>{{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}</b></td>
+        </tr>
+      </table>
+      <div>
+        <p>Your patronage is highly appreciated.</p>
+        <p>
+          Your order is being processed and we will send you a tracking number once your item is shipped. Disregard if you opted for in-store pick up.
+          If you need further assistant or have an inquiry, please contact us at {{core()->getCurrentChannel()->phone_number}}
+        </p>
+        <p>Kind regards.</p>
+      </div>
     </div>
-@endcomponent
+
+  </body>
+</html>

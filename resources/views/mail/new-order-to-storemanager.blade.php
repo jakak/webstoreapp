@@ -157,20 +157,20 @@
     <div class="footer">
       <table border=0 cellspacing=0 cellpadding=0 width="100%" align="center" style="background-color:#4362CA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
         <tr>
-          <td width="120px">Subtotal</td>
-          <td>{{ core()->formatPrice($order->sub_total, $order->order_currency_code) }}</td>
+          <td width="120px" style="color: #FFFFFF">Subtotal</td>
+          <td style="color: #FFFFFF">{{ core()->formatPrice($order->sub_total, $order->order_currency_code) }}</td>
         </tr>
         <tr>
-          <td width="120px">Shipping</td>
-          <td>{{ core()->formatPrice($order->shipping_amount, $order->order_currency_code) }}</td>
+          <td width="120px" style="color: #FFFFFF">Shipping</td>
+          <td style="color: #FFFFFF">{{ core()->formatPrice($order->shipping_amount, $order->order_currency_code) }}</td>
         </tr>
         <tr>
-          <td width="120px">Tax</td>
-          <td>{{ core()->formatPrice($order->tax_amount, $order->order_currency_code) }}</td>
+          <td width="120px" style="color: #FFFFFF">Tax</td>
+          <td style="color: #FFFFFF">{{ core()->formatPrice($order->tax_amount, $order->order_currency_code) }}</td>
         </tr>
         <tr>
-          <td width="120px"><b>Grand Total</b></td>
-          <td><b>{{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}</b></td>
+          <td width="120px" style="color: #FFFFFF"><b>Grand Total</b></td>
+          <td style="color: #FFFFFF"><b>{{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}</b></td>
         </tr>
         
       </table>
