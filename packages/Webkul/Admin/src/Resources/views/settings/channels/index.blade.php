@@ -23,12 +23,12 @@
             <div class="table">
                 <table class="table">
                     <thead>
-                        <tr style="height: 65px;">
+                        <tr style="height: 50px;">
                             <th class="grid_head">
                                 Webstore Name
                             </th>
                             <th class="grid_head">
-                                Registered Business Name
+                                Webstore Title
                             </th>
                             <th class="grid_head">
                                 Hostname
