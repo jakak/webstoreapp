@@ -40,7 +40,7 @@
     <table>
       <tr>
         <td align="left" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
-          <img src="{{ asset($mailSetting->logo) }}" alt="" title="" height='50px' style="margin:5px;">
+          <img src="{{ asset(\App\MailSetting::first()->logo) }}" alt="" title="" height='50px' style="margin:5px;">
         </td>
       </tr>
     </table>
