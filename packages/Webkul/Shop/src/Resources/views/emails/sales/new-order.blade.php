@@ -51,7 +51,7 @@
           <div class="C752d718b4c914b32aa8a5857807b2c77" style="padding:5px;">
             <div style="text-align:left;">
               <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {{core()->getCurrentChannel()->name}},<br>
-              A new order has been placed by {{ $order->customer_full_name }}.<br>
+              Thanks for your Order placed on {{$order->created_at->->toDateTimeString()}}
             </div>
           </div>
           <div class="Cd70d9736a8d8451fb4275c2e239f1531" style="padding:5px;">
@@ -177,7 +177,7 @@
         <p>Your patronage is highly appreciated.</p>
         <p>
           Your order is being processed and we will send you a tracking number once your item is shipped. Disregard if you opted for in-store pick up.
-          If you need further assistant or have an inquiry, please contact us at {{core()->getCurrentChannel()->phone_number}}
+          If you need further assistance or have an inquiry, please contact us at {{core()->getCurrentChannel()->phone_number}}
         </p>
         <p>Kind regards.</p>
       </div>
