@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Traits\HelpsMail;
 
 /**
  * New Shipment Mail class
@@ -15,7 +16,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  */
 class NewShipmentNotification extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, HelpsMail;
     
     /**
      * The shipment instance.
@@ -32,6 +33,7 @@ class NewShipmentNotification extends Mailable
      */
     public function __construct($shipment)
     {
+        $this->setConfig();
         $this->shipment = $shipment;
     }
 

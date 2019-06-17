@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-lg btn-primary" @click="closeModal">
+        <button type="submit" class="btn btn-md btn-primary" @click="closeModal">
             {{ __('admin::app.export.export') }}
         </button>
 

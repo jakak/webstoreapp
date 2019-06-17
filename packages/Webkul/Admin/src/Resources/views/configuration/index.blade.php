@@ -30,18 +30,6 @@
                         </h1>
 
                         <div class="control-group">
-                            <select class="control" id="channel-switcher" name="channel">
-                                @foreach (core()->getAllChannels() as $channelModel)
-
-                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
-                                        {{ $channelModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="control-group">
                             <select class="control" id="locale-switcher" name="locale">
                                 @foreach (core()->getAllLocales() as $localeModel)
 
@@ -55,7 +43,7 @@
                     </div>
 
                     <div class="page-action">
-                        <button id="addLocation" class="btn btn-lg btn-primary">
+                        <button id="addLocation" class="btn btn-md btn-primary">
                             Add Location
                         </button>
                     </div>
@@ -75,18 +63,6 @@
                         </h1>
 
                         <div class="control-group">
-                            <select class="control" id="channel-switcher" name="channel">
-                                @foreach (core()->getAllChannels() as $channelModel)
-
-                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
-                                        {{ $channelModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="control-group">
                             <select class="control" id="locale-switcher" name="locale">
                                 @foreach (core()->getAllLocales() as $localeModel)
 
@@ -100,7 +76,7 @@
                     </div>
 
                     <div class="page-action">
-                        <button type="submit" class="btn btn-lg btn-primary">
+                        <button type="submit" class="btn btn-md btn-primary">
                             {{ __('admin::app.configuration.save-btn-title') }}
                         </button>
                     </div>
@@ -177,6 +153,58 @@
                     </div>
                 </div>
             </form>
+            <script>
+                function locationPageSetup() {
+                    console.log(document.querySelector('#addLocation'));
+                    document.querySelector('#addLocation').addEventListener('click', function addLocation (evt) {
+                        document.querySelector('#addLocationPage').classList.remove('d-none');
+                        document.querySelector('#locationPage').classList.add('d-none');
+                    });
+
+                    document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
+                        btn.addEventListener('click', evt => {
+                            evt.preventDefault();
+                            
+                            // Show edit page
+                            setupEditPage(btn.parentElement);
+                        });
+                    });
+
+                    function setupEditPage(url) {
+                        fetch('/public/admin/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                            .then(response => {
+                                return response.json();
+                            })
+                            .then(response => {
+                                for (const key in response) {
+                                    if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                        document.querySelector('[name='+key+']').value = response[key];
+                                    }
+                                } 
+                                const inp = document.createElement('input');
+                                inp.type="hidden";
+                                inp.value = response.id;
+                                inp.name = "id"
+                                document.querySelector('#addLocationPage').appendChild(inp);
+                                document.querySelector('#addLocation').click();
+                            })
+                        ;
+                        
+                    }
+                }
+            </script>
+        @elseif(strpos(request()->url(), 'notifications') !== false)
+        
+            @include('admin::configuration.notification.create') 
+            @include('admin::configuration.notification.store')
+            @include('admin::configuration.notification.edit')
+
+        @elseif(strpos(request()->url(), 'mail') !== false)
+            @php
+                $emailConfig = \App\MailSetting::first();
+            @endphp
+            @include('admin::configuration.email.smtp')
+
         @else
         
             <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
@@ -187,18 +215,6 @@
                         <h1>
                             {{ __('admin::app.configuration.title') }}
                         </h1>
-
-                        <div class="control-group">
-                            <select class="control" id="channel-switcher" name="channel">
-                                @foreach (core()->getAllChannels() as $channelModel)
-
-                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
-                                        {{ $channelModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
 
                         <div class="control-group">
                             <select class="control" id="locale-switcher" name="locale">
@@ -214,7 +230,7 @@
                     </div>
 
                     <div class="page-action">
-                        <button type="submit" class="btn btn-lg btn-primary">
+                        <button type="submit" class="btn btn-md btn-primary">
                             {{ __('admin::app.configuration.save-btn-title') }}
                         </button>
                     </div>
@@ -261,42 +277,12 @@
 
                 window.location.href = "{{ route('admin.configuration.index', [request()->route('slug'), request()->route('slug2')]) }}" + query;
             })
-            
-            document.querySelector('#addLocation').addEventListener('click', function addLocation (evt) {
-                document.querySelector('#addLocationPage').classList.remove('d-none');
-                document.querySelector('#locationPage').classList.add('d-none');
-            })
-
-            document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
-                btn.addEventListener('click', evt => {
-                    evt.preventDefault();
-                    
-                    // Show edit page
-                    setupEditPage(btn.parentElement);
-                });
-            });
-
-            function setupEditPage(url) {
-                fetch('/admin/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
-                    .then(response => {
-                        return response.json();
-                    })
-                    .then(response => {
-                        for (const key in response) {
-                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
-                                document.querySelector('[name='+key+']').value = response[key];
-                            }
-                        } 
-                        const inp = document.createElement('input');
-                        inp.type="hidden";
-                        inp.value = response.id;
-                        inp.name = "id"
-                        document.querySelector('#addLocationPage').appendChild(inp);
-                        document.querySelector('#addLocation').click();
-                    })
-                ;
+            try {
+                locationPageSetup();
+            } catch (error) {
                 
             }
+            
         });
 
     </script>

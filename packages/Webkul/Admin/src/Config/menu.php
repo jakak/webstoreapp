@@ -108,37 +108,55 @@ return [
         'key' => 'settings.locales',
         'name' => 'admin::app.layouts.locales',
         'route' => 'admin.locales.index',
-        'sort' => 1,
+        'sort' => 4,
         'icon-class' => '',
     ], [
         'key' => 'settings.currencies',
         'name' => 'admin::app.layouts.currencies',
         'route' => 'admin.currencies.index',
-        'sort' => 2,
+        'sort' => 5,
         'icon-class' => '',
     ], [
         'key' => 'settings.exchange_rates',
         'name' => 'admin::app.layouts.exchange-rates',
         'route' => 'admin.exchange_rates.index',
-        'sort' => 3,
+        'sort' => 6,
         'icon-class' => '',
     ], [
         'key' => 'settings.inventory_sources',
         'name' => 'admin::app.layouts.inventory-sources',
         'route' => 'admin.inventory_sources.index',
-        'sort' => 4,
+        'sort' => 7,
         'icon-class' => '',
     ], [
         'key' => 'settings.channels',
         'name' => 'admin::app.layouts.channels',
         'route' => 'admin.channels.index',
-        'sort' => 5,
+        'sort' => 1,
+        'icon-class' => '',
+    ], [
+        'key' => 'settings.theme',
+        'name' => 'admin::app.layouts.theme-manager',
+        'route' => 'admin.themes.index',
+        'sort' => 2,
+        'icon-class' => '',
+    ], [
+        'key' => 'settings.theme.design',
+        'name' => 'admin::app.layouts.theme-design',
+        'route' => 'admin.themes.customize',
+        'sort' => 1,
+        'icon-class' => '',
+    ], [
+        'key' => 'settings.theme.sliders',
+        'name' => 'admin::app.layouts.theme-sliders',
+        'route' => 'admin.sliders.index',
+        'sort' => 2,
         'icon-class' => '',
     ], [
         'key' => 'settings.users',
         'name' => 'admin::app.layouts.users',
         'route' => 'admin.users.index',
-        'sort' => 6,
+        'sort' => 3,
         'icon-class' => '',
     ], [
         'key' => 'settings.users.users',
@@ -151,12 +169,6 @@ return [
         'name' => 'admin::app.layouts.roles',
         'route' => 'admin.roles.index',
         'sort' => 2,
-        'icon-class' => '',
-    ], [
-        'key' => 'settings.sliders',
-        'name' => 'admin::app.layouts.sliders',
-        'route' => 'admin.sliders.index',
-        'sort' => 7,
         'icon-class' => '',
     ], [
         'key' => 'settings.taxes',
@@ -176,5 +188,5 @@ return [
         'route' => 'admin.tax-rates.index',
         'sort' => 2,
         'icon-class' => '',
-    ]
+    ],
 ];

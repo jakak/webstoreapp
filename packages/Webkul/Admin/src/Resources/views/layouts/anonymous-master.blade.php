@@ -10,7 +10,8 @@
         <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
 
         <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
         <style>
             .container {
@@ -82,7 +83,7 @@
 
                     <div class="footer">
                         <p>
-                            &copy; <script>document.write(new Date().getFullYear());</script>. Webstore by <a href="https://aboutsic.com/webmaster" target="_blank"><img src="https://aboutsic.com/web-objects/sic-logo-grey.png"></a>
+                            <i class="fas fa-arrow-left"></i> Back to <a href="{{ route('shop.home.index') }}">Webstore</a> | <a href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
                         </p>
                     </div>
 

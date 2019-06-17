@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="page-action">
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn-md btn-primary">
                         {{ __('admin::app.catalog.families.save-btn-title') }}
                     </button>
                 </div>
@@ -94,7 +94,7 @@
                         <span class="control-error" v-if="errors.has('add-group-form.position')">@{{ errors.first('add-group-form.position') }}</span>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn-md btn-primary">
                         {{ __('admin::app.catalog.families.add-group-title') }}
                     </button>
 
@@ -169,7 +169,7 @@
                             </li>
                         </ul>
 
-                        <button type="button" class="btn btn-lg btn-primary" @click="addAttributes($event)">
+                        <button type="button" class="btn btn-md btn-primary" @click="addAttributes($event)">
                             {{ __('admin::app.catalog.families.add-attribute-title') }}
                         </button>
                     </div>

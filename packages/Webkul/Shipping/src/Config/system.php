@@ -43,61 +43,7 @@ return [
                 'validation' => 'required'
             ]
         ]
-    ], /* [
-        'key' => 'sales.carriers.flatrate',
-        'name' => 'Flat Rate Shipping',
-        'sort' => 2,
-        'fields' => [
-            [
-                'name' => 'title',
-                'title' => 'Title',
-                'type' => 'text',
-                'validation' => 'required',
-                'channel_based' => true,
-                'locale_based' => true
-            ], [
-                'name' => 'description',
-                'title' => 'Description',
-                'type' => 'textarea',
-                'channel_based' => true,
-                'locale_based' => false
-            ], [
-                'name' => 'default_rate',
-                'title' => 'Rate',
-                'type' => 'text',
-                'channel_based' => true,
-                'locale_based' => false
-            ], [
-                'name' => 'type',
-                'title' => 'Type',
-                'type' => 'select',
-                'options' => [
-                    [
-                        'title' => 'Per Unit',
-                        'value' => 'per_unit'
-                    ], [
-                        'title' => 'Per Order',
-                        'value' => 'per_order'
-                    ]
-                ],
-                'validation' => 'required'
-            ], [
-                'name' => 'active',
-                'title' => 'Status',
-                'type' => 'select',
-                'options' => [
-                    [
-                        'title' => 'Active',
-                        'value' => true
-                    ], [
-                        'title' => 'Inactive',
-                        'value' => false
-                    ]
-                ],
-                'validation' => 'required'
-            ]
-        ]
-    ], */ [
+    ], [
         'key' => 'sales.shipping',
         'name' => 'Shipping Origin',
         'sort' => 0
@@ -109,13 +55,6 @@ return [
              [
                 'name' => 'street',
                 'title' => 'Street Address',
-                'type' => 'text',
-                'validation' => 'required',
-                'channel_based' => true,
-                'locale_based' => false
-            ], [
-                'name' => 'zipcode',
-                'title' => 'Zip Code',
                 'type' => 'text',
                 'validation' => 'required',
                 'channel_based' => true,
@@ -134,6 +73,13 @@ return [
                 'validation' => 'required',
                 'channel_based' => true,
                 'locale_based' => true
+            ], [
+                'name' => 'zipcode',
+                'title' => 'Zip Code',
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => true,
+                'locale_based' => false
             ], [
                 'name' => 'country',
                 'title' => 'Country',
@@ -161,5 +107,26 @@ return [
             'status',
             'actions'
         ] 
-    ]
+    ], [
+        'key' => 'notifications',
+        'name' => 'Notifications',
+        'sort' => 3
+    ], [
+        'key' => 'notifications.store',
+        'name' => 'Store Notifications',
+        'sort' => 1
+    ], [
+        'key' => 'notifications.customer',
+        'name' => 'Customer Notifications',
+        'sort' => 2
+    ], [
+        'key' => 'email',
+        'name' => 'Email Configuration',
+        'sort' => 4
+    ], [
+        'key' => 'email.smtp',
+        'name' => 'SMTP Protocol',
+        'sort' => 1
+    ],
+    
 ];

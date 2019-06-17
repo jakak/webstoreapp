@@ -6,7 +6,7 @@
             <h1>{{ __('shop::app.checkout.onepage.billing-address') }}</h1>
 
             @guest('customer')
-                <a href="{{ route('customer.session.index') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('customer.session.index') }}" class="btn btn-md btn-primary">
                     {{ __('shop::app.checkout.onepage.sign-in') }}
                 </a>
             @endguest

@@ -55,7 +55,7 @@
                         <span class="control-error" v-if="errors.has('add-variant-form.' + attribute.code)">@{{ errors.first('add-variant-form.' + attribute.code) }}</span>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn-md btn-primary">
                         {{ __('admin::app.catalog.products.add-variant-title') }}
                     </button>
 

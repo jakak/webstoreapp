@@ -46,7 +46,7 @@
                 <div class="heading mt-10">
                     <span> {{ __('shop::app.reviews.rating-reviews') }} </span>
 
-                    <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary right"> {{ __('shop::app.products.write-review-btn') }}</a>
+                    <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-md btn-primary right"> {{ __('shop::app.products.write-review-btn') }}</a>
                 </div>
 
                 <div class="ratings-reviews mt-35">

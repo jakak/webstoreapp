@@ -89,7 +89,7 @@
                     {!! view_render_event('bagisto.shop.customers.account.profile.edit_form_controls.after', ['customer' => $customer]) !!}
 
                     <div class="button-group">
-                        <input class="btn btn-primary btn-lg" type="submit" value="{{ __('shop::app.customer.account.profile.submit') }}">
+                        <input class="btn btn-primary btn-md" type="submit" value="{{ __('shop::app.customer.account.profile.submit') }}">
                     </div>
                 </div>
 

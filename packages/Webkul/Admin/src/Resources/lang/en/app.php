@@ -33,8 +33,11 @@ return [
         'currencies' => 'Currencies',
         'exchange-rates' => 'Exchange Rates',
         'inventory-sources' => 'Inventory Sources',
-        'channels' => 'Channels',
-        'users' => 'Users',
+        'channels' => 'Webstore Channel',
+        'theme-manager' => 'Theme Manager',
+        'theme-design' => 'Theme Design',
+        'theme-sliders' => 'Sliders',
+        'users' => 'Staff Accounts',
         'roles' => 'Roles',
         'sliders' => 'Sliders',
         'taxes' => 'Taxes',
@@ -504,6 +507,10 @@ return [
     ],
 
     'settings' => [
+        'themes' => [
+            'title' => 'Theme Manager',
+            'design' => 'Web Space Theme',
+        ],
         'locales' => [
             'title' => 'Locales',
             'add-title' => 'Add Locale',
@@ -569,14 +576,22 @@ return [
             'status' => 'Status'
         ],
         'channels' => [
-            'title' => 'Channels',
+            'title' => 'Webstore Channel',
+            'sub-title' => 'View and update Webstore details',
             'add-title' => 'Add Channel',
-            'edit-title' => 'Edit Channel',
+            'edit-title' => 'Update Channel',
             'save-btn-title' => 'Save Channel',
-            'general' => 'General',
-            'code' => 'Code',
-            'name' => 'Name',
-            'description' => 'Description',
+            'general' => 'General Details',
+            'code' => 'Webstore Name',
+            'business_name' => 'Webstore Title',
+            'email' => 'Email Address',
+            'phone_number' => 'Business Mobile Number',
+            'address' => 'Address',
+            'city' => 'City',
+            'postal_code' => 'Postal Code',
+            'state' => 'State',
+            'country' => 'Country',
+            'description' => 'Webstore Description',
             'hostname' => 'Hostname',
             'currencies-and-locales' => 'Currencies and Locales',
             'locales' => 'Locales',
@@ -659,6 +674,15 @@ return [
             'update-error' => 'Error! Tax Rate Cannot Be Updated',
             'delete' => 'Tax Rate Deleted Successfully',
             'atleast-one' => 'Cannot Delete Last Tax Rate'
+        ],
+
+        'email' => [
+            'logo' => 'Email Logo',
+            'host' => 'SMTP Host',
+            'username' => 'SMTP Username',
+            'encryption' => 'SMTP Security',
+            'port' => 'SMTP Port',
+            'password' => 'SMTP Password'
         ]
     ],
 
@@ -705,8 +729,8 @@ return [
         ],
 
         'subscribers' => [
-            'title' => 'News Letter Subscribers',
-            'title-edit' => 'Edit News Letter Subscriber',
+            'title' => 'Newsletter Subscribers',
+            'title-edit' => 'Edit Newsletter Subscriber',
             'email' => 'Email',
             'is_subscribed' => 'Subscribed',
             'edit-btn-title' => 'Update Subscriber',

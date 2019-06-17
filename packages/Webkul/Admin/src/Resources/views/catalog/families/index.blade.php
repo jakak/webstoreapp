@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.catalog.families.create') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.catalog.families.create') }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.catalog.families.add-family-btn-title') }}
                 </a>
             </div>

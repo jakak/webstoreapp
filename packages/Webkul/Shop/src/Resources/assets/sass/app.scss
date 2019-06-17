@@ -1014,7 +1014,6 @@ section.slider-block {
         border-top: 1px solid $border-color;
         border-bottom: 1px solid $border-color;
         display: block;
-        background-color: #B670AF;
 
         ul.nav {
             display: block;
@@ -1034,7 +1033,7 @@ section.slider-block {
 
         .nav a {
             display:block;
-            color: #ffffff;
+            color: #242424;
             text-decoration: none;
             padding: 0.8em 0.3em 0.8em 0.5em;
             text-transform: uppercase;
@@ -1094,18 +1093,12 @@ section.slider-block {
             left: -99999em;
         }
 
-        .nav > li:hover {
-            background-color: #d0a3cb;
-        }
 
         .nav > li:hover > ul {
             left: auto;
             min-width: 100%;
         }
 
-        .nav > li li:hover {
-            background-color: #d0a3cb;
-        }
 
         .nav > li li:hover > ul {
             left: 100%;

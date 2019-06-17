@@ -151,7 +151,7 @@
                 <table class="table">
                     <thead v-if="massActionsToggle">
                         @if (isset($results['massactions']))
-                            <tr class="mass-action" v-if="massActionsToggle" style="height: 65px;">
+                            <tr class="mass-action" v-if="massActionsToggle" style="height: 50px;">
                                 <th colspan="100%">
                                     <div class="mass-action-wrapper" style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start;">
 
@@ -185,7 +185,7 @@
                     </thead>
 
                     <thead v-if="massActionsToggle == false">
-                        <tr style="height: 65px;">
+                        <tr style="height: 50px;">
                             @if (count($results['records']) && $results['enableMassActions'])
                                 <th class="grid_head" id="mastercheckbox" style="width: 50px;">
                                     <span class="checkbox">

@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.currencies.create') }}" class="btn btn-lg btn-primary">
+                <a href="{{ route('admin.currencies.create') }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.settings.currencies.add-title') }}
                 </a>
             </div>

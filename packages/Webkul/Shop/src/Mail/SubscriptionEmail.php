@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Traits\HelpsMail;
+
 /**
  * Subscriber Mail class
  *
@@ -14,9 +16,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  */
 class SubscriptionEmail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels, HelpsMail;
+    
     public $subscriptionData;
-    public function __construct($subscriptionData) {
+    
+    public function __construct($subscriptionData)
+    {
+        $this->setConfig();
         $this->subscriptionData = $subscriptionData;
     }
     /**

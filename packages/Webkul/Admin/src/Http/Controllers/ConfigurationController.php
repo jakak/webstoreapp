@@ -11,6 +11,11 @@ use Webkul\Core\Tree;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
 use Illuminate\Support\Facades\Storage;
 use App\Location;
+use App\Mail\TestNotificationMail;
+use App\StoreNotification;
+use Illuminate\Support\Facades\Mail;
+use App\MailSetting;
+use App\Traits\HelpsMail;
 
 /**
  * Configuration controller
@@ -20,6 +25,7 @@ use App\Location;
  */
 class ConfigurationController extends Controller
 {
+    use HelpsMail;
     /**
      * Display a listing of the resource.
      *
@@ -197,5 +203,132 @@ class ConfigurationController extends Controller
         $location = Location::where('location', $location)->first();
 
         return $location;
+    }
+
+    public function addRecipient(Request $request)
+    {
+        $admin = \Webkul\User\Models\Admin::find($request->user);
+        if ($request->has('id') && $admin) {
+            
+            $recipient = StoreNotification::find($request->id)->first();
+
+            $recipient->update([
+                'name' => $admin->name,
+                'email' => $admin->email,
+                'test_btn' => ' Button will show here',
+                'status' => $request->status,
+            ]);
+
+            session()->flash('success', 'Recipient updated successfully');
+        } else {
+            if ($admin) {
+                $recipient = StoreNotification::where('email', $admin->email)->first();
+                if ($recipient) {
+                    session()->flash('error', 'User is already a recipient');
+                    return redirect()->back();
+                }
+                
+                
+                StoreNotification::create([
+                    'name' => $admin->name,
+                    'email' => $admin->email,
+                    'test_btn' => ' Button will show here',
+                    'status' => $request->status,
+                ]);
+
+                session()->flash('success', 'Recipient added successfully');
+            }
+        }
+        
+
+        return redirect()->back();
+    }
+
+    public function delRecipient($email)
+    {
+        StoreNotification::where('email', $email)->first()->delete();
+
+        return redirect()->back();
+    }
+
+    public function getRecipient($email)
+    {
+        $admin = \Webkul\User\Models\Admin::where('email', $email)->first();
+
+        $recipient = StoreNotification::where('email', $email)->first();
+
+        return response()->json([
+            'id' => $recipient->id,
+            'user' => $admin->id,
+            'status' => $recipient->status
+        ]);
+    }
+
+    public function sendTestEmail($email) 
+    {
+        try {
+            Mail::to($email)->send(new TestNotificationMail());
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
+
+        session()->flash('success', 'Email sent successfully');
+        return redirect()->back();
+    }
+
+    public function saveEmailSettings(Request $request)
+    {
+        $request->validate([
+            'host' => 'required',
+            'port' => 'required|numeric',
+            'username' => 'required|email',
+            'password' => 'required',
+            'encryption' => 'required'
+        ]);
+        $settings = MailSetting::first();
+        $data = $request->all();
+        
+        if ($settings) {
+            $this->uploadImage($request, $settings);
+            if ($data['logo']) {
+                unset($data['logo']);
+            }
+            $settings->update($data);
+            session()->flash('success', 'Settings updated successfully');
+        } else {
+            $data['logo'] = $this->uploadNewImage($request);
+            $settings = MailSetting::create($data);
+            session()->flash('success', 'Settings updated successfully');
+        }
+        return redirect()->back();
+    }
+
+    public function uploadImage(Request $request, $settings)
+    {
+        foreach ($request->logo as $imageId => $image) {
+            $file = 'logo' . '.' . $imageId;
+            $dir = 'mail/settings/' . random_int(12, 4999);
+
+            if ($request->hasFile($file)) {
+                if ($settings->logo != '/url') {
+                    Storage::delete($settings->logo);
+                }
+                $settings->logo = 'storage/' . request()->file($file)->store($dir);
+                $settings->save();
+            }
+        }
+    }
+
+    public function uploadNewImage(Request $request)
+    {
+        foreach ($request->logo as $imageId => $image) {
+            $file = 'logo' . '.' . $imageId;
+            $dir = 'mail/settings/' . random_int(12, 4999);
+
+            if ($request->hasFile($file)) {
+                return 'storage/' . request()->file($file)->store($dir);
+            }
+        }
     }
 }

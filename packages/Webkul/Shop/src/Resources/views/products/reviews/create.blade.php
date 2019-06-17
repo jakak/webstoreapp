@@ -84,7 +84,7 @@
                         <span class="control-error" v-if="errors.has('comment')">@{{ errors.first('comment') }}</span>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn-md btn-primary">
                         {{ __('shop::app.reviews.submit') }}
                     </button>
 
