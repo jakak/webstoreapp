@@ -53,7 +53,7 @@
           <div class="Cd70d9736a8d8451fb4275c2e239f1531">
             <div style="text-align:left;">
               <a href="{{ route('admin.sales.orders.view', $order->id) }}" style="font-family:'Segoe UI'; font-size: 10.5pt;color:#4362CA;">
-                <b> Complete Order Details</b>
+                <b>View complete Order Details</b>
               </a>
             </div>
           </div>
