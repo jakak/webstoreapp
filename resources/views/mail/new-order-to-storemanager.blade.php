@@ -50,13 +50,15 @@
         <td align="center" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
           <div class="C752d718b4c914b32aa8a5857807b2c77">
             <div style="text-align:left;">
-              <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {{core()->getCurrentChannel()->name}},<br>
+              <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">Hello {{core()->getCurrentChannel()->name}},<br></span>
               A new order has been placed by {{ $order->customer_full_name }}.<br>
             </div>
           </div>
           <div class="Cd70d9736a8d8451fb4275c2e239f1531">
             <div style="text-align:left;">
-              <a href="{{ route('admin.sales.orders.view', $order->id) }}" style="font-family:'Segoe UI'; font-size: 10.5pt;color:#4362CA;">View Complete Order Details</a>
+              <a href="{{ route('admin.sales.orders.view', $order->id) }}" style="font-family:'Segoe UI'; font-size: 10.5pt;color:#4362CA;">
+                <b>View Complete Order Details</b>
+              </a>
             </div>
           </div>
         </td>
@@ -67,7 +69,7 @@
       <table>
         <tr>
           <th>
-            <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;"><b>SUMMARY OF ORDER<br>
+            <span style="font-family:'Segoe UI'; font-size: 10.5pt;color:#000000;">SUMMARY OF ORDER<br>
           </th>
         </tr>
       </table>
