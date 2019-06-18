@@ -35,7 +35,7 @@
   </head>
 
   <body style='margin:0;padding:0;'>
-    <img src="{{ asset(\App\MailSetting::first()->logo) }}" alt="" title="" height='50px' style="margin:5px;">
+    <img src="{{ asset(\App\MailSetting::first()->logo, 'storage') }}" alt="" title="" height='50px' style="margin:5px;">
     
     <table>
       <tr>
