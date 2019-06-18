@@ -1516,7 +1516,7 @@ section.slider-block div.slider-content div.slider-control .light-right-icon {
 .footer .footer-content .footer-list-container .list-container .list-group li {
   margin-bottom: 12px;
   list-style-type: none;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .footer .footer-content .footer-list-container .list-container .list-group li span.icon {
