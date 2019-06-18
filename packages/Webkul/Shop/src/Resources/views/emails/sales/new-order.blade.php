@@ -37,13 +37,7 @@
   </head>
 
   <body style='margin:0;padding:0;'>
-    <table>
-      <tr>
-        <td align="left" width="100%" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;vertical-align:top;" class="columnContainer">
-          <img src="{{ asset(\App\MailSetting::first()->logo) }}" alt="" title="" height='50px' style="margin:5px;">
-        </td>
-      </tr>
-    </table>
+    <img src="{{ asset(\App\MailSetting::first()->logo, 'storage') }}" alt="" title="" height='50px' style="margin:5px;">
 
     <table>
       <tr>
