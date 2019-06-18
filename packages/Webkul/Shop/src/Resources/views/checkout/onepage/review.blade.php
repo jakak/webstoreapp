@@ -31,7 +31,7 @@
 
                 <div class="card-content">
                     {{ $shippingAddress->name }}</br>
-                    {{ $shippingAddress->address1 }}, {{ $shippingAddress->address2 ? $shippingAddress->address2 . ',' : '' }} , {{ $shippingAddress->state }}</br>
+                    {{ $shippingAddress->address1 }}, {{ $shippingAddress->address2 ? $shippingAddress->address2 . ',' : '' }} {{ $shippingAddress->state }}</br>
                     {{ country()->name($shippingAddress->country) }} {{ $shippingAddress->postcode }}</br>
                     
                     <span class="horizontal-rule"></span>
