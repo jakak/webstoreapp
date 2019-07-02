@@ -57,7 +57,15 @@
                         var reader = new FileReader();
 
                         reader.onload = (e) => {
-                            this.imageData = e.target.result;
+                            var image = new Image;
+                            image.onload = () =>{
+                                if (image.width === image.height) {
+                                    this.imageData = e.target.result;
+                                } else {
+                                    alert('Error! Images must be square.');
+                                }
+                            }
+                            image.src = reader.result;
                         }
 
                         reader.readAsDataURL(imageInput.files[0]);
