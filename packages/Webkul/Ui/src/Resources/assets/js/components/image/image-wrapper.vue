@@ -117,6 +117,8 @@
                     this.images.forEach(image => {
                         image.url = `${prefix}${this.urlTransform}${image.path}`;
                     });
+                }else {
+                    this.items[0].url = `${prefix}${this.items[0].url}`;
                 }
             }
         }

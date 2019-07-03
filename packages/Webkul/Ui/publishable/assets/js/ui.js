@@ -5106,6 +5106,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 this.images.forEach(function (image) {
                     image.url = '' + prefix + _this.urlTransform + image.path;
                 });
+            } else {
+                this.items[0].url = '' + prefix + this.items[0].url;
             }
         }
     }
