@@ -59,7 +59,8 @@
                         reader.onload = (e) => {
                             var image = new Image;
                             image.onload = () =>{
-                                if (image.width === image.height) {
+                                if ((image.width === image.height) || (
+                                    window.location.href.includes('theme-manager'))) {
                                     this.imageData = e.target.result;
                                 } else {
                                     alert('Error! Images must be square.');

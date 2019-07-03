@@ -4982,6 +4982,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 //
 //
 //
@@ -5032,6 +5034,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Boolean,
             required: false,
             default: true
+        },
+        urlTransform: {
+            type: String,
+            required: false,
+            default: ''
         }
     },
 
@@ -5064,6 +5071,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.createFileType();
             }
         }
+
+        this.transformImageUrl();
     },
 
 
@@ -5085,6 +5094,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var index = this.items.indexOf(image);
 
             Vue.delete(this.items, index);
+        },
+        transformImageUrl: function transformImageUrl() {
+            var _this = this;
+
+            var prefix = '/';
+            if (window.location.href.includes('public')) {
+                prefix = '/public';
+            }
+            if (_typeof(this.images) == 'object') {
+                this.images.forEach(function (image) {
+                    image.url = '' + prefix + _this.urlTransform + image.path;
+                });
+            }
         }
     }
 
@@ -5258,7 +5280,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     reader.onload = function (e) {
                         var image = new Image();
                         image.onload = function () {
-                            if (image.width === image.height) {
+                            if (image.width === image.height || window.location.href.includes('theme-manager')) {
                                 _this.imageData = e.target.result;
                             } else {
                                 alert('Error! Images must be square.');

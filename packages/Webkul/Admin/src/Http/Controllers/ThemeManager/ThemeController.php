@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Webkul\Core\Models\Channel;
 use Illuminate\Http\Response;
 use Webkul\Admin\Http\Controllers\Controller;
+use Webkul\Core\Repositories\ChannelRepository;
 
 class ThemeController extends Controller
 {
@@ -14,11 +15,12 @@ class ThemeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $_config;
+    protected $_config, $channel;
 
-    function __construct()
+    function __construct(ChannelRepository $channel)
     {
         $this->_config = request('_config');
+        $this->channel = $channel;
 
     }
 
@@ -34,8 +36,12 @@ class ThemeController extends Controller
 
     public function update()
     {
-        $channel = Channel::first()->update(request()->all());
-
+        // dd('james');
+        $channel = Channel::first();
+        $channel->update(request()->all());
+        // $this->channel->update( request()->all(), Channel::first()->id);
+        $this->channel->uploadImages( request()->all(), $channel);
+        $this->channel->uploadImages(request()->all(), $channel, 'favicon');
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Channel']));
 
         return redirect()->back();

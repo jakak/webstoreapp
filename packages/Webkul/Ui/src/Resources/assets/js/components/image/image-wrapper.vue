@@ -46,6 +46,11 @@
                 type: Boolean,
                 required: false,
                 default: true
+            },
+            urlTransform: {
+                type: String,
+                required: false,
+                default: ''
             }
         },
 
@@ -78,6 +83,8 @@
                     this.createFileType();
                 }
             }
+
+            this.transformImageUrl();
         },
 
         methods: {
@@ -99,6 +106,18 @@
                 let index = this.items.indexOf(image)
 
                 Vue.delete(this.items, index);
+            },
+
+            transformImageUrl() {
+                let prefix = '/';
+                if (window.location.href.includes('public')) {
+                    prefix = '/public';
+                }
+                if (typeof this.images == 'object') {
+                    this.images.forEach(image => {
+                        image.url = `${prefix}${this.urlTransform}${image.path}`;
+                    });
+                }
             }
         }
 

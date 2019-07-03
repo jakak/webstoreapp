@@ -506,7 +506,7 @@ Route::group(['middleware' => ['web']], function () {
                 ->name('admin.themes.customize')
             ;
 
-            Route::post('/theme-manager/customize', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@update')
+            Route::post('/theme-manager/update', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@update')
                 ->name('admin.themes.store')
             ;
 

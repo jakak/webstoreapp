@@ -6,9 +6,9 @@
     $desiredLocation = implode("/", $currentLocation);
     $envFile = $desiredLocation . '/' . '.env';
 
-    $installed = false;
+    $installed = true;
 
-    if (file_exists($envFile)) {
+    /* if (file_exists($envFile)) {
 
         // reading env content
         $str= file_get_contents($envFile);
@@ -55,7 +55,7 @@
         } else {
             $installed = true;
         }
-    }
+    } */
 
     if (!$installed) {
         // getting url
