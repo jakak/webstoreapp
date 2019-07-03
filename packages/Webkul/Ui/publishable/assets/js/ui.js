@@ -5100,7 +5100,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             var prefix = '/';
             if (window.location.href.includes('public')) {
-                prefix = '/public';
+                prefix = '/public/';
             }
             if (_typeof(this.images) == 'object') {
                 this.images.forEach(function (image) {

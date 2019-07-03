@@ -111,7 +111,7 @@
             transformImageUrl() {
                 let prefix = '/';
                 if (window.location.href.includes('public')) {
-                    prefix = '/public';
+                    prefix = '/public/';
                 }
                 if (typeof this.images == 'object') {
                     this.images.forEach(image => {
