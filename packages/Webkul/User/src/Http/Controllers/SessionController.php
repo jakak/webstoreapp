@@ -80,7 +80,7 @@ class SessionController extends Controller
             return redirect()->route('admin.session.create');
         }
 
-        return redirect()->intended(route($this->_config['redirect']));
+        return redirect()->route('admin.dashboard.index');
     }
 
     /**

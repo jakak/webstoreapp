@@ -51,6 +51,11 @@
                 type: String,
                 required: false,
                 default: ''
+            },
+            enforceSquare: {
+                type: Boolean,
+                required: false,
+                default: false
             }
         },
 
@@ -109,16 +114,18 @@
             },
 
             transformImageUrl() {
-                let prefix = '/';
-                if (window.location.href.includes('public')) {
-                    prefix = '/public/';
-                }
-                if (typeof this.images == 'object') {
-                    this.images.forEach(image => {
-                        image.url = `${prefix}${this.urlTransform}${image.path}`;
-                    });
-                }else {
-                    this.items[0].url = `${prefix}${this.items[0].url}`;
+                if (this.urlTransform !== 'no-transform') {
+                    let prefix = '/';
+                    if (window.location.href.includes('public')) {
+                        prefix = '/public/';
+                    }
+                    if (typeof this.images == 'object') {
+                        this.images.forEach(image => {
+                            image.url = `${prefix}${this.urlTransform}${image.path}`;
+                        });
+                    }else {
+                        this.items[0].url = `${prefix}${this.items[0].url}`;
+                    }
                 }
             }
         }

@@ -4,8 +4,8 @@
             <ul class="logo-container">
                 <li>
                     <a href="{{ route('shop.home.index') }}">
-                        @if ($logo = core()->getCurrentChannel()->logo_url)
-                            <img class="logo" src="{{ $logo }}" />
+                        @if ($logo = core()->getCurrentChannel()->logo)
+                            <img class="logo" src="{{ asset('storage/' . $logo) }}" />
                         @else
                             <img class="logo" src="{{ bagisto_asset('images/logo.svg') }}" />
                         @endif

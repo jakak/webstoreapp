@@ -5039,6 +5039,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             type: String,
             required: false,
             default: ''
+        },
+        enforceSquare: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
 
@@ -5098,16 +5103,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         transformImageUrl: function transformImageUrl() {
             var _this = this;
 
-            var prefix = '/';
-            if (window.location.href.includes('public')) {
-                prefix = '/public/';
-            }
-            if (_typeof(this.images) == 'object') {
-                this.images.forEach(function (image) {
-                    image.url = '' + prefix + _this.urlTransform + image.path;
-                });
-            } else {
-                this.items[0].url = '' + prefix + this.items[0].url;
+            if (this.urlTransform !== 'no-transform') {
+                var prefix = '/';
+                if (window.location.href.includes('public')) {
+                    prefix = '/public/';
+                }
+                if (_typeof(this.images) == 'object') {
+                    this.images.forEach(function (image) {
+                        image.url = '' + prefix + _this.urlTransform + image.path;
+                    });
+                } else {
+                    this.items[0].url = '' + prefix + this.items[0].url;
+                }
             }
         }
     }
@@ -5282,10 +5289,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     reader.onload = function (e) {
                         var image = new Image();
                         image.onload = function () {
-                            if (image.width === image.height || window.location.href.includes('theme-manager')) {
-                                _this.imageData = e.target.result;
+                            if (_this.$parent.enforceSquare) {
+                                if (image.width === image.height) {
+                                    _this.imageData = e.target.result;
+                                } else {
+                                    alert('Error! Images must be square.');
+                                }
                             } else {
-                                alert('Error! Images must be square.');
+                                _this.imageData = e.target.result;
                             }
                         };
                         image.src = reader.result;

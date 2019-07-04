@@ -25,14 +25,14 @@
                         <div slot="body">
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.logo') }}
-        
-                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? asset($channel->logo_url()) : '' }}"' ></image-wrapper>
+        {{-- {{dd($channel->logo)}} --}}
+                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? 'storage/' . $channel->logo : '' }}"' ></image-wrapper>
                             </div>
         
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.favicon') }}
         
-                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? asset($channel->favicon_url()) : '' }}"'></image-wrapper>
+                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? 'storage/' . $channel->favicon : '' }}"' ></image-wrapper>
                             </div>
                         </div>
                     </accordian>

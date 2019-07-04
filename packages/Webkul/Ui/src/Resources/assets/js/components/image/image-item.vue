@@ -58,12 +58,15 @@
 
                         reader.onload = (e) => {
                             var image = new Image;
-                            image.onload = () =>{
-                                if ((image.width === image.height) || (
-                                    window.location.href.includes('theme-manager'))) {
-                                    this.imageData = e.target.result;
+                            image.onload = () => {
+                                if (this.$parent.enforceSquare) {
+                                    if ((image.width === image.height)) {
+                                        this.imageData = e.target.result;
+                                    } else {
+                                        alert('Error! Images must be square.');
+                                    }
                                 } else {
-                                    alert('Error! Images must be square.');
+                                    this.imageData = e.target.result;  
                                 }
                             }
                             image.src = reader.result;
