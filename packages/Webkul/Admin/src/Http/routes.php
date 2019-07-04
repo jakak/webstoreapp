@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['middleware' => ['web']], function () {
-    Route::prefix('admin')->group(function () {
+    Route::prefix('storemanager')->group(function () {
 
         Route::get('/', 'Webkul\Admin\Http\Controllers\Controller@redirectToLogin');
 
