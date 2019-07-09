@@ -63,7 +63,7 @@
                                     if ((image.width === image.height)) {
                                         this.imageData = e.target.result;
                                     } else {
-                                        alert('Error! Images must be square.');
+                                        alert('Unable to upload image!  Ideal photo dimensions should be square (same width and height).');
                                     }
                                 } else {
                                     this.imageData = e.target.result;  
