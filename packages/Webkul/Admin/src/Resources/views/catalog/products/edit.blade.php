@@ -98,21 +98,6 @@
                                                     @if ($attribute->type == 'price')
                                                         <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
                                                     @endif
-
-                                                    <?php
-                                                        $channel_locale = [];
-                                                        if ($attribute->value_per_channel) {
-                                                            array_push($channel_locale, $channel);
-                                                        }
-
-                                                        if ($attribute->value_per_locale) {
-                                                            array_push($channel_locale, $locale);
-                                                        }
-                                                    ?>
-
-                                                    @if (count($channel_locale))
-                                                        <span class="locale">[{{ implode(' - ', $channel_locale) }}]</span>
-                                                    @endif
                                                 </label>
 
                                                 @include ($typeView)

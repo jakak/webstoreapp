@@ -5293,7 +5293,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 if (image.width === image.height) {
                                     _this.imageData = e.target.result;
                                 } else {
-                                    alert('Error! Images must be square.');
+                                    alert('Unable to upload image!  Ideal photo dimensions should be square (same width and height).');
                                 }
                             } else {
                                 _this.imageData = e.target.result;
