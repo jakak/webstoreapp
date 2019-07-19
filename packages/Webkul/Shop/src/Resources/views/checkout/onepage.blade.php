@@ -445,7 +445,7 @@
                 this.templateRender = paymentHtml.render;
 
                 for (var i in paymentHtml.staticRenderFns) {
-                    paymentTemplateRenderFns.unshift(paymentHtml.staticRenderFns[i]);
+                    paymentTemplateRenderFns.push(paymentHtml.staticRenderFns[i]);
                 }
             },
 
@@ -491,4 +491,13 @@
         })
     </script>
 
+@endpush
+
+@push('css')
+    <style>
+        .details {
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
 @endpush

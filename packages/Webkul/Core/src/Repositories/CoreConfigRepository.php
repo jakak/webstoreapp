@@ -33,9 +33,8 @@ class CoreConfigRepository extends Repository
 
         if ($data['locale'] || $data['channel']) {
            $locale = $data['locale'];
-           $channel = $data['channel'];
+           $channel = 1;
            unset($data['locale']);
-           unset($data['channel']);
         }
 
         foreach ($data as $method => $fieldData) {

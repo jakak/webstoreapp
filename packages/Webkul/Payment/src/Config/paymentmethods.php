@@ -10,8 +10,8 @@ return [
 
     'moneytransfer' => [
         'code' => 'moneytransfer',
-        'title' => 'Money Transfer',
-        'description' => 'Money Transfer',
+        'title' => 'Bank Transfer',
+        'description' => 'Bank Transfer',
         'class' => 'Webkul\Payment\Payment\MoneyTransfer',
         'active' => true
     ],

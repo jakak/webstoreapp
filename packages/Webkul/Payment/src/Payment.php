@@ -25,6 +25,7 @@ class Payment
                     'method' => $object->getCode(),
                     'method_title' => $object->getTitle(),
                     'description' => $object->getDescription(),
+                    'other_details' => $object->getOtherDetails() ?? null,
                 ];
             }
         }

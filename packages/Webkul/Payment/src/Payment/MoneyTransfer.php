@@ -17,6 +17,14 @@ class MoneyTransfer extends Payment
      */
     protected $code  = 'moneytransfer';
 
+    public function getOtherDetails() {
+        return [
+            'bank' => $this->getConfigData('bank'),
+            'account_no' => $this->getConfigData('account_no'),
+            'account_name' => $this->getConfigData('account_name')
+        ];
+    }
+
     public function getRedirectUrl()
     {
         

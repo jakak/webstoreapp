@@ -21,4 +21,7 @@ class CashOnDelivery extends Payment
     {
         
     }
+    public function getOtherDetails() {
+        return null;
+    }
 }
