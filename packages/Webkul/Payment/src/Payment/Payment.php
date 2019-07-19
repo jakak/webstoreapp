@@ -76,6 +76,8 @@ abstract class Payment
 
     abstract public function getRedirectUrl();
 
+    abstract public function getOtherDetails();
+
     /**
      * Assign cart
      *

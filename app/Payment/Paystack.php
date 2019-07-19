@@ -12,4 +12,8 @@ class Paystack extends Payment
     {
 
     }
+    public function getOtherDetails()
+    {
+        return null;
+    }
 }
