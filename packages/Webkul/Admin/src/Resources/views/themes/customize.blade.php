@@ -52,6 +52,10 @@
                                 <label for="footer_content">{{ __('admin::app.settings.channels.footer_content') }}</label>
                                 <textarea class="control" id="footer_content" name="footer_content">{{ old('footer_content') ?: $channel->footer_content }}</textarea>
                             </div>
+                            <div class="control-group">
+                                <label for="footer_credit">{{ __('admin::app.settings.channels.footer_credit') }}</label>
+                                <input type="text" v-validate="'required'" class="control" id="footer_credit" name="footer_credit" value="{{ old('footer_credit') ?: $channel->footer_credit }}">
+                            </div>
                         </div>
                     </accordian>
                 </div>

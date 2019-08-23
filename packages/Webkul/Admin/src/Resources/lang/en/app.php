@@ -604,6 +604,7 @@ return [
             'theme' => 'Theme',
             'home_page_content' => 'Home Page Content',
             'footer_content' => 'Footer Content',
+            'footer_credit' => 'Footer Credit',
             'logo' => 'Logo',
             'favicon' => 'Favicon'
         ],

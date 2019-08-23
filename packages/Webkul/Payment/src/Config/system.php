@@ -45,20 +45,26 @@ return [
         ]
     ], [
         'key' => 'payment.paymentmethods.moneytransfer',
-        'name' => 'Money Transfer',
+        'name' => 'Bank Transfer',
         'sort' => 2,
         'fields' => [
             [
-                'name' => 'title',
-                'title' => 'Title',
+                'name' => 'bank',
+                'title' => 'Bank Name',
                 'type' => 'text',
                 'validation' => 'required',
                 'channel_based' => false,
                 'locale_based' => true
             ], [
-                'name' => 'description',
-                'title' => 'Description',
-                'type' => 'textarea',
+                'name' => 'account_no',
+                'title' => 'Account Number',
+                'type' => 'text',
+                'channel_based' => false,
+                'locale_based' => true
+            ], [
+                'name' => 'account_name',
+                'title' => 'Account Name',
+                'type' => 'text',
                 'channel_based' => false,
                 'locale_based' => true
             ], [
