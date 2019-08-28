@@ -25,7 +25,7 @@
         </div>
         <div class="page-content">
             <div class="page-img">
-                <img src="{{ asset('/images/webstore-theme-manager.svg') }}" alt="">
+                <img src="{{ asset('https://res.cloudinary.com/haqqmancloud/image/upload/v1563697651/webstore.ng/storemanager/x0t3oejjpjhcsfbyf3sb.svg') }}" alt="">
             </div>
             <div class="table">
                 <table class="table">

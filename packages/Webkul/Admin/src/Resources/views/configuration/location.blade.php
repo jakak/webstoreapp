@@ -7,5 +7,4 @@
 @section('content')
     <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
     <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
-    James
 @endsection

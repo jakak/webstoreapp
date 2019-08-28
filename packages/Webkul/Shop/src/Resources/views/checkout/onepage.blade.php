@@ -392,7 +392,7 @@
             data: () => ({
                 templateRender: null,
 
-                selected_shipping_method: '',
+                selected_shipping_method: 'free_free',
             }),
 
             staticRenderFns: shippingTemplateRenderFns,
@@ -402,6 +402,7 @@
                 for (var i in shippingHtml.staticRenderFns) {
                     shippingTemplateRenderFns.push(shippingHtml.staticRenderFns[i]);
                 }
+                this.methodSelected()
             },
 
             render(h) {

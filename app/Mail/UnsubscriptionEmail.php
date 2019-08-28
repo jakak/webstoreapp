@@ -7,23 +7,22 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Webkul\Core\Models\Channel;
-use App\Traits\HelpsMail;
 
-class TestNotificationMail extends Mailable
+class UnsubscriptionEmail extends Mailable
 {
-    use Queueable, SerializesModels, HelpsMail;
-
+    use Queueable, SerializesModels;
+    private $email;
     private $channel;
-    public $mailSetting;
 
     /**
      * Create a new message instance.
      *
-     * @throws \Exception
+     * @param $email
      */
-    public function __construct()
+    public function __construct($email)
     {
-        $this->setConfig();
+        //
+        $this->email = $email;
         $this->channel = Channel::first();
     }
 
@@ -34,7 +33,9 @@ class TestNotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->from($this->channel->email, $this->channel->name)
-                    ->view('mail.test');
+        return $this->to($this->email)
+            ->from($this->channel->email, $this->channel->name)
+            ->subject('You have been unsubscribed')
+            ->view('shop::emails.customer.unsubscription-email');
     }
 }

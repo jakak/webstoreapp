@@ -7,9 +7,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
 
         <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
+        <style>
+            .select2.select2-container {
+                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+                border: 1px solid #c7c7c7;
+                padding: 3px 10px 3px 10px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                font-size: 15px;
+                -webkit-border-radius: 7px;
+                -moz-border-radius: 7px;
+                border-radius: 7px;
+
+            }
+            .select2.select2-container.select2-container--focus.select2-container--open {
+                -webkit-border-radius: 7px 7px 0 0;
+                -moz-border-radius: 7px 7px 0 0;
+                border-radius: 7px 7px 0 0;
+            }
+            .select2.select2-container .selection .select2-selection {
+                border: none;
+            }
+            .select2-container--default .select2-selection--single .select2-selection__arrow {
+                top: 4px;
+            }
+            .select2-container--default .select2-results__option[aria-selected=true] {
+                background-color: #fff;
+                color: #3a3a3a;
+            }
+            .select2-container--default .select2-results__option.select2-results__option--highlighted {
+                background-color: #0675B6;
+                color: #fff;
+            }
+        </style>
 
         @yield('head')
 
@@ -53,7 +87,6 @@
             </div>
 
         </div>
-
         <script type="text/javascript">
             window.flashMessages = [];
 
@@ -77,7 +110,15 @@
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('select').select2({
+                    minimumResultsForSearch: Infinity,
+                    width: 'element'
+                })
+            })
+        </script>
         @stack('scripts')
 
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
