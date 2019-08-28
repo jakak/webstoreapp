@@ -61,7 +61,7 @@ class ChannelRepository extends Repository
         $channel->currencies()->sync($data['currencies']);
 
         $channel->inventory_sources()->sync($data['inventory_sources']);
-dd('James');
+
         $this->uploadImages($data, $channel);
 
         $this->uploadImages($data, $channel, 'favicon');

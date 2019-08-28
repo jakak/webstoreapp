@@ -19,7 +19,7 @@ class TestNotificationMail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @throws \Exception
      */
     public function __construct()
     {

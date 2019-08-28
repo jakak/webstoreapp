@@ -36,7 +36,6 @@ class ThemeController extends Controller
 
     public function update()
     {
-        // dd('james');
         $channel = Channel::first();
         $channel->update(request()->all());
         // $this->channel->update( request()->all(), Channel::first()->id);
