@@ -13,6 +13,7 @@ return [
         'my-account' => 'My Account',
         'logout' => 'Logout',
         'visit-shop' => 'Visit Shop',
+		'manage-paystack' => 'Manage Paystack',
         'dashboard' => 'Dashboard',
         'sales' => 'Sales',
         'orders' => 'Orders',
@@ -223,7 +224,7 @@ return [
         ],
 
         'sessions' => [
-            'title' => 'Sign In',
+            'title' => 'Store Manager',
             'email' => 'Email',
             'password' => 'Password',
             'forget-password-link-title' => 'Forget Password ?',
