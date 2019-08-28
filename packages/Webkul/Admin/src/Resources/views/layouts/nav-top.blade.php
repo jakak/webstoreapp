@@ -2,7 +2,7 @@
     <div class="navbar-top-left">
         <div class="brand-logo">
             <a href="{{ route('admin.dashboard.index') }}">
-                <img src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" alt="Webstore by SIC"/>
+                <img src="{{ asset('vendor/webkul/ui/assets/images/webstore-logo.svg') }}" alt="Webstore by Haqqman"/>
             </a>
         </div>
     </div>
@@ -32,6 +32,9 @@
                         <ul>
                             <li>
                                 <a href="{{ route('shop.home.index') }}" target="_blank">{{ trans('admin::app.layouts.visit-shop') }}</a>
+                            </li>
+							<li>
+                                <a href="https://dashboard.paystack.com" target="_blank">{{ trans('admin::app.layouts.manage-paystack') }}</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.account.edit') }}">{{ trans('admin::app.layouts.my-account') }}</a>

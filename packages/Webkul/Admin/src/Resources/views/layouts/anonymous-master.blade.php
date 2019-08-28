@@ -28,7 +28,7 @@
                 vertical-align: middle;
             }
             .adjacent-center {
-                width: 365px;
+                width: 350px;
                 display: inline-block;
                 text-align: left;
             }
@@ -76,14 +76,14 @@
                 <div class="adjacent-center">
 
                     <div class="brand-logo">
-                        <img src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" alt="Webstore by SIC"/>
+                        <img src="{{ asset('vendor/webkul/ui/assets/images/webstore-logo.svg') }}" alt="Webstore by Haqqman"/>
                     </div>
 
                     @yield('content')
 
                     <div class="footer">
                         <p>
-                            <i class="fas fa-arrow-left"></i> Back to <a href="{{ route('shop.home.index') }}">Webstore</a> | <a href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
+                            <i class="fas fa-arrow-left"></i> <a href="{{ route('shop.home.index') }}">Store Front</a> | <a href="https://haqqman.com/webmaster" target="_blank">Webmaster</a>
                         </p>
                     </div>
 
