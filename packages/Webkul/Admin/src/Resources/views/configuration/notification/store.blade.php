@@ -26,14 +26,14 @@
     </style>
 @endpush
 
-@push('scripts')    
+@push('scripts')
 <script>
     document.querySelector('#recep-create').classList.add('d-none');
     // document.querySelector('#recep-edit').classList.add('d-none');
 
     let goToRecepPage = function () {
         document.querySelector('#recep-main').classList.add('d-none')
-        document.querySelector('#recep-create').classList.remove('d-none');   
+        document.querySelector('#recep-create').classList.remove('d-none');
     }
 
     let checker = setInterval(() => {
@@ -42,10 +42,10 @@
             pageSetup();
         }
     }, 10);
-        
+
     const displayButton = () => {
         let nodes = document.querySelectorAll('.table tr td:nth-child(3)')
-    
+
         nodes.forEach(elem => {
             elem.innerHTML = `
             <button id="recep-create-btn" onclick="testMail('${elem.previousElementSibling.innerHTML}')" class="btn btn-md btn-primary">
@@ -65,11 +65,11 @@
     }
 
     const testMail = email => {
-        location.assign(`/public/admin/configuration/notifications/store/recipient/${email}/testMail`);
+        location.assign(`/storemanager/configuration/notifications/store/recipient/${email}/testMail`);
     }
 
     const setupEditPage = url => {
-        fetch(`/public/admin/configuration/notifications/store/recipient/${url.search.substring(1)}/`)
+        fetch(`/public/storemanager/configuration/notifications/store/recipient/${url.search.substring(1)}/`)
             .then(response => {
                 return response.json();
             })
@@ -95,6 +95,6 @@
 
         addEditHandler();
     }
-    
+
 </script>
 @endpush

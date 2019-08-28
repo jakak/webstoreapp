@@ -2,6 +2,8 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use App\Mail\UnsubscriptionEmail;
+use Illuminate\Http\RedirectResponse;
 use Webkul\Shop\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -117,8 +119,9 @@ class SubscriptionController extends Controller
     }
 
     /**
-     * To unsubscribe from a the subcription list
+     * To unsubscribe from a the subscription list
      *
+     * @return RedirectResponse
      * @var string $token
      */
     public function unsubscribe($token) {
@@ -127,6 +130,7 @@ class SubscriptionController extends Controller
         if (isset($subscriber))
         if ($subscriber->count() > 0 && $subscriber->is_subscribed == 1 &&$subscriber->update(['is_subscribed' => 0])) {
             session()->flash('info', trans('shop::app.subscription.unsubscribed'));
+            Mail::send(new UnsubscriptionEmail($subscriber->email));
         } else {
             session()->flash('info', trans('shop::app.subscription.already-unsub'));
         }

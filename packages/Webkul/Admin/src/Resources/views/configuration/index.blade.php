@@ -164,14 +164,14 @@
                     document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
                         btn.addEventListener('click', evt => {
                             evt.preventDefault();
-                            
+
                             // Show edit page
                             setupEditPage(btn.parentElement);
                         });
                     });
 
                     function setupEditPage(url) {
-                        fetch('/public/admin/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                        fetch('/public/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
                             .then(response => {
                                 return response.json();
                             })
@@ -180,7 +180,7 @@
                                     if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
                                         document.querySelector('[name='+key+']').value = response[key];
                                     }
-                                } 
+                                }
                                 const inp = document.createElement('input');
                                 inp.type="hidden";
                                 inp.value = response.id;
@@ -189,13 +189,13 @@
                                 document.querySelector('#addLocation').click();
                             })
                         ;
-                        
+
                     }
                 }
             </script>
         @elseif(strpos(request()->url(), 'notifications') !== false)
-        
-            @include('admin::configuration.notification.create') 
+
+            @include('admin::configuration.notification.create')
             @include('admin::configuration.notification.store')
             @include('admin::configuration.notification.edit')
 
@@ -206,7 +206,7 @@
             @include('admin::configuration.email.smtp')
 
         @else
-        
+
             <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
                 <div class="page-header">
@@ -280,9 +280,9 @@
             try {
                 locationPageSetup();
             } catch (error) {
-                
+
             }
-            
+
         });
 
     </script>

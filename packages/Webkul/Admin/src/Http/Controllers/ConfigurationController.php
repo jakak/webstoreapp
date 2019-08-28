@@ -168,7 +168,7 @@ class ConfigurationController extends Controller
         return Storage::download($config['value']);
     }
 
-    public function newLocation (Request $request) 
+    public function newLocation (Request $request)
     {
         return view ( 'admin::configuration.location', ['config' => $this->configTree]);
     }
@@ -186,10 +186,10 @@ class ConfigurationController extends Controller
         return redirect()->back();
     }
 
-    public function deleteLocation ($location) 
+    public function deleteLocation ($location)
     {
         $location = Location::where('location', $location)->first();
-        
+
         if ($location) {
             $location->delete();
         }
@@ -209,7 +209,7 @@ class ConfigurationController extends Controller
     {
         $admin = \Webkul\User\Models\Admin::find($request->user);
         if ($request->has('id') && $admin) {
-            
+
             $recipient = StoreNotification::find($request->id)->first();
 
             $recipient->update([
@@ -227,8 +227,8 @@ class ConfigurationController extends Controller
                     session()->flash('error', 'User is already a recipient');
                     return redirect()->back();
                 }
-                
-                
+
+
                 StoreNotification::create([
                     'name' => $admin->name,
                     'email' => $admin->email,
@@ -239,7 +239,7 @@ class ConfigurationController extends Controller
                 session()->flash('success', 'Recipient added successfully');
             }
         }
-        
+
 
         return redirect()->back();
     }
@@ -264,7 +264,7 @@ class ConfigurationController extends Controller
         ]);
     }
 
-    public function sendTestEmail($email) 
+    public function sendTestEmail($email)
     {
         try {
             Mail::to($email)->send(new TestNotificationMail());
@@ -274,6 +274,7 @@ class ConfigurationController extends Controller
         }
 
         session()->flash('success', 'Email sent successfully');
+
         return redirect()->back();
     }
 
@@ -282,13 +283,13 @@ class ConfigurationController extends Controller
         $request->validate([
             'host' => 'required',
             'port' => 'required|numeric',
-            'username' => 'required|email',
+            'username' => 'required|string',
             'password' => 'required',
             'encryption' => 'required'
         ]);
         $settings = MailSetting::first();
         $data = $request->all();
-        
+
         if ($settings) {
             $this->uploadImage($request, $settings);
             if ($data['logo']) {

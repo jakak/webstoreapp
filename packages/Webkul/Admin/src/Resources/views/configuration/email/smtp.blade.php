@@ -41,12 +41,21 @@
             <div class="control-group" :class="[errors.has('encryption') ? 'has-error' : '']">
                 <label for="encryption" class="required">{{ __('admin::app.settings.email.encryption') }}</label>
                 <select name="encryption" class="control" id="" required>
+                    @if($emailConfig)
                     <option value="TLS" {{ $emailConfig->encryption == 'TLS' ? 'selected' : '' }}>
                         TLS
                     </option>
                     <option value="SSL" {{ $emailConfig->encryption == 'SSL' ? 'selected' : '' }}>
                         SSL
                     </option>
+                    @else
+                        <option value="TLS" selected>
+                            TLS
+                        </option>
+                        <option value="SSL">
+                            SSL
+                        </option>
+                    @endif
                 </select>
                 <span class="control-error" v-if="errors.has('encryption')">@{{ errors.first('encryption') }}</span>
             </div>

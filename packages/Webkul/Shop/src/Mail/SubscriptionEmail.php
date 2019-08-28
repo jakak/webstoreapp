@@ -7,6 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Traits\HelpsMail;
+use Webkul\Core\Models\Channel;
 
 /**
  * Subscriber Mail class
@@ -17,13 +18,15 @@ use App\Traits\HelpsMail;
 class SubscriptionEmail extends Mailable
 {
     use Queueable, SerializesModels, HelpsMail;
-    
+
     public $subscriptionData;
-    
+    private $channel;
+
     public function __construct($subscriptionData)
     {
         $this->setConfig();
         $this->subscriptionData = $subscriptionData;
+        $this->channel = Channel::first();
     }
     /**
      * Build the message.
@@ -33,7 +36,8 @@ class SubscriptionEmail extends Mailable
     public function build()
     {
         return $this->to($this->subscriptionData['email'])
-            ->subject('subscription email')
+            ->from($this->channel->email, $this->channel->name)
+            ->subject('Newsletter subscription confirmed')
             ->view('shop::emails.customer.subscription-email')->with('data', ['content' => 'You Are Subscribed', 'token' => $this->subscriptionData['token']]);
     }
 }
