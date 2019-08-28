@@ -30,8 +30,11 @@
                 }
             }
             .columnContainer {
-                display: block;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 width:  70%;
+                margin-left: 20px;
             }
             .card {
                 position: relative;

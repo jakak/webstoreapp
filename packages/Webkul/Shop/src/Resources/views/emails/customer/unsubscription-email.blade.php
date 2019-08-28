@@ -28,11 +28,15 @@
             .columnContainer{
                 display:block !important;
                 width:100% !important;
+                margin: auto 0;
             }
         }
         .columnContainer {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             width:  70%;
+            margin: auto 0;
         }
         .card {
             position: relative;
@@ -62,7 +66,7 @@
     <title></title>
 </head>
 
-<body style='margin:0;padding:0;' class="columnContainer">
+<body style='padding:0;' class="columnContainer">
 <img src="{{ asset(\App\MailSetting::first()->logo, 'storage') }}" alt="" height='50px' style="margin:5px;">
 
 <div class="card text-left">

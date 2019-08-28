@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Webkul\Core\Models\Channel;
 
 class UnsubscriptionEmail extends Mailable
 {
@@ -22,6 +23,7 @@ class UnsubscriptionEmail extends Mailable
     {
         //
         $this->email = $email;
+        $this->channel = Channel::first();
     }
 
     /**
