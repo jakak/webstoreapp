@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Webkul\Admin\Facades\Configuration;
+use Webkul\Core\Models\Channel;
 use Webkul\Core\Repositories\CoreConfigRepository as CoreConfig;
 use Webkul\Core\Tree;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
@@ -45,6 +46,7 @@ class ConfigurationController extends Controller
      * @var array
      */
     protected $configTree;
+    private $channel;
 
     /**
      * Create a new controller instance.
@@ -59,6 +61,8 @@ class ConfigurationController extends Controller
         $this->coreConfig = $coreConfig;
 
         $this->_config = request('_config');
+
+        $this->channel = Channel::first();
 
         $this->prepareConfigTree();
 
@@ -283,12 +287,12 @@ class ConfigurationController extends Controller
         $request->validate([
             'host' => 'required',
             'port' => 'required|numeric',
-            'username' => 'required|string',
             'password' => 'required',
             'encryption' => 'required'
         ]);
         $settings = MailSetting::first();
         $data = $request->all();
+        $data['username'] = $this->channel->email;
 
         if ($settings) {
             $this->uploadImage($request, $settings);

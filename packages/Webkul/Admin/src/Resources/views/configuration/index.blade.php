@@ -12,6 +12,12 @@
         .capitalize-tr tr {
             text-transform: capitalize;
         }
+        @if(strpos(request()->url(), 'smtp') !== false)
+            .image-wrapper .image-item {
+                width: 100px !important;
+                height: 100px !important;
+            }
+        @endif
     </style>
 @endsection
 
