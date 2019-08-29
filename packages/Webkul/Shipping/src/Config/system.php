@@ -123,10 +123,6 @@ return [
         'key' => 'notifications.smtp',
         'name' => 'Email Configuration',
         'sort' => 3
-    ], /*[
-        'key' => 'email.smtp',
-        'name' => 'SMTP Protocol',
-        'sort' => 1
-    ],*/
+    ],
 
 ];
