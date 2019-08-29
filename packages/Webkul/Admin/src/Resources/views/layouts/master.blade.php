@@ -53,6 +53,10 @@
                 background-color: #569ff7;
                 color: #fff;
             }
+            .flatpickr-day.selected {
+                background-color: #79C142 !important;
+                border-color: #79C142 !important;
+            }
         </style>
 
         @yield('head')
