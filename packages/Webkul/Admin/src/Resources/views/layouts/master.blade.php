@@ -15,7 +15,7 @@
             .select2.select2-container {
                 box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
                 border: 1px solid #c7c7c7;
-                padding: 3px 10px 3px 10px;
+                padding: 3px 5px 3px 5px;
                 margin-top: 10px;
                 margin-bottom: 5px;
                 font-size: 15px;
@@ -28,6 +28,7 @@
                 -webkit-border-radius: 7px 7px 0 0;
                 -moz-border-radius: 7px 7px 0 0;
                 border-radius: 7px 7px 0 0;
+                border-bottom-color: #fff;
             }
             .select2.select2-container .selection .select2-selection {
                 border: none;
@@ -35,12 +36,16 @@
             .select2-container--default .select2-selection--single .select2-selection__arrow {
                 top: 4px;
             }
+            .select2-container--default .select2-results__option {
+                padding: 8px 13px;
+                font-size: 15px;
+            }
             .select2-container--default .select2-results__option[aria-selected=true] {
                 background-color: #fff;
                 color: #3a3a3a;
             }
             .select2-container--default .select2-results__option.select2-results__option--highlighted {
-                background-color: #0675B6;
+                background-color: #79C142;
                 color: #fff;
             }
         </style>
