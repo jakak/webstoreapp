@@ -194,16 +194,16 @@
                 }
             </script>
         @elseif(strpos(request()->url(), 'notifications') !== false)
-
-            @include('admin::configuration.notification.create')
-            @include('admin::configuration.notification.store')
-            @include('admin::configuration.notification.edit')
-
-        @elseif(strpos(request()->url(), 'mail') !== false)
-            @php
-                $emailConfig = \App\MailSetting::first();
-            @endphp
-            @include('admin::configuration.email.smtp')
+            @if (strpos(request()->url(), 'smtp') !== false)
+                @php
+                    $emailConfig = \App\MailSetting::first();
+                @endphp
+                @include('admin::configuration.email.smtp')
+            @else
+                @include('admin::configuration.notification.create')
+                @include('admin::configuration.notification.store')
+                @include('admin::configuration.notification.edit')
+            @endif
 
         @else
 
