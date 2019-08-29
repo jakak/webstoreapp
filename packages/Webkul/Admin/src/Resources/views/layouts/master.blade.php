@@ -120,7 +120,11 @@
             $(document).ready(function() {
                 $('select').select2({
                     minimumResultsForSearch: Infinity,
-                    width: 'element'
+                    width: 'resolve'
+                })
+                $('select.filter-column-select').select2({
+                    minimumResultsForSearch: Infinity,
+                    width: '100%'
                 })
             })
         </script>
