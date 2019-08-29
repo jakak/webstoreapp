@@ -171,7 +171,7 @@
                     });
 
                     function setupEditPage(url) {
-                        fetch('/public/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                        fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
                             .then(response => {
                                 return response.json();
                             })
