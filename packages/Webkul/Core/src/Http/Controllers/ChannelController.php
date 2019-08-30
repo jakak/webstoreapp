@@ -2,6 +2,7 @@
 
 namespace Webkul\Core\Http\Controllers;
 
+use App\MailSetting;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
@@ -129,19 +130,21 @@ class ChannelController extends Controller
         ]);
 
         Event::fire('core.channel.update.before', $id);
-        
+
         $data = request()->all();
-        
+
         if ($request->receives_notification == "on") {
             $data['receives_notification'] = 1;
         } else {
-           $data['receives_notification'] = 0; 
+           $data['receives_notification'] = 0;
         }
 
         $channel = $this->channel->update($data, $id);
         // dd($channel);
         Event::fire('core.channel.update.after', $channel);
-
+        $mailSetting = MailSetting::first();
+        $mailSetting->username = $channel->email;
+        $mailSetting->update();
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Channel']));
 
         return redirect()->route($this->_config['redirect']);
