@@ -26,8 +26,6 @@
 
         <div class="page-content">
             <div class="control-group">
-                <label>{{ __('admin::app.settings.email.logo') }}
-
                 <image-wrapper size="small" :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'"
                                input-name="logo" :multiple="false" :images='"{{ asset($emailConfig->logo ?? '') }}"'
                                url-transform="no-transform"></image-wrapper>

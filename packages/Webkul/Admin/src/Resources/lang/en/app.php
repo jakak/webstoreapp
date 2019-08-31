@@ -12,7 +12,7 @@ return [
     'layouts' => [
         'my-account' => 'My Account',
         'logout' => 'Logout',
-        'visit-shop' => 'Visit Shop',
+        'storefront' => 'Storefront',
 		'manage-paystack' => 'Manage Paystack',
         'dashboard' => 'Dashboard',
         'sales' => 'Sales',
@@ -202,11 +202,12 @@ return [
         ],
 
         'users' => [
-            'title' => 'User',
-            'add-user-title' => 'Add User',
-            'edit-user-title' => 'Edit User',
-            'save-btn-title' => 'Save User',
+            'title' => 'Users',
+            'add-user-title' => 'Add Staff',
+            'edit-user-title' => 'Modify Account',
+            'save-btn-title' => 'Save',
             'general' => 'General',
+			'staff-profile' => 'Staff Profile',
             'email' => 'Email',
             'name' => 'Name',
             'password' => 'Password',
@@ -216,10 +217,10 @@ return [
             'status' => 'Status',
             'account-is-active' => 'Account is Active',
             'current-password' => 'Enter Current Password',
-            'confirm-delete' => 'Confirm Delete This Account',
+            'confirm-delete' => 'Confirm to delete this account!',
             'confirm-delete-title' => 'Confirm password before delete',
             'delete-last' => 'At least one admin is required.',
-            'delete-success' => 'Success! User deleted',
+            'delete-success' => 'Success! Staff account deleted',
             'incorrect-password' => 'The password you entered is incorrect',
         ],
 
@@ -362,7 +363,7 @@ return [
             'disabled' => 'Disabled',
             'add-variant-title' => 'Add Variant',
             'variant-already-exist-message' => 'Variant with same attribute options already exists.',
-            'add-image-btn-title' => 'Add Image',
+            'add-image-btn-title' => 'Upload Image',
             'mass-delete-success' => 'All the selected index of products have been deleted successfully',
             'mass-update-success' => 'All the selected index of products have been updated successfully'
         ],
@@ -702,7 +703,7 @@ return [
         'customers' => [
             'add-title' => 'Add Customer',
             'edit-title' => 'Edit Customer',
-            'title' => 'Customers',
+            'title' => 'Customer Details',
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
             'gender' => 'Gender',

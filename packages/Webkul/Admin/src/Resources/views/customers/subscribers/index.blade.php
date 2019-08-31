@@ -13,11 +13,19 @@
                 <h1>{{ __('admin::app.customers.subscribers.title') }}</h1>
             </div>
 
-            {{-- <div class="page-action">
-                <a href="{{ route('admin.subscribers.store') }}" class="btn btn-md btn-primary">
+            <div class="page-action">
+				<div class="export" @click="showModal('downloadDataGrid')">
+                    <i class="export-icon"></i>
+                    <span >
+                        {{ __('admin::app.export.export') }}
+                    </span>
+                </div>
+				
+                {{--
+				<a href="{{ route('admin.subscribers.store') }}" class="btn btn-md btn-primary">
                     {{ __('admin::app.customers.subscribers.add-title') }}
-                </a>
-            </div> --}}
+                </a> --}}
+            </div>
         </div>
 
         <div class="page-content">

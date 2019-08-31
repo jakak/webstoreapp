@@ -34,18 +34,6 @@
                         <h1>
                             Location
                         </h1>
-
-                        <div class="control-group">
-                            <select class="control" id="locale-switcher" name="locale">
-                                @foreach (core()->getAllLocales() as $localeModel)
-
-                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                        {{ $localeModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
 
                     <div class="page-action">
