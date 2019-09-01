@@ -16,7 +16,6 @@ use App\Mail\TestNotificationMail;
 use App\StoreNotification;
 use Illuminate\Support\Facades\Mail;
 use App\MailSetting;
-use App\Traits\HelpsMail;
 
 /**
  * Configuration controller
@@ -26,7 +25,6 @@ use App\Traits\HelpsMail;
  */
 class ConfigurationController extends Controller
 {
-    use HelpsMail;
     /**
      * Display a listing of the resource.
      *

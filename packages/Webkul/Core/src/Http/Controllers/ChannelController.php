@@ -143,8 +143,10 @@ class ChannelController extends Controller
         // dd($channel);
         Event::fire('core.channel.update.after', $channel);
         $mailSetting = MailSetting::first();
-        $mailSetting->username = $channel->email;
-        $mailSetting->update();
+        if ($mailSetting) {
+            $mailSetting->username = $channel->email;
+            $mailSetting->update();
+        }
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Channel']));
 
         return redirect()->route($this->_config['redirect']);

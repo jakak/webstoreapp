@@ -34,6 +34,7 @@ class TestNotificationMail extends Mailable
      */
     public function build()
     {
+        // dd($this->mailSetting);
         return $this->from($this->channel->email, $this->channel->name)
                     ->view('mail.test');
     }
