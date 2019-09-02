@@ -7,7 +7,7 @@ use App\Traits\HelpsMail;
 class CustomMailTransportManager extends TransportManager
 {
     use HelpsMail;
-    
+
     public $mailSetting;
 
     public function __construct($app)
@@ -17,7 +17,9 @@ class CustomMailTransportManager extends TransportManager
         if ($this->mailSetting) {
 
             $this->app['config']['mail'] = [
-                'driver'        => env('MAIL_DRIVER'),
+                // Hard coding this since we don't interact with .env for other properties
+                'driver'        => 'smtp',
+                // ^^^ ^^^
                 'host'          => $this->mailSetting->host,
                 'port'          => $this->mailSetting->port,
                 'encryption'    => $this->mailSetting->encryption,
@@ -25,5 +27,5 @@ class CustomMailTransportManager extends TransportManager
                 'password'      => $this->mailSetting->password,
             ];
         }
-    }    
+    }
 }

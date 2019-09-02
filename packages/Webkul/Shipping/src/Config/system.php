@@ -87,7 +87,7 @@ return [
                 'validation' => 'required',
                 'channel_based' => true,
                 'locale_based' => true
-            ], 
+            ],
         ]
     ], [
         'key'   => 'sales.othermethods',
@@ -106,7 +106,7 @@ return [
             'type',
             'status',
             'actions'
-        ] 
+        ]
     ], [
         'key' => 'notifications',
         'name' => 'Notifications',
@@ -120,13 +120,9 @@ return [
         'name' => 'Customer Notifications',
         'sort' => 2
     ], [
-        'key' => 'email',
+        'key' => 'notifications.smtp',
         'name' => 'Email Configuration',
-        'sort' => 4
-    ], [
-        'key' => 'email.smtp',
-        'name' => 'SMTP Protocol',
-        'sort' => 1
+        'sort' => 3
     ],
-    
+
 ];

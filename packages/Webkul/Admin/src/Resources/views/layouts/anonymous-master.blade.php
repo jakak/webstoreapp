@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+        <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
 
         <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
@@ -83,7 +83,10 @@
 
                     <div class="footer">
                         <p>
-                            <i class="fas fa-arrow-left"></i> <a href="{{ route('shop.home.index') }}">Store Front</a> | <a href="https://haqqman.com/webmaster" target="_blank">Webmaster</a>
+                            <a href="{{ route('shop.home.index') }}">Storefront <i class="fas fa-external-link-alt"></i></a>
+                        </p>
+						<p>
+                            Need help? <a href="https://haqqman.com/webmaster" target="_blank">Get support</a>
                         </p>
                     </div>
 

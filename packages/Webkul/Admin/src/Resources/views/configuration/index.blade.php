@@ -12,6 +12,12 @@
         .capitalize-tr tr {
             text-transform: capitalize;
         }
+        @if(strpos(request()->url(), 'smtp') !== false)
+            .image-wrapper .image-item {
+                width: 100px !important;
+                height: 100px !important;
+            }
+        @endif
     </style>
 @endsection
 
@@ -28,18 +34,6 @@
                         <h1>
                             Location
                         </h1>
-
-                        <div class="control-group">
-                            <select class="control" id="locale-switcher" name="locale">
-                                @foreach (core()->getAllLocales() as $localeModel)
-
-                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                        {{ $localeModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
 
                     <div class="page-action">
@@ -171,7 +165,7 @@
                     });
 
                     function setupEditPage(url) {
-                        fetch('/public/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                        fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
                             .then(response => {
                                 return response.json();
                             })
@@ -194,16 +188,16 @@
                 }
             </script>
         @elseif(strpos(request()->url(), 'notifications') !== false)
-
-            @include('admin::configuration.notification.create')
-            @include('admin::configuration.notification.store')
-            @include('admin::configuration.notification.edit')
-
-        @elseif(strpos(request()->url(), 'mail') !== false)
-            @php
-                $emailConfig = \App\MailSetting::first();
-            @endphp
-            @include('admin::configuration.email.smtp')
+            @if (strpos(request()->url(), 'smtp') !== false)
+                @php
+                    $emailConfig = \App\MailSetting::first();
+                @endphp
+                @include('admin::configuration.email.smtp')
+            @else
+                @include('admin::configuration.notification.create')
+                @include('admin::configuration.notification.store')
+                @include('admin::configuration.notification.edit')
+            @endif
 
         @else
 

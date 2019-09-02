@@ -15,12 +15,6 @@
                         {{ __('admin::app.users.users.edit-user-title') }}
                     </h1>
                 </div>
-
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.users.users.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -28,7 +22,7 @@
                     @csrf()
                     <input name="_method" type="hidden" value="PUT">
 
-                    <accordian :title="'{{ __('admin::app.users.users.general') }}'" :active="true">
+                    <accordian :title="'{{ __('admin::app.users.users.staff-profile') }}'" :active="true">
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label for="name" class="required">{{ __('admin::app.users.users.name') }}</label>
@@ -90,6 +84,14 @@
                             </div>
                         </div>
                     </accordian>
+                </div>
+            </div>
+			<hr color="#79C142">			
+			<div class="page-header">
+                <div class="page-action">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.users.users.save-btn-title') }}
+                    </button>
                 </div>
             </div>
         </form>

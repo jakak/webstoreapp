@@ -69,7 +69,7 @@
     }
 
     const setupEditPage = url => {
-        fetch(`/public/storemanager/configuration/notifications/store/recipient/${url.search.substring(1)}/`)
+        fetch(`/storemanager/configuration/notifications/store/recipient/${url.search.substring(1)}/`)
             .then(response => {
                 return response.json();
             })
