@@ -39,8 +39,16 @@
                 top: 4px;
             }
             .select2-dropdown {
-                border-color: #79C142;
+                background-color: white;
+                border: 1px solid #79C142;
+                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
                 border-radius: 7px;
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                left: -100000px;
+                width: 100%;
+                z-index: 1051;
             }
             .select2-container--default .select2-results__option {
                 padding: 8px 13px;
@@ -51,7 +59,7 @@
                 color: #3a3a3a;
             }
             .select2-container--default .select2-results__option.select2-results__option--highlighted {
-                background-color: #569ff7;
+                background-color: #79C142;
                 color: #fff;
             }
             .flatpickr-day.selected {
@@ -128,13 +136,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('select').select2({
+                $('select.control[name]').select2({
                     minimumResultsForSearch: Infinity,
                     width: 'resolve'
-                })
-                $('select.filter-column-select').select2({
-                    minimumResultsForSearch: Infinity,
-                    width: '100%'
                 })
             })
         </script>
