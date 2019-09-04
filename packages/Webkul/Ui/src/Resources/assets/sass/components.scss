@@ -29,17 +29,16 @@
     justify-content: flex-start;
 
     .control {
-        background: #ffffff;
-        border: 2px solid $control-border-color;
-        border-right: none;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        border-radius: 3px;
-        height: 36px;
-        width: 360px;
-        padding-left: 10px;
-        font-size: 15px;
-        color: #8E8E8E;
+      background: #ffffff;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+      border: 1px solid #C7C7C7;
+      border-right: none;
+      border-radius: 7px 0 0 7px;
+      height: 36px;
+      width: 360px;
+      padding-left: 10px;
+      font-size: 15px;
+      color: #8E8E8E;
     }
 
     .contorl:focus {
@@ -47,13 +46,12 @@
     }
 
     .icon-wrapper {
-        border: 2px solid $control-border-color;
-        border-radius: 3px;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        height: 36px;
-        width: 36px;
-        margin-left: -1px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+      border: 1px solid #C7C7C7;
+      border-radius: 0 7px 7px 0;
+      height: 36px;
+      width: 36px;
+      margin-left: -1px;
 
         .search-icon {
             margin-top: 3px;
@@ -63,15 +61,20 @@
 }
 
 .dropdown-header {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 36px;
-    width: 202px;
-    border: 2px solid $control-border-color;
-    border-radius: 3px;
-    color: #8E8E8E;
-    padding: 0px 5px 0px 5px;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 36px;
+  width: 202px;
+  color: #8E8E8E;
+  padding: 0 5px 0 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #C7C7C7;
+  border-radius: 7px;
 
     .arrow-icon-down {
         float: right;
