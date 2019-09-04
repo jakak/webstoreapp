@@ -486,18 +486,19 @@ h2 {
     }
 
     .control {
-        background: #fff;
-        border: 2px solid $control-border-color;
-        @include border-radius(3px);
-        width: 70%;
-        height: 36px;
-        display: inline-block;
-        vertical-align: middle;
-        transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 0px 10px;
-        font-size: 15px;
-        margin-top: 10px;
-        margin-bottom: 5px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+      border: 1px solid #C7C7C7;
+      border-radius: 7px;
+      width: 70%;
+      height: 36px;
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0 10px;
+      font-size: 15px;
+      margin-top: 10px;
+      margin-bottom: 5px;
 
         &:focus {
             border-color: $brand-color;

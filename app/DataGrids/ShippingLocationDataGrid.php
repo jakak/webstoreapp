@@ -3,8 +3,7 @@
 namespace App\DataGrids;
 
 use Webkul\Ui\DataGrid\DataGrid;
-use App\Location;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ShippingLocationDataGrid extends DataGrid
 {
@@ -15,8 +14,7 @@ class ShippingLocationDataGrid extends DataGrid
     {
          $queryBuilder = DB::table('locations as location')
                 ->addSelect('location.location', 'location.state', 'location.country', 'location.rate', 'location.type', 'location.description', 'location.status');
-        // $queryBuilder = Location::addSelect('location', 'state', 'country', 'rate', 'type', 'description','status');
-        
+
         $this->setQueryBuilder($queryBuilder);
     }
 
@@ -69,9 +67,9 @@ class ShippingLocationDataGrid extends DataGrid
             'searchable' => false,
             'sortable' => true,
         ]);
-        
+
     }
-    
+
     public function prepareActions() {
         $this->addAction([
             'type' => 'Edit',

@@ -277,5 +277,9 @@ Route::group(['middleware' => ['web', 'theme', 'locale', 'currency']], function 
             });
         });
     });
+    // External pages route starts here
+    Route::get('/pages/{page}', function($page) {
+        return $page;
+    });
     //customer routes end here
 });

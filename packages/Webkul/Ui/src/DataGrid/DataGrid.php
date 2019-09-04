@@ -163,7 +163,7 @@ abstract class DataGrid
     /**
      * To find the alias of the column and by taking the column name.
      *
-     * @return string
+     * @return array
      */
     public function findColumnType($columnAlias)
     {

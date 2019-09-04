@@ -25,18 +25,18 @@
                         <div slot="body">
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.logo') }}
-        {{-- {{dd($channel->logo)}} --}}
+
                                 <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? 'storage/' . $channel->logo : '' }}"' ></image-wrapper>
                             </div>
-        
+
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.favicon') }}
-        
+
                                 <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? 'storage/' . $channel->favicon : '' }}"' ></image-wrapper>
                             </div>
                         </div>
                     </accordian>
-        
+
                     <accordian :title="'Body Content'" :active="false">
                         <div slot="body">
                             <div class="control-group">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </accordian>
-        
+
                     <accordian :title="'Footer Content'" :active="false">
                         <div slot="body">
                             <div class="control-group">
@@ -62,7 +62,7 @@
                 <input type="submit" style="display: none" id="submit">
             </form>
         </div>
-        
+
     </div>
 @endsection
 

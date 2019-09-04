@@ -2,6 +2,7 @@
 
 namespace Webkul\Admin\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
@@ -78,9 +79,9 @@ class ConfigurationController extends Controller
         foreach (config('core') as $item) {
             $tree->add($item);
         }
-        // dd(config('core'));
+
         $tree->items = core()->sortItems($tree->items);
-        // dd($tree);
+
         $this->configTree = $tree;
     }
 
@@ -332,6 +333,31 @@ class ConfigurationController extends Controller
             if ($request->hasFile($file)) {
                 return 'storage/' . request()->file($file)->store($dir);
             }
+        }
+    }
+
+    public function createNewPage(Request $request)
+    {
+        if ($request->input('name') !== ''
+            && $request->input('url') !== ''
+            && $request->input('content') !== '') {
+            if ($request->has('id')) {
+//                Update the page
+                session()->flash('success', 'Page updated successfully');
+                return redirect()->back();
+            } else {
+                try {
+                    $page = Page::create($request->all());
+                    session()->flash('success', 'Page created successfully');
+                    return redirect()->back();
+                } catch (\Exception $e) {
+                    session()->flash('error', $e->getMessage());
+                    return redirect()->back();
+                }
+            }
+        } else {
+            session()->flash('error', 'Some required content are missing.');
+            return redirect()->back();
         }
     }
 }
