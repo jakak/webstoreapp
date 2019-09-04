@@ -11,27 +11,27 @@
 }
 .dashboard-icon {
     @extend %menu-properties;
-    background-image: url("../images/Icon-Dashboard.svg");
+    background-image: url("../images/dashboard.svg");
 }
 .sales-icon {
     @extend %menu-properties;
-    background-image: url("../images/Icon-Sales.svg");
+    background-image: url("../images/sales.svg");
 }
 .catalog-icon {
     @extend %menu-properties;
-    background-image: url("../images/Icon-Catalog.svg");
+    background-image: url("../images/catalog.svg");
 }
 .customer-icon {
     @extend %menu-properties;
-    background-image: url("../images/Icon-Customers.svg");
+    background-image: url("../images/customers.svg");
 }
 .configuration-icon {
     @extend %menu-properties;
-    background-image: url("../images/Icon-Configure.svg");
+    background-image: url("../images/configuration.svg");
 }
 .settings-icon {
     @extend %menu-properties;
-    background-image: url("../images/Icon-Settings.svg");
+    background-image: url("../images/settings.svg");
 }
 
 .angle-right-icon {
@@ -222,27 +222,27 @@
 
 .active {
     .dashboard-icon {
-        background-image: url("../images/Icon-Dashboard-Active.svg");
+        background-image: url("../images/dashboard-active.svg");
     }
 
     .sales-icon {
-        background-image: url("../images/Icon-Sales-Active.svg");
+        background-image: url("../images/sales-active.svg");
     }
 
     .catalog-icon {
-        background-image: url("../images/Icon-Catalog-Active.svg");
+        background-image: url("../images/catalog-active.svg");
     }
 
     .customer-icon {
-        background-image: url("../images/Icon-Customers-Active.svg");
+        background-image: url("../images/customers-active.svg");
     }
 
     .settings-icon {
-        background-image: url("../images/Icon-Settings-Active.svg");
+        background-image: url("../images/settings-active.svg");
     }
 
     .configuration-icon {
-        background-image: url("../images/Icon-Configure-Active.svg");
+        background-image: url("../images/configure-active.svg");
     }
 
     > .arrow-down-icon {
@@ -256,24 +256,24 @@
     }
 
     &.dashboard-icon {
-        background-image: url("../images/Icon-Dashboard-Active.svg");
+        background-image: url("../images/dashboard-active.svg");
     }
 
     &.customer-icon {
-        background-image: url("../images/Icon-Customers-Active.svg");
+        background-image: url("../images/customers-active.svg");
     }
 
     &.sales-icon {
-        background-image: url("../images/Icon-Sales-Active.svg");
+        background-image: url("../images/sales-active.svg");
     }
 
     &.settings-icon {
-        background-image: url("../images/Icon-Settings-Active.svg");
+        background-image: url("../images/settings-active.svg");
     }
 
     &.configuration-icon {
         @extend %menu-properties;
-        background-image: url("../images/Icon-Configure-Active.svg");
+        background-image: url("../images/configure-active.svg");
     }
 
     &.arrow-down-icon {
