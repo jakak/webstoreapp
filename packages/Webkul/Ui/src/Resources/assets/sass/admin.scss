@@ -23,7 +23,13 @@ a:active {
     text-decoration: none;
     color: $brand-color;
 }
-
+.avatar {
+    .active {
+        background-image: url(../images/Webstore-Avatar.svg);
+        width: 30px;
+        height: 30px;
+    }
+}
 textarea {
     resize: none;
 }
@@ -214,7 +220,7 @@ h2 {
                 a:active,
                 a:visited,
                 a:focus {
-                    color: #333333;
+                    color: #4F5B64;
                     display: block;
                 }
                 a:hover {
