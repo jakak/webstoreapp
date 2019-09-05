@@ -133,7 +133,7 @@
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+        <script src="{{ asset('vendor/webkul/ui/assets/js/select-dropdown.js') }}"></script>
         <script>
             $(document).ready(function() {
                 $('select.control[name]').select2({
