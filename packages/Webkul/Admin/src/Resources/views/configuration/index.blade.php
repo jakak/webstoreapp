@@ -25,7 +25,7 @@
     <div class="content">
         <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
         <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
-        {{-- {{ dd(request()->url()) }} --}}
+
         @if (strpos(request()->url(), 'othermethod') !== false)
             <div class="content" id="locationPage">
                 <div class="page-header">
@@ -147,46 +147,111 @@
                     </div>
                 </div>
             </form>
-            <script>
-                function locationPageSetup() {
-                    console.log(document.querySelector('#addLocation'));
-                    document.querySelector('#addLocation').addEventListener('click', function addLocation (evt) {
-                        document.querySelector('#addLocationPage').classList.remove('d-none');
-                        document.querySelector('#locationPage').classList.add('d-none');
-                    });
+        @elseif(strpos(request()->url(), 'pages') !== false)
+            <div class="content" id="managePagesPage">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>
+                            Manage Pages
+                        </h1>
+                    </div>
 
-                    document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
-                        btn.addEventListener('click', evt => {
-                            evt.preventDefault();
+                    <div class="page-action">
+                        <button id="addNewPage" class="btn btn-md btn-primary">
+                            Add New Page
+                        </button>
+                    </div>
+                </div>
 
-                            // Show edit page
-                            setupEditPage(btn.parentElement);
-                        });
-                    });
+                <div class="page-content capitalize-tr">
+                    @inject('pageGrid', 'App\DataGrids\ManagePagesDataGrid')
+                    {!! $pageGrid->render() !!}
+                </div>
+            </div>
+            <form method="POST" action="{{ route('admin.configuration.pages.create') }}" class="d-none" id="createNewPage">
+                <div class="page-header">
 
-                    function setupEditPage(url) {
-                        fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
-                            .then(response => {
-                                return response.json();
-                            })
-                            .then(response => {
-                                for (const key in response) {
-                                    if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
-                                        document.querySelector('[name='+key+']').value = response[key];
-                                    }
-                                }
-                                const inp = document.createElement('input');
-                                inp.type="hidden";
-                                inp.value = response.id;
-                                inp.name = "id"
-                                document.querySelector('#addLocationPage').appendChild(inp);
-                                document.querySelector('#addLocation').click();
-                            })
-                        ;
+                    <div class="page-title">
+                        <h1>
+                            {{ __('admin::app.configuration.title') }}
+                        </h1>
 
-                    }
-                }
-            </script>
+                        <div class="control-group">
+                            <select class="control" id="locale-switcher" name="locale">
+                                @foreach (core()->getAllLocales() as $localeModel)
+
+                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                        {{ $localeModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="page-action">
+                        <button type="submit" class="btn btn-md btn-primary">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="form-container">
+                        @csrf
+                        <accordian :title="'Meta Description'">
+                            <div slot="body">
+                                <div class="control-group text" :class="">
+                                    <label for="meta_title" class="required" >
+                                        Meta Title
+                                    </label>
+                                    <textarea id="meta_title" name="meta_title" class="control"></textarea>
+                                </div>
+                                <div class="control-group text" :class="">
+                                    <label for="meta_keywords" class="required" >
+                                        Meta Keywords
+                                    </label>
+                                    <textarea name="meta_keywords" id="meta_keywords" class="control"></textarea>
+                                </div>
+                                <div class="control-group text" :class="">
+                                    <label for="meta_description" class="required" >
+                                        Meta Description
+                                    </label>
+                                    <textarea name="meta_description" id="meta_description" class="control"></textarea>
+                                </div>
+                            </div>
+                        </accordian>
+                        <accordian :title="'Page Details'" :active="true">
+                            <div slot="body">
+                                <div class="control-group text" :class="">
+                                    <label for="page_name" class="required" >
+                                        Page Name
+                                    </label>
+                                    <input type="text" required v-validate="'required'" class="control" id="page_name" name="name" value="{{ old('name') ?: null }}" data-vv-as="state">
+                                </div>
+                                <div class="control-group text" :class="">
+                                    <label for="page_url" class="required" >
+                                        Page URL
+                                    </label>
+                                    <input readonly type="text" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
+                                </div>
+                                <div class="control-group text" :class="">
+                                    <label for="page_status" class="required" >
+                                        Page Publish Status
+                                    </label>
+                                    <select name="status" class="control" id="page_status">
+                                        <option value="Enabled">Enabled</option>
+                                        <option value="Disabled">Disabled</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="page_content">Page Content</label>
+                                    <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
+                                </div>
+                            </div>
+                        </accordian>
+                    </div>
+                </div>
+            </form>
         @elseif(strpos(request()->url(), 'notifications') !== false)
             @if (strpos(request()->url(), 'smtp') !== false)
                 @php
@@ -198,9 +263,7 @@
                 @include('admin::configuration.notification.store')
                 @include('admin::configuration.notification.edit')
             @endif
-
         @else
-
             <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
                 <div class="page-header">
@@ -270,17 +333,130 @@
                 var query = '?channel=' + $('#channel-switcher').val() + '&locale=' + $('#locale-switcher').val();
 
                 window.location.href = "{{ route('admin.configuration.index', [request()->route('slug'), request()->route('slug2')]) }}" + query;
-            })
-            try {
-                locationPageSetup();
-            } catch (error) {
-
+            });
+            /*
+            * @description function that sets up the page for other javascript needs:
+            * edit page that doesn't need to be loaded, fetch data via ajax, etc.
+            */
+            function pageSetup(page, editHandler) {
+                let addButton, entityCreationPage, entityPage;
+                if (page === 'location') {
+                    addButton = document.querySelector('#addLocation');
+                    entityCreationPage = document.querySelector('#addLocationPage');
+                    entityPage = document.querySelector('#locationPage');
+                } else if (page === 'managePages') {
+                    addButton = document.querySelector('#addNewPage');
+                    entityCreationPage = document.querySelector('#createNewPage');
+                    entityPage = document.querySelector('#managePagesPage');
+                }
+                addButton.addEventListener('click', function addLocation (evt) {
+                    entityCreationPage.classList.remove('d-none');
+                    entityPage.classList.add('d-none');
+                    if (initEditor) {
+                      initEditor()
+                    }
+                });
+                document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
+                    btn.addEventListener('click', evt => {
+                        evt.preventDefault();
+                        editHandler(btn.parentElement);
+                    });
+                });
             }
+
+            @if(strpos(request()->url(), 'othermethod') !== false)
+                function setupEditPage(url) {
+                    fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                        .then(response => {
+                          return response.json();
+                        })
+                        .then(response => {
+                            for (const key in response) {
+                                if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                  document.querySelector('[name='+key+']').value = response[key];
+                                }
+                            }
+                            const inp = document.createElement('input');
+                            inp.type="hidden";
+                            inp.value = response.id;
+                            inp.name = "id";
+                            document.querySelector('#addLocationPage').appendChild(inp);
+                            document.querySelector('#addLocation').click();
+                        })
+                    ;
+                }
+                pageSetup('location', setupEditPage);
+            @elseif(strpos(request()->url(), 'pages') !== false)
+                String.prototype.sluggify = function() {
+                    return this.toLowerCase()
+                        .replace(/[^\w ]+/g,'')
+                        .replace(/ +/g,'-')
+                    ;
+                };
+                document.querySelector('#page_name').addEventListener('keyup', function(){
+                  document.querySelector('#page_url').value = (
+                    location.origin + '/pages/' + this.value.sluggify());
+                });
+
+                document.querySelectorAll('.capitalize-tr tr').forEach(tr => {
+                  const linker = tr.querySelector('td:nth-child(2)');
+                  if (linker) {
+                    linker.style.textTransform = "lowercase"
+                  }
+                });
+
+                function editPage(url) {
+                    url = decodeURI(url.search.substring(1)).sluggify();
+                    fetch(`/storemanager/configuration/pages/${url}/details`)
+                        .then(response => response.json())
+                        .then(response => {
+                          for (const key in response) {
+                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                              document.querySelector('[name='+key+']').value = response[key];
+                              if (key === 'content') {
+                                document.querySelector('[name='+key+']').innerHTML = response[key];
+                                initEditor();
+                              }
+                              else if (key === 'status') {
+                                // TODO: Figure out how to update the select2 component.
+                              }
+                            }
+                          }
+                          const inp = document.createElement('input');
+                          inp.type="hidden";
+                          inp.value = response.id;
+                          inp.name = "id";
+                          document.querySelector('#createNewPage').appendChild(inp);
+                          document.querySelector('#addNewPage').click();
+                        })
+                      .catch(error => {
+                        console.error(error);
+                      })
+
+                }
+                pageSetup('managePages', editPage);
+            @endif
 
         });
 
     </script>
+    <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
+    <script>
+        function initEditor() {
+          $(document).ready(function () {
+            tinymce.init({
+              selector: 'textarea#page_content',
+              height: 200,
+              width: "100%",
+              plugins: 'image imagetools media wordcount save fullscreen code',
+              toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+              image_advtab: true,
+              valid_elements : '*[*]'
+            });
+          });
+        }
+    </script>
     <script type="text/x-template" id="country-template">
 
         <div>
