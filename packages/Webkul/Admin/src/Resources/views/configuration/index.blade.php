@@ -12,6 +12,11 @@
         .capitalize-tr tr {
             text-transform: capitalize;
         }
+        .back-arrow {
+            color: #a2a2a2;
+            cursor: pointer;
+            margin-right: 7px;
+        }
         @if(strpos(request()->url(), 'smtp') !== false)
             .image-wrapper .image-item {
                 width: 100px !important;
@@ -173,22 +178,9 @@
 
                     <div class="page-title">
                         <h1>
-                            {{ __('admin::app.configuration.title') }}
+                           <span class="back-arrow"><i class="fa fa-angle-left"></i></span> Page Details
                         </h1>
-
-                        <div class="control-group">
-                            <select class="control" id="locale-switcher" name="locale">
-                                @foreach (core()->getAllLocales() as $localeModel)
-
-                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                        {{ $localeModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
-
                     <div class="page-action">
                         <button type="submit" class="btn btn-md btn-primary">
                             {{ __('admin::app.configuration.save-btn-title') }}
@@ -198,57 +190,49 @@
                 <div class="page-content">
                     <div class="form-container">
                         @csrf
-                        <accordian :title="'Meta Description'">
-                            <div slot="body">
-                                <div class="control-group text" :class="">
-                                    <label for="meta_title" class="required" >
-                                        Meta Title
-                                    </label>
-                                    <textarea id="meta_title" name="meta_title" class="control"></textarea>
-                                </div>
-                                <div class="control-group text" :class="">
-                                    <label for="meta_keywords" class="required" >
-                                        Meta Keywords
-                                    </label>
-                                    <textarea name="meta_keywords" id="meta_keywords" class="control"></textarea>
-                                </div>
-                                <div class="control-group text" :class="">
-                                    <label for="meta_description" class="required" >
-                                        Meta Description
-                                    </label>
-                                    <textarea name="meta_description" id="meta_description" class="control"></textarea>
-                                </div>
-                            </div>
-                        </accordian>
-                        <accordian :title="'Page Details'" :active="true">
-                            <div slot="body">
-                                <div class="control-group text" :class="">
-                                    <label for="page_name" class="required" >
-                                        Page Name
-                                    </label>
-                                    <input type="text" required v-validate="'required'" class="control" id="page_name" name="name" value="{{ old('name') ?: null }}" data-vv-as="state">
-                                </div>
-                                <div class="control-group text" :class="">
-                                    <label for="page_url" class="required" >
-                                        Page URL
-                                    </label>
-                                    <input readonly type="text" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
-                                </div>
-                                <div class="control-group text" :class="">
-                                    <label for="page_status" class="required" >
-                                        Page Publish Status
-                                    </label>
-                                    <select name="status" class="control" id="page_status">
-                                        <option value="Enabled">Enabled</option>
-                                        <option value="Disabled">Disabled</option>
-                                    </select>
-                                </div>
-                                <div class="control-group">
-                                    <label for="page_content">Page Content</label>
-                                    <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
-                                </div>
-                            </div>
-                        </accordian>
+                        <div class="control-group text" :class="">
+                            <label for="page_name" class="required" >
+                                Page Name
+                            </label>
+                            <input type="text" required v-validate="'required'" class="control" id="page_name" name="name" value="{{ old('name') ?: null }}" data-vv-as="state">
+                        </div>
+                        <div class="control-group text" :class="">
+                            <label for="page_url" class="required" >
+                                Page URL
+                            </label>
+                            <input readonly type="text" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
+                        </div>
+                        <div class="control-group text" :class="">
+                            <label for="page_status" class="required" >
+                                Page Publish Status
+                            </label>
+                            <select name="status" class="control" id="page_status">
+                                <option value="Enabled">Enabled</option>
+                                <option value="Disabled">Disabled</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="page_content">Page Content</label>
+                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
+                        </div>
+                        <div class="control-group text" :class="">
+                            <label for="meta_title" class="required" >
+                                Meta Title
+                            </label>
+                            <input id="meta_title" name="meta_title" class="control">
+                        </div>
+                        <div class="control-group text" :class="">
+                            <label for="meta_keywords" class="required" >
+                                Meta Keywords
+                            </label>
+                            <input name="meta_keywords" id="meta_keywords" class="control">
+                        </div>
+                        <div class="control-group text" :class="">
+                            <label for="meta_description" class="required" >
+                                Meta Description
+                            </label>
+                            <textarea name="meta_description" id="meta_description" class="control"></textarea>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -396,6 +380,11 @@
                 document.querySelector('#page_name').addEventListener('keyup', function(){
                   document.querySelector('#page_url').value = (
                     location.origin + '/pages/' + this.value.sluggify());
+                });
+
+                document.querySelector('.back-arrow').addEventListener('click', function() {
+                  document.querySelector('#createNewPage').classList.add('d-none');
+                  document.querySelector('#managePagesPage').classList.remove('d-none');
                 });
 
                 document.querySelectorAll('.capitalize-tr tr').forEach(tr => {

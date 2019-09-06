@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>{{ core()->getCurrentChannel()->business_name ?? 'My Webstore Space' }}</title>
+    <title>{{ $page->meta_title }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,6 @@
     @section('seo')
         <meta name="description" content="{{ $page->meta_description }}"/>
         <meta name="keywords" content="{{ $page->meta_keywords }}">
-        <meta name="title" content="{{ $page->meta_title }}">
     @show
 
     @stack('css')
