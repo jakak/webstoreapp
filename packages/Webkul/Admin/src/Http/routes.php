@@ -97,8 +97,9 @@ Route::group(['middleware' => ['web']], function () {
                 ->name('admin.configuration.email');
 
             Route::get('/configuration/pages/edit', 'Webkul\Admin\Http\Controllers\ConfigurationController@newLocation')->name('admin.configuration.pages.edit');
-            Route::get('/configuration/pages/{page}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deleteLocation')->name('admin.configuration.pages.delete');
+            Route::get('/configuration/pages/{page}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deletePage')->name('admin.configuration.pages.delete');
             Route::post('/configuration/pages/create', 'Webkul\Admin\Http\Controllers\ConfigurationController@createNewPage')->name('admin.configuration.pages.create');
+            Route::get('/configuration/pages/{page}/details', 'Webkul\Admin\Http\Controllers\ConfigurationController@getPageDetails');
             Route::post('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@store')->defaults('_config', [
                 'redirect' => 'admin.configuration.index'
             ])->name('admin.configuration.index.store');

@@ -278,8 +278,6 @@ Route::group(['middleware' => ['web', 'theme', 'locale', 'currency']], function 
         });
     });
     // External pages route starts here
-    Route::get('/pages/{page}', function($page) {
-        return $page;
-    });
+    Route::get('/pages/{page}', 'App\Http\Controllers\PageController@showPage');
     //customer routes end here
 });

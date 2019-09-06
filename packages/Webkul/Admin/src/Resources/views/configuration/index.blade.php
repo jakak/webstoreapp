@@ -234,6 +234,15 @@
                                     </label>
                                     <input readonly type="text" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
                                 </div>
+                                <div class="control-group text" :class="">
+                                    <label for="page_status" class="required" >
+                                        Page Publish Status
+                                    </label>
+                                    <select name="status" class="control" id="page_status">
+                                        <option value="Enabled">Enabled</option>
+                                        <option value="Disabled">Disabled</option>
+                                    </select>
+                                </div>
                                 <div class="control-group">
                                     <label for="page_content">Page Content</label>
                                     <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
@@ -335,7 +344,6 @@
                     addButton = document.querySelector('#addLocation');
                     entityCreationPage = document.querySelector('#addLocationPage');
                     entityPage = document.querySelector('#locationPage');
-
                 } else if (page === 'managePages') {
                     addButton = document.querySelector('#addNewPage');
                     entityCreationPage = document.querySelector('#createNewPage');
@@ -344,6 +352,9 @@
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
                     entityPage.classList.add('d-none');
+                    if (initEditor) {
+                      initEditor()
+                    }
                 });
                 document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
                     btn.addEventListener('click', evt => {
@@ -394,9 +405,36 @@
                   }
                 });
 
-                pageSetup('managePages', function () {
+                function editPage(url) {
+                    url = decodeURI(url.search.substring(1)).sluggify();
+                    fetch(`/storemanager/configuration/pages/${url}/details`)
+                        .then(response => response.json())
+                        .then(response => {
+                          for (const key in response) {
+                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                              document.querySelector('[name='+key+']').value = response[key];
+                              if (key === 'content') {
+                                document.querySelector('[name='+key+']').innerHTML = response[key];
+                                initEditor();
+                              }
+                              else if (key === 'status') {
+                                // TODO: Figure out how to update the select2 component.
+                              }
+                            }
+                          }
+                          const inp = document.createElement('input');
+                          inp.type="hidden";
+                          inp.value = response.id;
+                          inp.name = "id";
+                          document.querySelector('#createNewPage').appendChild(inp);
+                          document.querySelector('#addNewPage').click();
+                        })
+                      .catch(error => {
+                        console.error(error);
+                      })
 
-                });
+                }
+                pageSetup('managePages', editPage);
             @endif
 
         });
@@ -405,17 +443,19 @@
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
-      $(document).ready(function () {
-        tinymce.init({
-          selector: 'textarea#page_content',
-          height: 200,
-          width: "100%",
-          plugins: 'image imagetools media wordcount save fullscreen code',
-          toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
-          image_advtab: true,
-          valid_elements : '*[*]'
-        });
-      });
+        function initEditor() {
+          $(document).ready(function () {
+            tinymce.init({
+              selector: 'textarea#page_content',
+              height: 200,
+              width: "100%",
+              plugins: 'image imagetools media wordcount save fullscreen code',
+              toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+              image_advtab: true,
+              valid_elements : '*[*]'
+            });
+          });
+        }
     </script>
     <script type="text/x-template" id="country-template">
 

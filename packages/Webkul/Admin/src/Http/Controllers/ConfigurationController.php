@@ -343,6 +343,8 @@ class ConfigurationController extends Controller
             && $request->input('content') !== '') {
             if ($request->has('id')) {
 //                Update the page
+                $page = Page::find($request->all()['id']);
+                $page->update($request->all());
                 session()->flash('success', 'Page updated successfully');
                 return redirect()->back();
             } else {
@@ -359,5 +361,22 @@ class ConfigurationController extends Controller
             session()->flash('error', 'Some required content are missing.');
             return redirect()->back();
         }
+    }
+
+    public function getPageDetails($pageSlug)
+    {
+        $str = str_replace('-', ' ', $pageSlug);
+        $page = Page::where('name', $str)->first();
+
+        return $page;
+    }
+
+    public function deletePage($page)
+    {
+        $page = Page::where('name', $page)->first();
+        $page->delete();
+
+        session()->flash('success', 'Page deleted successfully.');
+        return redirect()->back();
     }
 }
