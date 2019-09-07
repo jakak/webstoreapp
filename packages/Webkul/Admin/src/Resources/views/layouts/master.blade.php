@@ -29,6 +29,7 @@
                 -webkit-border-radius: 7px 7px 0 0;
                 -moz-border-radius: 7px 7px 0 0;
                 border-radius: 7px 7px 0 0;
+                border-color: #79C142;
                 border-bottom-color: #fff;
             }
             .select2.select2-container .selection .select2-selection {
@@ -36,6 +37,18 @@
             }
             .select2-container--default .select2-selection--single .select2-selection__arrow {
                 top: 4px;
+            }
+            .select2-dropdown {
+                background-color: white;
+                border: 1px solid #79C142;
+                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+                border-radius: 7px;
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                left: -100000px;
+                width: 100%;
+                z-index: 1051;
             }
             .select2-container--default .select2-results__option {
                 padding: 8px 13px;
@@ -48,6 +61,10 @@
             .select2-container--default .select2-results__option.select2-results__option--highlighted {
                 background-color: #79C142;
                 color: #fff;
+            }
+            .flatpickr-day.selected {
+                background-color: #79C142 !important;
+                border-color: #79C142 !important;
             }
         </style>
 
@@ -116,16 +133,12 @@
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+        <script src="{{ asset('vendor/webkul/ui/assets/js/select-dropdown.js') }}"></script>
         <script>
             $(document).ready(function() {
-                $('select').select2({
+                $('select.control[name]').select2({
                     minimumResultsForSearch: Infinity,
                     width: 'resolve'
-                })
-                $('select.filter-column-select').select2({
-                    minimumResultsForSearch: Infinity,
-                    width: '100%'
                 })
             })
         </script>

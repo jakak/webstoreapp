@@ -31,7 +31,7 @@ body {
 
 .navbar-top {
     height: 60px;
-    background: #ffffff;
+    background: #4F5B64;
     font-size: 0;
     @include box-shadow(0 3px 6px 0 rgba(0, 0, 0, 0.05));
     border-bottom: 1px solid $border-color;
@@ -64,8 +64,8 @@ body {
             text-align: left;
             min-width: 50px;
             position: relative;
-            padding: 12px 0px;
-            margin: 0px 25px 0px 30px;
+            padding: 15px 0px;
+            margin: 0px 0px 0px -5px;
             font-size: 15px;
             cursor: pointer;
             position: relative;
@@ -87,7 +87,7 @@ body {
             }
 
             i.icon {
-                margin-left: 10px;
+                margin-left: -5px;
             }
         }
     }
@@ -117,7 +117,7 @@ body {
 
             &.active {
                 a {
-                    color: #0041ff;
+                    color: #79C142;
                 }
             }
         }
@@ -353,7 +353,7 @@ body {
                         margin-top: 10px;
 
                         .name {
-                            color: #0041FF;
+                            color: #79C142;
                         }
 
                         .info {
@@ -412,7 +412,7 @@ body {
             .data {
                 padding-top: 3px;
                 font-size: 22px;
-                color: #0041FF;
+                color: #79C142;
 
                 .progress {
                     font-size: 14px;

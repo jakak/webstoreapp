@@ -1,4 +1,4 @@
-const { mix } = require("laravel-mix");
+const mix = require("laravel-mix");
 require("laravel-mix-merge-manifest");
 
 var publicPath = 'publishable/assets';
@@ -14,6 +14,7 @@ mix.js(
     ],
     "js/ui.js"
 )
+    .copy(__dirname + "/src/Resources/assets/js/select-dropdown.js", publicPath + "/js")
     .copy(__dirname + "/src/Resources/assets/images", publicPath + "/images")
     .sass(__dirname + "/src/Resources/assets/sass/app.scss", "css/ui.css")
     .sass(__dirname + "/src/Resources/assets/sass/admin.scss", "css/admin-ui.css")

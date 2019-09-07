@@ -1,5 +1,6 @@
 {
-    "/js/ui.js": "/js/ui.js",
-    "/css/ui.css": "/css/ui.css?id=01fe116e2faa46eb0e70",
-    "/css/admin-ui.css": "/css/admin-ui.css?id=0b9bb6156472ccb66d66"
+    "/js/ui.js": "/js/ui.js?id=0d711ef80baadb05f732",
+    "/css/ui.css": "/css/ui.css?id=f34dd6098986273d5ef2",
+    "/css/admin-ui.css": "/css/admin-ui.css?id=26036611c121fb6c3cc3",
+    "/js/select-dropdown.js": "/js/select-dropdown.js?id=12f43b6b378a4b7ddb3a"
 }

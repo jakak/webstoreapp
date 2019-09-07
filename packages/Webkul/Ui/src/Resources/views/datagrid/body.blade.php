@@ -1,4 +1,5 @@
 <tbody>
+{{--{{ dd($records) }}--}}
     @if (count($records))
         @foreach ($records as $key => $record)
             <tr>
@@ -32,6 +33,10 @@
                             @else
                                 <td>{{ core()->formatBasePrice($record->{$columnIndex}) }}</td>
                             @endif
+                        @elseif($column['type'] == 'button')
+                            <td>
+                                <a href="{{ $record->url }}" target="_blank" class="btn btn-sm btn-primary">Preview</a>
+                            </td>
                         @else
                             <td>{{ $record->{$columnIndex} }}</td>
                         @endif

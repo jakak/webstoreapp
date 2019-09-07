@@ -34,7 +34,7 @@
 
                 <div class="page-action">
                     <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.products.save-btn-title') }}
+                        {{ __('admin::app.catalog.products.proceed') }}
                     </button>
                 </div>
             </div>
@@ -45,8 +45,7 @@
                 <?php $familyId = app('request')->input('family') ?>
                 <?php $sku = app('request')->input('sku') ?>
 
-                <accordian :title="'{{ __('admin::app.catalog.products.general') }}'" :active="true">
-                    <div slot="body">
+					<div slot="body">
 
                         <div class="control-group" :class="[errors.has('type') ? 'has-error' : '']">
                             <label for="type" class="required">{{ __('admin::app.catalog.products.product-type') }}</label>
@@ -83,7 +82,6 @@
                         </div>
 
                     </div>
-                </accordian>
 
                 @if ($familyId)
                     <accordian :title="'{{ __('admin::app.catalog.products.configurable-attributes') }}'" :active="true">

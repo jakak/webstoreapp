@@ -340,6 +340,7 @@ return [
             'add-title' => 'Add Product',
             'edit-title' => 'Edit Product',
             'save-btn-title' => 'Save Product',
+			'proceed' => 'Proceed',
             'general' => 'General',
             'product-type' => 'Product Type',
             'simple' => 'Simple',

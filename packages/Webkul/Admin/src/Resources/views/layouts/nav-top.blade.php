@@ -11,34 +11,34 @@
 
     <div class="navbar-top-right">
         <div class="profile">
-            <span class="avatar">
-            </span>
-			
-			<div class="profile-icon">
+            
+			<div class="profile-info">
 				<a href="#"><i class="far fa-bell"></i></a>
             </div>
 			
-			<div class="profile-icon">
+			<div class="profile-info">
 				<a href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}"><i class="fas fa-external-link-alt"></i></a>
             </div>
 
             <div class="profile-info">
                 <div class="dropdown-toggle">
                     <div style="display: inline-block; vertical-align: middle;">
-                        <span class="name">
+                        <i class="icon avatar active"></i>
+                    </div>                    
+                </div>
+
+                <div class="dropdown-list bottom-right">
+                    <div class="dropdown-container">
+                        <ul>
+							<span class="name">
                             {{ auth()->guard('admin')->user()->name }}
                         </span>
 
                         <span class="role">
                             {{ auth()->guard('admin')->user()->role['name'] }}
                         </span>
-                    </div>
-                    <i class="icon arrow-down-icon active"></i>
-                </div>
-
-                <div class="dropdown-list bottom-right">
-                    <div class="dropdown-container">
-                        <label>Account</label>
+                        </ul>
+						<hr color="#e8e8e8">
                         <ul>
 							<li>
                                 <a href="{{ route('admin.account.edit') }}">{{ trans('admin::app.layouts.my-account') }}</a>
