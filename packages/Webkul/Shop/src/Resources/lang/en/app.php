@@ -15,7 +15,7 @@ return [
     ],
 
     'home' => [
-        'page-title' => 'Bagisto - Home',
+        'page-title' => 'Webstore - Home',
         'featured-products' => 'Featured Products',
         'new-products' => 'New Products',
         'verify-email' => 'Verify Your Email Account',
@@ -47,36 +47,38 @@ return [
         'subscribe-newsletter' => 'Subscribe Newsletter',
         'subscribe' => 'Subscribe',
         'locale' => 'Locale',
+		'secure-shopping' => 'Secure Shopping',
+		'customer-care' => 'Customer Care',
         'currency' => 'Currency',
     ],
 
     'subscription' => [
         'unsubscribe' => 'Unsubcribe',
         'subscribe' => 'Subscribe',
-        'subscribed' => 'You Are Now Subscribed To Subscription Emails',
-        'not-subscribed' => 'You Cannot Be Subscribed To Subscription Emails, Try Again After Some time',
-        'already' => 'You Are Already Subscribed To Our Subscription List',
-        'unsubscribed' => 'You Are Unsubscribed From Bagisto Subscription Mails',
-        'already-unsub' => 'You Are Already Unsubscribed',
-        'not-subscribed' => 'Error! Mail Cannot Be Sent Currently, Please Try Again Later'
+        'subscribed' => 'Your newsletter subscription is successful.',
+        'not-subscribed' => 'Your newsletter subscription failed! Please try again later.',
+        'already' => 'You Are Already Subscribed To Our Subscription List.',
+        'unsubscribed' => 'You are already subscribed to our newsletters.',
+        'already-unsub' => 'You are already unsubscribed.',
+        'not-subscribed' => 'Error! Email could not be sent. Please try again later.'
     ],
 
     'search' => [
-        'no-results' => 'No Results Found',
-        'page-title' => 'Bagisto - Search',
-        'found-results' => 'Search Results Found',
-        'found-result' => 'Search Result Found'
+        'no-results' => 'No results found',
+        'page-title' => 'Webstore - Search',
+        'found-results' => 'Search results found',
+        'found-result' => 'Search result found'
     ],
 
     'reviews' => [
         'title' => 'Title',
         'add-review-page-title' => 'Add Review',
         'write-review' => 'Write a review',
-        'review-title' => 'Give Your Review a Title',
+        'review-title' => 'Give your review a title',
         'product-review-page-title' => 'Product Review',
         'rating-reviews' => 'Rating & Reviews',
-        'submit' => 'SUBMIT',
-        'delete-all' => 'All Reviews has deleted Succesfully',
+        'submit' => 'Submit',
+        'delete-all' => 'All reviews has been deleted Succesfully',
         'ratingreviews' => ':rating Ratings & :review Reviews',
         'star' => 'Star',
         'percentage' => ':percentage %',
@@ -85,7 +87,7 @@ return [
 
     'customer' => [
         'signup-text' => [
-            'account_exists' => 'Already have an account',
+            'account_exists' => 'You already have an account.',
             'title' => 'Sign In'
         ],
 
@@ -103,19 +105,19 @@ return [
             'conditions' => 'Conditions',
             'using' => 'by using this website',
             'agreement' => 'Agreement',
-            'success' => 'Account created successfully. A verification email has beeen sent to your email address',
-            'success-verify-email-not-sent' => 'Account created successfully, but verification email is not sent',
-            'failed' => 'Error! Cannot Create Your Account, Try Again Later',
-            'already-verified' => 'Your Account is already verified Or Please Try Sending A New Verification Email Again',
-            'verification-not-sent' => 'Error! Problem In Sending Verification Email, Try Again Later',
-            'verification-sent' => 'Verification Email Sent',
-            'verified' => 'Your Account Has Been Verified, Try To Login Now',
-            'verify-failed' => 'We Cannot Verify Your Mail Account',
-            'dont-have-account' => 'You Do Not Have Account With Us',
+            'success' => 'Account created successfully. A verification email has beeen sent to your email address.',
+            'success-verify-email-not-sent' => 'Account created successfully, but verification email is not sent.',
+            'failed' => 'Error! Account cannot be created at this time. Please try again later.',
+            'already-verified' => 'Your account is already verified or try sending a new verification email again.',
+            'verification-not-sent' => 'Error! Problem in sending verification email. Try again later.',
+            'verification-sent' => 'Verification email sent.',
+            'verified' => 'Your account has been verified. You can now login.',
+            'verify-failed' => 'We cannot verify your email account.',
+            'dont-have-account' => 'You do not have an account on this Webstore.',
         ],
 
         'login-text' => [
-            'no_account' => 'Do not have account',
+            'no_account' => 'Account does not exist',
             'title' => 'Sign Up',
         ],
 
@@ -134,7 +136,7 @@ return [
         ],
 
         'forgot-password' => [
-            'title' => 'Recover Password',
+            'title' => 'Recover password',
             'email' => 'Email',
             'submit' => 'Submit',
             'page_title' => 'Customer - Forgot Password Form'
@@ -485,7 +487,7 @@ return [
     ],
 
     'webkul' => [
-        'copy-right' => '© Copyright 2018 Webkul Software, All rights reserved'
+        'copy-right' => '© 2019 Webstore by Haqqman &mdash; All rights reserved'
     ],
 
     'response' => [

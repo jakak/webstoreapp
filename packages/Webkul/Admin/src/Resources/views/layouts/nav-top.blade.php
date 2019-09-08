@@ -53,6 +53,9 @@
                             <li>
                                 <a href="https://dashboard.paystack.com" target="_blank">{{ trans('admin::app.layouts.manage-paystack') }}</a>
                             </li>
+							<li>
+                                <a href="#" target="_blank">{{ trans('admin::app.layouts.get-support') }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

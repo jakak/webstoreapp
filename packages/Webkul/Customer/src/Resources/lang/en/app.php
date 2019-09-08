@@ -2,16 +2,16 @@
 
 return [
     'wishlist' => [
-        'success' => 'Item Successfully Added To Wishlist',
-        'failure' => 'Item Cannot Be Added To Wishlist',
-        'already' => 'Item Already Present In Your Wishlist',
-        'removed' => 'Item Successfully Removed From Wishlist',
-        'remove-fail' => 'Item Cannot Be Removed From Wishlist',
-        'empty' => 'You Don\'t Have Any Items In Your Wishlist',
-        'select-options' => 'Need To Select Options Before Adding To Wishlist',
-        'remove-all-success' => 'All The Items From Your Wishlist Have Been Removed',
+        'success' => 'Item successfully added to wishlist.',
+        'failure' => 'Item cannot be added to wishlist.',
+        'already' => 'Item already exist in your wishlist.',
+        'removed' => 'Item successfully removed from wishlist.',
+        'remove-fail' => 'Item cannot be removed from wishlist.',
+        'empty' => 'You do not have any item in your wishlist.',
+        'select-options' => 'You need to select options before adding to wishlist.',
+        'remove-all-success' => 'All the items on your wishlist have been successfully removed.',
     ],
     'reviews' => [
-        'empty' => 'You Have Not Reviewed Any Of Product Yet'
+        'empty' => 'You have not reviewed any product yet.'
     ]
 ];

@@ -83,10 +83,10 @@
 
                     <div class="footer">
                         <p>
-                            <a href="{{ route('shop.home.index') }}">Storefront <i class="fas fa-external-link-alt"></i></a>
+                            <a href="{{ route('shop.home.index') }}">{{ trans('admin::app.layouts.storefront') }} <i class="fas fa-external-link-alt"></i></a>
                         </p>
 						<p>
-                            Need help? <a href="https://haqqman.com/webmaster" target="_blank">Get support</a>
+                            Need help? <a href="https://haqqman.com/webmaster" target="_blank">{{ trans('admin::app.layouts.get-support') }}</a>
                         </p>
                     </div>
 

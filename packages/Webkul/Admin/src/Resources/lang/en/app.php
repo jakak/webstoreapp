@@ -13,6 +13,8 @@ return [
         'my-account' => 'My Account',
         'logout' => 'Logout',
         'storefront' => 'Storefront',
+		'subscription' => 'Subscription',
+		'get-support' => 'Get Support',
 		'manage-paystack' => 'Manage Paystack',
         'dashboard' => 'Dashboard',
         'sales' => 'Sales',
