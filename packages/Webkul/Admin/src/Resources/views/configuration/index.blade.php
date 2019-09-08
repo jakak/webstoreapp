@@ -197,10 +197,10 @@
                             <input type="text" required v-validate="'required'" class="control" id="page_name" name="name" value="{{ old('name') ?: null }}" data-vv-as="state">
                         </div>
                         <div class="control-group text" :class="">
-                            <label for="page_url" class="required" >
-                                Page URL
+                            <label for="page_url">
+                                <strong>Page URL &mdash; </strong><span class="page_url"></span>
                             </label>
-                            <input readonly type="text" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
+                            <input readonly type="hidden" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
                         </div>
                         <div class="control-group text" :class="">
                             <label for="page_status" class="required" >
@@ -332,6 +332,8 @@
                     addButton = document.querySelector('#addNewPage');
                     entityCreationPage = document.querySelector('#createNewPage');
                     entityPage = document.querySelector('#managePagesPage');
+                    document.querySelector('.page_url').innerHTML = (
+                        location.origin + '/pages/' );
                 }
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
@@ -380,6 +382,8 @@
                 document.querySelector('#page_name').addEventListener('keyup', function(){
                   document.querySelector('#page_url').value = (
                     location.origin + '/pages/' + this.value.sluggify());
+                  document.querySelector('.page_url').innerHTML = (
+                    location.origin + '/pages/' + this.value.sluggify());
                 });
 
                 document.querySelector('.back-arrow').addEventListener('click', function() {
@@ -402,6 +406,9 @@
                           for (const key in response) {
                             if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
                               document.querySelector('[name='+key+']').value = response[key];
+                              if (key === 'url') {
+                                document.querySelector('.page_url').innerHTML = response[key];
+                              }
                               if (key === 'content') {
                                 document.querySelector('[name='+key+']').innerHTML = response[key];
                                 initEditor();
