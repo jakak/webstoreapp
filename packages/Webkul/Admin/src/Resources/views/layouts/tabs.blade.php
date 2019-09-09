@@ -1,11 +1,14 @@
-<div class="tabs">
+<div class="tabs"
+     @if(strpos(request()->url(), 'pages') !== false)
+     style="display: none"
+    @endif>
     @if (request()->route()->getName() != 'admin.configuration.index')
 
         <?php $keys = explode('.', $menu->currentKey);  ?>
 
 
         @if ($items = array_get($menu->items, implode('.children.', array_slice($keys, 0, 2)) . '.children'))
-        
+
             <ul>
 
                 @foreach (array_get($menu->items, implode('.children.', array_slice($keys, 0, 2)) . '.children') as $item)
@@ -17,7 +20,7 @@
                     </li>
 
                 @endforeach
-        
+
             </ul>
 
         @endif
