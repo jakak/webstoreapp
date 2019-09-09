@@ -27,7 +27,7 @@
                 <div class="form-container">
                     @csrf()
 
-                    <accordian :title="'{{ __('admin::app.users.users.general') }}'" :active="true">
+                    <accordian :title="'{{ __('admin::app.users.users.staff-profile') }}'" :active="true">
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label for="name" class="required">{{ __('admin::app.users.users.name') }}</label>
@@ -72,11 +72,10 @@
                             </div>
 
                             <div class="control-group">
-                                <label for="status">{{ __('admin::app.users.users.status') }}</label>
                                 <span class="checkbox">
                                     <input type="checkbox" id="status" name="status" value="1">
                                     <label class="checkbox-view" for="status"></label>
-                                    {{ __('admin::app.users.users.account-is-active') }}
+                                    {{ __('admin::app.users.users.account-status') }}
                                 </span>
                             </div>
                         </div>

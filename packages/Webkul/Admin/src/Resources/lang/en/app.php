@@ -204,12 +204,11 @@ return [
         ],
 
         'users' => [
-            'title' => 'Users',
+            'title' => 'Staff',
             'add-user-title' => 'Add Staff',
             'edit-user-title' => 'Modify Account',
             'save-btn-title' => 'Save',
-            'general' => 'General',
-			'staff-profile' => 'Staff Profile',
+            'staff-profile' => 'Staff Profile',
             'email' => 'Email',
             'name' => 'Name',
             'password' => 'Password',
@@ -217,7 +216,7 @@ return [
             'status-and-role' => 'Status and Role',
             'role' => 'Role',
             'status' => 'Status',
-            'account-is-active' => 'Account is Active',
+            'account-status' => 'Account Status',
             'current-password' => 'Enter Current Password',
             'confirm-delete' => 'Confirm to delete this account!',
             'confirm-delete-title' => 'Confirm password before delete',
