@@ -2,6 +2,8 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use Exception;
+use Throwable;
 use Webkul\Shop\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +16,7 @@ use Webkul\Sales\Repositories\OrderRepository;
 use App\Location;
 
 /**
- * Chekout controller for the customer and guest for placing order
+ * Checkout controller for the customer and guest for placing order
  *
  * @author    Jitendra Singh <jitendra@webkul.com>
  * @copyright 2018 Webkul Software Pvt Ltd (http://www.webkul.com)
@@ -38,8 +40,7 @@ class OnepageController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  Webkul\Attribute\Repositories\OrderRepository  $orderRepository
-     * @return void
+     * @param OrderRepository $orderRepository
      */
     public function __construct(OrderRepository $orderRepository)
     {
@@ -51,7 +52,7 @@ class OnepageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
     */
     public function index()
     {
@@ -67,8 +68,8 @@ class OnepageController extends Controller
     /**
      * Saves customer address.
      *
-     * @param  \Webkul\Checkout\Http\Requests\CustomerAddressForm $request
-     * @return \Illuminate\Http\Response
+     * @param CustomerAddressForm $request
+     * @return Response
     */
     public function saveAddress(CustomerAddressForm $request)
     {
@@ -83,7 +84,7 @@ class OnepageController extends Controller
     /**
      * Saves shipping method.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
     */
     public function saveShipping()
     {
@@ -100,8 +101,9 @@ class OnepageController extends Controller
     /**
      * Saves payment method.
      *
-     * @return \Illuminate\Http\Response
-    */
+     * @return Response
+     * @throws Throwable
+     */
     public function savePayment()
     {
         $payment = request()->get('payment');
@@ -110,7 +112,7 @@ class OnepageController extends Controller
             return response()->json(['redirect_url' => route('shop.checkout.cart.index')], 403);
 
         $cart = Cart::getCart();
-        
+
         $location = null;
         if ($cart->shipping_method !== 'free_free') {
             $location = Location::find($cart->shipping_method);
@@ -124,8 +126,9 @@ class OnepageController extends Controller
     /**
      * Saves order.
      *
-     * @return \Illuminate\Http\Response
-    */
+     * @return Response
+     * @throws Exception
+     */
     public function saveOrder()
     {
         if (Cart::hasError())
@@ -158,7 +161,7 @@ class OnepageController extends Controller
     /**
      * Order success page
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
     */
     public function success()
     {
@@ -171,26 +174,26 @@ class OnepageController extends Controller
     /**
      * Validate order before creation
      *
-     * @return mixed
+     * @throws Exception
      */
     public function validateOrder()
     {
         $cart = Cart::getCart();
 
         if (! $cart->shipping_address) {
-            throw new \Exception(trans('Please check shipping address.'));
+            throw new Exception(trans('Please check shipping address.'));
         }
 
         if (! $cart->billing_address) {
-            throw new \Exception(trans('Please check billing address.'));
+            throw new Exception(trans('Please check billing address.'));
         }
 
         if (! $cart->selected_shipping_rate && is_null(Location::find($cart->shipping_method))) {
-            throw new \Exception(trans('Please specify shipping method.'));
+            throw new Exception(trans('Please specify shipping method.'));
         }
 
         if (! $cart->payment) {
-            throw new \Exception(trans('Please specify payment method.'));
+            throw new Exception(trans('Please specify payment method.'));
         }
     }
 }
