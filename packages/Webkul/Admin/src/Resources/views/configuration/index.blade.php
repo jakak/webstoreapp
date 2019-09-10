@@ -23,6 +23,16 @@
                 height: 100px !important;
             }
         @endif
+        .hr {
+            background-color: #79C142;
+            border: none;
+            height: 2px;
+        }
+        .payment-footer a{
+            color: #3A3A3A;
+            margin-top: 7px;
+            display: inline-block;
+        }
     </style>
 @endsection
 
@@ -305,6 +315,20 @@
                 </div>
 
             </form>
+
+            @if(strpos(request()->url(), 'paystack'))
+                <footer class="payment-footer">
+                    <hr class="hr">
+                    <div>
+                        <div>
+                            <a target="_blank" href="https://dashboard.paystack.com/#/signup">Create a Free Paystack Account</a>
+                        </div>
+                        <div>
+                            <a target="_blank" href="https://paystack.com/why-choose-paystack">Learn About Paystack</a>
+                        </div>
+                    </div>
+                </footer>
+            @endif
         @endif
     </div>
 @stop

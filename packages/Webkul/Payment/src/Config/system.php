@@ -7,7 +7,7 @@ return [
         'sort'  => 3
     ], [
         'key'   => 'payment.paymentmethods',
-        'name'  => 'Payment Methods',
+        'name'  => 'Standard Payments',
         'sort'  => 1
     ], [
         'key' => 'payment.paymentmethods.cashondelivery',
