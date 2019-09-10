@@ -513,7 +513,7 @@ return [
     'settings' => [
         'themes' => [
             'title' => 'Theme Manager',
-            'design' => 'Web Space Theme',
+            'design' => 'Default Theme',
         ],
         'locales' => [
             'title' => 'Locales',
