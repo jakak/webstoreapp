@@ -1,5 +1,4 @@
 <?php
-use App\MailSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +10,3 @@ use App\MailSetting;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('testing-email', function () {
-    return view('mail.test',['mailSetting' => MailSetting::first()]);
-});

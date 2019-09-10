@@ -17,7 +17,7 @@
                     @endforeach
                     <optgroup label="Select Delivery Location">
                         @foreach ($location as $loc)
-                            <option value="{{ $loc->id }}">{{ $loc->location }}</option>    
+                            <option value="{{ $loc->id }}">{{ $loc->location }}</option>
                         @endforeach
                     </optgroup>
                 </select>
@@ -45,10 +45,3 @@
         </div>
     </div>
 </form>
-<script>
-    function () {
-        document.querySelector('#selected_location').addEventListener('change', function (evt) {
-            document.querySelector('#selected_label').innerHTML = "NGN";
-        })
-    }();
-</script>

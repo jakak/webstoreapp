@@ -3,6 +3,7 @@
 namespace Webkul\Payment;
 
 use Illuminate\Support\Facades\Config;
+use Throwable;
 use Webkul\Checkout\Facades\Cart;
 
 class Payment
@@ -12,6 +13,7 @@ class Payment
      * Returns all supported payment methods
      *
      * @return array
+     * @throws Throwable
      */
     public function getSupportedPaymentMethods()
     {
@@ -29,9 +31,19 @@ class Payment
                 ];
             }
         }
+        $paystack = app(Config::get('paystack')['paystack_payments']['class']);
+
+        if ($paystack->isAvailable()) {
+            array_push($paymentMethods, [
+                'method' => $paystack->getCode(),
+                'method_title' => $paystack->getTitle(),
+                'description' => $paystack->getDescription(),
+                'other_details' => $paystack->getOtherDetails() ?? null,
+            ]);
+        }
+
         $cart = Cart::getCart();
-        $paystack_key = core()->getConfigData('payment.paymentmethods.paystack_payments.public_key');
-        // return $cart;
+
         $data = [
             'paymentMethods'    => $paymentMethods,
             'cart'              => [
@@ -39,7 +51,7 @@ class Payment
                 'customer_name'  => $cart->customer_name,
             ],
         ];
-        
+
         return [
                 'jump_to_section' => 'payment',
                 'html' => view('shop::checkout.onepage.payment', $data)->render()

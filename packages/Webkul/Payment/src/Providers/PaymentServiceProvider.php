@@ -57,6 +57,10 @@ class PaymentServiceProvider extends ServiceProvider
         );
 
         $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/paystack.php', 'paystack'
+        );
+
+        $this->mergeConfigFrom(
             dirname(__DIR__) . '/Config/system.php', 'core'
         );
     }
