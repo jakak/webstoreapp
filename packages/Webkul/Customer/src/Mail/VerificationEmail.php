@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Webkul\Core\Models\Channel;
 
 /**
  * Verification Mail class
@@ -18,9 +19,11 @@ class VerificationEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $verificationData;
+    private $channel;
 
     public function __construct($verificationData) {
         $this->verificationData = $verificationData;
+        $this->channel = Channel::first();
     }
 
     /**
@@ -30,7 +33,9 @@ class VerificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->to($this->verificationData['email'])
+        return $this
+            ->from($this->channel->email, $this->channel->name)
+            ->to($this->verificationData['email'])
             ->subject('Action Required: Please verify your email')
             ->view('shop::emails.customer.verification-email')->with('data', ['email' => $this->verificationData['email'], 'token' => $this->verificationData['token']]);
     }
