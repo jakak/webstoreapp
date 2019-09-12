@@ -25,12 +25,12 @@
         </div>
         <div class="page-content">
             <div class="page-img">
-                <img src="{{ asset('https://res.cloudinary.com/haqqmancloud/image/upload/v1563697651/webstore.ng/storemanager/x0t3oejjpjhcsfbyf3sb.svg') }}" alt="">
+                <img src="https://res.cloudinary.com/webstore-cloud/image/upload/v1567933022/Theme%20Manager/webstore-theme-manager_kxmfch.svg" witdth="20%" alt="">
             </div>
             <div class="table">
                 <table class="table">
                     <thead>
-                        <tr style="height: 65px;">
+                        <tr style="height: 50px;">
                             <th style="width:80%">
                                 Current Theme
                             </th>

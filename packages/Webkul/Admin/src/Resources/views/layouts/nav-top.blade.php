@@ -41,10 +41,10 @@
 						<hr color="#e8e8e8">
                         <ul>
 							<li>
-                                <a href="{{ route('admin.account.edit') }}">{{ trans('admin::app.layouts.my-account') }}</a>
+                                <a href="{{ route('admin.account.edit') }}"><i class="fas fa-user"></i> {{ trans('admin::app.layouts.my-account') }}</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.session.destroy') }}">{{ trans('admin::app.layouts.logout') }}</a>
+                                <a href="{{ route('admin.session.destroy') }}"><i class="fas fa-sign-out-alt"></i> {{ trans('admin::app.layouts.logout') }}</a>
                             </li>
                         </ul>
 						<br>
@@ -52,6 +52,9 @@
                         <ul>
                             <li>
                                 <a href="https://dashboard.paystack.com" target="_blank">{{ trans('admin::app.layouts.manage-paystack') }}</a>
+                            </li>
+							<li>
+                                <a href="https://help.webstore.ng" target="_blank">{{ trans('admin::app.layouts.get-support') }}</a>
                             </li>
                         </ul>
                     </div>

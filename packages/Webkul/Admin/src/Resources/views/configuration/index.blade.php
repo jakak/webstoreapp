@@ -47,7 +47,7 @@
 
                     <div class="page-title">
                         <h1>
-                            Location
+                            Manage Locations
                         </h1>
                     </div>
 

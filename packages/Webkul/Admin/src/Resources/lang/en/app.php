@@ -13,6 +13,8 @@ return [
         'my-account' => 'My Account',
         'logout' => 'Logout',
         'storefront' => 'Storefront',
+		'subscription' => 'Subscription',
+		'get-support' => 'Get Support',
 		'manage-paystack' => 'Manage Paystack',
         'dashboard' => 'Dashboard',
         'sales' => 'Sales',
@@ -202,12 +204,11 @@ return [
         ],
 
         'users' => [
-            'title' => 'Users',
+            'title' => 'Staff',
             'add-user-title' => 'Add Staff',
             'edit-user-title' => 'Modify Account',
             'save-btn-title' => 'Save',
-            'general' => 'General',
-			'staff-profile' => 'Staff Profile',
+            'staff-profile' => 'Staff Profile',
             'email' => 'Email',
             'name' => 'Name',
             'password' => 'Password',
@@ -215,7 +216,7 @@ return [
             'status-and-role' => 'Status and Role',
             'role' => 'Role',
             'status' => 'Status',
-            'account-is-active' => 'Account is Active',
+            'account-status' => 'Account Status',
             'current-password' => 'Enter Current Password',
             'confirm-delete' => 'Confirm to delete this account!',
             'confirm-delete-title' => 'Confirm password before delete',
@@ -512,7 +513,7 @@ return [
     'settings' => [
         'themes' => [
             'title' => 'Theme Manager',
-            'design' => 'Web Space Theme',
+            'design' => 'Default Theme',
         ],
         'locales' => [
             'title' => 'Locales',
