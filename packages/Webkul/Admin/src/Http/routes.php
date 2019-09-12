@@ -76,11 +76,7 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::customers.reviews.index'
             ])->name('admin.customer.review.index');
 
-            // Configuration routes
-            Route::get('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@index')->defaults('_config', [
-                'view' => 'admin::configuration.index'
-            ])->name('admin.configuration.index');
-
+            // Configuration route
             Route::get('/configuration/sales/othermethods/addlocation/{location}/details', 'Webkul\Admin\Http\Controllers\ConfigurationController@getLocationDetails');
             Route::get('/configuration/sales/othermethods/addlocation/edit', 'Webkul\Admin\Http\Controllers\ConfigurationController@newLocation')->name('admin.configuration.location.edit');
             Route::get('/configuration/sales/othermethods/addlocation/{location}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deleteLocation')->name('admin.configuration.location.delete');
@@ -104,9 +100,15 @@ Route::group(['middleware' => ['web']], function () {
                 'redirect' => 'admin.configuration.index'
             ])->name('admin.configuration.index.store');
 
+            Route::get('configuration/{slug?}/{slug2?}', 'Webkul\Admin\Http\Controllers\ConfigurationController@index')->defaults('_config', [
+                'view' => 'admin::configuration.index'
+            ])->name('admin.configuration.index');
+
             Route::get('configuration/{slug?}/{slug2?}/{path}', 'Webkul\Admin\Http\Controllers\ConfigurationController@download')->defaults('_config', [
                 'redirect' => 'admin.configuration.index'
             ])->name('admin.configuration.download');
+
+
 
             // Reviews Routes
             Route::get('reviews/edit/{id}', 'Webkul\Product\Http\Controllers\ReviewController@edit')->defaults('_config',[

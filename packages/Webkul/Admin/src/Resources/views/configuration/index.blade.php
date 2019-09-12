@@ -38,7 +38,6 @@
 
 @section('content')
     <div class="content">
-        <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
         <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
 
         @if (strpos(request()->url(), 'othermethod') !== false)
@@ -70,18 +69,6 @@
                         <h1>
                             {{ __('admin::app.configuration.title') }}
                         </h1>
-
-                        <div class="control-group">
-                            <select class="control" id="locale-switcher" name="locale">
-                                @foreach (core()->getAllLocales() as $localeModel)
-
-                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                        {{ $localeModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
 
                     <div class="page-action">
@@ -99,7 +86,6 @@
 
                                     <label for="" class="required" >
                                         Location
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <input type="text" required v-validate="'required'" class="control" id="location" name="location" value="{{ old('location') ?: $location??null }}" data-vv-as="location">
                                 </div>
@@ -107,7 +93,6 @@
 
                                     <label for="" class="required" >
                                         State
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <input type="text" required v-validate="'required'" class="control" id="state" name="state" value="{{ old('state') ?: $state??null }}" data-vv-as="state">
                                 </div>
@@ -115,7 +100,6 @@
 
                                     <label for="" class="required" >
                                         Country
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <country></country>
                                 </div>
@@ -123,7 +107,6 @@
 
                                     <label for="rate">
                                         Rate
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <input type="text" required v-validate="'required'" class="control" id="rate" name="rate" value="{{ old('rate') ?: $rate??null }}" data-vv-as="rate">
                                 </div>
@@ -131,7 +114,6 @@
 
                                     <label for="" class="required" >
                                         Type
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <select type="text" v-validate="'required'" class="control" id="country" name="type">
                                         <option value="per order">Per Order</option>
@@ -142,7 +124,6 @@
 
                                     <label for="">
                                         Description
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <textarea v-validate="''" class="control" id="description" name="description" data-vv-as="'description'">{{ old('description') ?: '' }}</textarea>
                                 </div>
@@ -150,7 +131,6 @@
 
                                     <label for="" class="required" >
                                         Status
-                                        <span class="locale">[{{ $channel . '-' . $locale }}]</span>
                                     </label>
                                     <select type="text" v-validate="'required'" class="control" id="status" name="status">
                                         <option value="enabled">Enabled</option>
@@ -263,21 +243,15 @@
                 <div class="page-header">
 
                     <div class="page-title">
-                        <h1>
-                            {{ __('admin::app.configuration.title') }}
-                        </h1>
-
-                        <div class="control-group">
-                            <select class="control" id="locale-switcher" name="locale">
-                                @foreach (core()->getAllLocales() as $localeModel)
-
-                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                        {{ $localeModel->name }}
-                                    </option>
-
-                                @endforeach
-                            </select>
-                        </div>
+                        @if(strpos(request()->url(), 'paystack'))
+                            <h1>
+                                Configure Paystack Keys
+                            </h1>
+                        @else
+                            <h1>
+                                {{ __('admin::app.configuration.title') }}
+                            </h1>
+                        @endif
                     </div>
 
                     <div class="page-action">
@@ -294,18 +268,19 @@
                         @if ($groups = array_get($config->items, request()->route('slug') . '.children.' . request()->route('slug2') . '.children'))
 
                             @foreach ($groups as $key => $item)
-
-                                <accordian :title="'{{ __($item['name']) }}'" :active="true">
-                                    <div slot="body">
-
-                                        @foreach ($item['fields'] as $field)
-
-                                            @include ('admin::configuration.field-type', ['field' => $field])
-
-                                        @endforeach
-
-                                    </div>
-                                </accordian>
+                                @if(count($groups) === 1)
+                                    @foreach ($item['fields'] as $field)
+                                        @include ('admin::configuration.field-type', ['field' => $field])
+                                    @endforeach
+                                @else
+                                    <accordian :title="'{{ __($item['name']) }}'" :active="true">
+                                        <div slot="body">
+                                            @foreach ($item['fields'] as $field)
+                                                @include ('admin::configuration.field-type', ['field' => $field])
+                                            @endforeach
+                                        </div>
+                                    </accordian>
+                                @endif
 
                             @endforeach
 
