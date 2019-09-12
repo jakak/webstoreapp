@@ -4,6 +4,7 @@ namespace Webkul\Customer\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Event;
 use Webkul\Customer\Models\Customer;
 use Webkul\Customer\Http\Listeners\CustomerEventsHandler;
@@ -25,7 +26,11 @@ class SessionController extends Controller
      */
     protected $_config;
 
-    public function __construct()
+    /**
+     * @var Store
+     */
+    protected $session;
+    public function __construct(Store $session)
     {
         $this->middleware('customer')->except(['show','create']);
         $this->_config = request('_config');
@@ -74,6 +79,10 @@ class SessionController extends Controller
         //Event passed to prepare cart after login
         Event::fire('customer.after.login', $request->input('email'));
 
+        $intended = session()->pull('url.intended');
+        if (strpos($intended, 'verify-account')) {
+            return redirect()->to('/');
+        }
         return redirect()->intended(route($this->_config['redirect']));
     }
 
