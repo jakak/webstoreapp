@@ -3,11 +3,15 @@
 namespace Webkul\Product\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 use Webkul\Product\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
 class ProductImage extends Model
 {
+    Use Rememberable;
+
+    public $rememberFor = 60;
     public $timestamps = false;
 
     protected $fillable = ['path', 'product_id'];
@@ -35,7 +39,7 @@ class ProductImage extends Model
     {
         return $this->url();
     }
-    
+
     /**
      * @param string $key
      *
