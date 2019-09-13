@@ -4,6 +4,7 @@ namespace Webkul\Customer\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Watson\Rememberable\Rememberable;
 use Webkul\Customer\Models\CustomerGroup;
 use Webkul\Checkout\Models\Cart;
 use Webkul\Sales\Models\Order;
@@ -14,6 +15,9 @@ use Webkul\Customer\Notifications\CustomerResetPassword;
 class Customer extends Authenticatable
 {
     use Notifiable;
+    use Rememberable;
+
+    public $rememberFor = 10;
 
     protected $table = 'customers';
 

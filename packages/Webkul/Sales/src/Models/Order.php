@@ -3,10 +3,14 @@
 namespace Webkul\Sales\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 use Webkul\Sales\Contracts\Order as OrderContract;
 
 class Order extends Model implements OrderContract
 {
+    use Rememberable;
+
+    public $rememberFor = 10;
     protected $guarded = ['id', 'items', 'shipping_address', 'billing_address', 'customer', 'channel', 'payment', 'created_at', 'updated_at'];
 
     protected $statusLabel = [
@@ -74,7 +78,7 @@ class Order extends Model implements OrderContract
     {
         return $this->hasMany(InvoiceProxy::modelClass());
     }
-    
+
     /**
      * Get the customer record associated with the order.
      */
@@ -163,13 +167,13 @@ class Order extends Model implements OrderContract
     {
         if ($this->status == 'fraud')
             return false;
-            
+
         foreach ($this->items as $item) {
             if ($item->qty_to_invoice > 0) {
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -180,7 +184,7 @@ class Order extends Model implements OrderContract
     {
         if ($this->status == 'fraud')
             return false;
-            
+
         foreach ($this->items as $item) {
             if ($item->qty_to_cancel > 0) {
                 return true;

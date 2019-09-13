@@ -2,12 +2,15 @@
 
 namespace Webkul\Attribute\Models;
 
+use Watson\Rememberable\Rememberable;
 use Webkul\Core\Eloquent\TranslatableModel;
 use Webkul\Attribute\Models\AttributeOption;
 use Webkul\Attribute\Models\AttributeGroup;
 
 class Attribute extends TranslatableModel
 {
+    use Rememberable;
+    public $rememberFor = 60;
     public $translatedAttributes = ['name'];
 
     protected $fillable = ['code', 'admin_name', 'type', 'position', 'is_required', 'is_unique', 'validation', 'value_per_locale', 'value_per_channel', 'is_filterable', 'is_configurable', 'is_visible_on_front', 'is_user_defined'];
