@@ -9,30 +9,6 @@
     display: inline-block;
     background-size: cover;
 }
-.dashboard-icon {
-    @extend %menu-properties;
-    background-image: url("../images/dashboard.svg");
-}
-.sales-icon {
-    @extend %menu-properties;
-    background-image: url("../images/sales.svg");
-}
-.catalog-icon {
-    @extend %menu-properties;
-    background-image: url("../images/catalog.svg");
-}
-.customer-icon {
-    @extend %menu-properties;
-    background-image: url("../images/customers.svg");
-}
-.configuration-icon {
-    @extend %menu-properties;
-    background-image: url("../images/configuration.svg");
-}
-.settings-icon {
-    @extend %menu-properties;
-    background-image: url("../images/settings.svg");
-}
 
 .angle-right-icon {
     background-image: url("../images/Angle-Right.svg");
@@ -221,30 +197,6 @@
 }
 
 .active {
-    .dashboard-icon {
-        background-image: url("../images/dashboard-active.svg");
-    }
-
-    .sales-icon {
-        background-image: url("../images/sales-active.svg");
-    }
-
-    .catalog-icon {
-        background-image: url("../images/catalog-active.svg");
-    }
-
-    .customer-icon {
-        background-image: url("../images/customers-active.svg");
-    }
-
-    .settings-icon {
-        background-image: url("../images/settings-active.svg");
-    }
-
-    .configuration-icon {
-        background-image: url("../images/configure-active.svg");
-    }
-
     > .arrow-down-icon {
         background-image: url("../images/Arrow-Down.svg");
         width: 14px;
@@ -253,27 +205,6 @@
 
     > .expand-icon {
         background-image: url("../images/Expand-Light-On.svg");
-    }
-
-    &.dashboard-icon {
-        background-image: url("../images/dashboard-active.svg");
-    }
-
-    &.customer-icon {
-        background-image: url("../images/customers-active.svg");
-    }
-
-    &.sales-icon {
-        background-image: url("../images/sales-active.svg");
-    }
-
-    &.settings-icon {
-        background-image: url("../images/settings-active.svg");
-    }
-
-    &.configuration-icon {
-        @extend %menu-properties;
-        background-image: url("../images/configure-active.svg");
     }
 
     &.arrow-down-icon {

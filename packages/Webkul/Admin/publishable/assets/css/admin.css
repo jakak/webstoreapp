@@ -92,23 +92,24 @@
   position: absolute;
   top: 60px;
   bottom: 0;
-  width: 90px;
+  width: 120px;
   padding-top: 20px;
   height: auto;
+  background: #4F5B64;
   border-right: 1px solid rgba(162, 162, 162, 0.2);
   z-index: 2;
 }
 
 .navbar-left ul.menubar li.menu-item {
-  height: 90px;
-  padding: 10px 5px;
-  font-size: 11px;
-  text-align: center;
-  text-transform: uppercase;
+  height: 40px;
+  padding: 10px 10px;
+  font-size: 14px;
+  text-align: left;
+  text-transform: capitalize;
 }
 
 .navbar-left ul.menubar li.menu-item a {
-  color: #a2a2a2;
+  color: #ffffff;
 }
 
 .navbar-left ul.menubar li.menu-item.active a {
@@ -116,13 +117,13 @@
 }
 
 .content-container {
-  padding-left: 90px;
+  padding-left: 120px;
   position: absolute;
   margin-top: 60px;
-  top: 0px;
+  top: 0;
   right: 0;
   left: 0;
-  bottom: 0px;
+  bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
 }

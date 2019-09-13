@@ -1,37 +1,6 @@
-.active.configuration-icon, .settings-icon, .configuration-icon, .customer-icon, .catalog-icon, .sales-icon, .dashboard-icon {
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-  background-size: cover;
-}
-
 .icon {
   display: inline-block;
   background-size: cover;
-}
-
-.dashboard-icon {
-  background-image: url("../images/dashboard.svg");
-}
-
-.sales-icon {
-  background-image: url("../images/sales.svg");
-}
-
-.catalog-icon {
-  background-image: url("../images/catalog.svg");
-}
-
-.customer-icon {
-  background-image: url("../images/customers.svg");
-}
-
-.configuration-icon {
-  background-image: url("../images/configuration.svg");
-}
-
-.settings-icon {
-  background-image: url("../images/settings.svg");
 }
 
 .angle-right-icon {
@@ -221,24 +190,6 @@
   height: 47px;
 }
 
-.active .dashboard-icon {
-  background-image: url("../images/dashboard-active.svg");
-}
-.active .sales-icon {
-  background-image: url("../images/sales-active.svg");
-}
-.active .catalog-icon {
-  background-image: url("../images/catalog-active.svg");
-}
-.active .customer-icon {
-  background-image: url("../images/customers-active.svg");
-}
-.active .settings-icon {
-  background-image: url("../images/settings-active.svg");
-}
-.active .configuration-icon {
-  background-image: url("../images/configure-active.svg");
-}
 .active > .arrow-down-icon {
   background-image: url("../images/Arrow-Down.svg");
   width: 14px;
@@ -246,21 +197,6 @@
 }
 .active > .expand-icon {
   background-image: url("../images/Expand-Light-On.svg");
-}
-.active.dashboard-icon {
-  background-image: url("../images/dashboard-active.svg");
-}
-.active.customer-icon {
-  background-image: url("../images/customers-active.svg");
-}
-.active.sales-icon {
-  background-image: url("../images/sales-active.svg");
-}
-.active.settings-icon {
-  background-image: url("../images/settings-active.svg");
-}
-.active.configuration-icon {
-  background-image: url("../images/configure-active.svg");
 }
 .active.arrow-down-icon {
   background-image: url("../images/Arrow-Down.svg");
