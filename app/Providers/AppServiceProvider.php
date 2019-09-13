@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\MailSetting;
+use App\Observers\MailSettingObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -15,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        MailSetting::observe(MailSettingObserver::class);
     }
 
     /**

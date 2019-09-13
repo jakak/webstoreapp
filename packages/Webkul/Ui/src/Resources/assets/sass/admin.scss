@@ -23,12 +23,10 @@ a:active {
     text-decoration: none;
     color: $brand-color;
 }
-.avatar {
-    .active {
-        background-image: url(../images/Webstore-Avatar.svg);
-        width: 30px;
-        height: 30px;
-    }
+.avatar.active{
+    background-image: url(../images/Webstore-Avatar.svg);
+    width: 30px;
+    height: 30px;
 }
 textarea {
     resize: none;

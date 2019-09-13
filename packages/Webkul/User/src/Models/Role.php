@@ -3,10 +3,14 @@
 namespace Webkul\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 use Webkul\User\Models\Admin;
 
 class Role extends Model
 {
+    use Rememberable;
+
+    public $rememberFor = 60 * 60;
 
     /**
      * The attributes that are mass assignable.

@@ -3,9 +3,13 @@
 namespace Webkul\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 
 class CoreConfig extends Model
 {
+    use Rememberable;
+
+    public $rememberFor = 5;
     /**
      * The attributes that are mass assignable.
      *
