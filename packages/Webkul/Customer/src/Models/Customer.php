@@ -17,7 +17,7 @@ class Customer extends Authenticatable
     use Notifiable;
     use Rememberable;
 
-    public $rememberFor = 10;
+    public $rememberFor = 60;
 
     protected $table = 'customers';
 

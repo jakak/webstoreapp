@@ -8,6 +8,6 @@ use Watson\Rememberable\Rememberable;
 class CountryState extends Model
 {
     use Rememberable;
-    public $rememberFor = 60 * 60;
+    public $rememberFor = 60 * 60 * 24;
     public $timestamps = false;
 }

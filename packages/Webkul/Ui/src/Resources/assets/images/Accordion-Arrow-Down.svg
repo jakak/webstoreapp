@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>Accordion-Arrow-Down</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Accordion-Arrow-Down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle-2" fill="#0675B6" x="0" y="0" width="24" height="24" rx="12"></rect>
-        <polyline id="Path-3" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(12.000000, 12.000000) scale(-1, -1) rotate(-90.000000) translate(-12.000000, -12.000000) " points="10 8 14 12 10 16"></polyline>
-    </g>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="24px" height="24px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 153 153"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:white;stroke-width:19.2741;stroke-linecap:round;stroke-linejoin:round}
+    .fil1 {fill:none}
+    .fil0 {fill:#79C142}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_493552368">
+   <path class="fil0" d="M78 0l0 0c43,0 75,35 75,78l0 0c0,43 -32,75 -75,75l0 0c-43,0 -78,-32 -78,-75l0 0c0,-43 35,-78 78,-78z"/>
+   <polyline id="Path-3" class="fil1 str0" points="102,64 78,89 51,64 "/>
+  </g>
+ </g>
 </svg>

@@ -10,7 +10,7 @@ class Order extends Model implements OrderContract
 {
     use Rememberable;
 
-    public $rememberFor = 10;
+    public $rememberFor = 20;
     protected $guarded = ['id', 'items', 'shipping_address', 'billing_address', 'customer', 'channel', 'payment', 'created_at', 'updated_at'];
 
     protected $statusLabel = [

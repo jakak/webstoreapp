@@ -9,7 +9,7 @@ class CoreConfig extends Model
 {
     use Rememberable;
 
-    public $rememberFor = 5;
+    public $rememberFor = 20;
     /**
      * The attributes that are mass assignable.
      *
