@@ -4,9 +4,17 @@ namespace Webkul\Customer\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Webkul\Core\Models\Channel;
 
 class CustomerResetPassword extends ResetPassword
 {
+    private $channel;
+
+    public function __construct($token)
+    {
+        parent::__construct($token);
+        $this->channel = Channel::first();
+    }
 
     /**
      * Build the mail representation of the notification.
@@ -21,6 +29,7 @@ class CustomerResetPassword extends ResetPassword
         }
 
         return (new MailMessage)
+            ->from($this->channel->email, $this->channel->name)
             ->view('shop::emails.customer.forget-password', [
                 'user_name' => $notifiable->name,
                 'token' => $this->token

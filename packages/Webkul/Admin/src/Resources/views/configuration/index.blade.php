@@ -196,10 +196,12 @@
                             <label for="page_status" class="required" >
                                 Page Publish Status
                             </label>
-                            <select name="status" class="control" id="page_status">
-                                <option value="Enabled">Enabled</option>
-                                <option value="Disabled">Disabled</option>
-                            </select>
+                            <div>
+                                <select name="status" class="control" id="page_status">
+                                    <option value="Enabled">Enabled</option>
+                                    <option value="Disabled">Disabled</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="control-group">
                             <label for="page_content">Page Content</label>

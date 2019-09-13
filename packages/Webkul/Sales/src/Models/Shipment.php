@@ -3,11 +3,15 @@
 namespace Webkul\Sales\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 use Webkul\Inventory\Models\InventorySource;
 use Webkul\Sales\Contracts\Shipment as ShipmentContract;
 
 class Shipment extends Model implements ShipmentContract
 {
+    use Rememberable;
+
+    public $rememberFor = 10;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**

@@ -8,7 +8,7 @@ Trait HelpsMail
 {
     public function setConfig()
     {
-        $settings = MailSetting::remember(360)->first();
+        $settings = MailSetting::remember(60 * 24)->first();
         if (!$settings) {
             throw new \Exception("Email settings not set or incomplete", 1);
         }
