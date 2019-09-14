@@ -10,10 +10,12 @@
 }
 .icon {
   display: inline-block;
-  background-size: cover;
-  width: 20px;
   height: 20px;
   margin-right: 10px;
+  background-size: contain;
+  width: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .dashboard-icon {
   @extend %menu-properties;
@@ -33,7 +35,7 @@
 }
 .configuration-icon {
   @extend %menu-properties;
-  background-image: url("../images/configuration.svg");
+  background-image: url("../images/configure.svg");
 }
 .settings-icon {
   @extend %menu-properties;
