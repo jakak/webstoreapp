@@ -120,7 +120,7 @@ class ProductFlat
     public function afterAttributeDeleted($attributeId)
     {
         $attribute = $this->attributeRepository->find($attributeId);
-
+        
         if (Schema::hasTable('product_flat')) {
             if (Schema::hasColumn('product_flat', strtolower($attribute->code))) {
                 Schema::table('product_flat', function (Blueprint $table) use($attribute) {
@@ -161,68 +161,76 @@ class ProductFlat
     public function createFlat($product, $parentProduct = null)
     {
         foreach (core()->getAllChannels() as $channel) {
-
-            $productFlat = $this->productFlatRepository->findOneWhere([
-                'product_id' => $product->id,
-                'channel' => $channel->code,
-            ]);
-
-            if (!$productFlat) {
-                $productFlat = $this->productFlatRepository->create([
+            foreach ($channel->locales as $locale) {
+                $productFlat = $this->productFlatRepository->findOneWhere([
                     'product_id' => $product->id,
                     'channel' => $channel->code,
+                    'locale' => $locale->code
                 ]);
-            }
 
-            foreach ($product->attribute_family->custom_attributes as $attribute) {
-                if (!Schema::hasTable('product_flat') || !Schema::hasColumn('product_flat', $attribute->code))
-                    continue;
-
-                if ($attribute->value_per_channel) {
-                    if ($attribute->value_per_locale) {
-                        $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
-                    } else {
-                        $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
-                    }
-                } else {
-                    if ($attribute->value_per_locale) {
-                        $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
-                    } else {
-                        $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
-                    }
-                }
-
-                if ($product->type == 'configurable' && $attribute->code == 'price') {
-                    $productFlat->{$attribute->code} = app('Webkul\Product\Helpers\Price')->getVariantMinPrice($product);
-                } else {
-                    $productFlat->{$attribute->code} = $productAttributeValue[ProductAttributeValue::$attributeTypeFields[$attribute->type]];
-                }
-
-                if ($attribute->type == 'select') {
-                    $attributeOption = $this->attributeOptionRepository->find($product->{$attribute->code});
-
-                    if ($attributeOption) {
-                        $productFlat->{$attribute->code . '_label'} = $attributeOption->admin_name;
-                    }
-                }
-            }
-
-            $productFlat->created_at = $product->created_at;
-
-            $productFlat->updated_at = $product->updated_at;
-
-            if ($parentProduct) {
-                $parentProductFlat = $this->productFlatRepository->findOneWhere([
-                        'product_id' => $parentProduct->id,
+                if (!$productFlat) {
+                    $productFlat = $this->productFlatRepository->create([
+                        'product_id' => $product->id,
                         'channel' => $channel->code,
+                        'locale' => $locale->code
                     ]);
-
-                if ($parentProductFlat) {
-                    $productFlat->parent_id = $parentProductFlat->id;
                 }
-            }
 
-            $productFlat->save();
+                foreach ($product->attribute_family->custom_attributes as $attribute) {
+                    if (!Schema::hasTable('product_flat') || !Schema::hasColumn('product_flat', $attribute->code))
+                        continue;
+
+                    if ($attribute->value_per_channel) {
+                        if ($attribute->value_per_locale) {
+                            $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('locale', $locale->code)->where('attribute_id', $attribute->id)->first();
+                        } else {
+                            $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
+                        }
+                    } else {
+                        if ($attribute->value_per_locale) {
+                            $productAttributeValue = $product->attribute_values()->where('locale', $locale->code)->where('attribute_id', $attribute->id)->first();
+                        } else {
+                            $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
+                        }
+                    }
+
+                    if ($product->type == 'configurable' && $attribute->code == 'price') {
+                        $productFlat->{$attribute->code} = app('Webkul\Product\Helpers\Price')->getVariantMinPrice($product);
+                    } else {
+                        $productFlat->{$attribute->code} = $productAttributeValue[ProductAttributeValue::$attributeTypeFields[$attribute->type]];
+                    }
+
+                    if ($attribute->type == 'select') {
+                        $attributeOption = $this->attributeOptionRepository->find($product->{$attribute->code});
+
+                        if ($attributeOption) {
+                            if ($attributeOptionTranslation = $attributeOption->translate($locale->code)) {
+                                $productFlat->{$attribute->code . '_label'} = $attributeOptionTranslation->label;
+                            } else {
+                                $productFlat->{$attribute->code . '_label'} = $attributeOption->admin_name;
+                            }
+                        }
+                    }
+                }
+
+                $productFlat->created_at = $product->created_at;
+
+                $productFlat->updated_at = $product->updated_at;
+
+                if ($parentProduct) {
+                    $parentProductFlat = $this->productFlatRepository->findOneWhere([
+                            'product_id' => $parentProduct->id,
+                            'channel' => $channel->code,
+                            'locale' => $locale->code
+                        ]);
+
+                    if ($parentProductFlat) {
+                        $productFlat->parent_id = $parentProductFlat->id;
+                    }
+                }
+
+                $productFlat->save();
+            }
         }
     }
 }

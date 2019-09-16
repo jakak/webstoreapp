@@ -82,30 +82,35 @@ return [
         'route' => 'admin.users.index',
         'sort' => 6
     ], [
+        'key' => 'settings.locales',
+        'name' => 'admin::app.acl.locales',
+        'route' => 'admin.locales.index',
+        'sort' => 1
+    ], [
         'key' => 'settings.currencies',
         'name' => 'admin::app.acl.currencies',
         'route' => 'admin.currencies.index',
-        'sort' => 1
+        'sort' => 2
     ], [
         'key' => 'settings.exchange_rates',
         'name' => 'admin::app.acl.exchange-rates',
         'route' => 'admin.exchange_rates.index',
-        'sort' => 2
+        'sort' => 3
     ], [
         'key' => 'settings.inventory_sources',
         'name' => 'admin::app.acl.inventory-sources',
         'route' => 'admin.inventory_sources.index',
-        'sort' => 2
+        'sort' => 4
     ], [
         'key' => 'settings.channels',
         'name' => 'admin::app.acl.channels',
         'route' => 'admin.channels.index',
-        'sort' => 4
+        'sort' => 5
     ], [
         'key' => 'settings.users',
         'name' => 'admin::app.acl.users',
         'route' => 'admin.users.index',
-        'sort' => 5
+        'sort' => 6
     ], [
         'key' => 'settings.users.users',
         'name' => 'admin::app.acl.users',
