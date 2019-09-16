@@ -8,6 +8,7 @@ use Webkul\Core\Repositories\ExchangeRateRepository;
 use Webkul\Core\Repositories\CountryRepository;
 use Webkul\Core\Repositories\CountryStateRepository;
 use Webkul\Core\Repositories\ChannelRepository;
+use Webkul\Core\Repositories\LocaleRepository;
 use Webkul\Core\Repositories\CoreConfigRepository;
 use Illuminate\Support\Facades\Config;
 
@@ -49,6 +50,13 @@ class Core
     protected $countryStateRepository;
 
     /**
+     * LocaleRepository class
+     *
+     * @var mixed
+     */
+    protected $localeRepository;
+
+    /**
      * CoreConfigRepository class
      *
      * @var mixed
@@ -63,6 +71,7 @@ class Core
      * @param  Webkul\Core\Repositories\ExchangeRateRepository $exchangeRateRepository
      * @param  Webkul\Core\Repositories\CountryRepository      $countryRepository
      * @param  Webkul\Core\Repositories\CountryStateRepository $countryStateRepository
+     * @param  Webkul\Core\Repositories\LocaleRepository       $localeRepository
      * @param  Webkul\Core\Repositories\CoreConfigRepository   $coreConfigRepository
      * @return void
      */
@@ -72,6 +81,7 @@ class Core
         ExchangeRateRepository $exchangeRateRepository,
         CountryRepository $countryRepository,
         CountryStateRepository $countryStateRepository,
+        LocaleRepository $localeRepository,
         CoreConfigRepository $coreConfigRepository
     )
     {
@@ -84,6 +94,8 @@ class Core
         $this->countryRepository = $countryRepository;
 
         $this->countryStateRepository = $countryStateRepository;
+
+        $this->localeRepository = $localeRepository;
 
         $this->coreConfigRepository = $coreConfigRepository;
     }
@@ -170,6 +182,21 @@ class Core
             return $channelCode;
 
         return ($channel = $this->getDefaultChannel()) ? $channelCode = $channel->code : '';
+    }
+
+    /**
+    * Returns all locales
+    *
+    *  @return Collection
+    */
+    public function getAllLocales()
+    {
+        static $locales;
+
+        if ($locales)
+            return $locales;
+
+        return $locales = $this->localeRepository->all();
     }
 
     /**
@@ -464,8 +491,8 @@ class Core
      * Retrieve information from payment configuration
      *
      * @param string $field
-     * @param null $channel
-     * @param null $locale
+     * @param int|string|null $channelId
+     *
      * @return mixed
      */
     public function getConfigData($field, $channel = null, $locale = null)

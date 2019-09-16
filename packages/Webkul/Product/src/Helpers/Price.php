@@ -64,7 +64,7 @@ class Price extends AbstractProduct
             ->where('attributes.code', 'price')
             ->addSelect('product_attribute_values.*');
 
-        $this->applyChannelFilter($attribute, $qb);
+        $this->applyChannelLocaleFilter($attribute, $qb);
 
         return $qb->min('product_attribute_values.' . ProductAttributeValue::$attributeTypeFields['price']);
     }

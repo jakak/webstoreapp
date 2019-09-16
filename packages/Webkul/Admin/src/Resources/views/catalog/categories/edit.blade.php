@@ -14,9 +14,21 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
-
+                        
                         {{ __('admin::app.catalog.categories.edit-title') }}
                     </h1>
+
+                    <div class="control-group">
+                        <select class="control" id="locale-switcher" onChange="window.location.href = this.value">
+                            @foreach (core()->getAllLocales() as $localeModel)
+
+                                <option value="{{ route('admin.catalog.categories.update', $category->id) . '?locale=' . $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                    {{ $localeModel->name }}
+                                </option>
+
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="page-action">

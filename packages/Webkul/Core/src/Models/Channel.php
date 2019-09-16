@@ -22,6 +22,22 @@ class Channel extends Model
     /**
      * Get the channel locales.
      */
+    public function locales()
+    {
+        return $this->belongsToMany(Locale::class, 'channel_locales');
+    }
+
+    /**
+     * Get the default locale
+     */
+    public function default_locale()
+    {
+        return $this->belongsTo(Locale::class);
+    }
+
+    /**
+     * Get the channel locales.
+     */
     public function currencies()
     {
         return $this->belongsToMany(Currency::class, 'channel_currencies');

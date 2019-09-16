@@ -108,7 +108,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $locale = request()->get('locale') ?: app()->getLocale();
+
         $this->validate(request(), [
+            $locale . '.slug' => ['required', new \Webkul\Core\Contracts\Validations\Slug, function ($attribute, $value, $fail) use ($id) {
+                if (! $this->category->isSlugUnique($id, $value)) {
+                    $fail('The :attribute has already been taken.');
+                }
+            }],
+            $locale . '.name' => 'required',
             'image.*' => 'mimes:jpeg,jpg,bmp,png'
         ]);
 

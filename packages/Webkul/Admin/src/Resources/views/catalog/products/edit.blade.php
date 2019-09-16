@@ -6,6 +6,8 @@
 
 @section('content')
     <div class="content">
+        <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
+        <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
 
         <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
@@ -18,6 +20,29 @@
                         {{ __('admin::app.catalog.products.edit-title') }}
                     </h1>
 
+                    <div class="control-group">
+                        <select class="control" id="channel-switcher" name="channel">
+                            @foreach (core()->getAllChannels() as $channelModel)
+
+                                <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
+                                    {{ $channelModel->name }}
+                                </option>
+
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <select class="control" id="locale-switcher" name="locale">
+                            @foreach (core()->getAllLocales() as $localeModel)
+
+                                <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                    {{ $localeModel->name }}
+                                </option>
+
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="page-action">
@@ -112,6 +137,13 @@
 
     <script>
         $(document).ready(function () {
+            $('#channel-switcher, #locale-switcher').on('change', function (e) {
+                $('#channel-switcher').val()
+                var query = '?channel=' + $('#channel-switcher').val() + '&locale=' + $('#locale-switcher').val();
+
+                window.location.href = "{{ route('admin.catalog.products.edit', $product->id)  }}" + query;
+            })
+
             tinymce.init({
                 selector: 'textarea#description, textarea#short_description',
                 height: 200,
