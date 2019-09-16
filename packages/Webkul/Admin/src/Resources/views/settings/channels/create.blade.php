@@ -83,30 +83,6 @@
                     <accordian :title="'{{ __('admin::app.settings.channels.currencies-and-locales') }}'" :active="true">
                         <div slot="body">
 
-                            <div class="control-group" :class="[errors.has('locales[]') ? 'has-error' : '']">
-                                <label for="locales" class="required">{{ __('admin::app.settings.channels.locales') }}</label>
-                                <select v-validate="'required'" class="control" id="locales" name="locales[]" data-vv-as="&quot;{{ __('admin::app.settings.channels.locales') }}&quot;" multiple>
-                                    @foreach (core()->getAllLocales() as $locale)
-                                        <option value="{{ $locale->id }}" {{ old('locales') && in_array($locale->id, old('locales')) ? 'selected' : '' }}>
-                                            {{ $locale->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('locales[]')">@{{ errors.first('locales[]') }}</span>
-                            </div>
-
-                            <div class="control-group" :class="[errors.has('default_locale_id') ? 'has-error' : '']">
-                                <label for="default_locale_id" class="required">{{ __('admin::app.settings.channels.default-locale') }}</label>
-                                <select v-validate="'required'" class="control" id="default_locale_id" name="default_locale_id" data-vv-as="&quot;{{ __('admin::app.settings.channels.default-locale') }}&quot;">
-                                    @foreach (core()->getAllLocales() as $locale)
-                                        <option value="{{ $locale->id }}" {{ old('default_locale_id') == $locale->id ? 'selected' : '' }}>
-                                            {{ $locale->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('default_locale_id')">@{{ errors.first('default_locale_id') }}</span>
-                            </div>
-
                             <div class="control-group" :class="[errors.has('currencies[]') ? 'has-error' : '']">
                                 <label for="currencies" class="required">{{ __('admin::app.settings.channels.currencies') }}</label>
                                 <select v-validate="'required'" class="control" id="currencies" name="currencies[]" data-vv-as="&quot;{{ __('admin::app.settings.channels.currencies') }}&quot;" multiple>

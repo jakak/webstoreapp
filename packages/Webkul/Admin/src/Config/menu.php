@@ -101,32 +101,26 @@ return [
     ], [
         'key' => 'settings',
         'name' => 'admin::app.layouts.settings',
-        'route' => 'admin.locales.index',
+        'route' => 'admin.channels.index',
         'sort' => 6,
         'icon-class' => 'settings-icon',
-    ], [
-        'key' => 'settings.locales',
-        'name' => 'admin::app.layouts.locales',
-        'route' => 'admin.locales.index',
-        'sort' => 4,
-        'icon-class' => '',
     ], [
         'key' => 'settings.currencies',
         'name' => 'admin::app.layouts.currencies',
         'route' => 'admin.currencies.index',
-        'sort' => 5,
+        'sort' => 4,
         'icon-class' => '',
     ], [
         'key' => 'settings.exchange_rates',
         'name' => 'admin::app.layouts.exchange-rates',
         'route' => 'admin.exchange_rates.index',
-        'sort' => 6,
+        'sort' => 5,
         'icon-class' => '',
     ], [
         'key' => 'settings.inventory_sources',
         'name' => 'admin::app.layouts.inventory-sources',
         'route' => 'admin.inventory_sources.index',
-        'sort' => 7,
+        'sort' => 6,
         'icon-class' => '',
     ], [
         'key' => 'settings.channels',
@@ -174,7 +168,7 @@ return [
         'key' => 'settings.taxes',
         'name' => 'admin::app.layouts.taxes',
         'route' => 'admin.tax-categories.index',
-        'sort' => 8,
+        'sort' => 7,
         'icon-class' => '',
     ], [
         'key' => 'settings.taxes.tax-categories',

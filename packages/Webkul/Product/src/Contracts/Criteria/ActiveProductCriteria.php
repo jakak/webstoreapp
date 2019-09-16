@@ -45,7 +45,7 @@ class ActiveProductCriteria extends AbstractProduct implements CriteriaInterface
 
             $model = $model->leftJoin('product_attribute_values as ' . $alias, 'products.id', '=', $alias . '.product_id');
 
-            $model = $this->applyChannelLocaleFilter($attribute, $model, $alias);
+            $model = $this->applyChannelFilter($attribute, $model, $alias);
 
             $model->where($alias . '.boolean_value', 1)
                 ->where($alias . '.attribute_id', $attribute->id);

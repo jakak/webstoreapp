@@ -74,8 +74,6 @@ class ChannelController extends Controller
         $this->validate(request(), [
             'code' => ['required', 'unique:channels,code', new \Webkul\Core\Contracts\Validations\Code],
             'name' => 'required',
-            'locales' => 'required|array|min:1',
-            'default_locale_id' => 'required',
             'currencies' => 'required|array|min:1',
             'base_currency_id' => 'required',
             'root_category_id' => 'required',
@@ -102,7 +100,7 @@ class ChannelController extends Controller
      */
     public function edit($id)
     {
-        $channel = $this->channel->with(['locales', 'currencies'])->find($id);
+        $channel = $this->channel->with(['currencies'])->find($id);
 
         return view($this->_config['view'], compact('channel'));
     }
