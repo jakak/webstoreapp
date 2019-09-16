@@ -65,7 +65,7 @@ class AttributeToSelectCriteria extends AbstractProduct implements CriteriaInter
 
             $model = $model->leftJoin('product_attribute_values as ' . $productValueAlias, function($qb) use($attribute, $productValueAlias) {
 
-                $qb = $this->applyChannelLocaleFilter($attribute, $qb, $productValueAlias);
+                $qb = $this->applyChannelFilter($attribute, $qb, $productValueAlias);
 
                 $qb->on('products.id', $productValueAlias . '.product_id')
                         ->where($productValueAlias . '.attribute_id', $attribute->id);
