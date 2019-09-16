@@ -46,18 +46,6 @@ class CategoryRepository extends Repository
     {
         Event::fire('catalog.category.create.before');
 
-        if (isset($data['locale']) && $data['locale'] == 'all') {
-            $model = app()->make($this->model());
-
-            foreach (core()->getAllLocales() as $locale) {
-                foreach ($model->translatedAttributes as $attribute) {
-                    if (isset($data[$attribute])) {
-                        $data[$locale->code][$attribute] = $data[$attribute];
-                    }
-                }
-            }
-        }
-
         $category = $this->model->create($data);
 
         $this->uploadImages($data, $category);

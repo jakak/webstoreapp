@@ -11,6 +11,6 @@ class MailSetting extends Model
 
     protected $fillable = ['logo', 'host', 'port', 'encryption', 'username', 'password'];
 
-    public $rememberCacheTag = 'mail_setting_queries';
-//    public $rememberFor = 60 * 60;
+//    public $rememberCacheTag = 'mail_setting_queries';
+    public $rememberFor = 60 * 60;
 }
