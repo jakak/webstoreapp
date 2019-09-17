@@ -527,11 +527,23 @@ Route::group(['middleware' => ['web']], function () {
                 ->name('admin.themes.slider')
             ;
             // Admin Profile route
-            Route::get('/account', 'Webkul\User\Http\Controllers\AccountController@edit')->defaults('_config', [
+            Route::get('/account/edit', 'Webkul\User\Http\Controllers\AccountController@edit')->defaults('_config', [
                 'view' => 'admin::account.edit'
             ])->name('admin.account.edit');
 
-            Route::put('/account', 'Webkul\User\Http\Controllers\AccountController@update')->name('admin.account.update');
+            Route::get('/account', 'Webkul\User\Http\Controllers\AccountController@index')->defaults('_config', [
+                'view' => 'admin::account.index'
+            ])->name('admin.account.index');
+
+            Route::get('/account/subscription', 'Webkul\User\Http\Controllers\AccountController@subscription')->defaults('_config', [
+                'view' => 'admin::account.subscription'
+            ])->name('admin.account.subscription');
+
+            Route::get('/account/webstore-version', 'Webkul\User\Http\Controllers\AccountController@storeVersion')->defaults('_config', [
+                'view' => 'admin::account.webstore'
+            ])->name('admin.account.webstore');
+
+            Route::put('/account/edit', 'Webkul\User\Http\Controllers\AccountController@update')->name('admin.account.update');
 
             //API Authorizations
             // Route::get('/api/clients', 'Webkul\Admin\Http\Controllers\AuthorizationController@show')->defaults('_config', [
