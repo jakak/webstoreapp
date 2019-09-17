@@ -4,6 +4,7 @@ namespace Webkul\Core\Repositories;
 
 use Webkul\Core\Eloquent\Repository;
 use Illuminate\Support\Facades\Storage;
+use Webkul\Core\Models\Channel;
 
 /**
  * Channel Reposotory
@@ -21,6 +22,11 @@ class ChannelRepository extends Repository
     function model()
     {
         return 'Webkul\Core\Models\Channel';
+    }
+
+    public function first($columns = ['*'])
+    {
+        return Channel::first();
     }
 
     /**
