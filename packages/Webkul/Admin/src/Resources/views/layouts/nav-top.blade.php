@@ -11,11 +11,11 @@
 
     <div class="navbar-top-right">
         <div class="profile">
-            
+
 			<div class="profile-info">
 				<a href="#"><i class="far fa-bell"></i></a>
             </div>
-			
+
 			<div class="profile-info">
 				<a href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}"><i class="fas fa-external-link-alt"></i></a>
             </div>
@@ -24,7 +24,7 @@
                 <div class="dropdown-toggle">
                     <div style="display: inline-block; vertical-align: middle;">
                         <i class="icon avatar active"></i>
-                    </div>                    
+                    </div>
                 </div>
 
                 <div class="dropdown-list bottom-right">
@@ -41,7 +41,7 @@
 						<hr color="#e8e8e8">
                         <ul>
 							<li>
-                                <a href="{{ route('admin.account.edit') }}"><i class="fas fa-user"></i> {{ trans('admin::app.layouts.my-account') }}</a>
+                                <a href="{{ route('admin.account.index') }}"><i class="fas fa-user"></i> {{ trans('admin::app.layouts.my-account') }}</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.session.destroy') }}"><i class="fas fa-sign-out-alt"></i> {{ trans('admin::app.layouts.logout') }}</a>
@@ -59,8 +59,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>	
-			
+            </div>
+
         </div>
     </div>
 </div>

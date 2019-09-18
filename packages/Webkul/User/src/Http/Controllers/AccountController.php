@@ -2,9 +2,9 @@
 
 namespace Webkul\User\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Response;
-use Webkul\User\Http\Controllers\Controller;
+use Illuminate\View\View;
 use Hash;
 
 /**
@@ -35,7 +35,7 @@ class AccountController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function edit()
     {
@@ -45,9 +45,37 @@ class AccountController extends Controller
     }
 
     /**
+     * @return Factory|View
+     */
+    public function index()
+    {
+        $user = auth()->guard('admin')->user();
+
+        return view($this->_config['view'], compact('user'));
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function storeVersion()
+    {
+        return view($this->_config['view'], compact('user'));
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function subscription()
+    {
+        $user = auth()->guard('admin')->user();
+
+        return view($this->_config['view'], compact('user'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update()
     {
