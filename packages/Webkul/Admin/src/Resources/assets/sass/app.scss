@@ -234,6 +234,16 @@ body {
     }
 }
 
+hr.horizontal-line {
+  border-top: 1px solid #79C142;
+}
+
+.form-bottom {
+  position: relative;
+  margin-bottom: 50px;
+  float: right;
+}
+
 .control-group {
     label {
         width: 70%;

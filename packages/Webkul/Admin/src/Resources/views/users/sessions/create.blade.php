@@ -12,7 +12,7 @@
 
             <div class="form-container" style="text-align: left">
 
-                <h1>{{ __('admin::app.users.sessions.title') }}</h1>
+                <h2>{{ __('admin::app.users.sessions.title') }}</h2>
 
                 <form method="POST" action="{{ route('admin.session.store') }}" @submit.prevent="onSubmit">
                     @csrf
@@ -28,7 +28,7 @@
                             <span>{{ __('admin::app.users.sessions.password') }}</span>
                             <a href="{{ route('admin.forget-password.create') }}" class="primary">Reset</a>
                         </label>
-                        
+
                         <input type="password" v-validate="'required|min:6'" class="control" id="password" name="password" data-vv-as="&quot;{{ __('admin::app.users.sessions.password') }}&quot;"/>
                         <span class="control-error" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
                     </div>
