@@ -99,7 +99,6 @@ class CustomerController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'channel_id' => 'required',
             'first_name' => 'string|required',
             'last_name' => 'string|required',
             'gender' => 'required',
@@ -108,6 +107,8 @@ class CustomerController extends Controller
         ]);
 
         $data=request()->all();
+
+        $data['channel_id'] = $this->channel->pluck('id')->first();
 
         $password = bcrypt(rand(100000,10000000));
 
@@ -134,9 +135,7 @@ class CustomerController extends Controller
 
         $customerGroup = $this->customerGroup->all();
 
-        $channelName = $this->channel->all();
-
-        return view($this->_config['view'],compact('customer', 'customerGroup', 'channelName'));
+        return view($this->_config['view'],compact('customer', 'customerGroup'));
     }
 
      /**
@@ -149,7 +148,6 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate(request(), [
-            'channel_id' => 'required',
             'first_name' => 'string|required',
             'last_name' => 'string|required',
             'gender' => 'required',
