@@ -5,7 +5,6 @@ namespace Webkul\User\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Watson\Rememberable\Rememberable;
-use Webkul\User\Models\Role;
 use Webkul\User\Notifications\AdminResetPassword;
 
 
@@ -20,7 +19,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id', 'status',
+        'first_name', 'last_name', 'email', 'password', 'role_id', 'status',
     ];
 
     /**
@@ -32,7 +31,6 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $rememberFor = 60;
     /**
      * Get the role that owns the admin.
      */
@@ -61,5 +59,10 @@ class Admin extends Authenticatable
     public function hasPermission($permission)
     {
         return in_array($permission, $this->role->permissions);
+    }
+
+    public function fullName()
+    {
+        return $this->first_name. ' ' .$this->last_name;
     }
 }

@@ -31,7 +31,7 @@
                     <div class="dropdown-container">
                         <ul>
 							<span class="name">
-                            {{ auth()->guard('admin')->user()->name }}
+                            {{ auth()->guard('admin')->user()->fullName() }}
                         </span>
 
                         <span class="role">

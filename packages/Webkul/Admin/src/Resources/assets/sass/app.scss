@@ -586,7 +586,23 @@ hr.horizontal-line {
     top: 12px;
     margin-right: 10px;
 }
-
+div.wrap-control {
+  display: flex;
+  max-width: 750px;
+  justify-content: space-between;
+}
+div.wrap-control > div:first-child {
+  margin-right: 2%;
+}
+div.wrap-control > .control-group {
+  width: 69%;
+}
+div.wrap-control > .last-name > label {
+  margin-left: -30%;
+}
+div.wrap-control > .last-name > .control {
+  margin-left: -30%;
+}
 // css for rtl start here
 .rtl {
     direction: rtl;

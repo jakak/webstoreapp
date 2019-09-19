@@ -113,6 +113,8 @@ return [
         'code' => 'Code',
         'admin-name' => 'Name',
         'name' => 'Name',
+        'first-name' => 'First Name',
+        'last-name' => 'Last Name',
         'fullname' => 'Full Name',
         'type' => 'Type',
         'required' => 'Required',
@@ -159,10 +161,12 @@ return [
     'account' => [
         'title' => 'My Account',
         'save-btn-title' => 'Save',
-        'general' => 'General',
-        'name' => 'Name',
+        'general' => 'Profile Information',
+        'first-name' => 'First Name',
+        'last-name' => 'Last Name',
         'email' => 'Email',
         'password' => 'Password',
+        'security' => 'Security',
         'confirm-password' => 'Confirm Password',
         'change-password' => 'Change Account Password',
         'current-password' => 'Current Password'

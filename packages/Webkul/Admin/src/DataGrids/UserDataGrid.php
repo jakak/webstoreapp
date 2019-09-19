@@ -19,10 +19,14 @@ class UserDataGrid extends DataGrid
 
     public function prepareQueryBuilder()
     {
-        $queryBuilder = DB::table('admins as u')->addSelect('u.id as user_id', 'u.name as user_name', 'u.status', 'u.email', 'ro.name as role_name')->leftJoin('roles as ro', 'u.role_id', '=', 'ro.id');
+        $queryBuilder = DB::table('admins as u')
+            ->addSelect(
+                'u.id as user_id', 'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.status', 'u.email', 'ro.name as role_name')
+            ->leftJoin('roles as ro', 'u.role_id', '=', 'ro.id');
 
         $this->addFilter('user_id', 'u.id');
-        $this->addFilter('user_name', 'u.name');
+        $this->addFilter('user_first_name', 'u.first_name');
+        $this->addFilter('user_last_name', 'u.last_name');
         $this->addFilter('role_name', 'ro.name');
 
         $this->setQueryBuilder($queryBuilder);
@@ -39,8 +43,16 @@ class UserDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index' => 'user_name',
-            'label' => trans('admin::app.datagrid.name'),
+            'index' => 'user_first_name',
+            'label' => trans('admin::app.datagrid.first-name'),
+            'type' => 'string',
+            'searchable' => true,
+            'sortable' => true,
+        ]);
+
+        $this->addColumn([
+            'index' => 'user_last_name',
+            'label' => trans('admin::app.datagrid.last-name'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
