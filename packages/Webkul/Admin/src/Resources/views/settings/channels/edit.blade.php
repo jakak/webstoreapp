@@ -154,6 +154,36 @@
                         </div>
                     </accordian>
 
+                    <accordian :title="'{{ __('admin::app.settings.channels.currencies-and-locales') }}'" :active="true">
+                        <div slot="body">
+                            <div class="control-group" :class="[errors.has('currencies[]') ? 'has-error' : '']">
+                                <label for="currencies" class="required">{{ __('admin::app.settings.channels.currencies') }}</label>
+                                <?php $selectedOptionIds = old('currencies') ?: $channel->currencies->pluck('id')->toArray() ?>
+                                <select v-validate="'required'" class="control" id="currencies" name="currencies[]" data-vv-as="&quot;{{ __('admin::app.settings.channels.currencies') }}&quot;" multiple>
+                                    @foreach (core()->getAllCurrencies() as $currency)
+                                        <option value="{{ $currency->id }}" {{ in_array($currency->id, $selectedOptionIds) ? 'selected' : '' }}>
+                                            {{ $currency->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="control-error" v-if="errors.has('currencies[]')">@{{ errors.first('currencies[]') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('base_currency_id') ? 'has-error' : '']">
+                                <label for="base_currency_id" class="required">{{ __('admin::app.settings.channels.base-currency') }}</label>
+                                <?php $selectedOption = old('base_currency_id') ?: $channel->base_currency_id ?>
+                                <select v-validate="'required'" class="control" id="base_currency_id" name="base_currency_id" data-vv-as="&quot;{{ __('admin::app.settings.channels.base-currency') }}&quot;">
+                                    @foreach (core()->getAllCurrencies() as $currency)
+                                        <option value="{{ $currency->id }}" {{ $selectedOption == $currency->id ? 'selected' : '' }}>
+                                            {{ $currency->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="control-error" v-if="errors.has('base_currency_id')">@{{ errors.first('base_currency_id') }}</span>
+                            </div>
+
+                        </div>
+                    </accordian>
                 </div>
             </div>
         </form>
