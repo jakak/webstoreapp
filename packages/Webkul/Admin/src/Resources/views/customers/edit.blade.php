@@ -17,11 +17,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.customers.customers.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -92,29 +87,17 @@
                                 </select>
                             </div>
 
-                            <div class="control-group" :class="[errors.has('channel_id') ? 'has-error' : '']">
-                                <label for="channel" >{{ __('admin::app.customers.customers.channel_name') }}</label>
 
-                                @if (! is_null($customer->channel_id))
-                                    <?php $selectedChannelOption = $customer->channel_id ?>
-                                @else
-                                    <?php $selectedChannelOption = $customer->channel_id ?>
-                                @endif
-
-                                <select  class="control" name="channel_id" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customers.customers.channel_name') }}&quot;">
-                                    @foreach ($channelName as $channel)
-                                    <option value="{{ $channel->id }}" {{ $selectedChannelOption == $channel->id ? 'selected' : '' }}>
-                                        {{ $channel->name}}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('channel_id')">@{{ errors.first('channel_id') }}</span>
+                            <hr class="horizontal-line">
+                            <div class="form-bottom">
+                                <button type="submit" class="btn btn-md btn-primary">
+                                    {{ __('admin::app.customers.customers.save-btn-title') }}
+                                </button>
                             </div>
-
                         </div>
                     </accordian>
-
                 </div>
+
             </div>
         </form>
     </div>

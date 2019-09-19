@@ -41,7 +41,7 @@
 						<hr color="#e8e8e8">
                         <ul>
 							<li>
-                                <a href="{{ route('admin.account.edit') }}"><i class="fas fa-user"></i> {{ trans('admin::app.layouts.my-account') }}</a>
+                                <a href="{{ route('admin.account.index') }}"><i class="fas fa-user"></i> {{ trans('admin::app.layouts.my-account') }}</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.session.destroy') }}"><i class="fas fa-sign-out-alt"></i> {{ trans('admin::app.layouts.logout') }}</a>
