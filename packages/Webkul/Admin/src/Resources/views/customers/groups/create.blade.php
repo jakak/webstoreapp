@@ -12,15 +12,9 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
-                        
+
                         {{ __('admin::app.customers.groups.add-title') }}
                     </h1>
-                </div>
-
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.customers.groups.save-btn-title') }}
-                    </button>
                 </div>
             </div>
 
@@ -37,6 +31,14 @@
                     </div>
 
                 </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.customers.groups.save-btn-title') }}
+                    </button>
+                </div>
+
             </div>
 
         </form>

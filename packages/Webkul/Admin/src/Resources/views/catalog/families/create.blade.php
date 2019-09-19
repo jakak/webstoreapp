@@ -12,16 +12,11 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
-                        
+
                         {{ __('admin::app.catalog.families.add-title') }}
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.families.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -57,6 +52,13 @@
                             <group-list></group-list>
                         </div>
                     </accordian>
+                </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.catalog.families.save-btn-title') }}
+                    </button>
                 </div>
             </div>
 
@@ -99,6 +101,7 @@
                     </button>
 
                 </div>
+
             </div>
 
         </form>
