@@ -20,11 +20,6 @@
 
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.products.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -101,6 +96,12 @@
 
                 @endif
 
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.catalog.products.proceed') }}
+                    </button>
+                </div>
             </div>
 
         </form>

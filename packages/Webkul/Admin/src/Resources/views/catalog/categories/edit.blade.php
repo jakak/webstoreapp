@@ -19,11 +19,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.categories.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -118,6 +113,13 @@
                         </div>
                     </accordian>
 
+                </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.catalog.categories.save-btn-title') }}
+                    </button>
                 </div>
             </div>
 
