@@ -17,11 +17,6 @@
                 </h1>
             </div>
 
-            <div class="page-action">
-                <button class="btn btn-md btn-primary">
-                    Save
-                </button>
-            </div>
         </div>
 
         <div class="page-content">
@@ -85,6 +80,12 @@
                 <span class="control-error" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
             </div>
 
+        </div>
+        <hr class="horizontal-line">
+        <div class="form-bottom">
+            <button class="btn btn-md btn-primary">
+                Save
+            </button>
         </div>
     </form>
 </div>
