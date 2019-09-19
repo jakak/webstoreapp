@@ -30,10 +30,17 @@
 
                     <accordian :title="'{{ __('admin::app.account.general') }}'" :active="true">
                         <div slot="body">
-                            <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
-                                <label for="name" class="required">{{ __('admin::app.account.name') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="name" name="name" value="{{ $user->name }}"  data-vv-as="&quot;{{ __('admin::app.account.name') }}&quot;"/>
-                                <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
+                            <div class="wrap-control">
+                                <div class="control-group" :class="[errors.has('first_name') ? 'has-error' : '']">
+                                    <label for="first_name" class="required">{{ __('admin::app.account.first-name') }}</label>
+                                    <input type="text" v-validate="'required'" class="control" id="first_name" name="first_name" value="{{ $user->first_name }}"  data-vv-as="&quot;{{ __('admin::app.account.first-name') }}&quot;"/>
+                                    <span class="control-error" v-if="errors.has('first_name')">@{{ errors.first('first_name') }}</span>
+                                </div>
+                                <div class="control-group last-name" :class="[errors.has('last_name') ? 'has-error' : '']">
+                                    <label for="last_name" class="required">{{ __('admin::app.account.last-name') }}</label>
+                                    <input type="text" v-validate="'required'" class="control" id="last_name" name="last_name" value="{{ $user->last_name }}"  data-vv-as="&quot;{{ __('admin::app.account.last-name') }}&quot;"/>
+                                    <span class="control-error" v-if="errors.has('last_name')">@{{ errors.first('last_name') }}</span>
+                                </div>
                             </div>
 
                             <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
@@ -44,7 +51,7 @@
                         </div>
                     </accordian>
 
-                    <accordian :title="'{{ __('admin::app.account.change-password') }}'" :active="true">
+                    <accordian :title="'{{ __('admin::app.account.security') }}'" :active="true">
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                                 <label for="password">{{ __('admin::app.account.password') }}</label>
@@ -57,16 +64,12 @@
                                 <input type="password" v-validate="'min:6|confirmed:password'" class="control" id="password_confirmation" name="password_confirmation" data-vv-as="&quot;{{ __('admin::app.account.confirm-password') }}&quot;"/>
                                 <span class="control-error" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
                             </div>
-                        </div>
-                    </accordian>
 
-                    <accordian :title="'{{ __('admin::app.account.current-password') }}'" :active="true">
-                        <div slot="body">
-                        <div class="control-group" :class="[errors.has('current_password') ? 'has-error' : '']">
-                            <label for="current_password">{{ __('admin::app.account.current-password') }}</label>
-                            <input type="password" v-validate="'required|min:6'" class="control" id="current_password" name="current_password" data-vv-as="&quot;{{ __('admin::app.account.current-password') }}&quot;"/>
-                            <span class="control-error" v-if="errors.has('current_password')">@{{ errors.first('current_password') }}</span>
-                        </div>
+                            <div class="control-group" :class="[errors.has('current_password') ? 'has-error' : '']">
+                                <label for="current_password">{{ __('admin::app.account.current-password') }}</label>
+                                <input type="password" v-validate="'required|min:6'" class="control" id="current_password" name="current_password" data-vv-as="&quot;{{ __('admin::app.account.current-password') }}&quot;"/>
+                                <span class="control-error" v-if="errors.has('current_password')">@{{ errors.first('current_password') }}</span>
+                            </div>
                         </div>
                     </accordian>
                 </div>

@@ -54,7 +54,8 @@ class AccountController extends Controller
         $user = auth()->guard('admin')->user();
 
         $this->validate(request(), [
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'email|unique:admins,email,' . $user->id,
             'password' => 'nullable|min:6|confirmed',
             'current_password' => 'required|min:6'

@@ -11,11 +11,11 @@
 
     <div class="navbar-top-right">
         <div class="profile">
-            
+
 			<div class="profile-info">
 				<a href="#"><i class="far fa-bell"></i></a>
             </div>
-			
+
 			<div class="profile-info">
 				<a href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}"><i class="fas fa-external-link-alt"></i></a>
             </div>
@@ -24,14 +24,14 @@
                 <div class="dropdown-toggle">
                     <div style="display: inline-block; vertical-align: middle;">
                         <i class="icon avatar active"></i>
-                    </div>                    
+                    </div>
                 </div>
 
                 <div class="dropdown-list bottom-right">
                     <div class="dropdown-container">
                         <ul>
 							<span class="name">
-                            {{ auth()->guard('admin')->user()->name }}
+                            {{ auth()->guard('admin')->user()->fullName() }}
                         </span>
 
                         <span class="role">
@@ -59,8 +59,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>	
-			
+            </div>
+
         </div>
     </div>
 </div>
