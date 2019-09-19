@@ -480,42 +480,9 @@ class Core
 
         $fields = $this->getConfigField($field);
 
-        $channel_based = false;
-        $locale_based = false;
-
-        if (isset($fields['channel_based']) && $fields['channel_based']) {
-            $channel_based = true;
-        }
-
-        if (isset($fields['locale_based']) && $fields['locale_based']) {
-            $locale_based = true;
-        }
-
-        if (isset($fields['channel_based']) && $fields['channel_based']) {
-            if (isset($fields['locale_based']) && $fields['locale_based']) {
-                $coreConfigValue = $this->coreConfigRepository->findOneWhere([
-                    'code' => $field,
-                    'channel_code' => $channel,
-                    'locale_code' => $locale
-                ]);
-            } else {
-                $coreConfigValue = $this->coreConfigRepository->findOneWhere([
-                    'code' => $field,
-                    'channel_code' => $channel,
-                ]);
-            }
-        } else {
-            if (isset($fields['locale_based']) && $fields['locale_based']) {
-                $coreConfigValue = $this->coreConfigRepository->findOneWhere([
-                    'code' => $field,
-                    'locale_code' => $locale
-                ]);
-            } else {
-                $coreConfigValue = $this->coreConfigRepository->findOneWhere([
-                    'code' => $field
-                ]);
-            }
-        }
+        $coreConfigValue = $this->coreConfigRepository->findOneWhere([
+            'code' => $field
+        ]);
 
         if (! $coreConfigValue) {
             $fields = explode(".", $field);
