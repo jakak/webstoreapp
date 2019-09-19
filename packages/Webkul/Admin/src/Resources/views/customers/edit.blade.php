@@ -26,7 +26,6 @@
 
                     <input name="_method" type="hidden" value="PUT">
 
-                    <accordian :title="'{{ __('admin::app.account.general') }}'" :active="true">
                         <div slot="body">
 
                             <div class="control-group" :class="[errors.has('first_name') ? 'has-error' : '']">
@@ -95,7 +94,6 @@
                                 </button>
                             </div>
                         </div>
-                    </accordian>
                 </div>
 
             </div>
