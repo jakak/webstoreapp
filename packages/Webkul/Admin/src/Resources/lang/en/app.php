@@ -165,9 +165,9 @@ return [
         'first-name' => 'First Name',
         'last-name' => 'Last Name',
         'email' => 'Email',
-        'password' => 'Password',
+        'password' => 'New Password',
         'security' => 'Security',
-        'confirm-password' => 'Confirm Password',
+        'confirm-password' => 'Confirm New Password',
         'change-password' => 'Change Account Password',
         'current-password' => 'Current Password'
     ],
