@@ -66,7 +66,9 @@
                 <div class="page-header">
 
                     <div class="page-title modify">
+
                         <i class="icon angle-left-icon back-link" onclick="window.history.go(-0);"></i>
+
 
                         <h1>
                             {{ __('admin::app.configuration.title') }}

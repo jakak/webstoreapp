@@ -12,7 +12,7 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
-                        
+
                         {{ __('admin::app.catalog.attributes.add-title') }}
                     </h1>
                 </div>
@@ -60,15 +60,6 @@
                                 <input type="text" v-validate="'required'" class="control" id="admin_name" name="admin_name" value="{{ old('admin_name') }}" data-vv-as="&quot;{{ __('admin::app.catalog.attributes.admin') }}&quot;"/>
                                 <span class="control-error" v-if="errors.has('admin_name')">@{{ errors.first('admin_name') }}</span>
                             </div>
-
-                            @foreach (Webkul\Core\Models\Locale::all() as $locale)
-
-                                <div class="control-group">
-                                    <label for="locale-{{ $locale->code }}">{{ $locale->name . ' (' . $locale->code . ')' }}</label>
-                                    <input type="text" class="control" id="locale-{{ $locale->code }}" name="<?php echo $locale->code; ?>[name]" value="{{ old($locale->code)['name'] }}"/>
-                                </div>
-
-                            @endforeach
 
                         </div>
                     </accordian>
@@ -118,15 +109,7 @@
 
                     <accordian :title="'{{ __('admin::app.catalog.attributes.configuration') }}'" :active="true">
                         <div slot="body">
-
-                            <div class="control-group">
-                                <label for="value_per_locale">{{ __('admin::app.catalog.attributes.value_per_locale') }}</label>
-                                <select class="control" id="value_per_locale" name="value_per_locale">
-                                    <option value="0">{{ __('admin::app.catalog.attributes.no') }}</option>
-                                    <option value="1">{{ __('admin::app.catalog.attributes.yes') }}</option>
-                                </select>
-                            </div>
-
+                            <input type="hidden" name="value_per_locale" value="0">
                             <div class="control-group">
                                 <label for="value_per_channel">{{ __('admin::app.catalog.attributes.value_per_channel') }}</label>
                                 <select class="control" id="value_per_channel" name="value_per_channel">
@@ -177,12 +160,6 @@
                         <tr>
                             <th>{{ __('admin::app.catalog.attributes.admin_name') }}</th>
 
-                            @foreach (Webkul\Core\Models\Locale::all() as $locale)
-
-                                <th>{{ $locale->name . ' (' . $locale->code . ')' }}</th>
-
-                            @endforeach
-
                             <th>{{ __('admin::app.catalog.attributes.position') }}</th>
 
                             <th></th>
@@ -197,15 +174,6 @@
                                     <span class="control-error" v-if="errors.has(adminName(row))">@{{ errors.first(adminName(row)) }}</span>
                                 </div>
                             </td>
-
-                            @foreach (Webkul\Core\Models\Locale::all() as $locale)
-                                <td>
-                                    <div class="control-group" :class="[errors.has(localeInputName(row, '{{ $locale->code }}')) ? 'has-error' : '']">
-                                        <input type="text" v-validate="'required'" v-model="row['{{ $locale->code }}']" :name="localeInputName(row, '{{ $locale->code }}')" class="control" data-vv-as="&quot;{{ $locale->name . ' (' . $locale->code . ')' }}&quot;"/>
-                                        <span class="control-error" v-if="errors.has(localeInputName(row, '{{ $locale->code }}'))">@{{ errors.first(localeInputName(row, '{!! $locale->code !!}')) }}</span>
-                                    </div>
-                                </td>
-                            @endforeach
 
                             <td>
                                 <div class="control-group" :class="[errors.has(sortOrderName(row)) ? 'has-error' : '']">
@@ -251,10 +219,6 @@
                     addOptionRow () {
                         var rowCount = this.optionRowCount++;
                         var row = {'id': 'option_' + rowCount};
-
-                        @foreach (Webkul\Core\Models\Locale::all() as $locale)
-                        row['{{ $locale->code }}'] = '';
-                        @endforeach
 
                         this.optionRows.push(row);
                     },
