@@ -43,7 +43,13 @@
 
 					<div slot="body">
 
-                        <div class="control-group" :class="[errors.has('type') ? 'has-error' : '']">
+                        <div class="control-group" :class="[errors.has('sku') ? 'has-error' : '']">
+                            <label for="sku" class="required">{{ __('admin::app.catalog.products.sku') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="sku" name="sku" value="{{ $sku ?: old('sku') }}" data-vv-as="&quot;{{ __('admin::app.catalog.products.sku') }}&quot;"/>
+                            <span class="control-error" v-if="errors.has('sku')">@{{ errors.first('sku') }}</span>
+                        </div>
+						
+						<div class="control-group" :class="[errors.has('type') ? 'has-error' : '']">
                             <label for="type" class="required">{{ __('admin::app.catalog.products.product-type') }}</label>
                             <select class="control" v-validate="'required'" id="type" name="type" {{ $familyId ? 'disabled' : '' }} data-vv-as="&quot;{{ __('admin::app.catalog.products.product-type') }}&quot;">
                                 <option value="simple">{{ __('admin::app.catalog.products.simple') }}</option>
@@ -69,13 +75,7 @@
                                 <input type="hidden" name="attribute_family_id" value="{{ $familyId }}"/>
                             @endif
                             <span class="control-error" v-if="errors.has('attribute_family_id')">@{{ errors.first('attribute_family_id') }}</span>
-                        </div>
-
-                        <div class="control-group" :class="[errors.has('sku') ? 'has-error' : '']">
-                            <label for="sku" class="required">{{ __('admin::app.catalog.products.sku') }}</label>
-                            <input type="text" v-validate="'required'" class="control" id="sku" name="sku" value="{{ $sku ?: old('sku') }}" data-vv-as="&quot;{{ __('admin::app.catalog.products.sku') }}&quot;"/>
-                            <span class="control-error" v-if="errors.has('sku')">@{{ errors.first('sku') }}</span>
-                        </div>
+                        </div>                        
 
                     </div>
 
@@ -126,7 +126,7 @@
                 <hr class="horizontal-line">
                 <div class="form-bottom">
                     <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.products.proceed') }}
+                        {{ __('admin::app.catalog.products.save-product') }}
                     </button>
                 </div>
 

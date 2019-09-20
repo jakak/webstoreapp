@@ -99,7 +99,7 @@
                 <hr class="horizontal-line">
                 <div class="form-bottom">
                     <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.products.proceed') }}
+                        {{ __('admin::app.catalog.products.save-product') }}
                     </button>
                 </div>
             </div>

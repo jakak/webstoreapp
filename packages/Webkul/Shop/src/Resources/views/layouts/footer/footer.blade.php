@@ -31,7 +31,22 @@
                             <button class="btn btn-md btn-primary">{{ __('shop::app.subscription.subscribe') }}</button>
                         </div>
                     </form>
-                </div>                
+                </div>  
+
+				<div class="currency">
+                    <span class="list-heading">{{ __('shop::app.footer.currency') }}</span>
+                    <div class="form-container">
+                        <div class="control-group">
+                            <select class="control locale-switcher" onchange="window.location.href = this.value">
+
+                                @foreach (core()->getCurrentChannel()->currencies as $currency)
+                                    <option value="?currency={{ $currency->code }}" {{ $currency->code == core()->getCurrentCurrencyCode() ? 'selected' : '' }}>{{ $currency->code }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
