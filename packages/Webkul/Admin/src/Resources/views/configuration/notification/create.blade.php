@@ -5,19 +5,15 @@
             <div class="page-title">
                 <i class="icon angle-left-icon back-link" onclick="window.history.go(-0);"></i>
                 <h1>
-                    Store Notifications
+                   Add Recipient
                 </h1>
             </div>
 
-            <div class="page-action">
-                <button id="addLocation" class="btn btn-md btn-primary">
-                    Save
-                </button>
-            </div>
+
         </div>
 
         <div class="page-content">
-            <accordian :title="'Add an order notification'" :active="true">
+
                 <div slot="body">
                     <div class="control-group">
                         <label for="user" class="required">Select Staff Account</label>
@@ -36,7 +32,13 @@
                         </select>
                     </div>
                 </div>
-            </accordian>
+
+        </div>
+        <hr class="horizontal-line">
+        <div class="form-bottom">
+            <button id="addLocation" class="btn btn-md btn-primary">
+                Save
+            </button>
         </div>
     </form>
 </div>

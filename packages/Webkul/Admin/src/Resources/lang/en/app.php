@@ -457,7 +457,7 @@ return [
     ],
 
     'configuration' => [
-        'title' => 'Configuration',
+        'title' => 'Add Shipping Location',
         'save-btn-title' => 'Save',
         'save-message' => 'Configuration saved successfully',
         'yes' => 'Yes',
