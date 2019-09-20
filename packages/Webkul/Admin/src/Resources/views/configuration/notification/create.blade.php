@@ -3,6 +3,7 @@
         @csrf
         <div class="page-header">
             <div class="page-title">
+                <i class="icon angle-left-icon back-link" onclick="window.history.go(-0);"></i>
                 <h1>
                    Add Recipient
                 </h1>
