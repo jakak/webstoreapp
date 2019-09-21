@@ -65,22 +65,21 @@
             <form method="POST" action="{{ route('admin.configuration.location') }}" class="d-none" id="addLocationPage">
                 <div class="page-header">
 
-                    <div class="page-title">
+                    <div class="page-title modify">
+
+                        <i class="icon angle-left-icon back-link" onclick="window.history.go(-0);"></i>
+
+
                         <h1>
                             {{ __('admin::app.configuration.title') }}
                         </h1>
                     </div>
 
-                    <div class="page-action">
-                        <button type="submit" class="btn btn-md btn-primary">
-                            {{ __('admin::app.configuration.save-btn-title') }}
-                        </button>
-                    </div>
                 </div>
                 <div class="page-content">
                     <div class="form-container">
                         @csrf
-                        <accordian :title="'New Shipping Location'" :active="true">
+
                             <div slot="body">
                                 <div class="control-group text" :class="">
 
@@ -138,7 +137,13 @@
                                     </select>
                                 </div>
                             </div>
-                        </accordian>
+                    </div>
+
+                    <hr class="horizontal-line">
+                    <div class="form-bottom">
+                        <button type="submit" class="btn btn-md btn-primary">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
                     </div>
                 </div>
             </form>
@@ -171,11 +176,7 @@
                            <span class="back-arrow"><i class="fa fa-angle-left"></i></span> Page Details
                         </h1>
                     </div>
-                    <div class="page-action">
-                        <button type="submit" class="btn btn-md btn-primary">
-                            {{ __('admin::app.configuration.save-btn-title') }}
-                        </button>
-                    </div>
+
                 </div>
                 <div class="page-content">
                     <div class="form-container">
@@ -226,6 +227,13 @@
                             <textarea name="meta_description" id="meta_description" class="control"></textarea>
                         </div>
                     </div>
+
+                    <hr class="horizontal-line">
+                    <div class="form-bottom">
+                        <button type="submit" class="btn btn-md btn-primary">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
+                    </div>
                 </div>
             </form>
         @elseif(strpos(request()->url(), 'notifications') !== false)
@@ -256,11 +264,6 @@
                         @endif
                     </div>
 
-                    <div class="page-action">
-                        <button type="submit" class="btn btn-md btn-primary">
-                            {{ __('admin::app.configuration.save-btn-title') }}
-                        </button>
-                    </div>
                 </div>
 
                 <div class="page-content">
@@ -289,7 +292,6 @@
                         @endif
 
                     </div>
-
 
                     @if(strpos(request()->url(), 'paystack'))
                         <footer class="payment-footer">
@@ -366,6 +368,8 @@
                 function setupEditPage(url) {
                     fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
                         .then(response => {
+                            document.querySelector('.modify').querySelector('h1').innerText = "Modify Shipping Location";
+
                           return response.json();
                         })
                         .then(response => {

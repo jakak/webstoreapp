@@ -17,11 +17,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.users.roles.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -54,12 +49,19 @@
                                     <option value="all" {{ $role->permission_type == 'all' ? 'selected' : '' }}>{{ __('admin::app.users.roles.all') }}</option>
                                 </select>
                             </div>
-                            
+
                             <div class="control-group tree-wrapper {{ $role->permission_type == 'all' ? 'hide' : '' }}">
                                 <tree-view value-field="key" id-field="key" items='@json($acl->items)' value='@json($role->permissions)'></tree-view>
                             </div>
                         </div>
                     </accordian>
+                </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.users.roles.save-btn-title') }}
+                    </button>
                 </div>
             </div>
         </form>
@@ -75,7 +77,7 @@
                 } else {
                     $('.tree-wrapper').addClass('hide')
                 }
-                
+
             })
         });
     </script>

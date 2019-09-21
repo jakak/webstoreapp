@@ -234,8 +234,10 @@ body {
     }
 }
 
+// **************************
+// Overwrite in admin ui
 hr.horizontal-line {
-  border-top: 1px solid #79C142;
+  border-top: 2px solid #79C142;
 }
 
 .form-bottom {
@@ -243,6 +245,13 @@ hr.horizontal-line {
   margin-bottom: 50px;
   float: right;
 }
+
+// Selector2
+.select2-container {
+  width: 70% !important;
+}
+
+// ***************************
 
 .control-group {
     label {

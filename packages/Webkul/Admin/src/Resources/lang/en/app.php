@@ -344,7 +344,7 @@ return [
             'add-product-btn-title' => 'Add Product',
             'add-title' => 'Add Product',
             'edit-title' => 'Edit Product',
-            'save-btn-title' => 'Save Product',
+            'save-product' => 'Save Product',
 			'proceed' => 'Proceed',
             'general' => 'General',
             'product-type' => 'Product Type',
@@ -457,7 +457,7 @@ return [
     ],
 
     'configuration' => [
-        'title' => 'Configuration',
+        'title' => 'Add Shipping Location',
         'save-btn-title' => 'Save',
         'save-message' => 'Configuration saved successfully',
         'yes' => 'Yes',

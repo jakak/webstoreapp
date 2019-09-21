@@ -95,7 +95,7 @@ return [
     ]
   ], [
     'key'   => 'sales.othermethods',
-    'name'  => 'Shipping Methods',
+    'name'  => 'Shipping Locations',
     'sort'  => 2
   ], [
     'key'   =>  'sales.othermethods.addlocation',
