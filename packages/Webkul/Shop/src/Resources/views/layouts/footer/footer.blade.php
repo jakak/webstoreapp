@@ -10,10 +10,10 @@
                     <div class="control-group">
                         <img src="https://res.cloudinary.com/webstore-cloud/image/upload/c_thumb,w_200,g_face/v1567928939/Paystack/secured-by-paystack-square_ar41bj.png" />
                     </div>
-                </div>               
+                </div>
 
             </div>
-			
+
 			<div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.customer-care') }}</span>
                 <div class="form-container">
@@ -21,7 +21,7 @@
                         <a href="/pages/contact-store"><button class="btn btn-md btn-primary">Contact Store</button></a>
                     </div>
                 </div>
-				
+
 				<span class="list-heading">{{ __('shop::app.footer.subscribe-newsletter') }}</span>
                 <div class="form-container">
                     <form action="{{ route('shop.subscribe') }}">
@@ -31,7 +31,7 @@
                             <button class="btn btn-md btn-primary">{{ __('shop::app.subscription.subscribe') }}</button>
                         </div>
                     </form>
-                </div>  
+                </div>
 
 				<div class="currency">
                     <span class="list-heading">{{ __('shop::app.footer.currency') }}</span>
