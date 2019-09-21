@@ -54,7 +54,6 @@ h2 {
   width: 70% !important;
 }
 
-
 //tool tip
 .tooltip {
     position: relative;
@@ -367,8 +366,9 @@ h2 {
 .pagination {
     .page-item {
         background: #ffffff;
-        border: 2px solid $control-border-color;
-        @include border-radius(3px);
+        border: 1px solid $control-border-color;
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,.05);
+        @include border-radius(7px);
         padding: 7px 14px;
         margin-right: 5px;
         font-size: 16px;
@@ -379,7 +379,7 @@ h2 {
 
         &.previous,
         &.next {
-            padding: 6px 9px;
+            padding: 6px 5px;
         }
 
         &.active {

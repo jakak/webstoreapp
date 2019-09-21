@@ -293,6 +293,20 @@
 
                     </div>
 
+                    @if(strpos(request()->url(), 'paystack'))
+                        <footer class="payment-footer">
+                            <hr class="hr">
+                            <div>
+                                <div>
+                                    <a target="_blank" href="https://dashboard.paystack.com/#/signup">Create a Free Paystack Account</a>
+                                </div>
+                                <div>
+                                    <a target="_blank" href="https://paystack.com/why-choose-paystack">Learn About Paystack</a>
+                                </div>
+                            </div>
+                        </footer>
+                    @endif
+
                     <hr class="horizontal-line">
                     <div class="form-bottom">
                         <button type="submit" class="btn btn-md btn-primary">
@@ -304,19 +318,7 @@
 
             </form>
 
-            @if(strpos(request()->url(), 'paystack'))
-                <footer class="payment-footer">
-                    <hr class="hr">
-                    <div>
-                        <div>
-                            <a target="_blank" href="https://dashboard.paystack.com/#/signup">Create a Free Paystack Account</a>
-                        </div>
-                        <div>
-                            <a target="_blank" href="https://paystack.com/why-choose-paystack">Learn About Paystack</a>
-                        </div>
-                    </div>
-                </footer>
-            @endif
+
         @endif
     </div>
 @stop
