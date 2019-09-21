@@ -41,13 +41,10 @@
 						<hr color="#e8e8e8">
                         <ul>
 							<li>
-                                <a href="{{ route('admin.account.index') }}"><i class="fas fa-user"></i> {{ trans('admin::app.layouts.my-account') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.session.destroy') }}"><i class="fas fa-sign-out-alt"></i> {{ trans('admin::app.layouts.logout') }}</a>
+                                <a href="{{ route('admin.account.index') }}"> {{ trans('admin::app.layouts.my-account') }}</a>
                             </li>
                         </ul>
-						<br>
+						<hr color="#e8e8e8">
 						<label>Quick Links</label>
                         <ul>
                             <li>
@@ -55,6 +52,12 @@
                             </li>
 							<li>
                                 <a href="https://help.webstore.ng" target="_blank">{{ trans('admin::app.layouts.get-support') }}</a>
+                            </li>
+                        </ul>
+						<hr color="#e8e8e8">
+						<ul>
+                            <li>
+                                <a href="{{ route('admin.session.destroy') }}"><i class="fas fa-sign-out-alt"></i> {{ trans('admin::app.layouts.logout') }}</a>
                             </li>
                         </ul>
                     </div>
