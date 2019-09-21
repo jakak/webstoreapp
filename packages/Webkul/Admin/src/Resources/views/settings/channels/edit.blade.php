@@ -24,7 +24,7 @@
                     @csrf()
                     <input name="_method" type="hidden" value="PUT">
 
-                    <accordian :title="'{{ __('admin::app.settings.channels.general') }}'" :active="true">
+                    <accordian :title="'{{ __('admin::app.settings.channels.details-section') }}'" :active="true">
                         <div slot="body">
 
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
@@ -41,6 +41,11 @@
                                     data-vv-as="&quot;{{ __('admin::app.settings.channels.business_name') }}&quot;"
                                     value="{{ old('business_name') ?: $channel->business_name }}"/>
                                 <span class="control-error" v-if="errors.has('business_name')">@{{ errors.first('business_name') }}</span>
+                            </div>
+							
+							<div class="control-group">
+                                <label for="hostname">{{ __('admin::app.settings.channels.hostname') }}</label>
+                                <input type="text" class="control" id="hostname" name="hostname" value="{{ $channel->hostname }}" placeholder="https://businessdomain.com"/>
                             </div>
 
                             <div class="control-group" :class="[errors.has('description') ? 'has-error' : '']">
@@ -71,6 +76,45 @@
                                 <input v-validate="'required'" class="control" id="phone_number" name="phone_number" data-vv-as="&quot;{{ __('admin::app.settings.channels.phone_number') }}&quot;" value="{{ old('phone_number') ?: $channel->phone_number }}"/>
                                 <span class="control-error" v-if="errors.has('phone_number')">@{{ errors.first('phone_number') }}</span>
                             </div>
+
+                            
+
+{{--                             <div class="control-group">
+                                <label for="description">{{ __('admin::app.settings.channels.description') }}</label>
+                                <textarea class="control" id="description" name="description">{{ old('description') ?: $channel->description }}</textarea>
+                            </div>
+ --}}
+                            <div class="control-group" :class="[errors.has('inventory_sources[]') ? 'has-error' : '']">
+                                <label for="inventory_sources" class="required">{{ __('admin::app.settings.channels.inventory_sources') }}</label>
+                                <?php $selectedOptionIds = old('inventory_sources') ?: $channel->inventory_sources->pluck('id')->toArray() ?>
+                                <select v-validate="'required'" class="control" id="inventory_sources" name="inventory_sources[]" data-vv-as="&quot;{{ __('admin::app.settings.channels.inventory_sources') }}&quot;" multiple>
+                                    @foreach (app('Webkul\Inventory\Repositories\InventorySourceRepository')->all() as $inventorySource)
+                                        <option value="{{ $inventorySource->id }}" {{ in_array($inventorySource->id, $selectedOptionIds) ? 'selected' : '' }}>
+                                            {{ $inventorySource->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="control-error" v-if="errors.has('inventory_sources[]')">@{{ errors.first('inventory_sources[]') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('root_category_id') ? 'has-error' : '']">
+                                <label for="root_category_id" class="required">{{ __('admin::app.settings.channels.root-category') }}</label>
+                                <?php $selectedOption = old('root_category_id') ?: $channel->root_category_id ?>
+                                <select v-validate="'required'" class="control" id="root_category_id" name="root_category_id" data-vv-as="&quot;{{ __('admin::app.settings.channels.root-category') }}&quot;">
+                                    @foreach (app('Webkul\Category\Repositories\CategoryRepository')->getRootCategories() as $category)
+                                        <option value="{{ $category->id }}" {{ $selectedOption == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>
+                            </div>                            
+
+                        </div>
+                    </accordian>
+					
+					<accordian :title="'{{ __('admin::app.settings.channels.address-section') }}'" :active="true">
+                        <div slot="body">
 
                             <div class="control-group" :class="[errors.has('address') ? 'has-error' : '']" >
                                 <label for="address" class="required">{{ __('admin::app.settings.channels.address') }}</label>
@@ -115,36 +159,6 @@
                                 <textarea class="control" id="description" name="description">{{ old('description') ?: $channel->description }}</textarea>
                             </div>
  --}}
-                            <div class="control-group" :class="[errors.has('inventory_sources[]') ? 'has-error' : '']">
-                                <label for="inventory_sources" class="required">{{ __('admin::app.settings.channels.inventory_sources') }}</label>
-                                <?php $selectedOptionIds = old('inventory_sources') ?: $channel->inventory_sources->pluck('id')->toArray() ?>
-                                <select v-validate="'required'" class="control" id="inventory_sources" name="inventory_sources[]" data-vv-as="&quot;{{ __('admin::app.settings.channels.inventory_sources') }}&quot;" multiple>
-                                    @foreach (app('Webkul\Inventory\Repositories\InventorySourceRepository')->all() as $inventorySource)
-                                        <option value="{{ $inventorySource->id }}" {{ in_array($inventorySource->id, $selectedOptionIds) ? 'selected' : '' }}>
-                                            {{ $inventorySource->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('inventory_sources[]')">@{{ errors.first('inventory_sources[]') }}</span>
-                            </div>
-
-                            <div class="control-group" :class="[errors.has('root_category_id') ? 'has-error' : '']">
-                                <label for="root_category_id" class="required">{{ __('admin::app.settings.channels.root-category') }}</label>
-                                <?php $selectedOption = old('root_category_id') ?: $channel->root_category_id ?>
-                                <select v-validate="'required'" class="control" id="root_category_id" name="root_category_id" data-vv-as="&quot;{{ __('admin::app.settings.channels.root-category') }}&quot;">
-                                    @foreach (app('Webkul\Category\Repositories\CategoryRepository')->getRootCategories() as $category)
-                                        <option value="{{ $category->id }}" {{ $selectedOption == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="hostname">{{ __('admin::app.settings.channels.hostname') }}</label>
-                                <input type="text" class="control" id="hostname" name="hostname" value="{{ $channel->hostname }}" placeholder="https://www.example.com"/>
-                            </div>
 
                         </div>
                     </accordian>
