@@ -75,6 +75,7 @@
             })
             .then(response => {
                 goToRecepPage();
+                document.querySelector('h1').innerText = "Modify Recipient";
                 const inp = document.createElement('input');
                 inp.type="hidden";
                 inp.value = response.id;

@@ -17,11 +17,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.settings.exchange_rates.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -73,6 +68,13 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.settings.exchange_rates.save-btn-title') }}
+                    </button>
                 </div>
             </div>
         </form>

@@ -16,11 +16,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.settings.tax-rates.edit-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -66,6 +61,13 @@
                         <span class="control-error" v-if="errors.has('tax_rate')">@{{ errors.first('tax_rate') }}</span>
                     </div>
 
+                </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.settings.tax-rates.save-btn-title') }}
+                    </button>
                 </div>
             </div>
         </form>
