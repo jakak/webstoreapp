@@ -118,5 +118,34 @@
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
 
         <div class="modal-overlay"></div>
+
+    <script>
+        $(function(){
+            document.querySelectorAll('.select2').forEach(element => {
+              element.addEventListener('click', function() {
+                document.querySelectorAll('.select2-results__option').forEach(element => {
+                  const prevSibling = !!element.previousElementSibling;
+                  const nextSibling = !!element.nextElementSibling;
+                  if (prevSibling && nextSibling) {
+                    return
+                  }
+                  if (prevSibling && !nextSibling) {
+                    const prevSiblingNeedsRadius = prevSibling && !!document.querySelector('.select2-container--below');
+                    if (prevSiblingNeedsRadius) {
+                      element.style.borderRadius = '0 0 7px 7px';
+                      element.style.border = 'solid 1px transparent';
+                    }
+                  }
+                  if (!prevSibling && nextSibling) {
+                    const prevSiblingNeedsRadius = nextSibling && !!document.querySelector('.select2-container--above');
+                    if (prevSiblingNeedsRadius) {
+                      element.style.borderRadius = '7px 7px 0px 0px';
+                    }
+                  }
+                });
+              })
+            });
+        });
+    </script>
     </body>
 </html>
