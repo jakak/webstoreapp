@@ -90,7 +90,6 @@
                 border-color: #79C142 !important;
             }
         </style>
->>>>>>> Stashed changes
 
         @yield('head')
 

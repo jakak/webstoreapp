@@ -10,6 +10,7 @@ mix.disableNotifications();
 mix.js(
     [
         __dirname + "/src/Resources/assets/js/app.js",
+        __dirname + "/src/Resources/assets/js/dropdown.js"
     ],
     "js/ui.js"
 )
