@@ -147,6 +147,7 @@ h2 {
     @include border-radius(3px);
     background-color: #ffffff;
     position: absolute;
+    right: 10px;
     display: none;
     z-index: 10;
     text-align: left;
