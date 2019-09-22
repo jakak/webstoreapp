@@ -122,12 +122,24 @@
     <script>
         $(function(){
             document.querySelectorAll('.select2').forEach(element => {
+              element.addEventListener('focusout', function() {
+                element.style.borderTopColor = "#c7c7c7";
+                element.style.borderBottomColor = "#c7c7c7"
+              });
+            });
+
+            document.querySelectorAll('.select2').forEach(element => {
               element.addEventListener('click', function() {
                 const options = document.querySelectorAll('.select2-results__option');
                 options.forEach(element => {
                   const prevSibling = !!element.previousElementSibling;
                   const nextSibling = !!element.nextElementSibling;
                   const above = !!document.querySelector('.select2-container--above');
+                  if (above) {
+                    element.parentElement.parentElement.parentElement.style.borderTopColor = "transparent";
+                  } else {
+                    element.parentElement.parentElement.parentElement.style.borderBottomColor = "transparent";
+                  }
                   const below = !!document.querySelector('.select2-container--below');
 
                   if (prevSibling && nextSibling) {
