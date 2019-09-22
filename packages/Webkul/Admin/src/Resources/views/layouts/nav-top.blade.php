@@ -12,8 +12,9 @@
     <div class="navbar-top-right">
         <div class="profile">
 
-			<div class="profile-info">
-				<a href="#"><i class="far fa-bell"></i></a>
+
+			<div class="profile-info changelog">
+                <a href="#"><i class="far fa-bell"></i></a>
             </div>
 
 			<div class="profile-info">
