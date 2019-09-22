@@ -10,7 +10,7 @@
 		<link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
 
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+{{--        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />--}}
 
 		<link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
@@ -36,59 +36,6 @@
                 top: -14px !important;
             }
 
-            .select2.select2-container {
-                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
-                border: 1px solid #c7c7c7;
-                padding: 3px 5px 3px 5px;
-                margin-top: 10px;
-                margin-bottom: 5px;
-                font-size: 15px;
-                -webkit-border-radius: 7px;
-                -moz-border-radius: 7px;
-                border-radius: 7px;
-
-            }
-            .select2.select2-container.select2-container--focus.select2-container--open {
-                -webkit-border-radius: 7px 7px 0 0;
-                -moz-border-radius: 7px 7px 0 0;
-                border-radius: 7px 7px 0 0;
-                border-color: #79C142;
-                border-bottom-color: #fff;
-            }
-            .select2.select2-container .selection .select2-selection {
-                border: none;
-            }
-            .select2-container--default .select2-selection--single .select2-selection__arrow {
-                top: 4px;
-            }
-            .select2-dropdown {
-                background-color: white;
-                border: 1px solid #79C142;
-                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
-                border-radius: 7px;
-                box-sizing: border-box;
-                display: block;
-                position: absolute;
-                left: -100000px;
-                width: 100%;
-                z-index: 1051;
-            }
-            .select2-container--default .select2-results__option {
-                padding: 8px 13px;
-                font-size: 15px;
-            }
-            .select2-container--default .select2-results__option[aria-selected=true] {
-                background-color: #fff;
-                color: #3a3a3a;
-            }
-            .select2-container--default .select2-results__option.select2-results__option--highlighted {
-                background-color: #79C142;
-                color: #fff;
-            }
-            .flatpickr-day.selected {
-                background-color: #79C142 !important;
-                border-color: #79C142 !important;
-            }
         </style>
 
         @yield('head')
@@ -171,5 +118,34 @@
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
 
         <div class="modal-overlay"></div>
+
+    <script>
+        $(function(){
+            document.querySelectorAll('.select2').forEach(element => {
+              element.addEventListener('click', function() {
+                document.querySelectorAll('.select2-results__option').forEach(element => {
+                  const prevSibling = !!element.previousElementSibling;
+                  const nextSibling = !!element.nextElementSibling;
+                  if (prevSibling && nextSibling) {
+                    return
+                  }
+                  if (prevSibling && !nextSibling) {
+                    const prevSiblingNeedsRadius = prevSibling && !!document.querySelector('.select2-container--below');
+                    if (prevSiblingNeedsRadius) {
+                      element.style.borderRadius = '0 0 7px 7px';
+                      element.style.border = 'solid 1px transparent';
+                    }
+                  }
+                  if (!prevSibling && nextSibling) {
+                    const prevSiblingNeedsRadius = nextSibling && !!document.querySelector('.select2-container--above');
+                    if (prevSiblingNeedsRadius) {
+                      element.style.borderRadius = '7px 7px 0px 0px';
+                    }
+                  }
+                });
+              })
+            });
+        });
+    </script>
     </body>
 </html>

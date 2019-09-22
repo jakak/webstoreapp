@@ -49,10 +49,6 @@ h2 {
     color: $font-color;
 }
 
-// Selector2
-.select2-container {
-  width: 70% !important;
-}
 
 //tool tip
 .tooltip {
@@ -161,7 +157,6 @@ h2 {
     }
     &.bottom-right {
         top: 42px;
-        right: 10px;
     }
     &.top-left {
         bottom: 42px;

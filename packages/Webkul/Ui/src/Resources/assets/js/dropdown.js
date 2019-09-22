@@ -84,4 +84,5 @@ $(function() {
     autoDropupDropdown()
   });
 
+  // document.querySelectorAll('select2-results__option')
 });
