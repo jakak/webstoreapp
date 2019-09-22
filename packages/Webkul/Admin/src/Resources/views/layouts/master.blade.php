@@ -123,23 +123,46 @@
         $(function(){
             document.querySelectorAll('.select2').forEach(element => {
               element.addEventListener('click', function() {
-                document.querySelectorAll('.select2-results__option').forEach(element => {
+                const options = document.querySelectorAll('.select2-results__option');
+                options.forEach(element => {
                   const prevSibling = !!element.previousElementSibling;
                   const nextSibling = !!element.nextElementSibling;
+                  const above = !!document.querySelector('.select2-container--above');
+                  const below = !!document.querySelector('.select2-container--below');
+
                   if (prevSibling && nextSibling) {
                     return
                   }
-                  if (prevSibling && !nextSibling) {
-                    const prevSiblingNeedsRadius = prevSibling && !!document.querySelector('.select2-container--below');
-                    if (prevSiblingNeedsRadius) {
-                      element.style.borderRadius = '0 0 7px 7px';
-                      element.style.border = 'solid 1px transparent';
+                  if (options.length === 2) {
+                    if (!!document.querySelector('.select2-container--below')) {
+                      options[1].style.borderRadius = '0 0 7px 7px';
+                      options[0].style.borderRadius = '0 0 0 0';
+                    } else {
+                      options[0].style.borderRadius = '7px 7px 0px 0px';
+                      options[1].style.borderRadius = '0 0 0 0';
                     }
+                    return;
                   }
-                  if (!prevSibling && nextSibling) {
-                    const prevSiblingNeedsRadius = nextSibling && !!document.querySelector('.select2-container--above');
-                    if (prevSiblingNeedsRadius) {
+                  if (!(prevSibling && !nextSibling)) {
+                    if (!(!prevSibling && nextSibling)) {
+                      return;
+                    }
+                    const needsRadius = nextSibling && !!above;
+                    if (needsRadius) {
                       element.style.borderRadius = '7px 7px 0px 0px';
+                    }
+                    if (!needsRadius) {
+                      element.style.borderTop = "solid 1px #79c142";
+                      element.style.borderRadius = '0 0 0 0';
+                    }
+                  } else {
+                    const needsRadius = prevSibling && below;
+                    if (needsRadius) {
+                      element.style.borderRadius = '0 0 7px 7px';
+                    }
+                    if (!needsRadius) {
+                      element.style.borderRadius = '0 0 0 0';
+                      element.style.borderBottom = "solid 1px #79c142";
                     }
                   }
                 });
