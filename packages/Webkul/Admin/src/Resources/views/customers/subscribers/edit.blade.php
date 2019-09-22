@@ -12,16 +12,11 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
-                        
+
                         {{ __('admin::app.customers.subscribers.title-edit') }}
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.customers.subscribers.edit-btn-title') }}
-                    </button>
-                </div>
             </div>
             @csrf
             @method('PUT')
@@ -42,6 +37,14 @@
 
                 <span class="control-error" v-if="errors.has('is_subscribed')">@{{ errors.first('is_subscribed') }}</span>
             </div>
+
+            <hr class="horizontal-line">
+            <div class="form-bottom">
+                <button type="submit" class="btn btn-md btn-primary">
+                    {{ __('admin::app.customers.subscribers.edit-btn-title') }}
+                </button>
+            </div>
+
         </form>
     </div>
 @endsection
