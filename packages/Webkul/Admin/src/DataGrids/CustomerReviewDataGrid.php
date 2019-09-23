@@ -32,14 +32,6 @@ class CustomerReviewDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'product_review_id',
-            'label' => trans('admin::app.datagrid.id'),
-            'type' => 'number',
-            'searchable' => false,
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index' => 'title',
             'label' => trans('admin::app.datagrid.title'),
             'type' => 'string',

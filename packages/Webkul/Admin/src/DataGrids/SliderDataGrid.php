@@ -31,14 +31,6 @@ class SliderDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'slider_id',
-            'label' => trans('admin::app.datagrid.id'),
-            'type' => 'number',
-            'searchable' => false,
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index' => 'title',
             'label' => trans('admin::app.datagrid.title'),
             'type' => 'string',
