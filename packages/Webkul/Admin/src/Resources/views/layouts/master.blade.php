@@ -103,7 +103,6 @@
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
-{{--        <script src="{{ asset('vendor/webkul/ui/assets/js/select-dropdown.js') }}"></script>--}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -122,24 +121,13 @@
     <script>
         $(function(){
             document.querySelectorAll('.select2').forEach(element => {
-              element.addEventListener('focusout', function() {
-                element.style.borderTopColor = "#c7c7c7";
-                element.style.borderBottomColor = "#c7c7c7"
-              });
-            });
-
-            document.querySelectorAll('.select2').forEach(element => {
               element.addEventListener('click', function() {
                 const options = document.querySelectorAll('.select2-results__option');
                 options.forEach(element => {
                   const prevSibling = !!element.previousElementSibling;
                   const nextSibling = !!element.nextElementSibling;
                   const above = !!document.querySelector('.select2-container--above');
-                  if (above) {
-                    element.parentElement.parentElement.parentElement.style.borderTopColor = "transparent";
-                  } else {
-                    element.parentElement.parentElement.parentElement.style.borderBottomColor = "transparent";
-                  }
+
                   const below = !!document.querySelector('.select2-container--below');
 
                   if (prevSibling && nextSibling) {
@@ -148,10 +136,8 @@
                   if (options.length === 2) {
                     if (!!document.querySelector('.select2-container--below')) {
                       options[1].style.borderRadius = '0 0 7px 7px';
-                      options[0].style.borderRadius = '0 0 0 0';
                     } else {
                       options[0].style.borderRadius = '7px 7px 0px 0px';
-                      options[1].style.borderRadius = '0 0 0 0';
                     }
                     return;
                   }
