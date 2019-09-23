@@ -108,7 +108,7 @@ return [
             'update-success' => 'Selected index of :resource were successfully updated',
         ],
 
-        'id' => 'ID',
+        'id' => '#',
         'status' => 'Status',
         'code' => 'Code',
         'admin-name' => 'Name',
