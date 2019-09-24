@@ -35,14 +35,6 @@ class UserDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'user_id',
-            'label' => trans('admin::app.datagrid.id'),
-            'type' => 'number',
-            'searchable' => false,
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index' => 'user_first_name',
             'label' => trans('admin::app.datagrid.first-name'),
             'type' => 'string',

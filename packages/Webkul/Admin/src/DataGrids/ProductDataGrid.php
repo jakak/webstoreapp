@@ -33,14 +33,6 @@ class ProductDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'product_id',
-            'label' => trans('admin::app.datagrid.id'),
-            'type' => 'number',
-            'searchable' => false,
-            'sortable' => true
-        ]);
-
-        $this->addColumn([
             'index' => 'product_sku',
             'label' => trans('admin::app.datagrid.sku'),
             'type' => 'string',

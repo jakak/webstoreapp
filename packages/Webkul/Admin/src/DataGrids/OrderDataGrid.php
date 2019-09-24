@@ -41,14 +41,6 @@ class OrderDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'id',
-            'label' => trans('admin::app.datagrid.id'),
-            'type' => 'number',
-            'searchable' => false,
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index' => 'base_sub_total',
             'label' => trans('admin::app.datagrid.sub-total'),
             'type' => 'price',
