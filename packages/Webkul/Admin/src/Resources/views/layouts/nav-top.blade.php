@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="dropdown-list bottom-right move-left">
+                <div class="dropdown-list bottom-right move-left" style="right: 10px!important;">
                     <div class="dropdown-container">
                         <ul>
 							<span class="name">
