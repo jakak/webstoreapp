@@ -154,12 +154,6 @@
                                 <span class="control-error" v-if="errors.has('country')">@{{ errors.first('country') }}</span>
                             </div>
 
-{{--                             <div class="control-group">
-                                <label for="description">{{ __('admin::app.settings.channels.description') }}</label>
-                                <textarea class="control" id="description" name="description">{{ old('description') ?: $channel->description }}</textarea>
-                            </div>
- --}}
-
                         </div>
                     </accordian>
 
