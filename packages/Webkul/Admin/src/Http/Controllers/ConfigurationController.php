@@ -211,12 +211,10 @@ class ConfigurationController extends Controller
     public function addRecipient(Request $request)
     {
         $admin = \Webkul\User\Models\Admin::find($request->user);
-        if ($request->has('id') && $admin) {
-
-            $recipient = StoreNotification::find($request->id)->first();
-
+        if ($request->userEmail && $admin) {
+            $recipient = StoreNotification::where('email', $request->userEmail)->first();
             $recipient->update([
-                'name' => $admin->name,
+                'name' => $admin->first_name,
                 'email' => $admin->email,
                 'test_btn' => ' Button will show here',
                 'status' => $request->status,
@@ -225,6 +223,7 @@ class ConfigurationController extends Controller
             session()->flash('success', 'Recipient updated successfully');
         } else {
             if ($admin) {
+
                 $recipient = StoreNotification::where('email', $admin->email)->first();
                 if ($recipient) {
                     session()->flash('error', 'User is already a recipient');
@@ -233,7 +232,7 @@ class ConfigurationController extends Controller
 
 
                 StoreNotification::create([
-                    'name' => $admin->name,
+                    'name' => $admin->first_name,
                     'email' => $admin->email,
                     'test_btn' => ' Button will show here',
                     'status' => $request->status,
