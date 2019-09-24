@@ -19,7 +19,9 @@
                         <label for="user" class="required">Select Staff Account</label>
                         <select type="text" v-validate="'required'" class="control" id="user" name="user">
                             @foreach (\Webkul\User\Models\Admin::all() as $admin)
+                                @if(!App\StoreNotification::where('email', $admin->email)->first())
                                 <option value="{{ $admin->id }}">{{ $admin->first_name }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
