@@ -10,6 +10,7 @@
         <div class="page-header">
             <div class="page-title">
                 <h1>{{ __('admin::app.dashboard.title') }}</h1>
+                <div class="announcekit-widget"></div>
             </div>
 
             <div class="page-action">

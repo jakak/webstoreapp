@@ -29,7 +29,13 @@
 @push('scripts')
 <script>
     document.querySelector('#recep-create').classList.add('d-none');
-    // document.querySelector('#recep-edit').classList.add('d-none');
+    document.querySelector('#recep-edit').classList.add('d-none');
+
+
+    let goToRecepEditPage = function () {
+        document.querySelector('#recep-main').classList.add('d-none')
+        document.querySelector('#recep-edit').classList.remove('d-none');
+    }
 
     let goToRecepPage = function () {
         document.querySelector('#recep-main').classList.add('d-none')
@@ -74,8 +80,9 @@
                 return response.json();
             })
             .then(response => {
-                goToRecepPage();
-                document.querySelector('h1').innerText = "Modify Recipient";
+                goToRecepEditPage();
+                document.getElementById("UserName").value = url.search.substring(1);
+                document.getElementById("UserId").value = response.user;
                 const inp = document.createElement('input');
                 inp.type="hidden";
                 inp.value = response.id;
@@ -89,6 +96,7 @@
             })
         ;
         console.log(url.search.substring(1));
+
     }
 
     function pageSetup () {
