@@ -2,6 +2,7 @@
 
 namespace Webkul\Admin\DataGrids;
 
+use Webkul\Product\Models\Product;
 use Webkul\Ui\DataGrid\DataGrid;
 use DB;
 
@@ -21,7 +22,9 @@ class AttributeDataGrid extends DataGrid
     {
         $queryBuilder = DB::table('attributes')
                 ->select('id')
-                ->addSelect('id', 'code', 'admin_name', 'type', 'is_required', 'is_unique', 'value_per_locale', 'value_per_channel');
+                ->addSelect('id', 'code', 'admin_name', 'type', 'is_required', 'is_unique', 'value_per_locale', 'value_per_channel')
+                ->whereNotIn('code', (new Product())->getDefaultAttributes())
+        ;
 
         $this->setQueryBuilder($queryBuilder);
     }
