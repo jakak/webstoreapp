@@ -27,14 +27,6 @@ class TaxCategoryDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'id',
-            'label' => trans('admin::app.datagrid.id'),
-            'type' => 'number',
-            'searchable' => false,
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index' => 'name',
             'label' => trans('admin::app.datagrid.name'),
             'type' => 'string',

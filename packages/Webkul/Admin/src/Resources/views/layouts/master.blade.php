@@ -6,37 +6,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-		<link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
-
-
-{{--        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />--}}
+        <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
+        <style>
+            .select2.select2-container {
+                width: 70% !important;
+            }
+        </style>
 
 		<link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
-
-        {{--   This script control the bell icon in Webstore nav-bar   --}}
-        <script>
-            var HW_config = {
-                account:  "7Om06y",
-                selector: ".changelog"// CSS selector where to inject the badge
-            }
-        </script>
-        <script async src="https://cdn.headwayapp.co/widget.js"></script>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
-		<link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
-        <style>
-            #HW_badge_cont {
-                position: absolute !important;
-            }
-
-            #HW_badge {
-                top: -14px !important;
-            }
-
-        </style>
 
         @yield('head')
 
@@ -80,6 +63,17 @@
             </div>
 
         </div>
+		
+		<script>
+			window.announcekit = (window.announcekit || { queue: [], on: function(n, x) { window.announcekit.queue.push([n, x]); }, push: function(x) { window.announcekit.queue.push(x); } });
+			window.announcekit.push({
+				"widget": "https://announcekit.app/widget/48CcJq",
+				"selector": ".announcekit-widget",
+				"version": 2			
+			})
+		</script>
+		<script async src="https://cdn.announcekit.app/widget.js"></script>
+
         <script type="text/javascript">
             window.flashMessages = [];
 
