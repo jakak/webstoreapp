@@ -62,11 +62,11 @@ class ChannelRepository extends Repository
 
         $channel->update($data);
 
-        $channel->locales()->sync($data['locales']);
+//        $channel->locales()->sync($data['locales']);
 
         $channel->currencies()->sync($data['currencies']);
 
-        $channel->inventory_sources()->sync($data['inventory_sources']);
+//        $channel->inventory_sources()->sync($data['inventory_sources']);
 
         $this->uploadImages($data, $channel);
 
