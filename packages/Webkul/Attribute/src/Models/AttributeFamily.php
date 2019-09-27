@@ -9,7 +9,7 @@ use Webkul\Product\Models\Product;
 class AttributeFamily extends Model
 {
     public $timestamps = false;
-    
+
     protected $fillable = ['code', 'name'];
 
     /**
@@ -38,6 +38,11 @@ class AttributeFamily extends Model
     public function attribute_groups()
     {
         return $this->hasMany(AttributeGroup::class)->orderBy('position');
+    }
+
+    public function getDefaultGroups()
+    {
+        return ['general', 'description', 'meta description', 'price', 'shipping'];
     }
 
     /**

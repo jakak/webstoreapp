@@ -235,9 +235,16 @@ class Product extends Model
             'meta_description', 'meta_keywords', 'meta_title', 'special_price_to',
             'special_price', 'special_price_from', 'price', 'description',
             'short_description', 'status', 'visible_individually', 'featured',
-            'new',
+            'new', 'product_spotlight'
         ];
         return $defaultAttributes;
+    }
+
+    public function fixedAttributeAndValues()
+    {
+        return [
+            'visible_individually' => true
+        ];
     }
 
     /**
