@@ -9,10 +9,12 @@ use Webkul\Core\Eloquent\Repository;
 use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Attribute\Repositories\AttributeOptionRepository;
 use Webkul\Core\Models\Channel;
+use Webkul\Product\Models\Product;
 use Webkul\Product\Models\ProductAttributeValue;
 use Webkul\Product\Contracts\Criteria\ActiveProductCriteria;
 use Webkul\Product\Contracts\Criteria\AttributeToSelectCriteria;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Webkul\Product\Models\ProductFlat;
 
 /**
  * Product Repository
@@ -187,6 +189,25 @@ class ProductRepository extends Repository
             }
         }
 
+        $this->updateFixedAttributes($product);
+        $prod_flat = ProductFlat::where('product_id', $product->id)->first();
+        switch ($data['product_spotlight']) {
+            case 19:
+                $prod_flat->featured = true;
+                $prod_flat->new = false;
+                break;
+            case 20:
+                $prod_flat->featured = false;
+                $prod_flat->new = true;
+                break;
+            case 21:
+                $prod_flat->featured = false;
+                $prod_flat->new = false;
+                break;
+        }
+        $prod_flat->save();
+
+
         if (request()->route()->getName() != 'admin.catalog.products.massupdate') {
             if  (isset($data['categories'])) {
                 $product->categories()->sync($data['categories']);
@@ -227,6 +248,34 @@ class ProductRepository extends Repository
         Event::fire('catalog.product.update.after', $product);
 
         return $product;
+    }
+
+    public function updateFixedAttributes($product)
+    {
+        foreach ((new Product())->fixedAttributeAndValues() as $key => $value)
+        {
+            $attribute = $this->attribute->findOneWhere(['code' => $key]);
+
+            $attributeValue = $this->attributeValue->findOneWhere([
+                'product_id' => $product->id,
+                'attribute_id' => $attribute->id,
+                'channel' => $attribute->value_per_channel ? $this->defaultChannel->id : null,
+            ]);
+            if ($attributeValue) {
+                $this->attributeValue->update([
+                    ProductAttributeValue::$attributeTypeFields[$attribute->type] => $value
+                ], $attributeValue->id
+                );
+            } else {
+                $this->attributeValue->create([
+                    'product_id' => $product->id,
+                    'attribute_id' => $attribute->id,
+                    'value' => $value,
+                    'channel' => $attribute->value_per_channel ? $this->defaultChannel->id : null,
+                ]);
+            }
+
+        }
     }
 
     /**
