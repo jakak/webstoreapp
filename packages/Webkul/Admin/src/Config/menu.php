@@ -110,6 +110,18 @@ return [
         'route' => 'admin.currencies.index',
         'sort' => 4,
         'icon-class' => '',
+    ],  [
+        'key' => 'settings.currencies.manage',
+        'name' => 'admin::app.layouts.currencies-manage',
+        'route' => 'admin.currencies.index',
+        'sort' => 1,
+        'icon-class' => '',
+    ],  [
+        'key' => 'settings.currencies.base',
+        'name' => 'admin::app.layouts.currencies-base',
+        'route' => 'admin.base.currencies.edit',
+        'sort' => 2,
+        'icon-class' => '',
     ], [
         'key' => 'settings.exchange_rates',
         'name' => 'admin::app.layouts.exchange-rates',
@@ -183,4 +195,5 @@ return [
         'sort' => 2,
         'icon-class' => '',
     ],
+
 ];

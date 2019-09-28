@@ -42,7 +42,7 @@
                                     value="{{ old('business_name') ?: $channel->business_name }}"/>
                                 <span class="control-error" v-if="errors.has('business_name')">@{{ errors.first('business_name') }}</span>
                             </div>
-							
+
 							<div class="control-group">
                                 <label for="hostname">{{ __('admin::app.settings.channels.hostname') }}</label>
                                 <input type="text" class="control" id="hostname" name="hostname" value="{{ $channel->hostname }}" placeholder="https://businessdomain.com"/>
@@ -77,7 +77,7 @@
                                 <span class="control-error" v-if="errors.has('phone_number')">@{{ errors.first('phone_number') }}</span>
                             </div>
 
-                            
+
 
 {{--                             <div class="control-group">
                                 <label for="description">{{ __('admin::app.settings.channels.description') }}</label>
@@ -108,11 +108,11 @@
                                     @endforeach
                                 </select>
                                 <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>
-                            </div>                            
+                            </div>
 
                         </div>
                     </accordian>
-					
+
 					<accordian :title="'{{ __('admin::app.settings.channels.address-section') }}'" :active="true">
                         <div slot="body">
 
@@ -152,37 +152,6 @@
                                     @endforeach
                                 </select>
                                 <span class="control-error" v-if="errors.has('country')">@{{ errors.first('country') }}</span>
-                            </div>
-
-                        </div>
-                    </accordian>
-
-                    <accordian :title="'{{ __('admin::app.settings.channels.currencies-and-locales') }}'" :active="true">
-                        <div slot="body">
-                            <div class="control-group" :class="[errors.has('currencies[]') ? 'has-error' : '']">
-                                <label for="currencies" class="required">{{ __('admin::app.settings.channels.currencies') }}</label>
-                                <?php $selectedOptionIds = old('currencies') ?: $channel->currencies->pluck('id')->toArray() ?>
-                                <select v-validate="'required'" class="control" id="currencies" name="currencies[]" data-vv-as="&quot;{{ __('admin::app.settings.channels.currencies') }}&quot;" multiple>
-                                    @foreach (core()->getAllCurrencies() as $currency)
-                                        <option value="{{ $currency->id }}" {{ in_array($currency->id, $selectedOptionIds) ? 'selected' : '' }}>
-                                            {{ $currency->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('currencies[]')">@{{ errors.first('currencies[]') }}</span>
-                            </div>
-
-                            <div class="control-group" :class="[errors.has('base_currency_id') ? 'has-error' : '']">
-                                <label for="base_currency_id" class="required">{{ __('admin::app.settings.channels.base-currency') }}</label>
-                                <?php $selectedOption = old('base_currency_id') ?: $channel->base_currency_id ?>
-                                <select v-validate="'required'" class="control" id="base_currency_id" name="base_currency_id" data-vv-as="&quot;{{ __('admin::app.settings.channels.base-currency') }}&quot;">
-                                    @foreach (core()->getAllCurrencies() as $currency)
-                                        <option value="{{ $currency->id }}" {{ $selectedOption == $currency->id ? 'selected' : '' }}>
-                                            {{ $currency->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <span class="control-error" v-if="errors.has('base_currency_id')">@{{ errors.first('base_currency_id') }}</span>
                             </div>
 
                         </div>
