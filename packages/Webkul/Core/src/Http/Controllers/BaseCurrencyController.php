@@ -84,11 +84,7 @@ class BaseCurrencyController extends Controller
 
 
         Event::fire('core.channel.update.after', $channel);
-        $mailSetting = MailSetting::first();
-        if ($mailSetting) {
-            $mailSetting->username = $channel->email;
-            $mailSetting->update();
-        }
+
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Currency']));
 
         return redirect()->route('admin.base.currencies.edit');
