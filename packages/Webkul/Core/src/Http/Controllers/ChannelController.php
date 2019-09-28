@@ -130,7 +130,6 @@ class ChannelController extends Controller
         Event::fire('core.channel.update.before', $id);
 
         $data = request()->all();
-        dd($data);
 
         if ($request->receives_notification == "on") {
             $data['receives_notification'] = 1;
