@@ -2,13 +2,10 @@
 
 namespace Webkul\Core\Http\Controllers;
 
-use App\MailSetting;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Webkul\Core\Models\Channel as BaseChannel;
 use Illuminate\Support\Facades\Event;
 use Webkul\Core\Repositories\ChannelRepository as Channel;
-use Webkul\Core\Repositories\CurrencyRepository as Currency;
+
 
 /**
  * Currency controller
@@ -77,6 +74,7 @@ class BaseCurrencyController extends Controller
         } else {
             $data['receives_notification'] = 0;
         }
+
         $channel = $this->channel->find($id);
         $channel->base_currency_id = $data['base_currency_id'];
         $channel->save();
@@ -87,8 +85,7 @@ class BaseCurrencyController extends Controller
 
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Currency']));
 
-        return redirect()->route('admin.base.currencies.edit');
+        return redirect()->back();
     }
-
 
 }
