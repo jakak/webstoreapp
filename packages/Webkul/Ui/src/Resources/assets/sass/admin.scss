@@ -845,7 +845,7 @@ modal {
 }
 
 .badge {
-    @include border-radius(50px);
+    @include border-radius(7px);
     color: white;
     padding: 8px;
     white-space: nowrap;
