@@ -8,6 +8,7 @@ yarn-error.log
 .env
 /ignorables/*
 package-lock.json
+log/
 
 vendor/
 node_modules/
