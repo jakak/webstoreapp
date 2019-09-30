@@ -387,6 +387,15 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::settings.currencies.index'
             ])->name('admin.currencies.index');
 
+            // Base Currency
+            Route::get('/base/currency', 'Webkul\Core\Http\Controllers\BaseCurrencyController@edit')->defaults('_config', [
+                'view' => 'admin::settings.currencies.base'
+            ])->name('admin.base.currencies.edit');
+
+            Route::put('/base/currency/{id}', 'Webkul\Core\Http\Controllers\BaseCurrencyController@update')->defaults('_config', [
+                'view' => 'admin::settings.currencies.base'
+            ])->name('admin.base.currencies.update');
+
             Route::get('/currencies/create', 'Webkul\Core\Http\Controllers\CurrencyController@create')->defaults('_config', [
                 'view' => 'admin::settings.currencies.create'
             ])->name('admin.currencies.create');

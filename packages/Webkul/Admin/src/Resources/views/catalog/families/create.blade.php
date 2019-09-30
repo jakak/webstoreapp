@@ -183,169 +183,174 @@
     </script>
 
     <script>
-        var groups = @json($attributeFamily ? $attributeFamily->attribute_groups : []);
-        var custom_attributes = @json($custom_attributes);
+      (function() {
+          var groups = @json($attributeFamily ? $attributeFamily->attribute_groups : []);
+          var defaultGroups = @json($attributeFamily ? $attributeFamily->getDefaultGroups() : []);
+          groups = groups.filter(group => !defaultGroups.includes(group.name.toLowerCase()));
 
-        Vue.component('group-form', {
+          var custom_attributes = @json($custom_attributes);
+
+          Vue.component('group-form', {
 
             data: () => ({
-                group: {
-                    'groupName': '',
-                    'position': '',
-                    'is_user_defined': 1,
-                    'custom_attributes': []
-                }
+              group: {
+                'groupName': '',
+                'position': '',
+                'is_user_defined': 1,
+                'custom_attributes': []
+              }
             }),
 
             template: '#group-form-template',
 
             methods: {
-                addGroup (formScope) {
-                    this.$validator.validateAll(formScope).then((result) => {
-                        if (result) {
-                            var this_this = this;
+              addGroup (formScope) {
+                this.$validator.validateAll(formScope).then((result) => {
+                  if (result) {
+                    var this_this = this;
 
-                            var filteredGroups = groups.filter(function(group) {
-                                return this_this.group.groupName.trim() === (group.name ? group.name.trim() : group.groupName.trim())
-                            })
+                    var filteredGroups = groups.filter(function(group) {
+                      return this_this.group.groupName.trim() === (group.name ? group.name.trim() : group.groupName.trim())
+                    })
 
-                            if (filteredGroups.length) {
-                                const field = this.$validator.fields.find({ name: 'groupName', scope: 'add-group-form' });
+                    if (filteredGroups.length) {
+                      const field = this.$validator.fields.find({ name: 'groupName', scope: 'add-group-form' });
 
-                                if (field) {
-                                    this.$validator.errors.add({
-                                        id: field.id,
-                                        field: 'groupName',
-                                        msg: "{{ __('admin::app.catalog.families.group-exist-error') }}",
-                                        scope: 'add-group-form',
-                                    });
-                                }
-                            } else {
-                                groups.push(this.group);
+                      if (field) {
+                        this.$validator.errors.add({
+                          id: field.id,
+                          field: 'groupName',
+                          msg: "{{ __('admin::app.catalog.families.group-exist-error') }}",
+                          scope: 'add-group-form',
+                        });
+                      }
+                    } else {
+                      groups.push(this.group);
 
-                                groups = this.sortGroups();
+                      groups = this.sortGroups();
 
-                                this.group = {'groupName': '', 'position': '', 'is_user_defined': 1, 'custom_attributes': []};
+                      this.group = {'groupName': '', 'position': '', 'is_user_defined': 1, 'custom_attributes': []};
 
-                                this.$parent.closeModal();
-                            }
-                        }
-                    });
-                },
+                      this.$parent.closeModal();
+                    }
+                  }
+                });
+              },
 
-                sortGroups () {
-                    return groups.sort(function(a, b) {
-                        return a.position - b.position;
-                    });
-                }
+              sortGroups () {
+                return groups.sort(function(a, b) {
+                  return a.position - b.position;
+                });
+              }
             }
-        });
+          });
 
-        Vue.component('group-list', {
+          Vue.component('group-list', {
 
             template: '#group-list-template',
 
             data: () => ({
-                groups: groups,
-                custom_attributes: custom_attributes
+              groups: groups,
+              custom_attributes: custom_attributes
             }),
 
             created () {
-                this.groups.forEach(function(group) {
-                    group.custom_attributes.forEach(function(attribute) {
-                        var attribute = this.custom_attributes.filter(attributeTemp => attributeTemp.id == attribute.id)
+              this.groups.forEach(function(group) {
+                group.custom_attributes.forEach(function(attribute) {
+                  var attribute = this.custom_attributes.filter(attributeTemp => attributeTemp.id == attribute.id)
 
-                        if (attribute.length) {
-                            let index = this.custom_attributes.indexOf(attribute[0])
+                  if (attribute.length) {
+                    let index = this.custom_attributes.indexOf(attribute[0])
 
-                            this.custom_attributes.splice(index, 1)
-                        }
+                    this.custom_attributes.splice(index, 1)
+                  }
 
-                    });
                 });
+              });
             },
 
             methods: {
-                removeGroup (group) {
-                    group.custom_attributes.forEach(function(attribute) {
-                        this.custom_attributes.push(attribute);
-                    })
+              removeGroup (group) {
+                group.custom_attributes.forEach(function(attribute) {
+                  this.custom_attributes.push(attribute);
+                })
 
-                    this.custom_attributes = this.sortAttributes();
+                this.custom_attributes = this.sortAttributes();
 
-                    let index = groups.indexOf(group)
+                let index = groups.indexOf(group)
 
-                    groups.splice(index, 1)
-                },
+                groups.splice(index, 1)
+              },
 
-                addAttributes (groupIndex, attributeIds) {
-                    attributeIds.forEach(function(attributeId) {
-                        var attribute = this.custom_attributes.filter(attribute => attribute.id == attributeId)
+              addAttributes (groupIndex, attributeIds) {
+                attributeIds.forEach(function(attributeId) {
+                  var attribute = this.custom_attributes.filter(attribute => attribute.id == attributeId)
 
-                        this.groups[groupIndex].custom_attributes.push(attribute[0]);
+                  this.groups[groupIndex].custom_attributes.push(attribute[0]);
 
-                        let index = this.custom_attributes.indexOf(attribute[0])
+                  let index = this.custom_attributes.indexOf(attribute[0])
 
-                        this.custom_attributes.splice(index, 1)
-                    })
-                },
+                  this.custom_attributes.splice(index, 1)
+                })
+              },
 
-                removeAttribute (groupIndex, attribute) {
-                    let index = this.groups[groupIndex].custom_attributes.indexOf(attribute)
+              removeAttribute (groupIndex, attribute) {
+                let index = this.groups[groupIndex].custom_attributes.indexOf(attribute)
 
-                    this.groups[groupIndex].custom_attributes.splice(index, 1)
+                this.groups[groupIndex].custom_attributes.splice(index, 1)
 
-                    this.custom_attributes.push(attribute);
+                this.custom_attributes.push(attribute);
 
-                    this.custom_attributes = this.sortAttributes();
-                },
+                this.custom_attributes = this.sortAttributes();
+              },
 
-                sortAttributes () {
-                    return this.custom_attributes.sort(function(a, b) {
-                        return a.id - b.id;
-                    });
-                }
+              sortAttributes () {
+                return this.custom_attributes.sort(function(a, b) {
+                  return a.id - b.id;
+                });
+              }
             }
-        })
+          })
 
-        Vue.component('group-item', {
+          Vue.component('group-item', {
             props: ['index', 'group', 'custom_attributes'],
 
             template: "#group-item-template",
 
             computed: {
-                groupInputName () {
-                    return "attribute_groups[group_" + this.index + "]";
-                }
+              groupInputName () {
+                return "attribute_groups[group_" + this.index + "]";
+              }
             },
 
             methods: {
-                removeGroup () {
-                    this.$emit('onRemoveGroup', this.group)
-                },
+              removeGroup () {
+                this.$emit('onRemoveGroup', this.group)
+              },
 
-                addAttributes (e) {
-                    var attributeIds = [];
+              addAttributes (e) {
+                var attributeIds = [];
 
-                    $(e.target).prev().find('li input').each(function() {
-                        var attributeId = $(this).val();
+                $(e.target).prev().find('li input').each(function() {
+                  var attributeId = $(this).val();
 
-                        if ($(this).is(':checked')) {
-                            attributeIds.push(attributeId);
+                  if ($(this).is(':checked')) {
+                    attributeIds.push(attributeId);
 
-                            $(this).prop('checked', false);
-                        }
-                    });
+                    $(this).prop('checked', false);
+                  }
+                });
 
-                    $('body').trigger('click')
+                $('body').trigger('click')
 
-                    this.$emit('onAttributeAdd', attributeIds)
-                },
+                this.$emit('onAttributeAdd', attributeIds)
+              },
 
-                removeAttribute (attribute) {
-                    this.$emit('onAttributeRemove', attribute)
-                }
+              removeAttribute (attribute) {
+                this.$emit('onAttributeRemove', attribute)
+              }
             }
-        });
+          });
+        })()
     </script>
 @endpush

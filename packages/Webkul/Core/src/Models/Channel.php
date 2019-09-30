@@ -13,7 +13,7 @@ use Webkul\Inventory\Models\InventorySource;
 class Channel extends Model
 {
     use Rememberable;
-    public $rememberFor = 360;
+
     protected $fillable = ['code', 'name', 'email', 'business_name', 'phone_number',
         'address', 'city', 'postal_code', 'state', 'country', 'status', 'description',
         'theme', 'home_page_content', 'footer_content', 'footer_credit', 'hostname', 'default_locale_id',
@@ -34,6 +34,8 @@ class Channel extends Model
     {
         return $this->belongsToMany(InventorySource::class, 'channel_inventory_sources');
     }
+
+
 
 
     protected $with = ['base_currency'];

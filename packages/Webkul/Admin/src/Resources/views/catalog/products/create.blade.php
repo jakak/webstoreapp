@@ -45,13 +45,16 @@
 
                         <div class="control-group" :class="[errors.has('sku') ? 'has-error' : '']">
                             <label for="sku" class="required">{{ __('admin::app.catalog.products.sku') }}</label>
-                            <input type="text" v-validate="'required'" class="control" id="sku" name="sku" value="{{ $sku ?: old('sku') }}" data-vv-as="&quot;{{ __('admin::app.catalog.products.sku') }}&quot;"/>
+                            <input type="text" v-validate="'required'" class="control" id="sku" name="sku" value="{{ $sku ?: old('sku') }}"
+                                   data-vv-as="&quot;{{ __('admin::app.catalog.products.sku') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('sku')">@{{ errors.first('sku') }}</span>
                         </div>
-						
+
 						<div class="control-group" :class="[errors.has('type') ? 'has-error' : '']">
                             <label for="type" class="required">{{ __('admin::app.catalog.products.product-type') }}</label>
-                            <select class="control" v-validate="'required'" id="type" name="type" {{ $familyId ? 'disabled' : '' }} data-vv-as="&quot;{{ __('admin::app.catalog.products.product-type') }}&quot;">
+                            <select class="control" v-validate="'required'" id="type" name="type" {{ $familyId ? 'disabled' : '' }}
+                                    data-vv-as="&quot;{{ __('admin::app.catalog.products.product-type') }}&quot;"
+                            >
                                 <option value="simple">{{ __('admin::app.catalog.products.simple') }}</option>
                                 <option value="configurable" {{ $familyId ? 'selected' : '' }}>{{ __('admin::app.catalog.products.configurable') }}</option>
                             </select>
@@ -62,9 +65,9 @@
                             <span class="control-error" v-if="errors.has('type')">@{{ errors.first('type') }}</span>
                         </div>
 
-                        <div class="control-group" :class="[errors.has('attribute_family_id') ? 'has-error' : '']">
+                        <div style="visibility: hidden" class="control-group" :class="[errors.has('attribute_family_id') ? 'has-error' : '']">
                             <label for="attribute_family_id" class="required">{{ __('admin::app.catalog.products.familiy') }}</label>
-                            <select class="control" v-validate="'required'" id="attribute_family_id" name="attribute_family_id" {{ $familyId ? 'disabled' : '' }} data-vv-as="&quot;{{ __('admin::app.catalog.products.familiy') }}&quot;">
+                            <select class="control" id="attribute_family_id" name="attribute_family_id" {{ $familyId ? 'disabled' : '' }} data-vv-as="&quot;{{ __('admin::app.catalog.products.familiy') }}&quot;">
                                 <option value=""></option>
                                 @foreach ($families as $family)
                                     <option value="{{ $family->id }}" {{ ($familyId == $family->id || old('attribute_family_id') == $family->id) ? 'selected' : '' }}>{{ $family->name }}</option>
@@ -75,7 +78,7 @@
                                 <input type="hidden" name="attribute_family_id" value="{{ $familyId }}"/>
                             @endif
                             <span class="control-error" v-if="errors.has('attribute_family_id')">@{{ errors.first('attribute_family_id') }}</span>
-                        </div>                        
+                        </div>
 
                     </div>
 
@@ -126,7 +129,7 @@
                 <hr class="horizontal-line">
                 <div class="form-bottom">
                     <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.catalog.products.save-product') }}
+                        {{ __('admin::app.catalog.products.proceed') }}
                     </button>
                 </div>
 
@@ -138,14 +141,37 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function () {
+      $(document).ready(function () {
             $('.label .cross-icon').on('click', function(e) {
                 $(e.target).parent().remove();
-            })
+            });
 
             $('.actions .trash-icon').on('click', function(e) {
                 $(e.target).parents('tr').remove();
-            })
-        });
+            });
+            const typeField = document.querySelector('#type');
+            const attributeFamilyField = document.querySelector('#attribute_family_id').parentElement;
+            const defFamily = document.createElement('input');
+            const parent = attributeFamilyField.parentElement;
+            defFamily.type = 'hidden';
+            defFamily.value = '1';
+            defFamily.name = 'attribute_family_id';
+            parent.appendChild(defFamily);
+
+            attributeFamilyField.remove();
+
+            typeField.onchange = function (e) {
+              if (typeField.value === 'simple') {
+                parent.removeChild(attributeFamilyField);
+                parent.appendChild(defFamily);
+              } else {
+                parent.removeChild(defFamily);
+                parent.appendChild(attributeFamilyField);
+                attributeFamilyField.style.visibility = "unset";
+                attributeFamilyField.querySelector('select').setAttribute('required', '');
+              }
+            }
+      });
+
     </script>
 @endpush

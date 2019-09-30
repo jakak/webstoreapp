@@ -228,13 +228,35 @@ class Product extends Model
     /**
      * @return array
      */
+    public function getDefaultAttributes()
+    {
+        $defaultAttributes = [
+            'sku', 'name', 'url_key', 'tax_category_id', 'weight',
+            'meta_description', 'meta_keywords', 'meta_title', 'special_price_to',
+            'special_price', 'special_price_from', 'price', 'description',
+            'short_description', 'status', 'visible_individually', 'featured',
+            'new', 'product_spotlight'
+        ];
+        return $defaultAttributes;
+    }
+
+    public function fixedAttributeAndValues()
+    {
+        return [
+            'visible_individually' => true
+        ];
+    }
+
+    /**
+     * @return array
+     */
     public function attributesToArray()
     {
         $attributes = parent::attributesToArray();
 
         $hiddenAttributes = $this->getHidden();
 
-        if (isset($this->id)) {
+        if (isset($this->id) && !(is_null($this->attribute_family))) {
             foreach ($this->attribute_family->custom_attributes as $attribute) {
                 if (in_array($attribute->code, $hiddenAttributes)) {
                     continue;

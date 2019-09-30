@@ -20,7 +20,7 @@ class Currency extends Model
     ];
 
 //    public $rememberCacheTag = 'currency_queries';
-    public $rememberFor = 360;
+
     /**
      * Get the currency_exchange associated with the currency.
      */

@@ -174,35 +174,38 @@ class ProductFlat
                 ]);
             }
 
-            foreach ($product->attribute_family->custom_attributes as $attribute) {
-                if (!Schema::hasTable('product_flat') || !Schema::hasColumn('product_flat', $attribute->code))
-                    continue;
+            if ($product->attribute_family)
+            {
+                foreach ($product->attribute_family->custom_attributes as $attribute) {
+                    if (!Schema::hasTable('product_flat') || !Schema::hasColumn('product_flat', $attribute->code))
+                        continue;
 
-                if ($attribute->value_per_channel) {
-                    if ($attribute->value_per_locale) {
-                        $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
+                    if ($attribute->value_per_channel) {
+                        if ($attribute->value_per_locale) {
+                            $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
+                        } else {
+                            $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
+                        }
                     } else {
-                        $productAttributeValue = $product->attribute_values()->where('channel', $channel->code)->where('attribute_id', $attribute->id)->first();
+                        if ($attribute->value_per_locale) {
+                            $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
+                        } else {
+                            $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
+                        }
                     }
-                } else {
-                    if ($attribute->value_per_locale) {
-                        $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
+
+                    if ($product->type == 'configurable' && $attribute->code == 'price') {
+                        $productFlat->{$attribute->code} = app('Webkul\Product\Helpers\Price')->getVariantMinPrice($product);
                     } else {
-                        $productAttributeValue = $product->attribute_values()->where('attribute_id', $attribute->id)->first();
+                        $productFlat->{$attribute->code} = $productAttributeValue[ProductAttributeValue::$attributeTypeFields[$attribute->type]];
                     }
-                }
 
-                if ($product->type == 'configurable' && $attribute->code == 'price') {
-                    $productFlat->{$attribute->code} = app('Webkul\Product\Helpers\Price')->getVariantMinPrice($product);
-                } else {
-                    $productFlat->{$attribute->code} = $productAttributeValue[ProductAttributeValue::$attributeTypeFields[$attribute->type]];
-                }
+                    if ($attribute->type == 'select') {
+                        $attributeOption = $this->attributeOptionRepository->find($product->{$attribute->code});
 
-                if ($attribute->type == 'select') {
-                    $attributeOption = $this->attributeOptionRepository->find($product->{$attribute->code});
-
-                    if ($attributeOption) {
-                        $productFlat->{$attribute->code . '_label'} = $attributeOption->admin_name;
+                        if ($attributeOption) {
+                            $productFlat->{$attribute->code . '_label'} = $attributeOption->admin_name;
+                        }
                     }
                 }
             }
