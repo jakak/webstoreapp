@@ -1,7 +1,4 @@
-<div class="tabs"
-     @if(strpos(request()->url(), 'pages') !== false)
-     style="display: none"
-    @endif>
+<div class="tabs">
     @if (request()->route()->getName() != 'admin.configuration.index')
 
         <?php $keys = explode('.', $menu->currentKey);  ?>

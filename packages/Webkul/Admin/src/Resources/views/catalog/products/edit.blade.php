@@ -63,20 +63,24 @@
 
                                                 @if (view()->exists($typeView = 'admin::catalog.products.field-types.' . $attribute->type))
 
-                                                <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
-                                                    <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
-                                                        {{ $attribute->admin_name }}
+                                                    @if($attribute->code !== 'visible_individually')
+                                                        <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
+                                                                <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
+                                                                    {{ $attribute->admin_name }}
 
-                                                        @if ($attribute->type == 'price')
-                                                            <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
-                                                        @endif
-                                                    </label>
+                                                                    @if ($attribute->type == 'price')
+                                                                        <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
+                                                                    @endif
+                                                                </label>
 
-                                                    @include ($typeView)
 
-                                                    <span class="control-error" v-if="errors.has('{{ $attribute->code }}')">@{{ errors.first('{!! $attribute->code !!}') }}</span>
-                                                </div>
+                                                                @include ($typeView)
 
+                                                                <span class="control-error" v-if="errors.has('{{ $attribute->code }}')">@{{ errors.first('{!! $attribute->code !!}') }}</span>
+                                                            </div>
+                                                    @else
+                                                        <input type="hidden" name="{{ $attribute->code }}" value="1">
+                                                    @endif
                                             @endif
                                             @endif
                                             @if($product->type === 'configurable')
