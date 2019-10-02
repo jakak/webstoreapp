@@ -182,6 +182,8 @@
 
     <script>
         var groups = @json($attributeFamily->attribute_groups);
+        var defaultGroups = @json($attributeFamily->getDefaultGroups());
+        groups = groups.filter(group => !defaultGroups.includes(group.name.toLowerCase()));
         var custom_attributes = @json($custom_attributes);
 
         Vue.component('group-form', {

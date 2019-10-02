@@ -135,6 +135,10 @@ return [
     'key' => 'pages.all',
     'name' => 'Manage Pages',
     'sort' => 1
+  ], [
+    'key' => 'pages.about',
+    'name' => 'About Page',
+    'sort' => 2
   ]
 
 ];
