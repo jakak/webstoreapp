@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
 
         <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
         <style>
@@ -16,10 +17,8 @@
             }
         </style>
 
-		<link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/admin-ui.css') }}">
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
 
         @yield('head')
 
