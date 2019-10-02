@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-		
+
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
         <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
@@ -63,13 +63,21 @@
             </div>
 
         </div>
-		
+
 		<script>
 			window.announcekit = (window.announcekit || { queue: [], on: function(n, x) { window.announcekit.queue.push([n, x]); }, push: function(x) { window.announcekit.queue.push(x); } });
 			window.announcekit.push({
 				"widget": "https://announcekit.app/widget/48CcJq",
 				"selector": ".announcekit-widget",
-				"version": 2			
+				"version": 2,
+
+                // Style config for badge:
+                badge: {
+                    style: {
+                        position: "absolute",
+                        top: "12px"
+                    }
+                }
 			})
 		</script>
 		<script async src="https://cdn.announcekit.app/widget.js"></script>
