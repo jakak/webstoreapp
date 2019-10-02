@@ -5,6 +5,22 @@
             {!! DbView::make(core()->getCurrentChannel())->field('footer_content')->render() !!}
 
             <div class="list-container">
+                <span class="list-heading">{{ __('shop::app.footer.store-info') }}</span>
+                <div class="form-container">
+					<div class="control-group">
+						<ul class="list-group">
+							<li><a href="/about">About</a></li>
+							<li><a href="/refund-policy">Refund policy</a></li>
+							<li><a href="/return-policy">Return policy</a></li>
+							<li><a href="/privacy-policy">Privacy policy</a></li>
+							<li><a href="/terms-of-use">Terms of use</a></li>
+						</ul>
+                    </div>
+                </div>
+
+            </div>
+			
+			<div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.secure-shopping') }}</span>
                 <div class="form-container">
                     <div class="control-group">
@@ -12,13 +28,13 @@
                     </div>
                 </div>
 
-            </div>
+            </div>			
 
 			<div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.customer-care') }}</span>
                 <div class="form-container">
                     <div class="control-group">
-                        <a href="/pages/contact-store"><button class="btn btn-md btn-primary">Contact Store</button></a>
+                        <a href="/contact-store"><button class="btn btn-md btn-primary">Contact Store</button></a>
                     </div>
                 </div>
 

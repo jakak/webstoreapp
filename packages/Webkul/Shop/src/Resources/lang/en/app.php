@@ -11,15 +11,15 @@ return [
     ],
     
     'common' => [
-        'error' => 'Something went wrong, please try again later.'
+        'error' => 'Something went wrong. Please try again later.'
     ],
 
     'home' => [
         'page-title' => 'Webstore - Home',
         'featured-products' => 'Featured Products',
         'new-products' => 'New Products',
-        'verify-email' => 'Verify Your Email Account',
-        'resend-verify-email' => 'Resend Verification Email'
+        'verify-email' => 'Verify your email addres',
+        'resend-verify-email' => 'Resend verification email'
     ],
 
     'header' => [
@@ -47,6 +47,7 @@ return [
         'subscribe-newsletter' => 'Subscribe Newsletter',
         'subscribe' => 'Subscribe',
         'locale' => 'Locale',
+		'store-info' => 'Store Info',
 		'secure-shopping' => 'Secure Shopping',
 		'customer-care' => 'Customer Care',
         'currency' => 'Currency',
@@ -126,13 +127,13 @@ return [
             'title' => 'Sign In',
             'email' => 'Email',
             'password' => 'Password',
-            'forgot_pass' => 'Forgot Password?',
+            'forgot_pass' => 'Reset password',
             'button_title' => 'Sign In',
             'remember' => 'Remember Me',
-            'footer' => '© Copyright 2018 Webkul Software, All rights reserved',
-            'invalid-creds' => 'Please Check Your Credentials And Try Again',
-            'verify-first' => 'Verify Your Email Account First',
-            'resend-verification' => 'Resend Verification Mail Again'
+            'footer' => '© 2019 All rights reserved',
+            'invalid-creds' => 'Please check your credentials and try again',
+            'verify-first' => 'Verify your email account first',
+            'resend-verification' => 'Resend verification email again'
         ],
 
         'forgot-password' => [
