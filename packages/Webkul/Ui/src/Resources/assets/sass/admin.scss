@@ -1036,6 +1036,10 @@ modal {
   background-color: #79C142;
   color: #fff;
 }
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #79C142;
+  color: #fff;
+}
 .flatpickr-day.selected {
   background-color: #79C142 !important;
   border-color: #79C142 !important;
