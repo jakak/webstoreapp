@@ -19,9 +19,9 @@
         }
         @if(strpos(request()->url(), 'smtp') !== false)
             .image-wrapper .image-item {
-                width: 100px !important;
-                height: 100px !important;
-            }
+            width: 100px !important;
+            height: 100px !important;
+        }
         @endif
         .hr {
             background-color: #79C142;
@@ -80,63 +80,63 @@
                     <div class="form-container">
                         @csrf
 
-                            <div slot="body">
-                                <div class="control-group text" :class="">
+                        <div slot="body">
+                            <div class="control-group text" :class="">
 
-                                    <label for="" class="required" >
-                                        Location
-                                    </label>
-                                    <input type="text" required v-validate="'required'" class="control" id="location" name="location" value="{{ old('location') ?: $location??null }}" data-vv-as="location">
-                                </div>
-                                <div class="control-group text" :class="">
-
-                                    <label for="" class="required" >
-                                        State
-                                    </label>
-                                    <input type="text" required v-validate="'required'" class="control" id="state" name="state" value="{{ old('state') ?: $state??null }}" data-vv-as="state">
-                                </div>
-                                <div class="control-group text" :class="">
-
-                                    <label for="" class="required" >
-                                        Country
-                                    </label>
-                                    <country></country>
-                                </div>
-                                <div class="control-group text" :class="">
-
-                                    <label for="rate">
-                                        Rate
-                                    </label>
-                                    <input type="text" required v-validate="'required'" class="control" id="rate" name="rate" value="{{ old('rate') ?: $rate??null }}" data-vv-as="rate">
-                                </div>
-                                <div class="control-group text" :class="">
-
-                                    <label for="" class="required" >
-                                        Type
-                                    </label>
-                                    <select type="text" v-validate="'required'" class="control" id="country" name="type">
-                                        <option value="per order">Per Order</option>
-                                        <option value="per item">Per Item</option>
-                                    </select>
-                                </div>
-                                <div class="control-group text" :class="">
-
-                                    <label for="">
-                                        Description
-                                    </label>
-                                    <textarea v-validate="''" class="control" id="description" name="description" data-vv-as="'description'">{{ old('description') ?: '' }}</textarea>
-                                </div>
-                                <div class="control-group text" :class="">
-
-                                    <label for="" class="required" >
-                                        Status
-                                    </label>
-                                    <select type="text" v-validate="'required'" class="control" id="status" name="status">
-                                        <option value="enabled">Enabled</option>
-                                        <option value="disabled">Disabled</option>
-                                    </select>
-                                </div>
+                                <label for="" class="required" >
+                                    Location
+                                </label>
+                                <input type="text" required v-validate="'required'" class="control" id="location" name="location" value="{{ old('location') ?: $location??null }}" data-vv-as="location">
                             </div>
+                            <div class="control-group text" :class="">
+
+                                <label for="" class="required" >
+                                    State
+                                </label>
+                                <input type="text" required v-validate="'required'" class="control" id="state" name="state" value="{{ old('state') ?: $state??null }}" data-vv-as="state">
+                            </div>
+                            <div class="control-group text" :class="">
+
+                                <label for="" class="required" >
+                                    Country
+                                </label>
+                                <country></country>
+                            </div>
+                            <div class="control-group text" :class="">
+
+                                <label for="rate">
+                                    Rate
+                                </label>
+                                <input type="text" required v-validate="'required'" class="control" id="rate" name="rate" value="{{ old('rate') ?: $rate??null }}" data-vv-as="rate">
+                            </div>
+                            <div class="control-group text" :class="">
+
+                                <label for="" class="required" >
+                                    Type
+                                </label>
+                                <select type="text" v-validate="'required'" class="control" id="country" name="type">
+                                    <option value="per order">Per Order</option>
+                                    <option value="per item">Per Item</option>
+                                </select>
+                            </div>
+                            <div class="control-group text" :class="">
+
+                                <label for="">
+                                    Description
+                                </label>
+                                <textarea v-validate="''" class="control" id="description" name="description" data-vv-as="'description'">{{ old('description') ?: '' }}</textarea>
+                            </div>
+                            <div class="control-group text" :class="">
+
+                                <label for="" class="required" >
+                                    Status
+                                </label>
+                                <select type="text" v-validate="'required'" class="control" id="status" name="status">
+                                    <option value="enabled">Enabled</option>
+                                    <option value="disabled">Disabled</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <hr class="horizontal-line">
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </form>
-        @elseif(strpos(request()->url(), 'pages') !== false)
+        @elseif(strpos(request()->url(), 'pages/all') !== false)
             <div class="content" id="managePagesPage">
                 <div class="page-header">
                     <div class="page-title">
@@ -173,7 +173,7 @@
 
                     <div class="page-title">
                         <h1>
-                           <span class="back-arrow"><i class="fa fa-angle-left"></i></span> Page Details
+                            <span class="back-arrow"><i class="fa fa-angle-left"></i></span> Page Details
                         </h1>
                     </div>
 
@@ -236,6 +236,27 @@
                     </div>
                 </div>
             </form>
+
+            {{--  Loading about page   --}}
+        @elseif(strpos(request()->url(), 'pages/about') !== false)
+            @include('admin::configuration.about.index')
+
+            {{--  Loading refund policy page   --}}
+        @elseif(strpos(request()->url(), 'pages/refund') !== false)
+            @include('admin::configuration.refund_policy.index')
+
+            {{--  Loading return policy page   --}}
+        @elseif(strpos(request()->url(), 'pages/return') !== false)
+            @include('admin::configuration.return_policy.index')
+
+            {{--  Loading privacy policy page   --}}
+        @elseif(strpos(request()->url(), 'pages/privacy') !== false)
+            @include('admin::configuration.privacy_policy.index')
+
+            {{--  Loading terms of use page   --}}
+        @elseif(strpos(request()->url(), 'pages/terms') !== false)
+            @include('admin::configuration.terms_of_use.index')
+
         @elseif(strpos(request()->url(), 'notifications') !== false)
             @if (strpos(request()->url(), 'smtp') !== false)
                 @php
@@ -353,7 +374,7 @@
                     entityCreationPage.classList.remove('d-none');
                     entityPage.classList.add('d-none');
                     if (initEditor) {
-                      initEditor()
+                        initEditor()
                     }
                 });
                 document.querySelectorAll('.pencil-lg-icon').forEach(btn => {
@@ -365,108 +386,121 @@
             }
 
             @if(strpos(request()->url(), 'othermethod') !== false)
-                function setupEditPage(url) {
-                    fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
-                        .then(response => {
-                            document.querySelector('.modify').querySelector('h1').innerText = "Modify Shipping Location";
+            function setupEditPage(url) {
+                fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
+                    .then(response => {
+                        document.querySelector('.modify').querySelector('h1').innerText = "Modify Shipping Location";
 
-                          return response.json();
-                        })
-                        .then(response => {
-                            for (const key in response) {
-                                if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
-                                  document.querySelector('[name='+key+']').value = response[key];
-                                }
+                        return response.json();
+                    })
+                    .then(response => {
+                        for (const key in response) {
+                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                document.querySelector('[name='+key+']').value = response[key];
                             }
-                            const inp = document.createElement('input');
-                            inp.type="hidden";
-                            inp.value = response.id;
-                            inp.name = "id";
-                            document.querySelector('#addLocationPage').appendChild(inp);
-                            document.querySelector('#addLocation').click();
-                        })
-                    ;
-                }
-                pageSetup('location', setupEditPage);
+                        }
+                        const inp = document.createElement('input');
+                        inp.type="hidden";
+                        inp.value = response.id;
+                        inp.name = "id";
+                        document.querySelector('#addLocationPage').appendChild(inp);
+                        document.querySelector('#addLocation').click();
+                    })
+                ;
+            }
+            pageSetup('location', setupEditPage);
             @elseif(strpos(request()->url(), 'pages') !== false)
                 String.prototype.sluggify = function() {
-                    return this.toLowerCase()
-                        .replace(/[^\w ]+/g,'')
-                        .replace(/ +/g,'-')
+                return this.toLowerCase()
+                    .replace(/[^\w ]+/g,'')
+                    .replace(/ +/g,'-')
                     ;
-                };
-                document.querySelector('#page_name').addEventListener('keyup', function(){
-                  document.querySelector('#page_url').value = (
-                    location.origin + '/pages/' + this.value.sluggify());
-                  document.querySelector('.page_url').innerHTML = (
-                    location.origin + '/pages/' + this.value.sluggify());
-                });
+            };
 
-                document.querySelector('.back-arrow').addEventListener('click', function() {
-                  document.querySelector('#createNewPage').classList.add('d-none');
-                  document.querySelector('#managePagesPage').classList.remove('d-none');
-                });
+            document.querySelector('#page_name').addEventListener('keyup', function(){
+                document.querySelector('#page_url').value = (
+                    location.origin + '/' + this.value.sluggify());
+                document.querySelector('.page_url').innerHTML = (
+                    location.origin + '/' + this.value.sluggify());
+            });
 
-                document.querySelectorAll('.capitalize-tr tr').forEach(tr => {
-                  const linker = tr.querySelector('td:nth-child(2)');
-                  if (linker) {
+            document.querySelector('.back-arrow').addEventListener('click', function() {
+                document.querySelector('#createNewPage').classList.add('d-none');
+                document.querySelector('#managePagesPage').classList.remove('d-none');
+            });
+
+            document.querySelectorAll('.capitalize-tr tr').forEach(tr => {
+                const linker = tr.querySelector('td:nth-child(2)');
+                if (linker) {
                     linker.style.textTransform = "lowercase"
-                  }
-                });
-
-                function editPage(url) {
-                    url = decodeURI(url.search.substring(1)).sluggify();
-                    fetch(`/storemanager/configuration/pages/${url}/details`)
-                        .then(response => response.json())
-                        .then(response => {
-                          for (const key in response) {
-                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
-                              document.querySelector('[name='+key+']').value = response[key];
-                              if (key === 'url') {
-                                document.querySelector('.page_url').innerHTML = response[key];
-                              }
-                              if (key === 'content') {
-                                document.querySelector('[name='+key+']').innerHTML = response[key];
-                                initEditor();
-                              }
-                              else if (key === 'status') {
-                                // TODO: Figure out how to update the select2 component.
-                              }
-                            }
-                          }
-                          const inp = document.createElement('input');
-                          inp.type="hidden";
-                          inp.value = response.id;
-                          inp.name = "id";
-                          document.querySelector('#createNewPage').appendChild(inp);
-                          document.querySelector('#addNewPage').click();
-                        })
-                      .catch(error => {
-                        console.error(error);
-                      })
-
                 }
-                pageSetup('managePages', editPage);
+            });
+
+            function editPage(url) {
+                url = decodeURI(url.search.substring(1)).sluggify();
+                fetch(`/storemanager/configuration/pages/${url}/details`)
+                    .then(response => response.json())
+                    .then(response => {
+                        for (const key in response) {
+                            if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                document.querySelector('[name='+key+']').value = response[key];
+                                if (key === 'url') {
+                                    document.querySelector('.page_url').innerHTML = response[key];
+                                }
+                                if (key === 'content') {
+                                    document.querySelector('[name='+key+']').innerHTML = response[key];
+                                    initEditor();
+                                }
+                                else if (key === 'status') {
+                                    // TODO: Figure out how to update the select2 component.
+                                }
+                            }
+                        }
+                        const inp = document.createElement('input');
+                        inp.type="hidden";
+                        inp.value = response.id;
+                        inp.name = "id";
+                        document.querySelector('#createNewPage').appendChild(inp);
+                        document.querySelector('#addNewPage').click();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
+
+            }
+            pageSetup('managePages', editPage);
             @endif
 
         });
+
+        //  This script load the url on the pages
+        let url = document.querySelector('#static_url').value;
+        let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
+        document.querySelector('#page_link').value = page_link;
+
+        //   Set Meta title for all pages
+        const dashboard_title = document.querySelector('#dashboard_title').value;
+        const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
+        let meta = document.querySelector('.modify_title').value =  meta_title;
+        console.log(meta);
+
 
     </script>
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
         function initEditor() {
-          $(document).ready(function () {
-            tinymce.init({
-              selector: 'textarea#page_content',
-              height: 200,
-              width: "100%",
-              plugins: 'image imagetools media wordcount save fullscreen code',
-              toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
-              image_advtab: true,
-              valid_elements : '*[*]'
+            $(document).ready(function () {
+                tinymce.init({
+                    selector: 'textarea#page_content',
+                    height: 200,
+                    width: "100%",
+                    plugins: 'image imagetools media wordcount save fullscreen code',
+                    toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+                    image_advtab: true,
+                    valid_elements : '*[*]'
+                });
             });
-          });
         }
     </script>
     <script type="text/x-template" id="country-template">

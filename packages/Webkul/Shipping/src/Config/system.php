@@ -136,9 +136,25 @@ return [
     'name' => 'Manage Pages',
     'sort' => 1
   ], [
-    'key' => 'pages.about',
-    'name' => 'About Page',
-    'sort' => 2
-  ]
+        'key' => 'pages.about',
+        'name' => 'About',
+        'sort' => 2
+    ],  [
+        'key' => 'pages.refund',
+        'name' => 'Refund Policy',
+        'sort' => 3
+    ], [
+        'key' => 'pages.return',
+        'name' => 'Return Policy',
+        'sort' => 4
+    ], [
+        'key' => 'pages.privacy',
+        'name' => 'Privacy Policy',
+        'sort' => 5
+    ],  [
+        'key' => 'pages.terms',
+        'name' => 'Terms Of Use',
+        'sort' => 6
+    ],
 
 ];

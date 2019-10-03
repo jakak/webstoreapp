@@ -42,6 +42,7 @@ return [
         'theme-manager' => 'Theme Manager',
         'theme-design' => 'Theme Design',
         'theme-sliders' => 'Sliders',
+        'footer-content' => 'Footer',
         'users' => 'Staff Accounts',
         'roles' => 'Roles',
         'sliders' => 'Sliders',
@@ -520,6 +521,7 @@ return [
         'themes' => [
             'title' => 'Theme Manager',
             'design' => 'Default Theme',
+            'footer' => 'Manage Footer'
         ],
         'locales' => [
             'title' => 'Locales',
@@ -645,6 +647,13 @@ return [
             'update-fail' => 'Slider Cannot Be Updated',
             'delete-success' => 'Cannot Delete The Last Slider Item',
             'delete-fail' => 'Slider Item Successfully Deleted'
+        ],
+
+        'footer' => [
+            'title' => 'Link Title',
+            'url' => 'Link URL',
+            'social' => 'Select Social',
+            'username' => 'Username',
         ],
 
         'tax-categories' => [
