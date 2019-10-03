@@ -49,6 +49,7 @@ return [
         'locale' => 'Locale',
 		'store-info' => 'Store Info',
 		'secure-shopping' => 'Secure Shopping',
+		'social' => 'Connect with us',
 		'customer-care' => 'Customer Care',
         'currency' => 'Currency',
     ],

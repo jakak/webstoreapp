@@ -24,7 +24,17 @@
                 <span class="list-heading">{{ __('shop::app.footer.secure-shopping') }}</span>
                 <div class="form-container">
                     <div class="control-group">
-                        <img src="https://res.cloudinary.com/webstore-cloud/image/upload/c_thumb,w_200,g_face/v1567928939/Paystack/secured-by-paystack-square_ar41bj.png" />
+                        <img src="https://res.cloudinary.com/webstore-cloud/image/upload/c_scale,w_250/v1567929421/Paystack/paystack-badge-cards_nji4dn.png" />
+                    </div>
+                </div>
+				
+				<span class="list-heading">{{ __('shop::app.footer.social') }}</span>
+                <div class="form-container">
+                    <div class="control-group">
+                        <a href="https://instagram.com/#"><span><i class="fab fa-instagram" style="font-size: 2em; color: #4F5B64; margin-right: 15px;"></i></span></a>
+						<a href="https://twitter.com/#"><span><i class="fab fa-twitter" style="font-size: 2em; color: #1da1f2; margin-right: 15px;"></i></span></a>
+						<a href="https://facebook.com/#"><span><i class="fab fa-facebook-square fa-1x" style="font-size: 2em; color: #3b5998; margin-right: 15px;"></i></span></a>
+						<a href="+234 803 671 9340"><span><i class="fab fa-whatsapp" style="font-size: 2em; color: #25d366; margin-right: 15px;"></i></span></a>
                     </div>
                 </div>
 
@@ -34,7 +44,7 @@
                 <span class="list-heading">{{ __('shop::app.footer.customer-care') }}</span>
                 <div class="form-container">
                     <div class="control-group">
-                        <a href="/contact-store"><button class="btn btn-md btn-primary">Contact Store</button></a>
+                        <a href="/contact-store"><button class="btn btn-md btn-primary"><span><i class="fas fa-headset"></i></span> Contact Store</button></a>
                     </div>
                 </div>
 
