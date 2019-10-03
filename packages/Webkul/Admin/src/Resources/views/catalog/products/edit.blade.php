@@ -63,7 +63,7 @@
 
                                                 @if (view()->exists($typeView = 'admin::catalog.products.field-types.' . $attribute->type))
 
-                                                    @if($attribute->code !== 'visible_individually')
+{{--                                                    @if($attribute->code !== 'visible_individually')--}}
                                                         <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
                                                                 <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
                                                                     {{ $attribute->admin_name }}
@@ -78,9 +78,9 @@
 
                                                                 <span class="control-error" v-if="errors.has('{{ $attribute->code }}')">@{{ errors.first('{!! $attribute->code !!}') }}</span>
                                                             </div>
-                                                    @else
-                                                        <input type="hidden" name="{{ $attribute->code }}" value="1">
-                                                    @endif
+{{--                                                    @else--}}
+{{--                                                        <input type="hidden" name="{{ $attribute->code }}" value="1">--}}
+{{--                                                    @endif--}}
                                             @endif
                                             @endif
                                             @if($product->type === 'configurable')
