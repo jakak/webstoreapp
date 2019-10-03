@@ -44,7 +44,7 @@ return [
     ],
 
     'footer' => [
-        'subscribe-newsletter' => 'Subscribe Newsletter',
+        'subscribe-newsletter' => 'Subscribe to Newsletter',
         'subscribe' => 'Subscribe',
         'locale' => 'Locale',
 		'store-info' => 'Store Info',

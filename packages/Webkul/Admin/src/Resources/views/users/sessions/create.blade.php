@@ -12,7 +12,7 @@
 
             <div class="form-container" style="text-align: left">
 
-                <h2>{{ __('admin::app.users.sessions.title') }}</h2>
+                <h2 style="text-align: center;">{{ __('admin::app.users.sessions.title') }}</h2>
 
                 <form method="POST" action="{{ route('admin.session.store') }}" @submit.prevent="onSubmit">
                     @csrf
