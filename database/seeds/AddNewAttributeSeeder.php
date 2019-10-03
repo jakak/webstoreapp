@@ -11,6 +11,7 @@ class AddNewAttributeSeeder extends Seeder
      */
     public function run()
     {
+        \Webkul\Attribute\Models\Attribute::where('code', 'product_spotlight')->delete();
         $attribute_id = DB::table('attributes')->insertGetId(
             ['code' => 'product_spotlight','admin_name' => 'Product Spotlight','type' => 'select','validation' => NULL,'position' => '25','is_required' => '0','is_unique' => '0','value_per_locale' => '0','value_per_channel' => '0','is_filterable' => '0','is_configurable' => '0','is_user_defined' => '0','is_visible_on_front' => '0','created_at' => now(),'updated_at' => now()]
         );
@@ -39,7 +40,8 @@ class AddNewAttributeSeeder extends Seeder
         );
 
         foreach ([5,6] as $num) {
-            \Webkul\Attribute\Models\Attribute::find($num)->delete();
+            if ($attribute = \Webkul\Attribute\Models\Attribute::find($num))
+                $attribute->delete();
         }
     }
 }
