@@ -185,6 +185,8 @@
         var defaultGroups = @json($attributeFamily->getDefaultGroups());
         groups = groups.filter(group => !defaultGroups.includes(group.name.toLowerCase()));
         var custom_attributes = @json($custom_attributes);
+        var defaultAttributes = @json((new \Webkul\Product\Models\Product())->getDefaultAttributes());
+        custom_attributes = custom_attributes.filter(attr => !defaultAttributes.includes(attr.code.toLowerCase()));
 
         Vue.component('group-form', {
 
