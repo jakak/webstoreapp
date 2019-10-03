@@ -159,6 +159,12 @@ return [
         'sort' => 2,
         'icon-class' => '',
     ], [
+        'key' => 'settings.theme.footer',
+        'name' => 'admin::app.layouts.footer-content',
+        'route' => 'admin.footer.content',
+        'sort' => 3,
+        'icon-class' => '',
+    ], [
         'key' => 'settings.users',
         'name' => 'admin::app.layouts.users',
         'route' => 'admin.users.index',
@@ -194,6 +200,6 @@ return [
         'route' => 'admin.tax-rates.index',
         'sort' => 2,
         'icon-class' => '',
-    ],
+        ],
 
 ];
