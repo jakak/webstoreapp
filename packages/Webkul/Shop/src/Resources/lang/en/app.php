@@ -47,6 +47,7 @@ return [
         'subscribe-newsletter' => 'Subscribe to Newsletter',
         'subscribe' => 'Subscribe',
         'locale' => 'Locale',
+		'page-links' => 'Page Links',
 		'store-info' => 'Store Info',
 		'secure-shopping' => 'Secure Shopping',
 		'social' => 'Connect with us',

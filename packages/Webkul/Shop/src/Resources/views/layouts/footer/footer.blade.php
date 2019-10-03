@@ -2,7 +2,21 @@
     <div class="footer-content">
         <div class="footer-list-container">
 
-            {!! DbView::make(core()->getCurrentChannel())->field('footer_content')->render() !!}
+            <div class="list-container">
+                <span class="list-heading">{{ __('shop::app.footer.page-links') }}</span>
+                <div class="form-container">
+					<div class="control-group">
+						<ul class="list-group">
+							<li><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li>
+							<li><a href="#">Page 3</a></li>
+							<li><a href="#">Page 4</a></li>
+							<li><a href="#">Page 5</a></li>
+						</ul>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.store-info') }}</span>

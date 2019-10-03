@@ -25,7 +25,7 @@
         </div>
         <div class="page-content">
             <div class="page-img">
-                <img src="https://res.cloudinary.com/webstore-cloud/image/upload/v1567933022/Theme%20Manager/webstore-theme-manager_kxmfch.svg" witdth="20%" alt="">
+                <img src="https://res.cloudinary.com/webstore-cloud/image/upload/v1567933022/Theme%20Manager/webstore-theme-manager.svg" witdth="20%" alt="">
             </div>
             <div class="table">
                 <table class="table">
@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td>Web Space Theme</td>
+                        <td>Default Theme</td>
                         <td><a href="{{ route('admin.themes.customize') }}" class="btn btn-md btn-primary">Customize</a></td>
                     </tbody>
                 </table>
