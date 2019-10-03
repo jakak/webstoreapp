@@ -61,6 +61,7 @@
                                                 $validations = implode('|', array_filter($validations));
                                                 ?>
 
+                                            {{dd($attribute)}}
                                                 @if (view()->exists($typeView = 'admin::catalog.products.field-types.' . $attribute->type))
 
 {{--                                                    @if($attribute->code !== 'visible_individually')--}}
