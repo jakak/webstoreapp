@@ -64,6 +64,5 @@
             var about = document.querySelector('input[name=content]');
             about.value = JSON.stringify(quill.getContents());
 
-            console.log("Submitted", $(form).serialize(), $(form).serializeArray());
     </script>
 @endpush

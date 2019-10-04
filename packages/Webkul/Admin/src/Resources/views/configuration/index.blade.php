@@ -475,18 +475,21 @@
 
         });
 
-    //  This script load the url on the pages
-    let url = document.querySelector('#static_url').value;
-    let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
-    document.querySelector('#page_link').value = page_link;
+        //  This script load the url on the pages
+        function page_link() {
+            let url = document.querySelector('#static_url').value;
+            let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
+            return page_link;
+        }
+        document.querySelector('#page_link').value = page_link();
 
-    //   Set Meta title for all pages
-    const dashboard_title = document.querySelector('#dashboard_title').value;
-    const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
-    let meta = document.querySelector('.modify_title').value =  meta_title;
-    console.log(meta);
-
-
+        //   Set Meta title for all pages
+        function meta_title() {
+            const dashboard_title = document.querySelector('#dashboard_title').value;
+            const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
+            return meta_title;
+        }
+        document.querySelector('.modify_title').value =  meta_title();
     </script>
 
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
