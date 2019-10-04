@@ -206,7 +206,9 @@
                         </div>
                         <div class="control-group">
                             <label for="page_content">Page Content</label>
-                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
+                            <br>
+                            <div id="editor"></div>
+                            {{--                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>--}}
                         </div>
                         <div class="control-group text" :class="">
                             <label for="meta_title" class="required" >
@@ -473,19 +475,20 @@
 
         });
 
-        //  This script load the url on the pages
-        let url = document.querySelector('#static_url').value;
-        let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
-        document.querySelector('#page_link').value = page_link;
+    //  This script load the url on the pages
+    let url = document.querySelector('#static_url').value;
+    let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
+    document.querySelector('#page_link').value = page_link;
 
-        //   Set Meta title for all pages
-        const dashboard_title = document.querySelector('#dashboard_title').value;
-        const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
-        let meta = document.querySelector('.modify_title').value =  meta_title;
-        console.log(meta);
+    //   Set Meta title for all pages
+    const dashboard_title = document.querySelector('#dashboard_title').value;
+    const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
+    let meta = document.querySelector('.modify_title').value =  meta_title;
+    console.log(meta);
 
 
     </script>
+
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
