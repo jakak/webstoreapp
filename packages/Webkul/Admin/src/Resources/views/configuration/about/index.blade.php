@@ -28,7 +28,7 @@
                 <textarea class="control" id="page_content" name="page_content"></textarea>
             </div>
 
-{{--            Hidden Fields here--}}
+            {{--   Hidden Fields here--}}
             <div class="control-group text" :class="">
                 <input id="meta_title" class="modify_title control" type="hidden" value="{{ 'About' }}" name="meta_title">
                 <input id="dashboard_title" type="hidden" value="{{ core()->getCurrentChannel()->business_name ?? 'My Webstore Space' }}">
@@ -40,7 +40,7 @@
             <div class="control-group text" :class="">
                 <input name="meta_description" type="hidden" value="Learn about our Webstore" class="control">
             </div>
-{{--            End--}}
+            {{--            End--}}
         </div>
 
         <hr class="horizontal-line">

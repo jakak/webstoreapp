@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
 
-    {{--  Quill css --}}
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-
-
     <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
     {{--    Custom css --}}
     <style>
@@ -63,7 +58,6 @@
     @include ('admin::layouts.nav-top')
 
     {!! view_render_event('bagisto.admin.layout.nav-top.after') !!}
-
 
     {!! view_render_event('bagisto.admin.layout.nav-left.before') !!}
 
