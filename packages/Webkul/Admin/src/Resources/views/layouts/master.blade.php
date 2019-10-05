@@ -124,7 +124,8 @@
     $(document).ready(function() {
         $('select.control[name]').select2({
             minimumResultsForSearch: Infinity,
-            width: 'resolve'
+            width: 'resolve',
+            placeholder: 'None'
         })
     })
 </script>
