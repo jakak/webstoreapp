@@ -152,7 +152,7 @@
                 <div class="page-header">
                     <div class="page-title">
                         <h1>
-                            Manage Pages
+                            Custom Pages
                         </h1>
                     </div>
 
@@ -206,7 +206,9 @@
                         </div>
                         <div class="control-group">
                             <label for="page_content">Page Content</label>
-                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
+                            <br>
+                            <div id="editor"></div>
+                            {{--                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>--}}
                         </div>
                         <div class="control-group text" :class="">
                             <label for="meta_title" class="required" >
@@ -368,7 +370,7 @@
                     entityCreationPage = document.querySelector('#createNewPage');
                     entityPage = document.querySelector('#managePagesPage');
                     document.querySelector('.page_url').innerHTML = (
-                        location.origin + '/pages/' );
+                        location.origin + '/' );
                 }
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
@@ -409,7 +411,7 @@
                 ;
             }
             pageSetup('location', setupEditPage);
-            @elseif(strpos(request()->url(), 'pages') !== false)
+            @elseif(strpos(request()->url(), 'pages/all') !== false)
                 String.prototype.sluggify = function() {
                 return this.toLowerCase()
                     .replace(/[^\w ]+/g,'')
@@ -469,23 +471,37 @@
 
             }
             pageSetup('managePages', editPage);
+            @elseif(strpos(request()->url(), 'pages/about') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/refund') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/return') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/privacy') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/terms') !== false)
+            initEditor();
             @endif
 
         });
 
         //  This script load the url on the pages
-        let url = document.querySelector('#static_url').value;
-        let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
-        document.querySelector('#page_link').value = page_link;
+        function page_link() {
+            let url = document.querySelector('#static_url').value;
+            let page_link = document.querySelector('.static_page_url').innerHTML = (location.origin + '/' + url);
+            return page_link;
+        }
+        document.querySelector('#page_link').value = page_link();
 
         //   Set Meta title for all pages
-        const dashboard_title = document.querySelector('#dashboard_title').value;
-        const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
-        let meta = document.querySelector('.modify_title').value =  meta_title;
-        console.log(meta);
-
-
+        function meta_title() {
+            const dashboard_title = document.querySelector('#dashboard_title').value;
+            const meta_title = (dashboard_title + ' — ' + document.querySelector('#meta_title').value);
+            return meta_title;
+        }
+        document.querySelector('.modify_title').value =  meta_title();
     </script>
+
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
@@ -494,15 +510,16 @@
                 tinymce.init({
                     selector: 'textarea#page_content',
                     height: 200,
-                    width: "100%",
+                    width: "70%",
                     plugins: 'image imagetools media wordcount save fullscreen code',
-                    toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+                    toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent  | code',
                     image_advtab: true,
                     valid_elements : '*[*]'
                 });
             });
         }
     </script>
+
     <script type="text/x-template" id="country-template">
 
         <div>

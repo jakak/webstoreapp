@@ -15,6 +15,12 @@ class CreateFooterContentsTable extends Migration
     {
         Schema::create('footer_contents', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('url');
+            $table->text('page_content');
+            $table->string('meta_title');
+            $table->string('meta_keywords');
+            $table->text('meta_description');
             $table->timestamps();
         });
     }
