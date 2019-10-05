@@ -276,28 +276,14 @@ class Product extends Model
      */
     public function getCustomAttributeValue($attribute)
     {
-        if (! $attribute)
-            return;
+        if ($attribute)
+        {
+            $attributeValue = $this->attribute_values()->where('attribute_id', $attribute->id)->first();
 
-        $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
-
-        $locale = request()->get('locale') ?: app()->getLocale();
-
-        if ($attribute->value_per_channel) {
-            if ($attribute->value_per_locale) {
-                $attributeValue = $this->attribute_values()->where('channel', $channel)->where('locale', $locale)->where('attribute_id', $attribute->id)->first();
-            } else {
-                $attributeValue = $this->attribute_values()->where('channel', $channel)->where('attribute_id', $attribute->id)->first();
-            }
-        } else {
-            if ($attribute->value_per_locale) {
-                $attributeValue = $this->attribute_values()->where('locale', $locale)->where('attribute_id', $attribute->id)->first();
-            } else {
-                $attributeValue = $this->attribute_values()->where('attribute_id', $attribute->id)->first();
-            }
+            return $attributeValue[ProductAttributeValue::$attributeTypeFields[$attribute->type]];
         }
+        return null;
 
-        return $attributeValue[ProductAttributeValue::$attributeTypeFields[$attribute->type]];
     }
 
     /**

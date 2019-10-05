@@ -2,16 +2,10 @@
 
 namespace Webkul\Attribute\Models;
 
-use Watson\Rememberable\Rememberable;
 use Webkul\Core\Eloquent\TranslatableModel;
-use Dimsav\Translatable\Translatable;
-use Webkul\Attribute\Models\Attribute;
 
 class AttributeOption extends TranslatableModel
 {
-    use Rememberable;
-
-    public $rememberFor = 30;
     public $timestamps = false;
 
     public $translatedAttributes = ['label'];

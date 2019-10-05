@@ -4,8 +4,7 @@ namespace Webkul\Product\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Webkul\Attribute\Models\Attribute;
-use Webkul\Product\Models\Product;
-use Webkul\Channel\Models\Channel;
+use Webkul\Core\Models\Channel;
 
 class ProductAttributeValue extends Model
 {

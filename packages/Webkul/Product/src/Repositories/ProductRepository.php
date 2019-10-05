@@ -149,6 +149,7 @@ class ProductRepository extends Repository
      * @param $id
      * @param string $attribute
      * @return mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(array $data, $id, $attribute = "id")
     {

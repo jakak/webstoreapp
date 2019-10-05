@@ -3,7 +3,6 @@
 namespace Webkul\Product\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Product\Models\Product;
 
 class ProductGrid extends Model
 {
