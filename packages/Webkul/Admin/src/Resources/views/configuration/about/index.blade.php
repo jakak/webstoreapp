@@ -26,20 +26,11 @@
 
             <div class="control-group">
                 <label for="page_content">Page Content</label>
-                <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
+                <br>
+                <div  id="editor"></div>
+
             </div>
 
-            <div class="control-group text" :class="">
-                <label for="page_status" class="required" >
-                    Page Publish Status
-                </label>
-                <div>
-                    <select name="status" class="control" id="page_status">
-                        <option value="Enabled">Enabled</option>
-                        <option value="Disabled">Disabled</option>
-                    </select>
-                </div>
-            </div>
 
             {{--   Hidden Fields here --}}
             <div class="control-group text" :class="">
@@ -64,3 +55,14 @@
         </div>
     </div>
 </form>
+
+@push('scripts')
+    <script>
+        var form = document.querySelector('form');
+        form.onsubmit = function() {
+            // Populate hidden form on submit
+            var about = document.querySelector('input[name=content]');
+            about.value = JSON.stringify(quill.getContents());
+
+    </script>
+@endpush
