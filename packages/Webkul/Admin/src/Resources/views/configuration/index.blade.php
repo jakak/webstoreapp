@@ -152,7 +152,7 @@
                 <div class="page-header">
                     <div class="page-title">
                         <h1>
-                            Manage Pages
+                            Custom Pages
                         </h1>
                     </div>
 
