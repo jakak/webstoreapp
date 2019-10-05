@@ -21,10 +21,10 @@
         .mce-panel {
             border-radius: 7px !important;
             background-color: #fff !important;
+            box-shadow: 0 3px 6px 0 rgba(0,0,0,.05);
         }
         .mce-btn {
             background-color: #fff !important;
-
         }
         .mce-branding-powered-by {
             background-image: none !important;
