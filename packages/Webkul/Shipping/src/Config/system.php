@@ -133,7 +133,7 @@ return [
     'sort' => 3
   ], [
     'key' => 'pages.all',
-    'name' => 'Manage Pages',
+    'name' => 'Custom Pages',
     'sort' => 1
   ], [
         'key' => 'pages.about',

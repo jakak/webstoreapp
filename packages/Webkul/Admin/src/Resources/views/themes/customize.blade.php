@@ -74,9 +74,9 @@
             tinymce.init({
                 selector: 'textarea#home_page_content,textarea#footer_content',
                 height: 200,
-                width: "100%",
+                width: "70%",
                 plugins: 'image imagetools media wordcount save fullscreen code',
-                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | code',
                 image_advtab: true,
                 valid_elements : '*[*]'
             });
