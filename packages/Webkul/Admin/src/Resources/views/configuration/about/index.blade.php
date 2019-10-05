@@ -1,4 +1,4 @@
-<div class="content" id="managePagesPage">
+<div class="content">
     <div class="page-header">
         <div class="page-title">
             <h1>
@@ -7,9 +7,8 @@
         </div>
 
     </div>
-
 </div>
-<form method="POST" action="{{ route('admin.configuration.pages.create') }}" id="createNewPage">
+<form method="POST" action="{{ route('admin.configuration.footer.content.create') }}">
     <div class="page-header">
 
     </div>
@@ -26,13 +25,10 @@
 
             <div class="control-group">
                 <label for="page_content">Page Content</label>
-                <br>
-                <div  id="editor"></div>
-
+                <textarea class="control" id="page_content" name="page_content"></textarea>
             </div>
 
-
-            {{--   Hidden Fields here --}}
+            {{--   Hidden Fields here--}}
             <div class="control-group text" :class="">
                 <input id="meta_title" class="modify_title control" type="hidden" value="{{ 'About' }}" name="meta_title">
                 <input id="dashboard_title" type="hidden" value="{{ core()->getCurrentChannel()->business_name ?? 'My Webstore Space' }}">
@@ -44,7 +40,7 @@
             <div class="control-group text" :class="">
                 <input name="meta_description" type="hidden" value="Learn about our Webstore" class="control">
             </div>
-            {{--  End --}}
+            {{--            End--}}
         </div>
 
         <hr class="horizontal-line">
@@ -55,14 +51,3 @@
         </div>
     </div>
 </form>
-
-@push('scripts')
-    <script>
-        var form = document.querySelector('form');
-        form.onsubmit = function() {
-            // Populate hidden form on submit
-            var about = document.querySelector('input[name=content]');
-            about.value = JSON.stringify(quill.getContents());
-
-    </script>
-@endpush

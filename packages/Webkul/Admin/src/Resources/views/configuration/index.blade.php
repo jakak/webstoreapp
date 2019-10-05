@@ -370,7 +370,7 @@
                     entityCreationPage = document.querySelector('#createNewPage');
                     entityPage = document.querySelector('#managePagesPage');
                     document.querySelector('.page_url').innerHTML = (
-                        location.origin + '/pages/' );
+                        location.origin + '/' );
                 }
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
@@ -411,7 +411,7 @@
                 ;
             }
             pageSetup('location', setupEditPage);
-            @elseif(strpos(request()->url(), 'pages') !== false)
+            @elseif(strpos(request()->url(), 'pages/all') !== false)
                 String.prototype.sluggify = function() {
                 return this.toLowerCase()
                     .replace(/[^\w ]+/g,'')
@@ -471,6 +471,16 @@
 
             }
             pageSetup('managePages', editPage);
+            @elseif(strpos(request()->url(), 'pages/about') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/refund') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/return') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/privacy') !== false)
+            initEditor();
+            @elseif(strpos(request()->url(), 'pages/terms') !== false)
+            initEditor();
             @endif
 
         });
@@ -500,15 +510,16 @@
                 tinymce.init({
                     selector: 'textarea#page_content',
                     height: 200,
-                    width: "100%",
+                    width: "70%",
                     plugins: 'image imagetools media wordcount save fullscreen code',
-                    toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+                    toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent  | code',
                     image_advtab: true,
                     valid_elements : '*[*]'
                 });
             });
         }
     </script>
+
     <script type="text/x-template" id="country-template">
 
         <div>

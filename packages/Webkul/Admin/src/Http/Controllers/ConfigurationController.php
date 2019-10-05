@@ -10,6 +10,7 @@ use Webkul\Admin\Facades\Configuration;
 use Webkul\Core\Models\Channel;
 use Webkul\Core\Repositories\CoreConfigRepository as CoreConfig;
 use Webkul\Core\Tree;
+use Webkul\Core\Models\FooterContent;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
 use Illuminate\Support\Facades\Storage;
 use App\Location;
@@ -359,6 +360,27 @@ class ConfigurationController extends Controller
         } else {
             session()->flash('error', 'Some required content are missing.');
             return redirect()->back();
+        }
+    }
+
+    /**
+     *  Create New Store Info
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function CreateNewStoreInfo(Request $request)
+    {
+        if ($request->input('name') !== ''
+            && $request->input('url') !== ''
+            && $request->input('content') !== '') {
+            try {
+                $page = FooterContent::updateOrCreate($request->except('_token'));
+                session()->flash('success', 'Contents published successfully');
+                return redirect()->back();
+            } catch (\Exception $e) {
+                session()->flash('error', $e->getMessage());
+                return redirect()->back();
+            }
         }
     }
 

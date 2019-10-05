@@ -10,16 +10,24 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
 
-    {{--  Quill css --}}
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
     <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/webstore-favicon-16x16.png') }}" />
     {{--    Custom css --}}
     <style>
-        .ql-editor{
-            min-height:200px;
+        .mce-panel {
+            border-radius: 7px !important;
+            background-color: #fff !important;
+            box-shadow: 0 3px 6px 0 rgba(0,0,0,.05);
         }
-
+        .mce-btn {
+            background-color: #fff !important;
+        }
+        .mce-branding-powered-by {
+            background-image: none !important;
+            width: 1px !important;
+            height: 1px !important;
+            border: none !important;
+            padding: 1px !important;
+        }
         .select2.select2-container {
             width: 70% !important;
         }
@@ -51,7 +59,6 @@
 
     {!! view_render_event('bagisto.admin.layout.nav-top.after') !!}
 
-
     {!! view_render_event('bagisto.admin.layout.nav-left.before') !!}
 
     @include ('admin::layouts.nav-left')
@@ -70,16 +77,6 @@
     </div>
 
 </div>
-
-<!-- Main Quill library -->
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-
-<!-- Initialize Quill editor -->
-<script>
-    var quill = new Quill('#editor', {
-        theme: 'snow'
-    });
-</script>
 
 <script>
     window.announcekit = (window.announcekit || { queue: [], on: function(n, x) { window.announcekit.queue.push([n, x]); }, push: function(x) { window.announcekit.queue.push(x); } });

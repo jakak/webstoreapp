@@ -29,10 +29,8 @@
 
             <div class="control-group">
                 <label for="page_content">Page Content</label>
-               <br>
-                <div id="editor"></div>
+                <textarea class="control" id="page_content" name="page_content"></textarea>
             </div>
-
 
             {{--   Hidden Fields here --}}
             <div class="control-group text" :class="">
