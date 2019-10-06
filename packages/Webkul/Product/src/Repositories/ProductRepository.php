@@ -5,6 +5,7 @@ namespace Webkul\Product\Repositories;
 use Illuminate\Container\Container as App;
 use DB;
 use Illuminate\Support\Facades\Event;
+use Webkul\Attribute\Models\AttributeOption;
 use Webkul\Core\Eloquent\Repository;
 use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Attribute\Repositories\AttributeOptionRepository;
@@ -190,24 +191,7 @@ class ProductRepository extends Repository
             }
         }
 
-        $this->updateFixedAttributes($product);
-        $prod_flat = ProductFlat::where('product_id', $product->id)->first();
-        switch ($data['product_spotlight']) {
-            case 19:
-                $prod_flat->featured = true;
-                $prod_flat->new = false;
-                break;
-            case 20:
-                $prod_flat->featured = false;
-                $prod_flat->new = true;
-                break;
-            case 21:
-                $prod_flat->featured = false;
-                $prod_flat->new = false;
-                break;
-        }
-        $prod_flat->save();
-
+        $this->updateFixedAttributes($product, $data);
 
         if (request()->route()->getName() != 'admin.catalog.products.massupdate') {
             if  (isset($data['categories'])) {
@@ -251,7 +235,7 @@ class ProductRepository extends Repository
         return $product;
     }
 
-    public function updateFixedAttributes($product)
+    public function updateFixedAttributes($product, $data)
     {
         foreach ((new Product())->fixedAttributeAndValues() as $key => $value)
         {
@@ -277,6 +261,24 @@ class ProductRepository extends Repository
             }
 
         }
+
+        $prod_flat = ProductFlat::where('product_id', $product->id)->first();
+        $attributeOption = AttributeOption::find($data['product_spotlight']);
+        if ($attributeOption->admin_name === 'New')
+        {
+            $prod_flat->featured = false;
+            $prod_flat->new = true;
+        } elseif ($attributeOption->admin_name === 'Featured')
+        {
+            $prod_flat->featured = true;
+            $prod_flat->new = false;
+        } else
+        {
+            $prod_flat->featured = false;
+            $prod_flat->new = false;
+        }
+        $prod_flat->save();
+
     }
 
     /**
@@ -537,9 +539,8 @@ class ProductRepository extends Repository
                         ->where('product_flat.status', 1)
                         ->where('product_flat.new', 1)
                         ->where('product_flat.channel', $channel)
-                        ->where('product_flat.locale', $locale)
                         ->orderBy('product_id', 'desc');
-            })->paginate(4);
+            })->paginate(10);
 
         return $results;
     }
@@ -561,9 +562,8 @@ class ProductRepository extends Repository
                         ->where('product_flat.status', 1)
                         ->where('product_flat.featured', 1)
                         ->where('product_flat.channel', $channel)
-                        ->where('product_flat.locale', $locale)
                         ->orderBy('product_id', 'desc');
-            })->paginate(4);
+            })->paginate(10);
 
         return $results;
     }
