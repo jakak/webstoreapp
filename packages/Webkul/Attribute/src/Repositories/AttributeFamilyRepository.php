@@ -79,7 +79,7 @@ class AttributeFamilyRepository extends Repository
                 } else {
                     $attributeModel = $this->attribute->findOneByField('code', $attribute['code']);
                 }
-                
+
                 $attributeGroup->custom_attributes()->save($attributeModel, ['position' => $key + 1]);
             }
         }
@@ -145,6 +145,8 @@ class AttributeFamilyRepository extends Repository
         }
 
         foreach ($previousAttributeGroupIds as $attributeGroupId) {
+            if (in_array($attributeGroupId, $family->getDefaultGroupIds()))
+                continue;
             $this->attributeGroup->delete($attributeGroupId);
         }
 
