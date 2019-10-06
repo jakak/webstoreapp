@@ -206,9 +206,7 @@
                         </div>
                         <div class="control-group">
                             <label for="page_content">Page Content</label>
-                            <br>
-                            <div id="editor"></div>
-                            {{--                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>--}}
+                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
                         </div>
                         <div class="control-group text" :class="">
                             <label for="meta_title" class="required" >
@@ -421,9 +419,9 @@
 
             document.querySelector('#page_name').addEventListener('keyup', function(){
                 document.querySelector('#page_url').value = (
-                    location.origin + '/' + this.value.sluggify());
+                    location.origin + '/pages/' + this.value.sluggify());
                 document.querySelector('.page_url').innerHTML = (
-                    location.origin + '/' + this.value.sluggify());
+                    location.origin + '/pages/' + this.value.sluggify());
             });
 
             document.querySelector('.back-arrow').addEventListener('click', function() {
