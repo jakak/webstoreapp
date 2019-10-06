@@ -40,9 +40,25 @@ class AttributeFamily extends Model
         return $this->hasMany(AttributeGroup::class)->orderBy('position');
     }
 
+    /**
+     * @return array
+     */
     public function getDefaultGroups()
     {
         return ['general', 'description', 'meta description', 'price', 'shipping'];
+    }
+
+    /**
+     * @return array
+     */
+    public function getDefaultGroupIds()
+    {
+        $ids = [];
+        foreach ($this->getDefaultGroups() as $code) {
+            $group = $this->attribute_groups()->where('name', ucfirst($code))->first();
+            array_push($ids, $group->id);
+        }
+        return $ids;
     }
 
     /**

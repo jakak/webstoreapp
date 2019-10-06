@@ -24,8 +24,6 @@ class AttributeGroupTableSeeder extends Seeder
             ['attribute_id' => '2','attribute_group_id' => '1','position' => '2'],
             ['attribute_id' => '3','attribute_group_id' => '1','position' => '3'],
             ['attribute_id' => '4','attribute_group_id' => '1','position' => '4'],
-            ['attribute_id' => '5','attribute_group_id' => '1','position' => '5'],
-            ['attribute_id' => '6','attribute_group_id' => '1','position' => '6'],
             ['attribute_id' => '7','attribute_group_id' => '1','position' => '7'],
             ['attribute_id' => '8','attribute_group_id' => '1','position' => '8'],
             ['attribute_id' => '9','attribute_group_id' => '2','position' => '1'],
@@ -39,11 +37,10 @@ class AttributeGroupTableSeeder extends Seeder
             ['attribute_id' => '17','attribute_group_id' => '3','position' => '2'],
             ['attribute_id' => '18','attribute_group_id' => '3','position' => '3'],
             ['attribute_id' => '19','attribute_group_id' => '5','position' => '1'],
-            ['attribute_id' => '20','attribute_group_id' => '5','position' => '2'],
-            ['attribute_id' => '21','attribute_group_id' => '5','position' => '3'],
             ['attribute_id' => '22','attribute_group_id' => '5','position' => '4'],
             ['attribute_id' => '23','attribute_group_id' => '1','position' => '9'],
-            ['attribute_id' => '24','attribute_group_id' => '1','position' => '10']
+            ['attribute_id' => '24','attribute_group_id' => '1','position' => '10'],
+            ['attribute_id' => '28','attribute_group_id' => '1','position' => '10'],
         ]);
     }
 }
