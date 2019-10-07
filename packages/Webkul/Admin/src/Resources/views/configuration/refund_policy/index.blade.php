@@ -1,4 +1,4 @@
-<div class="content" id="managePagesPage">
+<div class="content">
     <div class="page-header">
         <div class="page-title">
             <h1>
@@ -9,7 +9,7 @@
     </div>
 
 </div>
-<form method="POST" action="{{ route('admin.configuration.pages.create') }}" id="createNewPage">
+<form method="POST" action="{{ route('admin.configuration.footer.content.create') }}">
     <div class="page-header">
 
     </div>
@@ -29,7 +29,11 @@
 
             <div class="control-group">
                 <label for="page_content">Page Content</label>
-                <textarea class="control" id="page_content" name="page_content"></textarea>
+                <textarea class="control" id="page_content" name="page_content">
+                    @foreach(Webkul\Core\Models\FooterContent::all() as $refund)
+                            {{ $refund->name == "refund-policy" ? $refund->page_content : '' }}
+                    @endforeach
+                </textarea>
             </div>
 
             {{--   Hidden Fields here --}}

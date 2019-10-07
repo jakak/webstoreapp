@@ -374,9 +374,17 @@ class ConfigurationController extends Controller
             && $request->input('url') !== ''
             && $request->input('content') !== '') {
             try {
-                $page = FooterContent::updateOrCreate($request->except('_token'));
-                session()->flash('success', 'Contents published successfully');
-                return redirect()->back();
+                $page = FooterContent::where('name', $request->name)->first();
+                if ($page != null) {
+                    $updatepage = FooterContent::find($page->id);
+                    $updatepage->update($request->all());
+                    session()->flash('success', 'Contents updated successfully');
+                    return redirect()->back();
+                } else {
+                    $page = FooterContent::Create($request->except('_token'));
+                    session()->flash('success', 'Contents published successfully');
+                    return redirect()->back();
+                }
             } catch (\Exception $e) {
                 session()->flash('error', $e->getMessage());
                 return redirect()->back();

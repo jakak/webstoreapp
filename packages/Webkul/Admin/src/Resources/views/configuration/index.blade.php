@@ -368,7 +368,7 @@
                     entityCreationPage = document.querySelector('#createNewPage');
                     entityPage = document.querySelector('#managePagesPage');
                     document.querySelector('.page_url').innerHTML = (
-                        location.origin + '/' );
+                        location.origin + '/pages/' );
                 }
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
@@ -384,13 +384,11 @@
                     });
                 });
             }
-
             @if(strpos(request()->url(), 'othermethod') !== false)
             function setupEditPage(url) {
                 fetch('/storemanager/configuration/sales/othermethods/addlocation/'+ url.search.substring(1) + '/details')
                     .then(response => {
                         document.querySelector('.modify').querySelector('h1').innerText = "Modify Shipping Location";
-
                         return response.json();
                     })
                     .then(response => {
@@ -416,26 +414,22 @@
                     .replace(/ +/g,'-')
                     ;
             };
-
             document.querySelector('#page_name').addEventListener('keyup', function(){
                 document.querySelector('#page_url').value = (
                     location.origin + '/pages/' + this.value.sluggify());
                 document.querySelector('.page_url').innerHTML = (
                     location.origin + '/pages/' + this.value.sluggify());
             });
-
             document.querySelector('.back-arrow').addEventListener('click', function() {
                 document.querySelector('#createNewPage').classList.add('d-none');
                 document.querySelector('#managePagesPage').classList.remove('d-none');
             });
-
             document.querySelectorAll('.capitalize-tr tr').forEach(tr => {
                 const linker = tr.querySelector('td:nth-child(2)');
                 if (linker) {
                     linker.style.textTransform = "lowercase"
                 }
             });
-
             function editPage(url) {
                 url = decodeURI(url.search.substring(1)).sluggify();
                 fetch(`/storemanager/configuration/pages/${url}/details`)
@@ -466,11 +460,10 @@
                     .catch(error => {
                         console.error(error);
                     })
-
             }
             pageSetup('managePages', editPage);
             @elseif(strpos(request()->url(), 'pages/about') !== false)
-            initEditor();
+            initEditor()
             @elseif(strpos(request()->url(), 'pages/refund') !== false)
             initEditor();
             @elseif(strpos(request()->url(), 'pages/return') !== false)
