@@ -443,7 +443,6 @@ class ProductRepository extends Repository
                         ->where('product_flat.visible_individually', 1)
                         ->where('product_flat.status', 1)
                         ->where('product_flat.channel', $channel)
-                        ->where('product_flat.locale', $locale)
                         ->whereNotNull('product_flat.url_key')
                         ->where('product_categories.category_id', $categoryId);
 
@@ -583,7 +582,6 @@ class ProductRepository extends Repository
                         ->addSelect('product_flat.*')
                         ->where('product_flat.status', 1)
                         ->where('product_flat.channel', $channel)
-                        ->where('product_flat.locale', $locale)
                         ->whereNotNull('product_flat.url_key')
                         ->where('product_flat.name', 'like', '%' . $term . '%')
                         ->orderBy('product_id', 'desc');
