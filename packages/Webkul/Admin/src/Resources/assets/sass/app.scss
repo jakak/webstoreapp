@@ -139,7 +139,6 @@ body {
     position: fixed;
     top: 60px;
     bottom: 0;
-    border-right: 1px solid $border-color;
     box-shadow: 0 3px 6px 0 $shadow-color;
     background: #f8f9fa;
     padding-top: 10px;
@@ -155,8 +154,6 @@ body {
     .active {
       a {
         background: #ffffff;
-        border-top: 1px solid $border-color;
-        border-bottom: 1px solid $border-color;
         box-shadow: 0 3px 6px 0 $shadow-color;
       }
 
