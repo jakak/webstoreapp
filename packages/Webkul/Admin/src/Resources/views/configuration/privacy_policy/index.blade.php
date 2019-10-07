@@ -38,7 +38,7 @@
 
             {{--   Hidden Fields here --}}
             <div class="control-group text" :class="">
-                <input id="meta_title" type="hidden"  class="modify_title control" value="Refund Policy" name="meta_title">
+                <input id="meta_title" type="hidden"  class="modify_title control" value="Privacy Policy" name="meta_title">
                 <input id="dashboard_title" type="hidden" value="{{ core()->getCurrentChannel()->business_name ?? 'My Webstore Space' }}">
             </div>
 

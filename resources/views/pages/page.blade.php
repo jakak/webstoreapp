@@ -60,9 +60,9 @@
 
         @yield('slider')
 
-        <div class="breadcrumb">
-            <span class="">{{ $page->name }}</span>
-        </div>
+        <h3><div class="breadcrumb">
+                <span class="">{{ $page->name }}</span>
+            </div></h3>
         <div class="content-container">
             {!! $page->content !!}
         </div>
@@ -81,24 +81,24 @@
 
 </div>
 <script type="text/javascript">
-  window.flashMessages = [];
+    window.flashMessages = [];
 
-  @if ($success = session('success'))
-    window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
-  @elseif ($warning = session('warning'))
-    window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
-  @elseif ($error = session('error'))
-    window.flashMessages = [{'type': 'alert-error', 'message': "{{ $error }}" }
-  ];
-  @elseif ($info = session('info'))
-    window.flashMessages = [{'type': 'alert-info', 'message': "{{ $info }}" }
-  ];
-  @endif
+    @if ($success = session('success'))
+        window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
+    @elseif ($warning = session('warning'))
+        window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
+    @elseif ($error = session('error'))
+        window.flashMessages = [{'type': 'alert-error', 'message': "{{ $error }}" }
+    ];
+    @elseif ($info = session('info'))
+        window.flashMessages = [{'type': 'alert-info', 'message': "{{ $info }}" }
+    ];
+    @endif
 
-    window.serverErrors = [];
-  @if(isset($errors))
-      @if (count($errors))
-    window.serverErrors = @json($errors->getMessages());
+        window.serverErrors = [];
+    @if(isset($errors))
+        @if (count($errors))
+        window.serverErrors = @json($errors->getMessages());
     @endif
     @endif
 </script>

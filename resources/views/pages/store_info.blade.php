@@ -60,9 +60,9 @@
 
         @yield('slider')
 
-        <div class="breadcrumb">
-            <span class="">{{ str_replace('-', ' ', $page->name)  }}</span>
-        </div>
+        <h3><div class="breadcrumb">
+           <span class="">{{ str_replace('-', ' ', $page->name)  }}</span>
+        </div></h3>
         <div class="content-container">
             {!! $page->page_content !!}
         </div>
