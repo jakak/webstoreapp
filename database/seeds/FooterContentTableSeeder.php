@@ -28,7 +28,7 @@ class FooterContentTableSeeder extends Seeder
 
         FooterContent::updateOrCreate([
             'name' => 'return-policy',
-            'meta_title' => core()->getCurrentChannel()->business_name ?? 'My Webstore Space' . '—' . 'Return Policy',
+            'meta_title' => core()->getCurrentChannel()->business_name ?? 'My Webstore Space' . ' — ' . 'Return Policy',
             'meta_keywords' => 'webstores, store, shop, policy, return',
             'meta_description' => 'Learn about our Webstore'
         ]);
