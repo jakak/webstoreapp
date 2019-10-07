@@ -279,5 +279,6 @@ Route::group(['middleware' => ['web', 'theme', 'currency']], function () {
     });
     // External pages route starts here
     Route::get('/pages/{page}', 'App\Http\Controllers\PageController@showPage');
+    Route::get('/{page}', 'App\Http\Controllers\PageController@showStoreInfo');
     //customer routes end here
 });
