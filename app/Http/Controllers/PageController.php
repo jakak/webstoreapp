@@ -23,7 +23,6 @@ class PageController extends Controller
 
     public function showStoreInfo($page)
     {
-//        $page = str_replace('-', ' ', $page);
         $page = FooterContent::where('name', $page)->first();
         if ($page) {
             return view('pages.store_info')->with([
