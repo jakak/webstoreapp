@@ -20,7 +20,6 @@
             <div class="page-content">
                 <div class="form-container">
                     @csrf()
-{{--                    <input name="_method" type="hidden" value="PUT">--}}
 
                     <accordian :title="'{{ __('admin::app.users.users.staff-profile') }}'" :active="true">
                         <div slot="body">
