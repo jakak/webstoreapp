@@ -37,7 +37,7 @@
                     <div class="control-group">
                         <image-wrapper
                             :button-label="'{{ __('admin::app.settings.sliders.upload-slider') }}'" input-name="image" url-transform="no-transform"
-                            :multiple="false" :images='"{{ url('storage/'.$slider->path) }}"' sub-title="Recommended slider size is (1600 * 600)px"
+                            :multiple="false" :images='"{{ url('storage/'.$slider->path) }}"' sub-title="Recommended slider size is (1500 * 600)px"
                             size="large"
                         ></image-wrapper>
                     </div>
