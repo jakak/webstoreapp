@@ -352,7 +352,7 @@ Route::group(['middleware' => ['web']], function () {
             ])->name('admin.users.edit');
 
             //edit backend user submit
-            Route::put('/users/edit/{id}', 'Webkul\User\Http\Controllers\UserController@update')->defaults('_config', [
+            Route::post('/users/edit/{id}', 'Webkul\User\Http\Controllers\UserController@update')->defaults('_config', [
                 'redirect' => 'admin.users.index'
             ])->name('admin.users.update');
 
