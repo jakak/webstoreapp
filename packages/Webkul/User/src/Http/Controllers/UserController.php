@@ -5,6 +5,7 @@ namespace Webkul\User\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
+use Prettus\Validator\Exceptions\ValidatorException;
 use Webkul\User\Repositories\AdminRepository as Admin;
 use Webkul\User\Repositories\RoleRepository as Role;
 use Webkul\User\Http\Requests\UserForm;
@@ -42,9 +43,8 @@ class UserController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  Webkul\User\Repositories\AdminRepository $admin
-     * @param  Webkul\User\Repositories\RoleRepository $role
-     * @return void
+     * @param Admin $admin
+     * @param Role $role
      */
     public function __construct(Admin $admin, Role $role)
     {
@@ -60,7 +60,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -70,7 +70,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -82,8 +82,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Webkul\User\Http\Requests\UserForm  $request
-     * @return \Illuminate\Http\Response
+     * @param UserForm $request
+     * @return Response
+     * @throws ValidatorException
      */
     public function store(UserForm $request)
     {
@@ -107,7 +108,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -121,14 +122,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Webkul\User\Http\Requests\UserForm  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
+     * @throws ValidatorException
      */
-    public function update(UserForm $request, $id)
+    public function update(Request $request, $id)
     {
         $data = request()->all();
-
         if (! $data['password'])
             unset($data['password']);
         else
@@ -155,7 +156,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
