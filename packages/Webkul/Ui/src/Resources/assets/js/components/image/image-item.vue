@@ -1,10 +1,10 @@
 <template>
-    <label class="image-item" :for="_uid" v-bind:class="{ 'has-image': imageData.length > 0 }">
+    <label class="image-item" :for="_uid" :class="[sizeClass, hasImage]">
         <input type="hidden" :name="finalInputName"/>
 
         <input type="file" v-validate="'mimes:image/*'" accept="image/*" :name="finalInputName" ref="imageInput" :id="_uid" @change="addImageView($event)"/>
 
-        <img class="preview" :class="{ small: isSmall() }" :src="imageData" v-if="imageData.length > 0">
+        <img class="preview" :class="[sizeClass]" :src="imageData" v-if="imageData.length > 0">
 
         <label class="remove-image" @click="removeImage()">{{ removeButtonLabel }}</label>
     </label>
@@ -51,6 +51,16 @@
         computed: {
             finalInputName () {
                 return this.inputName + '[' + this.image.id + ']';
+            },
+            sizeClass() {
+              if (!this.size)
+                return '';
+              return this.size;
+            },
+            hasImage() {
+                if (this.imageData.length > 0 )
+                  return 'has-image';
+                return '';
             }
         },
 
@@ -89,10 +99,6 @@
             removeImage () {
                 this.$emit('onRemoveImage', this.image)
             },
-
-            isSmall () {
-              return this.size === 'small';
-            }
         }
     }
 </script>
@@ -101,5 +107,9 @@
     .small{
         width: 100px !important;
         height: 100px !important;
+    }
+    .large {
+      width: 500px !important;
+      height: 200px !important;
     }
 </style>

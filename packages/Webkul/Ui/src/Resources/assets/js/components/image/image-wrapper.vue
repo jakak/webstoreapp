@@ -13,6 +13,9 @@
         </div>
 
         <label class="btn btn-lg btn-primary" style="display: inline-block; width: auto" @click="createFileType">{{ buttonLabel }}</label>
+        <span class="sub-title" v-if="hasSubtitle">
+          {{ subTitle }}
+        </span>
     </div>
 </template>
 
@@ -47,6 +50,11 @@
               type: String,
               required: false,
               default: ''
+            },
+
+            subTitle: {
+              type: String,
+              required: false,
             },
 
             multiple: {
@@ -135,7 +143,20 @@
                     }
                 }
             }
+        },
+
+        computed: {
+          hasSubtitle() {
+            return !!this.subTitle;
+          }
         }
 
     }
 </script>
+
+<style scoped>
+  span.sub-title{
+    color: #8b8b8b;
+    margin-left: 5px;
+  }
+</style>

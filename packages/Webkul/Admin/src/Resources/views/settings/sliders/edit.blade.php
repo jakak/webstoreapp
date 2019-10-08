@@ -34,21 +34,12 @@
                         <span class="control-error" v-if="errors.has('title')">@{{ errors.first('title') }}</span>
                     </div>
 
-                    <?php $channels = core()->getAllChannels() ?>
-                    <div class="control-group" :class="[errors.has('channel_id') ? 'has-error' : '']">
-                        <label for="channel_id">{{ __('admin::app.settings.sliders.channels') }}</label>
-                        <select class="control" id="channel_id" name="channel_id" data-vv-as="&quot;{{ __('admin::app.settings.sliders.channels') }}&quot;" value="" v-validate="'required'">
-                            @foreach ($channels as $channel)
-                                <option value="{{ $channel->id }}" @if ($channel->id == $slider->channel_id) selected @endif>
-                                    {{ __($channel->name) }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <span class="control-error" v-if="errors.has('channel_id')">@{{ errors.first('channel_id') }}</span>
-                    </div>
-
                     <div class="control-group">
-                        <image-wrapper :button-label="'{{ __('admin::app.settings.sliders.image') }}'" input-name="image" :multiple="false" :images='"{{ url('storage/'.$slider->path) }}"'></image-wrapper>
+                        <image-wrapper
+                            :button-label="'{{ __('admin::app.settings.sliders.upload-slider') }}'" input-name="image" url-transform="no-transform"
+                            :multiple="false" :images='"{{ url('storage/'.$slider->path) }}"' sub-title="Recommended slider size is (1600 * 600)px"
+                            size="large"
+                        ></image-wrapper>
                     </div>
 
                     <div class="control-group">
