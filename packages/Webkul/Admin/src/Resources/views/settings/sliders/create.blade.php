@@ -22,27 +22,20 @@
                 <div class="form-container">
                     @csrf()
                     <div class="control-group" :class="[errors.has('title') ? 'has-error' : '']">
-                        <label for="title">{{ __('admin::app.settings.sliders.title') }}</label>
+                        <label for="title">{{ __('admin::app.settings.sliders.slider-name') }}</label>
                         <input type="text" class="control" name="title" v-validate="'required'" data-vv-as="&quot;{{ __('admin::app.settings.sliders.title') }}&quot;">
                         <span class="control-error" v-if="errors.has('title')">@{{ errors.first('title') }}</span>
                     </div>
 
-                    <?php $channels = core()->getAllChannels() ?>
-                    <div class="control-group" :class="[errors.has('channel_id') ? 'has-error' : '']">
-                        <label for="channel_id">{{ __('admin::app.settings.sliders.channels') }}</label>
-                        <select class="control" id="channel_id" name="channel_id" v-validate="'required'" data-vv-as="&quot;{{ __('admin::app.settings.sliders.channels') }}&quot;">
-                            @foreach ($channels as $channel)
-                                <option value="{{ $channel->id }}" @if ($channel->id == old('channel_id')) selected @endif>
-                                    {{ __($channel->name) }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <span class="control-error" v-if="errors.has('channel_id')">@{{ errors.first('channel_id') }}</span>
-                    </div>
+                    <input type="hidden" name="channel_id" value="{{ core()->getDefaultChannel()->id }}">
 
                     <div class="control-group" :class="[errors.has('image') ? 'has-error' : '']">
                         <label for="new_image">{{ __('admin::app.settings.sliders.image') }}</label>
-                        <image-wrapper :button-label="'{{ __('admin::app.settings.sliders.image') }}'" input-name="image" :multiple="false"></image-wrapper>
+                        <image-wrapper
+                            :button-label="'{{ __('admin::app.settings.sliders.upload-slider') }}'" input-name="image"
+                            :multiple="false" sub-title="Recommended slider size is (1500 * 600)px"size="large"
+                        >
+                        </image-wrapper>
                     </div>
 
                     <div class="control-group" :class="[errors.has('content') ? 'has-error' : '']">

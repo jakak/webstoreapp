@@ -635,13 +635,14 @@ return [
 
         'sliders' => [
             'title' => 'Sliders',
+            'slider-name' => 'Slider Name',
             'add-title' => 'Create Slider',
             'edit-title' => 'Edit Slider',
             'save-btn-title' => 'Save Slider',
             'general' => 'General',
             'image' => 'Image',
             'upload-slider' => 'Upload Slider',
-            'content' => 'Content',
+            'content' => 'Slider Content',
             'channels' => 'Channel',
             'created-success' => 'Slider Item Created Successfully',
             'created-fault' => 'Error In Creating Slider Item',

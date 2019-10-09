@@ -158,5 +158,6 @@
   span.sub-title{
     color: #8b8b8b;
     margin-left: 5px;
+    font-style: italic;
   }
 </style>
