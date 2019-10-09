@@ -278,8 +278,12 @@
                             <h1>
                                 Configure Paystack Keys
                             </h1>
+                        @elseif(strpos(request()->url(), 'sales/carriers'))
+                            <h1 class="configure">
+                                Configure Store Pickup
+                            </h1>
                         @else
-                            <h1>
+                            <h1 class="configure">
                                 {{ __('admin::app.configuration.title') }}
                             </h1>
                         @endif

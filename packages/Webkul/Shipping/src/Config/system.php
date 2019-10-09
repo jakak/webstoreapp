@@ -18,16 +18,16 @@ return [
     'name' => 'Store Pickup',
     'sort' => 1,
     'fields' => [
-      [
+     [
         'name' => 'title',
         'title' => 'Title',
-        'type' => 'text',
+        'type' => 'hidden',
         'validation' => 'required',
         'channel_based' => false,
         'locale_based' => true
-      ], [
+      ],  [
         'name' => 'description',
-        'title' => 'Description',
+        'title' => 'Write a short note for your customers',
         'type' => 'textarea',
         'channel_based' => false,
         'locale_based' => true
