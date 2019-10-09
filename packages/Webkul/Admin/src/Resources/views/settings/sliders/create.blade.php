@@ -16,11 +16,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.settings.sliders.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -58,6 +53,12 @@
                         <span class="control-error" v-if="errors.has('content')">@{{ errors.first('content') }}</span>
                     </div>
                 </div>
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.settings.sliders.save-btn-title') }}
+                    </button>
+                </div>
             </div>
         </form>
     </div>
@@ -71,9 +72,9 @@
             tinymce.init({
                 selector: 'textarea#tiny',
                 height: 200,
-                width: "100%",
-                plugins: 'image imagetools media wordcount save fullscreen code',
-                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
+                width: "70%",
+                plugins: 'image imagetools media wordcount save fullscreen code link',
+                toolbar1: 'formatselect | bold italic underline  link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent ',
                 image_advtab: true,
                 templates: [
                     { title: 'Test template 1', content: 'Test 1' },
