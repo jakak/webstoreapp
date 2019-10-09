@@ -13,11 +13,11 @@
                 </li>
             </ul>
 
-            <ul class="search-container" style="width:800px">
+            <ul class="search-container" style="width:600px">
 
                 <li class="search-group">
                     <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
-                        <input type="search" style="width: 450px" name="term" class="search-field" placeholder="{{ __('shop::app.header.search-text') }}" required>
+                        <input type="search" style="width: 400px" name="term" class="search-field" placeholder="{{ __('shop::app.header.search-text') }}" required>
 
                         <div class="search-icon-wrapper">
                             <button class="" class="background: none;">
