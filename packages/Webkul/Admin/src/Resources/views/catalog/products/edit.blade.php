@@ -272,8 +272,8 @@
                 selector: 'textarea#description, textarea#short_description',
                 height: 200,
                 width: "70%",
-                plugins: 'image imagetools media wordcount save fullscreen code',
-                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent  | code',
+                plugins: 'image imagetools media wordcount save fullscreen code link',
+                toolbar1: 'formatselect | bold italic underline  link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent ',
                 image_advtab: true
             });
         });

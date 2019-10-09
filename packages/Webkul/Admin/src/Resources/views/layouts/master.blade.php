@@ -28,6 +28,23 @@
             border: none !important;
             padding: 1px !important;
         }
+
+        .mce-menu-item.mce-selected {
+            background-color: #79C142 !important;
+        }
+
+        .mce-menu-item:hover {
+            background-color: #79C142 !important;
+        }
+
+        .mce-primary button {
+            color: #333 !important;
+
+        }
+        .mce-primary:hover {
+            border: 1px solid #b1b1b1 !important;
+        }
+
         .select2.select2-container {
             width: 70% !important;
         }
