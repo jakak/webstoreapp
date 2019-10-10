@@ -18,6 +18,10 @@
             background-color: #fff !important;
             box-shadow: 0 3px 6px 0 rgba(0,0,0,.05);
         }
+
+        .mce-textbox:focus {
+            border-color: #79C142 !important;
+        }
         .mce-btn {
             background-color: #fff !important;
         }
@@ -27,6 +31,10 @@
             height: 1px !important;
             border: none !important;
             padding: 1px !important;
+        }
+
+        .mce-menu-item-normal.mce-active {
+            background-color: #79C142 !important;
         }
 
         .mce-menu-item.mce-selected {
