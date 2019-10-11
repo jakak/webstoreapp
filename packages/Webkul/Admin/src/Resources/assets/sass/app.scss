@@ -49,8 +49,16 @@ body {
     }
   }
 
+  .ld-scale {
+    display: none;
+  }
+
+  .md-scale {
+    display: inline-block;
+  }
+
   .navbar-top-right {
-    width: 50%;
+    width: 49%;
     height: 60px;
     text-align: right;
     display: inline-block;
@@ -71,7 +79,10 @@ body {
       .dropdown-list {
         top: 63px;
       }
-
+      .store-name {
+        color: #79C142;
+        margin-right: 10px;
+      }
       .name {
         color: #79C142;
         display: block;
@@ -89,6 +100,8 @@ body {
       }
     }
   }
+
+
 }
 
 .navbar-left {
@@ -821,3 +834,19 @@ div.wrap-control > .last-name > .control {
   }
 }
 // css for rtl end here
+
+// Media query for mobile
+@media only screen and (max-width: 500px) {
+  .md-scale .profile-info {
+    display: none;
+  }
+  .ld-scale {
+    display: inline !important;
+  }
+  .store-name {
+    color: #79C142;
+    margin-right: 10px;
+    display: none;
+  }
+
+}
