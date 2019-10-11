@@ -7,7 +7,7 @@
 return [
   [
     'key' => 'sales',
-    'name' => 'Shipping',
+    'name' => 'Delivery',
     'sort' => 1
   ], [
     'key' => 'sales.carriers',
@@ -18,16 +18,16 @@ return [
     'name' => 'Store Pickup',
     'sort' => 1,
     'fields' => [
-      [
+     [
         'name' => 'title',
         'title' => 'Title',
-        'type' => 'text',
+        'type' => 'hidden',
         'validation' => 'required',
         'channel_based' => false,
         'locale_based' => true
-      ], [
+      ],  [
         'name' => 'description',
-        'title' => 'Description',
+        'title' => 'Write a short note for your customers',
         'type' => 'textarea',
         'channel_based' => false,
         'locale_based' => true
@@ -49,7 +49,7 @@ return [
     ]
   ], [
     'key' => 'sales.shipping',
-    'name' => 'Shipping Origin',
+    'name' => 'Delivery Origin',
     'sort' => 0
   ], [
     'key' => 'sales.shipping.origin',
@@ -95,7 +95,7 @@ return [
     ]
   ], [
     'key'   => 'sales.othermethods',
-    'name'  => 'Shipping Locations',
+    'name'  => 'Delivery Locations',
     'sort'  => 2
   ], [
     'key'   =>  'sales.othermethods.addlocation',
