@@ -8,8 +8,6 @@ use Watson\Rememberable\Rememberable;
 class CoreConfig extends Model
 {
     use Rememberable;
-
-    public $rememberFor = 20;
     /**
      * The attributes that are mass assignable.
      *
