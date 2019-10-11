@@ -7,7 +7,7 @@
 return [
   [
     'key' => 'sales',
-    'name' => 'Shipping',
+    'name' => 'Delivery',
     'sort' => 1
   ], [
     'key' => 'sales.carriers',
@@ -49,7 +49,7 @@ return [
     ]
   ], [
     'key' => 'sales.shipping',
-    'name' => 'Shipping Origin',
+    'name' => 'Delivery Origin',
     'sort' => 0
   ], [
     'key' => 'sales.shipping.origin',
@@ -95,7 +95,7 @@ return [
     ]
   ], [
     'key'   => 'sales.othermethods',
-    'name'  => 'Shipping Locations',
+    'name'  => 'Delivery Locations',
     'sort'  => 2
   ], [
     'key'   =>  'sales.othermethods.addlocation',
