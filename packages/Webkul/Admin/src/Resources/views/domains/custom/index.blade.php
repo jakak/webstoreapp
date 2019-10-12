@@ -8,7 +8,7 @@
         .tabs {
             display: none;
         }
-        div.sub-title{
+        label.sub-title{
             color: #8b8b8b;
             margin-left: 5px;
             font-style: italic;
@@ -43,7 +43,7 @@
             width: 70px;
             text-align: center;
             box-shadow: 0 0 10px #000;
-            top: 0;
+            bottom: 55px;
             right: 30%;
             border-radius: 5px;
         }
@@ -58,16 +58,16 @@
         </div>
         <div class="page-content">
             <form action="#">
+                <h4>Make your store memorable with a personalized domain.</h4>
                 <div class="control-group">
-                    <label for="cname">Make your store memorable with a personalized domain.</label>
                     <div class="no-display">
                         <input type="text" class="no-display control btn btn-primary" id="cname" name="cname" readonly value="CNAME: domain.mystore.ng">
                         <span class="fas fa-copy copy" style="color: #FFFFFF"></span>
                         <span class="copy-tip">Copied</span>
                     </div>
-                    <div class="sub-title">
+                    <label class="sub-title" for="cname">
                         {{ __('admin::app.settings.domains.add-cname-text') }}
-                    </div>
+                    </label>
                 </div>
                 <div class="control-group">
                     <label for="domain">Domain</label>
@@ -104,7 +104,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            // $('.copy-tip').fadeOut(0);
             document.querySelector('#domain').addEventListener('focusin', function() {
                 document.querySelector('#httpHolder').style.borderColor = '#79C142';
             }, false);
@@ -123,7 +122,7 @@
             $('.copy-tip').fadeIn(10);
             setTimeout(() => {
               $('.copy-tip').fadeOut(500);
-            }, 1000);
+            }, 500);
           })
         });
     </script>
