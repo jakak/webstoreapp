@@ -533,6 +533,14 @@ Route::group(['middleware' => ['web']], function () {
 
             });
 
+            Route::get('/domains/custom', 'Webkul\Admin\Http\Controllers\Domains\CustomDomain@index')
+                ->defaults('_config', [ 'view' => 'admin::domains.custom.index' ])
+                ->name('admin.domains.custom');
+
+            Route::get('/domains', 'Webkul\Admin\Http\Controllers\Domains\CustomDomain@index')
+                ->defaults('_config', [ 'view' => 'admin::domains.custom.show' ])
+                ->name('admin.domains.show');
+
             // footer content
             Route::get('footer/content','Webkul\Shop\Http\Controllers\SliderController@create')->defaults('_config',[
                 'view' => 'shop::layouts.footer.footer_content'

@@ -48,7 +48,9 @@ return [
         'sliders' => 'Sliders',
         'taxes' => 'Taxes',
         'tax-categories' => 'Tax Categories',
-        'tax-rates' => 'Tax Rates'
+        'tax-rates' => 'Tax Rates',
+        'custom-domain' => 'Custom Domain',
+        'connect-domain' => 'Connect a Domain',
     ],
 
     'acl' => [
@@ -717,7 +719,14 @@ return [
             'encryption' => 'SMTP Security',
             'port' => 'SMTP Port',
             'password' => 'SMTP Password'
-        ]
+        ],
+
+        'domains' => [
+            'connect-domain' => 'Connect a Domain',
+            'add-cname-text' => 'Add the CNAME to your DNS provider or registrar.',
+            'add-domain-text' => 'Enter the domain name your customers will use to access your Webstore',
+            'verify-domain' => 'Verify Domain'
+        ],
     ],
 
     'customers' => [
