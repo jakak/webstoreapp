@@ -186,7 +186,7 @@ return [
         'key' => 'settings.taxes',
         'name' => 'admin::app.layouts.taxes',
         'route' => 'admin.tax-categories.index',
-        'sort' => 7,
+        'sort' => 8,
         'icon-class' => '',
     ], [
         'key' => 'settings.taxes.tax-categories',
@@ -200,6 +200,19 @@ return [
         'route' => 'admin.tax-rates.index',
         'sort' => 2,
         'icon-class' => '',
-        ],
+    ], [
+        'key' => 'settings.domain',
+        'name' => 'admin::app.layouts.custom-domain',
+        'route' => 'admin.domains.show',
+        'sort' => 7,
+        'icon-class' => '',
+    ],  [
+        'key' => 'settings.domain.custom',
+        'name' => 'admin::app.layouts.connect-domain',
+        'route' => 'admin.domains.show',
+        'sort' => 1,
+        'icon-class' => '',
+    ],
+
 
 ];
