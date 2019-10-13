@@ -9,19 +9,18 @@
             <div class="control-group" :class="[errors.has('shipping-form.shipping_method') ? 'has-error' : '']">
                 <select type="text" placeholder="Select Store Pickup or Delivery Location" v-model="selected_shipping_method" v-validate="'required'" class="control" id="shipping" name="shipping_method" @change="methodSelected()">
                     @foreach ($shippingRateGroups as $rateGroup)
-                        <optgroup label="{{ $rateGroup['carrier_title'] }}">
-                            @foreach ($rateGroup['rates'] as $rate)
-                                <option value="{{ $rate->method }}"> {{ $rate->method_title }}</option>
-                            @endforeach
-                        </optgroup>
+                        @foreach ($rateGroup['rates'] as $rate)
+                            <option value="{{ $rate->method }}"> {{ $rate->method_title }}</option>
+                        @endforeach
+                        <hr style="border: 2px solid #C7C7C7; width: 70%;">
                     @endforeach
                     <optgroup label="Select Delivery Location">
                         @foreach ($location as $loc)
-                            <option value="{{ $loc->id }}">{{ $loc->location }}</option>
+                            <option id="location" value="{{ $loc->id }}">{{ $loc->location }}</option>
                         @endforeach
                     </optgroup>
                 </select>
-                <label for="shipping" id="shippingLabel"></label>
+                <label for="shipping" id="shippingLabel"> {!! core()->getConfigData('sales.carriers.free.description') !!}</label>
                 {{-- @foreach ($shippingRateGroups as $rateGroup)
                     <h4 for="">{{ $rateGroup['carrier_title'] }}</h4>
 
