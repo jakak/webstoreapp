@@ -48,13 +48,6 @@ body {
       padding: 10px;
     }
   }
-  .ld-scale {
-    display: none;
-  }
-
-  .md-scale {
-    display: inline-block;
-  }
   .navbar-top-right {
     width: 49%;
     height: 60px;
@@ -62,10 +55,6 @@ body {
     display: inline-block;
     vertical-align: middle;
 
-    .store-name {
-      color: #79C142;
-      margin-right: 10px;
-    }
 
     .profile-info {
       display: inline-block;
@@ -832,19 +821,3 @@ div.wrap-control > .last-name > .control {
   }
 }
 // css for rtl end here
-
-// Media query for mobile
-@media only screen and (max-width: 500px) {
-  .md-scale .profile-info {
-    display: none;
-  }
-  .ld-scale {
-    display: inline !important;
-  }
-  .store-name {
-    color: #79C142;
-    margin-right: 10px;
-    display: none;
-  }
-
-}
