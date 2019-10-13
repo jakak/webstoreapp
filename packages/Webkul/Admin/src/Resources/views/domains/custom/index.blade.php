@@ -88,7 +88,7 @@
                             width: 89%; box-shadow: none; padding-left: 0;" required
                         >
                     </div>
-                    <div class="sub-title">
+                    <div class="sub-title" style="color: #8B8B8B">
                         {{ __('admin::app.settings.domains.add-domain-text') }}
                     </div>
                 </div>
