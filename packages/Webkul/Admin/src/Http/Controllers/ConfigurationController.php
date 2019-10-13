@@ -147,7 +147,7 @@ class ConfigurationController extends Controller
     {
         Event::fire('core.configuration.save.after');
 
-        $check = $this->coreConfig->create(request()->all());
+        $this->coreConfig->create(request()->all());
 
         Event::fire('core.configuration.save.after');
 

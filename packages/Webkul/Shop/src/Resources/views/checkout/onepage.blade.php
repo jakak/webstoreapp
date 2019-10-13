@@ -82,16 +82,16 @@
                         <button type="button" class="btn btn-md btn-primary" v-if="selected_payment_method.method != 'paystack_payments'" @click="validateForm('payment-form')" :disabled="disable_button">
                             {{ __('shop::app.checkout.onepage.continue') }}
                         </button>
-                    <paystack-component
-                        :email="address.billing.email"
-                        :amount="newTotal * 100"
-                        :publicKey="'{{ core()->getConfigData('payment.paystack_payments.index.public_key') }}'"
-                        :referenceCode="`${address.billing.first_name.replace(/\s/g, '')}-${address.billing.last_name.replace(/\s/g, '')}-`+ '{{  $cart->id . '-' . $cart->grand_total}}'"
-                        class="btn btn-md btn-primary"
-                        v-if="selected_payment_method.method == 'paystack_payments'"
-                        :disabled="disable_button"
+                        <paystack-component
+                            :email="address.billing.email"
+                            :amount="newTotal * 100"
+                            :publicKey="'{{ core()->getConfigData('payment.paystack_payments.index.public_key') }}'"
+                            :referenceCode="`${address.billing.first_name.replace(/\s/g, '')}-${address.billing.last_name.replace(/\s/g, '')}-`+ '{{  $cart->id . '-' . $cart->grand_total}}'"
+                            class="btn btn-md btn-primary"
+                            v-if="selected_payment_method.method == 'paystack_payments'"
+                            :disabled="disable_button"
                         >
-                    </paystack-component>
+                        </paystack-component>
                     </div>
 
                 </div>
@@ -133,13 +133,13 @@
 
         @auth('customer')
             @if (auth('customer')->user()->default_address)
-                customerAddress = @json(auth('customer')->user()->default_address);
-            @else
-                customerAddress = {};
-            @endif
+            customerAddress = @json(auth('customer')->user()->default_address);
+        @else
+            customerAddress = {};
+        @endif
             customerAddress.email = "{{ auth('customer')->user()->email }}";
-            customerAddress.first_name = "{{ auth('customer')->user()->first_name }}";
-            customerAddress.last_name = "{{ auth('customer')->user()->last_name }}";
+        customerAddress.first_name = "{{ auth('customer')->user()->first_name }}";
+        customerAddress.last_name = "{{ auth('customer')->user()->last_name }}";
         @endauth
 
         Vue.component('checkout', {
@@ -236,17 +236,16 @@
                     this.disable_button = true;
                     this.$http.post("{{ route('shop.checkout.save-shipping') }}", {'shipping_method': this.selected_shipping_method})
                         .then(function(response) {
-                          this_this.disable_button = false;
-                            if (response.data.jump_to_section === 'payment') {
-                                paymentHtml = Vue.compile(response.data.html);
+                            this_this.disable_button = false;
+                            if (response.data.jump_to_section == 'payment') {
+                                paymentHtml = Vue.compile(response.data.html)
                                 this_this.completedStep = 2;
                                 this_this.currentStep = 3;
                             }
                         })
                         .catch(function (error) {
                             this_this.disable_button = false;
-
-                            this_this.handleErrorResponse(error.response, 'shipping-form');
+                            this_this.handleErrorResponse(error.response, 'shipping-form')
                         })
                 },
 
@@ -258,9 +257,8 @@
                     this.$http.post("{{ route('shop.checkout.save-payment') }}", {'payment': this.selected_payment_method})
                         .then(function(response) {
                             this_this.disable_button = false;
-
-                            if (response.data.jump_to_section === 'review') {
-                                reviewHtml = Vue.compile(response.data.html);
+                            if (response.data.jump_to_section == 'review') {
+                                reviewHtml = Vue.compile(response.data.html)
                                 this_this.completedStep = 3;
                                 this_this.currentStep = 4;
                             }
@@ -311,7 +309,7 @@
                     this.selected_shipping_method = shippingMethod;
 
                     let currLocation = locations.find(loc => {
-                        return loc.id === shippingMethod;
+                        return loc.id == shippingMethod;
                     });
                     if (!currLocation) {
                         currLocation = {
@@ -326,19 +324,16 @@
                     detailsHTML.innerHTML = `
                         <label>Delivery Charges</label>
                         <label class="right">NGN${currLocation.rate}</label>
-                        `;
+                        `
                     let details = document.querySelectorAll('.item-detail');
 
-                    if (details.length === 2) {
+                    if (details.length == 2) {
                         details[0].insertAdjacentElement('afterend', detailsHTML);
-                    } else if (details.length === 3) {
+                    } else if (details.length == 3) {
                         document.querySelector('.order-summary').removeChild(details[1]);
                         details[0].insertAdjacentElement('afterend', detailsHTML);
                     }
-
-                    const shippingLabel = document.querySelector('#shippingLabel');
-                    if (shippingLabel)
-                        shippingLabel.innerHTML = currLocation.description;
+                    document.querySelector('#shippingLabel').innerHTML = currLocation.description;
                     let payableAmountDisplay = document.querySelector('.payble-amount').querySelector('.right');
                     const formatter = new Intl.NumberFormat('en-US', {
                         minimumFractionDigits: 2,
@@ -380,7 +375,7 @@
                     (this.templateRender ?
                         this.templateRender() :
                         '')
-                    ]);
+                ]);
             }
         })
 
@@ -410,7 +405,7 @@
                     (this.templateRender ?
                         this.templateRender() :
                         '')
-                    ]);
+                ]);
             },
 
             methods: {
@@ -455,7 +450,7 @@
                     (this.templateRender ?
                         this.templateRender() :
                         '')
-                    ]);
+                ]);
             },
 
             methods: {
@@ -487,7 +482,7 @@
                     (this.templateRender ?
                         this.templateRender() :
                         '')
-                    ]);
+                ]);
             }
         })
     </script>
