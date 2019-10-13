@@ -1,7 +1,7 @@
 <form data-vv-scope="shipping-form">
     <div class="form-container">
         <div class="form-header">
-            <h1>{{ __('shop::app.checkout.onepage.shipping-method') }}</h1>
+            <h1>{{ __('shop::app.checkout.onepage.delivery-method') }}</h1>
         </div>
 
         <div class="shipping-methods">
@@ -27,7 +27,7 @@
 
                     @foreach ($rateGroup['rates'] as $rate)
                         <span class="radio" >
-                            <input v-validate="'required'" type="radio" id="{{ $rate->method }}" name="shipping_method" data-vv-as="&quot;{{ __('shop::app.checkout.onepage.shipping-method') }}&quot;" value="{{ $rate->method }}" v-model="selected_shipping_method" @change="methodSelected()">
+                            <input v-validate="'required'" type="radio" id="{{ $rate->method }}" name="shipping_method" data-vv-as="&quot;{{ __('shop::app.checkout.onepage.delivery-method') }}&quot;" value="{{ $rate->method }}" v-model="selected_shipping_method" @change="methodSelected()">
                             <label class="radio-view" for="{{ $rate->method }}"></label>
                             {{ $rate->method_title }}
                             <b>{{ core()->currency($rate->base_price) }}</b>

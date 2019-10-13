@@ -397,7 +397,7 @@ return [
         'onepage' => [
             'title' => 'Checkout',
             'information' => 'Information',
-            'shipping' => 'Shipping',
+            'delivery' => 'Delivery',
             'payment' => 'Payment',
             'complete' => 'Complete',
             'billing-address' => 'Billing Address',
@@ -417,7 +417,7 @@ return [
             'shipping-address' => 'Shipping Address',
             'use_for_shipping' => 'Ship to this address',
             'continue' => 'Continue',
-            'shipping-method' => 'Shipping Method',
+            'delivery-method' => 'Delivery Method',
             'payment-information' => 'Payment Information',
             'payment-method' => 'Payment Method',
             'summary' => 'Summary of Order',

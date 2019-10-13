@@ -27,7 +27,7 @@
 
                     <li :class="[currentStep == 2 || completedStep > 1 ? 'active' : '', completedStep > 1 ? 'completed' : '']" @click="navigateToStep(2)">
                         <div class="decorator shipping"></div>
-                        <span>{{ __('shop::app.checkout.onepage.shipping') }}</span>
+                        <span>{{ __('shop::app.checkout.onepage.delivery') }}</span>
                     </li>
 
                     <div class="line mb-25"></div>
