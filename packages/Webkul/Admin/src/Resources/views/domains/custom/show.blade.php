@@ -21,7 +21,7 @@
         <div class="page-header">
             <div class="page-title">
                 <h1>{{ __('admin::app.settings.domains.connect-domain') }}</h1>
-                <p class="sub-title">Connect a domain to your webstore</p>
+                <p class="sub-title">Connect a domain to your Webstore</p>
             </div>
             <div class="page-action">
                 <a href="{{ route('admin.domains.custom') }}" class="btn btn-md btn-primary">

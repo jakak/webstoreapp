@@ -11,7 +11,6 @@
         label.sub-title{
             color: #8b8b8b;
             margin-left: 5px;
-            font-style: italic;
         }
         div.d-flex {
             display: flex;
@@ -30,6 +29,8 @@
             background-color: #79C142;
             height: 36px;
             border-radius: 7px;
+            margin-top: 10px;
+            margin-bottom: 2px;
         }
         div.no-display span.copy {
             cursor: pointer;
@@ -53,15 +54,21 @@
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h1>{{ __('admin::app.settings.domains.connect-domain') }}</h1>
+                <h1>
+                    <a href="{{route('admin.domains.show')}}">
+                        <i class="icon angle-left-icon back-link"></i>
+                    </a>
+                    {{ __('admin::app.settings.domains.connect-domain') }}</h1>
             </div>
         </div>
         <div class="page-content">
             <form action="#">
                 <h4>Make your store memorable with a personalized domain.</h4>
                 <div class="control-group">
+                    <label for="cname">CNAME</label>
                     <div class="no-display">
-                        <input type="text" class="no-display control btn btn-primary" id="cname" name="cname" readonly value="CNAME: domain.mystore.ng">
+                        <input type="text" class="no-display control btn btn-primary" id="cname" name="cname"
+                               readonly value="domain.mystore.ng">
                         <span class="fas fa-copy copy" style="color: #FFFFFF"></span>
                         <span class="copy-tip">Copied</span>
                     </div>
@@ -87,7 +94,7 @@
                 </div>
                 <div class="control-group">
                     <p>
-                        Learn more about <a href="#" class="primary">Connecting a Domain.</a>
+                        Learn more about <a href="#" class="primary">Connecting a Domain</a>
                     </p>
                 </div>
                 <hr class="horizontal-line">
