@@ -15,10 +15,6 @@
             </div>
 
             <div class="profile-info">
-                <a href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-
-            <div class="profile-info">
                 <div class="dropdown-toggle">
                     <div style="display: inline-block; vertical-align: middle;">
                         <i class="icon avatar active"></i>
@@ -61,28 +57,17 @@
                     </div>
                 </div>
             </div>
+
             <div class="ld-scale">
                 <div  class="profile-info">
-                    <div class="dropdown-toggle">
-                        <div style="display: inline-block; vertical-align: middle;">
-                            <i style="color: #79C142; font-size: 2em" class="fab fa-buromobelexperte"></i>
-                        </div>
-                    </div>
-
-                    <div class="dropdown-list bottom-right move-left" style="right: 10px!important;">
-                        <div class="dropdown-container">
-                            <ul>
-                                <li>
-                                    <a style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}">{{ core()->getCurrentChannel()->name }} <i class="fas fa-external-link-alt"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <a style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}"> <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
 
-            <div  class="profile-info">
-                <a class="store-name" style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}">{{ core()->getCurrentChannel()->name }} <i class="fas fa-external-link-alt"></i></a>
+            <div class="md-scale">
+                <div  class="profile-info">
+                    <a class="store-name" style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}">{{ core()->getCurrentChannel()->name }} <i class="fas fa-external-link-alt"></i></a>
+                </div>
             </div>
 
         </div>
