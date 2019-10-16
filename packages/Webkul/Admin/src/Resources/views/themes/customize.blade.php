@@ -1,14 +1,14 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
-    {{ __('admin::app.settings.themes.design') }}
+    {{ __('admin::app.settings.themes.appearance') }}
 @stop
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h1>{{ __('admin::app.settings.themes.design') }}</h1>
+                <h1>{{ __('admin::app.settings.themes.appearance') }}</h1>
             </div>
         </div>
         <h3>Default Theme</h3>

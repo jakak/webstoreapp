@@ -54,7 +54,9 @@ class ThemeController extends Controller
      */
     public function footerSection()
     {
-        return view($this->_config['view']);
+        $channel = Channel::first();
+        $channel->update(request()->all());
+        return view($this->_config['view'], ['channel' => Channel::first()]);
     }
 
     /**

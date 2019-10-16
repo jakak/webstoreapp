@@ -13,19 +13,25 @@
 
         </div>
         <div class="page-content">
-            <form action="" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
                     <accordian :title="'Body Content'" :active="true">
-
+                        <div slot="body">
+                            <div class="control-group">
+                                <label for="home_page_content">{{ __('admin::app.settings.channels.home_page_content') }}</label>
+                                <textarea class="control" id="home_page_content" name="home_page_content">{{ old('home_page_content') ?: $channel->home_page_content }}</textarea>
+                            </div>
+                        </div>
                     </accordian>
                 </div>
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button onclick="document.querySelector('#submit').click()" class="btn btn-md btn-primary">
+                        Save
+                    </button>
+                </div>
             </form>
-        </div>
-        <div class="form-bottom">
-            <button onclick="document.querySelector('#submit').click()" class="btn btn-md btn-primary">
-                Save
-            </button>
         </div>
     </div>
 @endsection

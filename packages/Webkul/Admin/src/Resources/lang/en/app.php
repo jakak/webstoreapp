@@ -524,7 +524,7 @@ return [
     'settings' => [
         'themes' => [
             'title' => 'Theme Manager',
-            'design' => 'Appearance',
+            'appearance' => 'Appearance',
             'footer' => 'Footer Section',
             'body-section' => 'Body Section'
         ],
