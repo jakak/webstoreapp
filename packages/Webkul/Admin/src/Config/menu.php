@@ -159,10 +159,16 @@ return [
         'sort' => 2,
         'icon-class' => '',
     ], [
+        'key' => 'settings.theme.section',
+        'name' => 'admin::app.layouts.body-section',
+        'route' => 'admin.footer.body.section',
+        'sort' => 3,
+        'icon-class' => '',
+    ], [
         'key' => 'settings.theme.footer',
         'name' => 'admin::app.layouts.footer-content',
         'route' => 'admin.footer.content',
-        'sort' => 3,
+        'sort' => 4,
         'icon-class' => '',
     ], [
         'key' => 'settings.users',

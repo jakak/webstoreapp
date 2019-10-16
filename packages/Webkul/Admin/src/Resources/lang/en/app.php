@@ -40,9 +40,10 @@ return [
         'inventory-sources' => 'Inventory Sources',
         'channels' => 'Webstore Channel',
         'theme-manager' => 'Theme Manager',
-        'theme-design' => 'Theme Design',
+        'theme-design' => 'Appearance',
         'theme-sliders' => 'Sliders',
-        'footer-content' => 'Footer',
+        'body-section' => 'Body Section',
+        'footer-content' => 'Footer Section',
         'users' => 'Staff Accounts',
         'roles' => 'Roles',
         'sliders' => 'Sliders',
@@ -523,8 +524,9 @@ return [
     'settings' => [
         'themes' => [
             'title' => 'Theme Manager',
-            'design' => 'Default Theme',
-            'footer' => 'Manage Footer'
+            'design' => 'Appearance',
+            'footer' => 'Footer Section',
+            'body-section' => 'Body Section'
         ],
         'locales' => [
             'title' => 'Locales',

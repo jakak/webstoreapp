@@ -2,10 +2,12 @@
 
 namespace Webkul\Admin\Http\Controllers;
 
+use App\FooterPage;
 use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
+use PHPUnit\Framework\Constraint\Count;
 use Webkul\Admin\Facades\Configuration;
 use Webkul\Core\Models\Channel;
 use Webkul\Core\Repositories\CoreConfigRepository as CoreConfig;
