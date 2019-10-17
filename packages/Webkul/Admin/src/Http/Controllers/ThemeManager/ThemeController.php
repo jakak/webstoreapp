@@ -93,13 +93,13 @@ class ThemeController extends Controller
 
             }
 
-            DB::rollBack();
+            DB::commit();
 
             session()->flash('success', 'Pages published successfully');
             return redirect()->back();
 
         }  catch (\Exception $e) {
-            DB::commit();
+            DB::rollBack();
             session()->flash('error', $e->getMessage());
             return redirect()->back();
         }

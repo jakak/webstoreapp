@@ -504,7 +504,6 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::post('/theme-manager/footer/pages/create', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@createNewFooterPages')->name('admin.configuration.footer.pages.create');
 
-
             Route::group(['prefix' => 'theme-manager'], function () {
                 //slider index
                 Route::get('/slider','Webkul\Shop\Http\Controllers\SliderController@index')->defaults('_config',[
