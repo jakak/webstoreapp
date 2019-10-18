@@ -5,14 +5,14 @@
             <div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.page-links') }}</span>
                 <div class="form-container">
-					<div class="control-group">
-						<ul class="list-group">
-							<li><a href="#">Page 1</a></li>
-							<li><a href="#">Page 2</a></li>
-							<li><a href="#">Page 3</a></li>
-							<li><a href="#">Page 4</a></li>
-							<li><a href="#">Page 5</a></li>
-						</ul>
+                    <div class="control-group">
+                        <ul class="list-group">
+                            @foreach(App\FooterPage::all() as $page)
+                                @if($page->name != "none")
+                                    <li><a href="{{ $page->url  }}">{{ $page->name }}</a></li>
+                                @endif
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
 
@@ -21,40 +21,40 @@
             <div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.store-info') }}</span>
                 <div class="form-container">
-					<div class="control-group">
-						<ul class="list-group">
-							<li><a href="/about">About</a></li>
-							<li><a href="/refund-policy">Refund policy</a></li>
-							<li><a href="/return-policy">Return policy</a></li>
-							<li><a href="/privacy-policy">Privacy policy</a></li>
-							<li><a href="/terms-of-use">Terms of use</a></li>
-						</ul>
+                    <div class="control-group">
+                        <ul class="list-group">
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/refund-policy">Refund policy</a></li>
+                            <li><a href="/return-policy">Return policy</a></li>
+                            <li><a href="/privacy-policy">Privacy policy</a></li>
+                            <li><a href="/terms-of-use">Terms of use</a></li>
+                        </ul>
                     </div>
                 </div>
 
             </div>
-			
-			<div class="list-container">
+
+            <div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.secure-shopping') }}</span>
                 <div class="form-container">
                     <div class="control-group">
                         <img src="https://res.cloudinary.com/webstore-cloud/image/upload/c_scale,w_250/v1567929421/Paystack/paystack-badge-cards_nji4dn.png" />
                     </div>
                 </div>
-				
-				<span class="list-heading">{{ __('shop::app.footer.social') }}</span>
+
+                <span class="list-heading">{{ __('shop::app.footer.social') }}</span>
                 <div class="form-container">
                     <div class="control-group">
                         <a href="https://instagram.com/#"><span><i class="fab fa-instagram" style="font-size: 1.5em; color: #4F5B64; margin-right: 15px;"></i></span></a>
-						<a href="https://twitter.com/#"><span><i class="fab fa-twitter" style="font-size: 1.5em; color: #1da1f2; margin-right: 15px;"></i></span></a>
-						<a href="https://facebook.com/#"><span><i class="fab fa-facebook-square fa-1x" style="font-size: 1.5em; color: #3b5998; margin-right: 15px;"></i></span></a>
-						<a href="+234 803 671 9340"><span><i class="fab fa-whatsapp" style="font-size: 1.5em; color: #25d366; margin-right: 15px;"></i></span></a>
+                        <a href="https://twitter.com/#"><span><i class="fab fa-twitter" style="font-size: 1.5em; color: #1da1f2; margin-right: 15px;"></i></span></a>
+                        <a href="https://facebook.com/#"><span><i class="fab fa-facebook-square fa-1x" style="font-size: 1.5em; color: #3b5998; margin-right: 15px;"></i></span></a>
+                        <a href="+234 803 671 9340"><span><i class="fab fa-whatsapp" style="font-size: 1.5em; color: #25d366; margin-right: 15px;"></i></span></a>
                     </div>
                 </div>
 
-            </div>			
+            </div>
 
-			<div class="list-container">
+            <div class="list-container">
                 <span class="list-heading">{{ __('shop::app.footer.customer-care') }}</span>
                 <div class="form-container">
                     <div class="control-group">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-				<span class="list-heading">{{ __('shop::app.footer.subscribe-newsletter') }}</span>
+                <span class="list-heading">{{ __('shop::app.footer.subscribe-newsletter') }}</span>
                 <div class="form-container">
                     <form action="{{ route('shop.subscribe') }}">
                         <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
@@ -73,7 +73,7 @@
                     </form>
                 </div>
 
-				<div class="currency">
+                <div class="currency">
                     <span class="list-heading">{{ __('shop::app.footer.currency') }}</span>
                     <div class="form-container">
                         <div class="control-group">

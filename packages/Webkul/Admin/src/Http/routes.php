@@ -502,6 +502,8 @@ Route::group(['middleware' => ['web']], function () {
                 ->name('admin.themes.store')
             ;
 
+            Route::post('/theme-manager/footer/pages/create', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@createNewFooterPages')->name('admin.configuration.footer.pages.create');
+
             Route::group(['prefix' => 'theme-manager'], function () {
                 //slider index
                 Route::get('/slider','Webkul\Shop\Http\Controllers\SliderController@index')->defaults('_config',[
@@ -545,6 +547,10 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('footer/content','Webkul\Shop\Http\Controllers\SliderController@create')->defaults('_config',[
                 'view' => 'shop::layouts.footer.footer_content'
             ])->name('admin.footer.content');
+
+            Route::get('footer/body/section','Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@footerSection')->defaults('_config',[
+                'view' => 'shop::layouts.footer.body_section'
+            ])->name('admin.footer.body.section');
 
             Route::get('/theme-manager/sliders', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@customize')
                 ->defaults('_config', [ 'view' => 'admin::themes.customize' ])

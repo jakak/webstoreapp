@@ -12,14 +12,9 @@
                 <h1>{{ __('admin::app.settings.themes.footer') }}</h1>
             </div>
 
-            <div class="page-action">
-                <button onclick="document.querySelector('#submit').click()" class="btn btn-md btn-primary">
-                    Save
-                </button>
-            </div>
         </div>
         <div class="page-content">
-            <form action="" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('admin.configuration.footer.pages.create') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
                     <accordian :title="'Page Links'" :active="true">
@@ -34,6 +29,14 @@
                             @include('shop::layouts.footer.footer_credit')
                     </accordian>
                 </div>
+
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        save
+                    </button>
+                </div>
+
             </form>
         </div>
 
