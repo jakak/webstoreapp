@@ -66,7 +66,7 @@ class AttributeFamily extends Model
      */
     public function getConfigurableAttributesAttribute()
     {
-        return $this->custom_attributes()->where('attributes.is_configurable', 1)->where('attributes.type', 'select')->get();
+        return $this->custom_attributes()->where('attributes.is_configurable', 1)->where('attributes.type', 'select')->get()->unique();
     }
 
     /**
