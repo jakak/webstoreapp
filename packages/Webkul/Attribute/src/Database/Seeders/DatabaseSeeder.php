@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AttributeGroupTableSeeder::class);
         $this->call(\AddNewAttributeSeeder::class);
         $this->call(\UpdateAttributesTable::class);
+        $this->call(\CustomAttributeGroupSeeder::class);
     }
 }
