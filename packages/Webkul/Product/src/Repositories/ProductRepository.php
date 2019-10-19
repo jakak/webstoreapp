@@ -4,6 +4,7 @@ namespace Webkul\Product\Repositories;
 
 use Illuminate\Container\Container as App;
 use DB;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Event;
 use Webkul\Attribute\Models\AttributeOption;
 use Webkul\Core\Eloquent\Repository;
@@ -570,6 +571,7 @@ class ProductRepository extends Repository
     /**
      * Search Product by Attribute
      *
+     * @param $term
      * @return Collection
      */
     public function searchProductByAttribute($term) {

@@ -43,16 +43,7 @@
                         </div>
                     </accordian>
 
-                    <accordian :title="'{{ __('admin::app.catalog.families.groups') }}'" :active="true">
-                        <div slot="body">
-
-                            <button type="button" class="btn btn-md btn-primary" @click="showModal('addGroup')">
-                                {{ __('admin::app.catalog.families.add-group-title') }}
-                            </button>
-
-                            <group-list></group-list>
-                        </div>
-                    </accordian>
+                    <group-list></group-list>
                 </div>
 
                 <hr class="horizontal-line">
@@ -69,7 +60,7 @@
     <modal id="addGroup" :is-open="modalIds.addGroup">
         <h3 slot="header">{{ __('admin::app.catalog.families.add-group-title') }}</h3>
 
-        <div slot="body">
+        <div slot="body" style="padding: 20px 0">
             <group-form></group-form>
         </div>
     </modal>
@@ -113,14 +104,19 @@
     </script>
 
     <script type="text/x-template" id="group-item-template">
-        <accordian :title="group.groupName" :active="true">
-            <div slot="header">
-                <i class="icon expand-icon left"></i>
-                <h1>@{{ group.name ? group.name : group.groupName }}</h1>
-                <i class="icon trash-icon" @click="removeGroup()" v-if="group.is_user_defined"></i>
+        <div>
+            <h1 style="padding-left: 20px; font-weight: 500; font-size: 18px;">
+                Select attributes to create a configurable product associated with this family
+            </h1>
+            <hr style="background-color: #e8e8e8; height: 1.5px; border:none;">
+
+            <div style="padding: 20px 20px 0 20px">
+                <button type="button" class="btn btn-md btn-primary dropdown-toggle">
+                    {{ __('admin::app.catalog.families.add-attribute-title') }}
+                </button>
             </div>
 
-            <div slot="body">
+            <div style="padding: 20px;">
                 <input type="hidden" :name="[groupInputName + '[name]']" :value="group.name ? group.name : group.groupName"/>
                 <input type="hidden":name="[groupInputName + '[position]']" :value="group.position"/>
 
@@ -136,24 +132,20 @@
                         </thead>
 
                         <tbody>
-                            <tr v-for='(attribute, index) in group.custom_attributes'>
-                                <td>
-                                    <input type="hidden" :name="[groupInputName + '[custom_attributes][][id]']" :value="attribute.id"/>
-                                    @{{ attribute.code }}
-                                </td>
-                                <td>@{{ attribute.admin_name }}</td>
-                                <td>@{{ attribute.type }}</td>
-                                <td class="actions">
-                                    <i class="icon trash-icon" @click="removeAttribute(attribute)" v-if="attribute.is_user_defined || attribute.removable"></i>
-                                </td>
-                            </tr>
+                        <tr v-for='(attribute, index) in group.custom_attributes'>
+                            <td>
+                                <input type="hidden" :name="[groupInputName + '[custom_attributes][][id]']" :value="attribute.id"/>
+                                @{{ attribute.code }}
+                            </td>
+                            <td>@{{ attribute.admin_name }}</td>
+                            <td>@{{ attribute.type }}</td>
+                            <td class="actions">
+                                <i class="icon trash-icon" @click="removeAttribute(attribute)" v-if="attribute.is_user_defined || attribute.removable"></i>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <button type="button" class="btn btn-md btn-primary dropdown-toggle">
-                    {{ __('admin::app.catalog.families.add-attribute-title') }}
-                </button>
 
                 <div class="dropdown-list" style="width: 240px">
                     <div class="search-box">
@@ -177,13 +169,11 @@
                     </div>
                 </div>
             </div>
-        </accordian>
+        </div>
     </script>
 
     <script>
-        var groups = @json($attributeFamily->attribute_groups);
-        var defaultGroups = @json($attributeFamily->getDefaultGroups());
-        groups = groups.filter(group => !defaultGroups.includes(group.name.toLowerCase()));
+        var groups = @json($attributeFamily->customAttributeGroup());
         var custom_attributes = @json($custom_attributes);
         var defaultAttributes = @json((new \Webkul\Product\Models\Product())->getDefaultAttributes());
         custom_attributes = custom_attributes.filter(attr => !defaultAttributes.includes(attr.code.toLowerCase()));

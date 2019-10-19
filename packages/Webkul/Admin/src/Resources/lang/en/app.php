@@ -436,7 +436,7 @@ return [
             'position' => 'Position',
             'attribute-code' => 'Code',
             'type' => 'Type',
-            'add-attribute-title' => 'Add Attributes',
+            'add-attribute-title' => 'Select Attributes',
             'search' => 'Search',
             'group-exist-error' => 'Group with same name already exists.'
         ],

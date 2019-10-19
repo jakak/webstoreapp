@@ -76,4 +76,9 @@ class AttributeFamily extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function customAttributeGroup()
+    {
+        return $this->attribute_groups()->where('name', ucfirst('CustomAttributeGroup'))->with('custom_attributes')->get();
+    }
 }
