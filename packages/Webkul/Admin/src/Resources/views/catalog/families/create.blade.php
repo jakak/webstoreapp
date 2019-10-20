@@ -269,7 +269,7 @@
               },
 
               addAttributes (groupIndex, attributeIds) {
-                attributeIds.forEach(function(attributeId) {
+                attributeIds.forEach(attributeId => {
                   var attribute = this.custom_attributes.filter(attribute => attribute.id == attributeId)
 
                   this.groups[groupIndex].custom_attributes.push(attribute[0]);

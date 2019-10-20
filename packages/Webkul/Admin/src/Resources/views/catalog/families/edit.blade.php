@@ -238,7 +238,7 @@
 
             created () {
                 this.groups.forEach(function(group) {
-                    group.custom_attributes.forEach(function(attribute) {
+                    group.custom_attributes.forEach(attribute => {
                         var attribute = this.custom_attributes.filter(attributeTemp => attributeTemp.id == attribute.id)
 
                         if (attribute.length) {
