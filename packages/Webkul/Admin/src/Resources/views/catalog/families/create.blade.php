@@ -138,7 +138,7 @@
                 <input type="hidden" :name="[groupInputName + '[name]']" :value="group.name ? group.name : group.groupName"/>
                 <input type="hidden":name="[groupInputName + '[position]']" :value="group.position"/>
 
-                <div class="table" v-if="group.custom_attributes.length" style="margin-bottom: 20px;">
+                <div class="table" style="margin-bottom: 20px;">
                     <table>
                         <thead>
                         <tr>
