@@ -24,23 +24,19 @@
                 <div class="form-container">
                     @csrf()
 
-                    <accordian :title="'{{ __('admin::app.catalog.families.general') }}'" :active="true">
-                        <div slot="body">
-
-                            <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
-                                <label for="code" class="required">{{ __('admin::app.catalog.families.code') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="code" name="code" value="{{ old('code') }}" data-vv-as="&quot;{{ __('admin::app.catalog.families.code') }}&quot;" v-code/>
-                                <span class="control-error" v-if="errors.has('code')">@{{ errors.first('code') }}</span>
-                            </div>
-
-                            <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
-                                <label for="name" class="required">{{ __('admin::app.catalog.families.name') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="name" name="name" value="{{ old('name') }}" data-vv-as="&quot;{{ __('admin::app.catalog.families.name') }}&quot;"/>
-                                <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
-                            </div>
-
+                    <div style="padding: 20px 20px 0 20px">
+                        <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
+                            <label for="code" class="required">{{ __('admin::app.catalog.families.code') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="code" name="code" value="{{ old('code') }}" data-vv-as="&quot;{{ __('admin::app.catalog.families.code') }}&quot;" v-code/>
+                            <span class="control-error" v-if="errors.has('code')">@{{ errors.first('code') }}</span>
                         </div>
-                    </accordian>
+
+                        <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
+                            <label for="name" class="required">{{ __('admin::app.catalog.families.name') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="name" name="name" value="{{ old('name') }}" data-vv-as="&quot;{{ __('admin::app.catalog.families.name') }}&quot;"/>
+                            <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
+                        </div>
+                    </div>
 
                     <group-list></group-list>
                 </div>
@@ -115,11 +111,32 @@
                 <button type="button" class="btn btn-md btn-primary dropdown-toggle">
                     {{ __('admin::app.catalog.families.add-attribute-title') }}
                 </button>
+
+                <div class="dropdown-list" style="width: 240px">
+                    <div class="search-box">
+                        <input type="text" class="control" placeholder="{{ __('admin::app.catalog.families.search') }}">
+                    </div>
+
+                    <div class="dropdown-container">
+                        <ul>
+                            <li v-for='(attribute, index) in custom_attributes' :data-id="attribute.id">
+                                <span class="checkbox">
+                                    <input type="checkbox" :id="attribute.id" :value="attribute.id"/>
+                                    <label class="checkbox-view" :for="attribute.id"></label>
+                                    @{{ attribute.admin_name }}
+                                </span>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="btn btn-md btn-primary" @click="addAttributes($event)">
+                            {{ __('admin::app.catalog.families.add-attribute-title') }}
+                        </button>
+                    </div>
+                </div>
             </div>
             <div style="padding: 20px;">
                 <input type="hidden" :name="[groupInputName + '[name]']" :value="group.name ? group.name : group.groupName"/>
                 <input type="hidden":name="[groupInputName + '[position]']" :value="group.position"/>
-
 
                 <div class="table" v-if="group.custom_attributes.length" style="margin-bottom: 20px;">
                     <table>
@@ -148,27 +165,6 @@
                     </table>
                 </div>
 
-                <div class="dropdown-list" style="width: 240px">
-                    <div class="search-box">
-                        <input type="text" class="control" placeholder="{{ __('admin::app.catalog.families.search') }}">
-                    </div>
-
-                    <div class="dropdown-container">
-                        <ul>
-                            <li v-for='(attribute, index) in custom_attributes' :data-id="attribute.id">
-                                <span class="checkbox">
-                                    <input type="checkbox" :id="attribute.id" :value="attribute.id"/>
-                                    <label class="checkbox-view" :for="attribute.id"></label>
-                                    @{{ attribute.admin_name }}
-                                </span>
-                            </li>
-                        </ul>
-
-                        <button type="button" class="btn btn-md btn-primary" @click="addAttributes($event)">
-                            {{ __('admin::app.catalog.families.add-attribute-title') }}
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </script>
