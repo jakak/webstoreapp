@@ -126,13 +126,7 @@
                                 </select>
                             </div>
 
-                            <div class="control-group">
-                                <label for="is_configurable">{{ __('admin::app.catalog.attributes.is_configurable') }}</label>
-                                <select class="control" id="is_configurable" name="is_configurable">
-                                    <option value="0">{{ __('admin::app.catalog.attributes.no') }}</option>
-                                    <option value="1">{{ __('admin::app.catalog.attributes.yes') }}</option>
-                                </select>
-                            </div>
+                            <input type="hidden" name="is_configurable" value="1">
 
                             <div class="control-group">
                                 <label for="is_visible_on_front">{{ __('admin::app.catalog.attributes.is_visible_on_front') }}</label>
