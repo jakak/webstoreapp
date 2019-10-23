@@ -168,11 +168,11 @@
     </script>
 
     <script>
-        var groups = @json($attributeFamily->customAttributeGroup());
+        var groups = @json($attributeFamily->attribute_groups);
         var custom_attributes = @json($custom_attributes);
         var defaultAttributes = @json((new \Webkul\Product\Models\Product())->getDefaultAttributes());
         custom_attributes = custom_attributes.filter(attr => !defaultAttributes.includes(attr.code.toLowerCase()));
-
+        // debugger
         Vue.component('group-form', {
 
             data: () => ({
