@@ -104,6 +104,10 @@
 </script>
 
 <style>
+  .min-small {
+    width: 200px !important;
+    height: 133px !important;
+  }
     .small{
         width: 100px !important;
         height: 100px !important;

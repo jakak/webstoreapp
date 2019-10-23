@@ -42,7 +42,7 @@ return [
         'theme-manager' => 'Theme Manager',
         'theme-design' => 'Appearance',
         'theme-sliders' => 'Sliders',
-        'body-section' => 'Body Section',
+        'homepage-layout' => 'Homepage Layout',
         'footer-content' => 'Footer Section',
         'users' => 'Staff Accounts',
         'roles' => 'Roles',
@@ -526,7 +526,17 @@ return [
             'title' => 'Theme Manager',
             'appearance' => 'Appearance',
             'footer' => 'Footer Section',
-            'body-section' => 'Body Section'
+            'homepage-layout' => 'Homepage Layout',
+        ],
+        'colors' => [
+            'top-menu-background' => 'Top Menu Background',
+            'to-menu-text' => 'Top Menu Text',
+            'add-to-cart-button-background' => 'Add to Cart Button Backgound',
+            'add-to-cart-button-text' => 'Add to Cart Button Text',
+            'footer-background' => 'Footer Background',
+            'footer-title' => 'Footer Title',
+            'footer-text' => 'Footer Text',
+            'footer-button' => 'Footer Button',
         ],
         'locales' => [
             'title' => 'Locales',
@@ -633,8 +643,9 @@ return [
             'home_page_content' => 'Home Page Content',
             'footer_content' => 'Footer Content',
             'footer_credit' => 'Footer Credit',
-            'logo' => 'Logo',
-            'favicon' => 'Favicon'
+            'storefront_logo' => 'Storefront Logo',
+            'favicon' => 'Favicon',
+            'sections-shortcodes' => 'Sections — Shortcodes'
         ],
 
         'sliders' => [
