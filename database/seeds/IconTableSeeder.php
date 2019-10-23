@@ -15,11 +15,7 @@ class IconTableSeeder extends Seeder
 
         $channel = Channel::first();
         $channel->update([
-            'favicon' => 'channel/favicon.ico'
-        ]);
-
-
-        $channel->update([
+            'favicon' => 'channel/favicon.ico',
             'logo' => 'channel/logo.svg'
         ]);
     }
