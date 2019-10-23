@@ -550,7 +550,7 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::get('footer/body/section','Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@footerSection')->defaults('_config',[
                 'view' => 'shop::layouts.footer.body_section'
-            ])->name('admin.footer.body.section');
+            ])->name('admin.homepage.layout');
 
             Route::get('/theme-manager/sliders', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@customize')
                 ->defaults('_config', [ 'view' => 'admin::themes.customize' ])

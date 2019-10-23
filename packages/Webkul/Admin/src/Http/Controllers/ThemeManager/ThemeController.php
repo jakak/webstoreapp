@@ -2,6 +2,7 @@
 
 namespace Webkul\Admin\Http\Controllers\ThemeManager;
 
+use App\ColorPicker;
 use App\FooterPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -43,6 +44,8 @@ class ThemeController extends Controller
         // $this->channel->update( request()->all(), Channel::first()->id);
         $this->channel->uploadImages( request()->all(), $channel);
         $this->channel->uploadImages(request()->all(), $channel, 'favicon');
+        $this->colorPicker();
+
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Channel']));
 
         return redirect()->back();
@@ -104,6 +107,29 @@ class ThemeController extends Controller
             return redirect()->back();
         }
 
+    }
 
+    /**
+     * Handle color picker in the webstore
+     * @return mixed
+     */
+    public function colorPicker()
+    {
+        $data = (object) request()->all();
+
+        ColorPicker::truncate();
+
+        $colorPicker = ColorPicker::updateOrCreate([
+            'top_menu_bg' => $data->top_menu_bg,
+            'top_menu_text' => $data->top_menu_text,
+            'cart_button_bg' => $data->cart_button_bg,
+            'cart_button_text' => $data->cart_button_text,
+            'footer_bg' => $data->footer_bg,
+            'footer_title' => $data->footer_title,
+            'footer_text' => $data->footer_text,
+            'footer_button' => $data->footer_button
+        ]);
+
+        return $colorPicker;
     }
 }

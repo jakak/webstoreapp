@@ -153,15 +153,15 @@ return [
         'sort' => 1,
         'icon-class' => '',
     ], [
-        'key' => 'settings.theme.sliders',
-        'name' => 'admin::app.layouts.theme-sliders',
-        'route' => 'admin.sliders.index',
+        'key' => 'settings.theme.section',
+        'name' => 'admin::app.layouts.homepage-layout',
+        'route' => 'admin.homepage.layout',
         'sort' => 2,
         'icon-class' => '',
     ], [
-        'key' => 'settings.theme.section',
-        'name' => 'admin::app.layouts.body-section',
-        'route' => 'admin.footer.body.section',
+        'key' => 'settings.theme.sliders',
+        'name' => 'admin::app.layouts.theme-sliders',
+        'route' => 'admin.sliders.index',
         'sort' => 3,
         'icon-class' => '',
     ], [
