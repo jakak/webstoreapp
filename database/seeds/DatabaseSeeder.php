@@ -13,8 +13,5 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(BagistoDatabaseSeeder::class);
-        $this->call(FooterContentTableSeeder::class);
-        $this->call(ColorPickerTableSeeder::class);
-        $this->call(IconTableSeeder::class);
     }
 }

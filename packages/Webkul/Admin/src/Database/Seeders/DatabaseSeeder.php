@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AttributeSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(CustomerSeeder::class);
+        $this->call(FooterContentTableSeeder::class);
+        $this->call(ColorPickerTableSeeder::class);
+        $this->call(IconTableSeeder::class);
     }
 }
