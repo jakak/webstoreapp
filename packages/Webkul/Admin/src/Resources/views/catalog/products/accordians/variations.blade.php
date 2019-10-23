@@ -66,7 +66,7 @@
     </script>
 
     <script type="text/x-template" id="variant-list-template">
-        <div class="table" style="margin-top: 20px; overflow-x: unset;">
+        <div class="table" style="margin-top: 20px; overflow-x: auto;">
             <table>
 
                 <thead>
@@ -80,7 +80,7 @@
 
                         <th class="qty">{{ __('admin::app.catalog.products.qty') }}</th>
                         <th class="price">{{ __('admin::app.catalog.products.price') }}</th>
-                        <th class="weight">{{ __('admin::app.catalog.products.weight') }}</th>
+                        <th class="weight" style="width: 50px;">{{ __('admin::app.catalog.products.weight') }}</th>
                         <th class="status">{{ __('admin::app.catalog.products.status') }}</th>
                         <th class="actions"></th>
                     </tr>
@@ -147,15 +147,15 @@
                 </div>
             </td>
 
-            <td>
-                <div class="control-group" :class="[errors.has(variantInputName + '[weight]') ? 'has-error' : '']">
-                    <input type="text" v-validate="'required'" v-model="variant.weight"  :name="[variantInputName + '[weight]']" class="control" data-vv-as="&quot;{{ __('admin::app.catalog.products.weight') }}&quot;"/>
+            <td style="width: 30%;">
+                <div class="control-group" style="width: 50px;" :class="[errors.has(variantInputName + '[weight]') ? 'has-error' : '']">
+                    <input type="text" v-validate="'required'" v-model="variant.weight" :name="[variantInputName + '[weight]']" class="control" data-vv-as="&quot;{{ __('admin::app.catalog.products.weight') }}&quot;"/>
                     <span class="control-error" v-if="errors.has(variantInputName + '[weight]')">@{{ errors.first(variantInputName + '[weight]') }}</span>
                 </div>
             </td>
 
-            <td>
-                <div class="control-group">
+            <td style="padding-top: 0;">
+                <div class="control-group" style="width: 170px;">
                     <select type="text" v-model="variant.status" :name="[variantInputName + '[status]']" class="control">
                         <option value="1" :selected="variant.status">{{ __('admin::app.catalog.products.enabled') }}</option>
                         <option value="0" :selected="!variant.status">{{ __('admin::app.catalog.products.disabled') }}</option>
@@ -164,8 +164,10 @@
             </td>
 
             <td class="actions">
-                <a :href="['{{ route('admin.catalog.products.index') }}/edit/' + variant.id]"><i class="icon pencil-lg-icon"></i></a>
-                <i class="icon remove-icon" @click="removeVariant()"></i>
+                <div class="control-group" style="width: 100px">
+                    <a :href="['{{ route('admin.catalog.products.index') }}/edit/' + variant.id]"><i class="icon pencil-lg-icon"></i></a>
+                    <i class="icon remove-icon" @click="removeVariant()"></i>
+                </div>
             </td>
         </tr>
     </script>
