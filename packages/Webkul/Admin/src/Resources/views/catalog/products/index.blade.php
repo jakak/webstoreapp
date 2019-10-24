@@ -27,3 +27,20 @@
         </div>
     </div>
 @stop
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+          var myInt = setInterval(function() {
+            if (document.querySelectorAll('tr')) {
+              clearInterval(myInt);
+              document.querySelectorAll('tr').forEach(tr => {
+                if (tr.querySelector('td'))
+                    tr.querySelector('td:nth-of-type(4)').style.textTransform = 'capitalize';
+              })
+            }
+          }, 100);
+
+      })
+    </script>
+@endpush

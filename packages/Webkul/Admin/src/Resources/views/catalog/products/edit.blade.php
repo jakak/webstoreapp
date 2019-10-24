@@ -28,7 +28,7 @@
                 <input name="_method" type="hidden" value="PUT">
                 @if($product->attribute_family)
                     @foreach ($product->attribute_family->attribute_groups as $attributeGroup)
-                        @if($product->type === 'simple' && in_array(strtolower($attributeGroup->name), ( new \Webkul\Attribute\Models\AttributeFamily())->getDefaultGroups()))
+                        @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type === 'simple' && in_array(strtolower($attributeGroup->name), ( new \Webkul\Attribute\Models\AttributeFamily())->getDefaultGroups()))
                             @if (count($attributeGroup->custom_attributes))
                             <accordian :title="'{{ __($attributeGroup->name) }}'" :active="true">
                                 <div slot="body">
@@ -107,6 +107,7 @@
                                                     $validations = implode('|', array_filter($validations));
                                                     ?>
 
+                                                @if($attribute->code !== 'visible_individually')
                                                     @if (view()->exists($typeView = 'admin::catalog.products.field-types.' . $attribute->type))
 
                                                         <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
@@ -122,8 +123,8 @@
 
                                                             <span class="control-error" v-if="errors.has('{{ $attribute->code }}')">@{{ errors.first('{!! $attribute->code !!}') }}</span>
                                                         </div>
-
                                                     @endif
+                                                @endif
                                             @endif
                                         @endif
 
@@ -133,7 +134,7 @@
                             </accordian>
                         @endif
                         @endif
-                        @if($product->type !== 'simple')
+                        @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type !== 'simple')
                             @if (count($attributeGroup->custom_attributes))
                                 <accordian :title="'{{ __($attributeGroup->name) }}'" :active="true">
                                     <div slot="body">
@@ -212,6 +213,7 @@
                                                     $validations = implode('|', array_filter($validations));
                                                     ?>
 
+                                                @if($attribute->code !== 'visible_individually')
                                                     @if (view()->exists($typeView = 'admin::catalog.products.field-types.' . $attribute->type))
 
                                                         <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
@@ -229,6 +231,7 @@
                                                         </div>
 
                                                     @endif
+                                                @endif
                                                 @endif
                                             @endif
 
@@ -269,7 +272,7 @@
     <script>
         $(document).ready(function () {
             tinymce.init({
-                selector: 'textarea#description, textarea#short_description',
+                selector: 'textarea#description',
                 height: 200,
                 width: "70%",
                 plugins: 'image imagetools media wordcount save fullscreen code link',
