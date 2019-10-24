@@ -27,42 +27,21 @@
             <div class="page-content">
                 <div class="form-container">
                     @csrf()
-
-                    <accordian :title="'{{ __('admin::app.catalog.attributes.general') }}'" :active="true">
-                        <div slot="body">
-                            <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
-                                <label for="code">{{ __('admin::app.catalog.attributes.code') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="code" name="code" value="{{ old('code') }}"  data-vv-as="&quot;{{ __('admin::app.catalog.attributes.code') }}&quot;" v-code/>
-                                <span class="control-error" v-if="errors.has('code')">@{{ errors.first('code') }}</span>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="type" class="required">{{ __('admin::app.catalog.attributes.type') }}</label>
-                                <select class="control" id="type" name="type">
-                                    <option value="text">{{ __('admin::app.catalog.attributes.text') }}</option>
-                                    <option value="textarea">{{ __('admin::app.catalog.attributes.textarea') }}</option>
-                                    <option value="price">{{ __('admin::app.catalog.attributes.price') }}</option>
-                                    <option value="boolean">{{ __('admin::app.catalog.attributes.boolean') }}</option>
-                                    <option value="select">{{ __('admin::app.catalog.attributes.select') }}</option>
-                                    <option value="multiselect">{{ __('admin::app.catalog.attributes.multiselect') }}</option>
-                                    <option value="datetime">{{ __('admin::app.catalog.attributes.datetime') }}</option>
-                                    <option value="date">{{ __('admin::app.catalog.attributes.date') }}</option>
-                                </select>
-                            </div>
+                    <div style="padding: 20px">
+                        <input type="hidden" class="control" id="code" name="code" value="{{ old('code') }}">
+                        <div class="control-group">
+                            <label for="type" class="required">{{ __('admin::app.catalog.attributes.type') }}</label>
+                            <select class="control" id="type" name="type">
+                                <option value="select">{{ __('admin::app.catalog.attributes.select') }}</option>
+                                <option value="multiselect">{{ __('admin::app.catalog.attributes.multiselect') }}</option>
+                            </select>
                         </div>
-                    </accordian>
-
-                    <accordian :title="'{{ __('admin::app.catalog.attributes.label') }}'" :active="true">
-                        <div slot="body">
-
-                            <div class="control-group" :class="[errors.has('admin_name') ? 'has-error' : '']">
-                                <label for="admin_name" class="required">{{ __('admin::app.catalog.attributes.admin') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="admin_name" name="admin_name" value="{{ old('admin_name') }}" data-vv-as="&quot;{{ __('admin::app.catalog.attributes.admin') }}&quot;"/>
-                                <span class="control-error" v-if="errors.has('admin_name')">@{{ errors.first('admin_name') }}</span>
-                            </div>
-
+                        <div class="control-group" :class="[errors.has('admin_name') ? 'has-error' : '']">
+                            <label for="admin_name" class="required">{{ __('admin::app.catalog.attributes.admin') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="admin_name" name="admin_name" value="{{ old('admin_name') }}" data-vv-as="&quot;{{ __('admin::app.catalog.attributes.admin') }}&quot;"/>
+                            <span class="control-error" v-if="errors.has('admin_name')">@{{ errors.first('admin_name') }}</span>
                         </div>
-                    </accordian>
+                    </div>
 
                     <div class="hide">
                         <accordian :title="'{{ __('admin::app.catalog.attributes.options') }}'" :active="true" :id="'options'">
@@ -110,13 +89,7 @@
                     <accordian :title="'{{ __('admin::app.catalog.attributes.configuration') }}'" :active="true">
                         <div slot="body">
                             <input type="hidden" name="value_per_locale" value="0">
-                            <div class="control-group">
-                                <label for="value_per_channel">{{ __('admin::app.catalog.attributes.value_per_channel') }}</label>
-                                <select class="control" id="value_per_channel" name="value_per_channel">
-                                    <option value="0">{{ __('admin::app.catalog.attributes.no') }}</option>
-                                    <option value="1">{{ __('admin::app.catalog.attributes.yes') }}</option>
-                                </select>
-                            </div>
+                            <input type="hidden" name="value_per_channel" value="0">
 
                             <div class="control-group">
                                 <label for="is_filterable">{{ __('admin::app.catalog.attributes.is_filterable') }}</label>
@@ -191,6 +164,12 @@
     </script>
 
     <script>
+      String.prototype.sluggify = function() {
+        return this.toLowerCase()
+          .replace(/[^\w ]+/g,'')
+          .replace(/ +/g,'_')
+          ;
+      };
         $(document).ready(function () {
             $('#type').on('change', function (e) {
                 if (['select', 'multiselect', 'checkbox'].indexOf($(e.target).val()) === -1) {
@@ -199,7 +178,9 @@
                     $('#options').parent().removeClass('hide')
                 }
             })
-
+            document.querySelector('#admin_name').addEventListener('keyup', function () {
+              document.querySelector('#code').value = this.value.sluggify();
+            }, false);
             var optionWrapper = Vue.component('option-wrapper', {
 
                 template: '#options-template',

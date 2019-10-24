@@ -32,14 +32,6 @@ class AttributeDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index' => 'code',
-            'label' => trans('admin::app.datagrid.code'),
-            'type' => 'string',
-            'searchable' => true,
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index' => 'admin_name',
             'label' => trans('admin::app.datagrid.admin-name'),
             'type' => 'string',
@@ -83,33 +75,6 @@ class AttributeDataGrid extends DataGrid
             }
         ]);
 
-        $this->addColumn([
-            'index' => 'value_per_locale',
-            'label' => trans('admin::app.datagrid.per-locale'),
-            'type' => 'boolean',
-            'sortable' => true,
-            'searchable' => false,
-            'wrapper' => function($value) {
-                if ($value->value_per_locale == 1)
-                    return 'True';
-                else
-                    return 'False';
-            }
-        ]);
-
-        $this->addColumn([
-            'index' => 'value_per_channel',
-            'label' => trans('admin::app.datagrid.per-channel'),
-            'type' => 'boolean',
-            'sortable' => true,
-            'searchable' => false,
-            'wrapper' => function($value) {
-                if ($value->value_per_channel == 1)
-                    return 'True';
-                else
-                    return 'False';
-            }
-        ]);
     }
 
     public function prepareActions()

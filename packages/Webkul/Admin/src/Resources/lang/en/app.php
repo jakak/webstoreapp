@@ -398,7 +398,7 @@ return [
             'datetime' => 'Datetime',
             'date' => 'Date',
             'label' => 'Label',
-            'admin' => 'Admin',
+            'admin' => 'Name',
             'options' => 'Options',
             'position' => 'Position',
             'add-option-btn-title' => 'Add Option',
