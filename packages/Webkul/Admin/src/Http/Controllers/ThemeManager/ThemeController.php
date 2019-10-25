@@ -32,6 +32,11 @@ class ThemeController extends Controller
         return view($this->_config['view']);
     }
 
+    public function first($columns = ['*'])
+    {
+        return ColorPicker::first();
+    }
+
     public function customize()
     {
         return view($this->_config['view'], ['channel' => Channel::first()]);

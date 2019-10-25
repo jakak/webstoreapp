@@ -3,6 +3,7 @@
 namespace Webkul\Core;
 
 use Carbon\Carbon;
+use Webkul\Admin\Http\Controllers\ThemeManager\ThemeController;
 use Webkul\Core\Repositories\CurrencyRepository;
 use Webkul\Core\Repositories\ExchangeRateRepository;
 use Webkul\Core\Repositories\CountryRepository;
@@ -55,6 +56,8 @@ class Core
      */
     protected $coreConfigRepository;
 
+    protected $themeColorPicker;
+
     /**
      * Create a new instance.
      *
@@ -72,7 +75,8 @@ class Core
         ExchangeRateRepository $exchangeRateRepository,
         CountryRepository $countryRepository,
         CountryStateRepository $countryStateRepository,
-        CoreConfigRepository $coreConfigRepository
+        CoreConfigRepository $coreConfigRepository,
+        ThemeController $themeColorPicker
     )
     {
         $this->channelRepository = $channelRepository;
@@ -86,13 +90,15 @@ class Core
         $this->countryStateRepository = $countryStateRepository;
 
         $this->coreConfigRepository = $coreConfigRepository;
+
+        $this->themeColorPicker = $themeColorPicker;
     }
 
     /**
-    * Returns all channels
-    *
-    *  @return Collection
-    */
+     * Returns all channels
+     *
+     *  @return Collection
+     */
     public function getAllChannels()
     {
         static $channels;
@@ -104,10 +110,10 @@ class Core
     }
 
     /**
-    * Returns currenct channel models
-    *
-    *  @return mixed
-    */
+     * Returns currenct channel models
+     *
+     *  @return mixed
+     */
     public function getCurrentChannel()
     {
         static $channel;
@@ -116,10 +122,10 @@ class Core
             return $channel;
 
         $channel = $this->channelRepository->findWhereIn('hostname', [
-                request()->getHttpHost(),
-                'http://' . request()->getHttpHost(),
-                'https://' . request()->getHttpHost()
-            ])->first();
+            request()->getHttpHost(),
+            'http://' . request()->getHttpHost(),
+            'https://' . request()->getHttpHost()
+        ])->first();
 
         if (! $channel)
             $channel = $this->channelRepository->first();
@@ -128,10 +134,10 @@ class Core
     }
 
     /**
-    * Returns currenct channel code
-    *
-    *  @return string
-    */
+     * Returns currenct channel code
+     *
+     *  @return string
+     */
     public function getCurrentChannelCode()
     {
         static $channelCode;
@@ -143,10 +149,10 @@ class Core
     }
 
     /**
-    * Returns default channel models
-    *
-    *  @return mixed
-    */
+     * Returns default channel models
+     *
+     *  @return mixed
+     */
     public function getDefaultChannel()
     {
         static $channel;
@@ -158,10 +164,10 @@ class Core
     }
 
     /**
-    * Returns default channel code
-    *
-    *  @return string
-    */
+     * Returns default channel code
+     *
+     *  @return string
+     */
     public function getDefaultChannelCode()
     {
         static $channelCode;
@@ -173,10 +179,10 @@ class Core
     }
 
     /**
-    * Returns all currencies
-    *
-    *  @return Collection
-    */
+     * Returns all currencies
+     *
+     *  @return Collection
+     */
     public function getAllCurrencies()
     {
         static $currencies;
@@ -188,10 +194,10 @@ class Core
     }
 
     /**
-    * Returns base channel's currency model
-    *
-    *  @return mixed
-    */
+     * Returns base channel's currency model
+     *
+     *  @return mixed
+     */
     public function getBaseCurrency()
     {
         static $currency;
@@ -208,10 +214,10 @@ class Core
     }
 
     /**
-    * Returns base channel's currency code
-    *
-    *  @return string
-    */
+     * Returns base channel's currency code
+     *
+     *  @return string
+     */
     public function getBaseCurrencyCode()
     {
         static $currencyCode;
@@ -223,10 +229,10 @@ class Core
     }
 
     /**
-    * Returns base channel's currency model
-    *
-    *  @return mixed
-    */
+     * Returns base channel's currency model
+     *
+     *  @return mixed
+     */
     public function getChannelBaseCurrency()
     {
         static $currency;
@@ -240,10 +246,10 @@ class Core
     }
 
     /**
-    * Returns base channel's currency code
-    *
-    *  @return string
-    */
+     * Returns base channel's currency code
+     *
+     *  @return string
+     */
     public function getChannelBaseCurrencyCode()
     {
         static $currencyCode;
@@ -255,10 +261,10 @@ class Core
     }
 
     /**
-    * Returns current channel's currency model
-    *
-    *  @return mixed
-    */
+     * Returns current channel's currency model
+     *
+     *  @return mixed
+     */
     public function getCurrentCurrency()
     {
         static $currency;
@@ -275,10 +281,10 @@ class Core
     }
 
     /**
-    * Returns current channel's currency code
-    *
-    *  @return string
-    */
+     * Returns current channel's currency code
+     *
+     *  @return string
+     */
     public function getCurrentCurrencyCode()
     {
         static $currencyCode;
@@ -290,17 +296,17 @@ class Core
     }
 
     /**
-    * Converts price
-    *
-    * @param float  $price
-    * @param string $targetCurrencyCode
-    * @return string
-    */
+     * Converts price
+     *
+     * @param float  $price
+     * @param string $targetCurrencyCode
+     * @return string
+     */
     public function convertPrice($amount, $targetCurrencyCode = null)
     {
         $targetCurrency = !$targetCurrencyCode
-                        ? $this->getCurrentCurrency()
-                        : $this->currencyRepository->findByField('code', $targetCurrencyCode);
+            ? $this->getCurrentCurrency()
+            : $this->currencyRepository->findByField('code', $targetCurrencyCode);
 
         if (! $targetCurrency)
             return $amount;
@@ -316,11 +322,11 @@ class Core
     }
 
     /**
-    * Format and convert price with currency symbol
-    *
-    * @param float $price
-    *  @return string
-    */
+     * Format and convert price with currency symbol
+     *
+     * @param float $price
+     *  @return string
+     */
     public function currency($amount = 0)
     {
         if (is_null($amount))
@@ -332,11 +338,11 @@ class Core
     }
 
     /**
-    * Return currency symbol from currency code
-    *
-    * @param float $price
-    * @return string
-    */
+     * Return currency symbol from currency code
+     *
+     * @param float $price
+     * @return string
+     */
     public function currencySymbol($code)
     {
         try {
@@ -347,11 +353,11 @@ class Core
     }
 
     /**
-    * Format and convert price with currency symbol
-    *
-    * @param float $price
-    *  @return string
-    */
+     * Format and convert price with currency symbol
+     *
+     * @param float $price
+     *  @return string
+     */
     public function formatPrice($price, $currencyCode)
     {
         if (is_null($price))
@@ -361,11 +367,11 @@ class Core
     }
 
     /**
-    * Format price with base currency symbol
-    *
-    * @param float $price
-    *  @return string
-    */
+     * Format price with base currency symbol
+     *
+     * @param float $price
+     *  @return string
+     */
     public function formatBasePrice($price)
     {
         if (is_null($price))
@@ -430,11 +436,11 @@ class Core
     }
 
     /**
-    * Check whether sql date is empty
-    *
-    * @param string $date
-    * @return boolean
-    */
+     * Check whether sql date is empty
+     *
+     * @param string $date
+     * @return boolean
+     */
     function is_empty_date($date)
     {
         return preg_replace('#[ 0:-]#', '', $date) === '';
@@ -553,8 +559,8 @@ class Core
 
                 $start = Carbon::createFromTimeString($date->format('Y-m-d') . ' 00:00:01');
                 $end =  $totalMonths - 1 == $i
-                        ? $endDate
-                        : Carbon::createFromTimeString($date->format('Y-m-d') . ' 23:59:59');
+                    ? $endDate
+                    : Carbon::createFromTimeString($date->format('Y-m-d') . ' 23:59:59');
 
                 $timeIntervals[] = ['start' => $start, 'end' => $end, 'formatedDate' => $date->format('M')];
             }
@@ -564,11 +570,11 @@ class Core
                 $date->addWeeks($i);
 
                 $start = $i == 0
-                        ? $startDate
-                        : Carbon::createFromTimeString($this->xWeekRange($date, 0) . ' 00:00:01');
+                    ? $startDate
+                    : Carbon::createFromTimeString($this->xWeekRange($date, 0) . ' 00:00:01');
                 $end = $totalWeeks - 1 == $i
-                        ? $endDate
-                        : Carbon::createFromTimeString($this->xWeekRange($date, 1) . ' 23:59:59');
+                    ? $endDate
+                    : Carbon::createFromTimeString($this->xWeekRange($date, 1) . ' 23:59:59');
 
                 $timeIntervals[] = ['start' => $start, 'end' => $end, 'formatedDate' => $date->format('d M')];
             }
@@ -604,27 +610,27 @@ class Core
         }
     }
 
-	/**
-	 * Method to sort through the acl items and put them in order
-	 *
-	 * @return void
-	 */
-	public function sortItems($items) {
-		foreach ($items as &$item) {
-			if (count($item['children'])) {
-				$item['children'] = $this->sortItems($item['children']);
-			}
-		}
+    /**
+     * Method to sort through the acl items and put them in order
+     *
+     * @return void
+     */
+    public function sortItems($items) {
+        foreach ($items as &$item) {
+            if (count($item['children'])) {
+                $item['children'] = $this->sortItems($item['children']);
+            }
+        }
 
-		usort($items, function($a, $b) {
-			if ($a['sort'] == $b['sort']) {
-				return 0;
-			}
+        usort($items, function($a, $b) {
+            if ($a['sort'] == $b['sort']) {
+                return 0;
+            }
 
-			return ($a['sort'] < $b['sort']) ? -1 : 1;
-		});
+            return ($a['sort'] < $b['sort']) ? -1 : 1;
+        });
 
-		return $this->convertToAssociativeArray($items);
+        return $this->convertToAssociativeArray($items);
     }
 
     /**
@@ -651,7 +657,7 @@ class Core
             unset($items[$key1]);
             $items[$level1['key']] = $level1;
 
-			if (count($level1['children'])) {
+            if (count($level1['children'])) {
                 foreach ($level1['children'] as $key2 => $level2) {
                     $temp2 = explode('.', $level2['key']);
                     $finalKey2 = end($temp2);
@@ -668,20 +674,20 @@ class Core
                     }
 
                 }
-			}
-		}
+            }
+        }
 
-		return $items;
+        return $items;
     }
 
-	public function array_set(&$array, $key, $value)
+    public function array_set(&$array, $key, $value)
     {
         if (is_null($key)) {
             return $array = $value;
         }
 
         $keys = explode('.', $key);
-		$count = count($keys);
+        $count = count($keys);
 
         while (count($keys) > 1) {
             $key = array_shift($keys);
@@ -693,28 +699,28 @@ class Core
             $array = &$array[$key];
         }
 
-		$finalKey = array_shift($keys);
-		if (isset($array[$finalKey])) {
-			$array[$finalKey] = $this->arrayMerge($array[$finalKey], $value);
-		} else {
-			$array[$finalKey] = $value;
-		}
+        $finalKey = array_shift($keys);
+        if (isset($array[$finalKey])) {
+            $array[$finalKey] = $this->arrayMerge($array[$finalKey], $value);
+        } else {
+            $array[$finalKey] = $value;
+        }
 
         return $array;
     }
 
-	protected function arrayMerge(array &$array1, array &$array2)
-	{
-		$merged = $array1;
-		foreach ($array2 as $key => &$value) {
-			if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
-				$merged[$key] = $this->arrayMerge($merged[$key], $value);
-			} else {
-				$merged[$key] = $value;
-			}
-		}
+    protected function arrayMerge(array &$array1, array &$array2)
+    {
+        $merged = $array1;
+        foreach ($array2 as $key => &$value) {
+            if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+                $merged[$key] = $this->arrayMerge($merged[$key], $value);
+            } else {
+                $merged[$key] = $value;
+            }
+        }
 
-		return $merged;
+        return $merged;
     }
 
     public function convertEmptyStringsToNull($array) {
@@ -725,5 +731,15 @@ class Core
         }
 
         return $array;
+    }
+
+    public function getColorPicker()
+    {
+        static $channel;
+
+        if ($channel)
+            return $channel;
+
+        return $channel = $this->themeColorPicker->first();
     }
 }
