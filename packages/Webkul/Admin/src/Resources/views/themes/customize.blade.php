@@ -20,13 +20,13 @@
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.storefront_logo') }}
 
-                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? 'storage/' . $channel->logo : '' }}"'  size="min-small" ></image-wrapper>
+                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? 'storage/' . $channel->logo : 'vendor/webkul/ui/assets/images/logo.svg' }}"'  size="min-small" ></image-wrapper>
                             </div>
 
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.favicon') }}
 
-                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? 'storage/' . $channel->favicon : '' }}"' ></image-wrapper>
+                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? 'storage/' . $channel->favicon : 'vendor/webkul/ui/assets/images/favicon.ico' }}"' ></image-wrapper>
                             </div>
                         </div>
                     </accordian>
