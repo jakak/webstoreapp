@@ -3,7 +3,24 @@
 @section('page_title')
     {{ __('admin::app.settings.themes.homepage-layout') }}
 @stop
-
+<style>
+    span.copy {
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+    }
+   .copy-tip {
+        position: absolute;
+        display: none;
+        background-color: #c7c7c7;
+        width: 170px;
+        text-align: center;
+        box-shadow: 0 0 10px #000;
+        bottom: 55px;
+        right: 30%;
+        border-radius: 5px;
+    }
+</style>
 @section('content')
     <div class="content">
         <div class="page-header">
@@ -13,26 +30,37 @@
         </div>
         <div class="page-content">
 
-            <h4><label for="home_page_content">{{ __('admin::app.settings.channels.sections-shortcodes') }}</label></h4>
 
-            <ul style="list-style: disc !important; margin-left: 19px; white-space: pre;">
-
-                <li>Slider — @php echo '@'.'include("shop::home.slider")'; @endphp <span class="fas fa-copy copy" style="color: #79c142;"></span></li>
-
-                <li>Featured Products — @php echo '@'.'include("shop::home.featured-products")' @endphp <span class="fas fa-copy copy" style="color: #79c142;"></span></li>
-
-                <li>New Products — @php echo '@'.'include("shop::home.new-products")' @endphp <span class="fas fa-copy copy" style="color: #79c142;"></span></li>
-            </ul>
-            &nbsp;
             <form action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
-                    <div slot="body">
-                        <div class="control-group">
-                            <label for="home_page_content">{{ __('admin::app.settings.channels.home_page_content') }}</label>
-                            <textarea class="control" id="home_page_content" name="home_page_content">{{ old('home_page_content') ?: $channel->home_page_content }}</textarea>
+                    <accordian :title="'General Layout'" :active="true">
+                        <div slot="body">
+                            <h4><label for="home_page_content">{{ __('admin::app.settings.channels.sections-shortcodes') }}</label></h4>
+
+                            <ul style="list-style: disc !important; margin-left: 19px; white-space: pre;">
+                                <div class="no-display">
+                                    <span class="copy-tip">Copied to Clipboard</span>
+                                </div>
+                                <li>Slider — <i id="copy_slider">@php echo '@'.'include("shop::home.slider")'; @endphp </i><span data-clipboard-target="#copy_slider" id="slider" class="fas fa-copy copy" style="color: #79c142;"></span></li>
+
+                                <li>Featured Products — <i id="copy_featured">@php echo '@'.'include("shop::home.featured-products")' @endphp</i> <span data-clipboard-target="#copy_featured" id="featured-products" class="fas fa-copy copy" style="color: #79c142;"></span></li>
+
+                                <li>New Products — <i id="copy_new">@php echo '@'.'include("shop::home.new-products")' @endphp</i> <span data-clipboard-target="#copy_new" id="new-products" class="fas fa-copy copy" style="color: #79c142;"></span></li>
+                            </ul>
+                            &nbsp;
+                            <div class="control-group">
+                                <label for="home_page_content">{{ __('admin::app.settings.channels.home_page_content') }}</label>
+                                <textarea class="control" id="home_page_content" name="home_page_content">{{ old('home_page_content') ?: $channel->home_page_content }}</textarea>
+                            </div>
                         </div>
-                    </div>
+                    </accordian>
+
+                    <accordian :title="'Product Rows'" :active="false">
+                        <div slot="body">
+                            <p>Nothing Yet</p>
+                        </div>
+                    </accordian>
                 </div>
                 <hr class="horizontal-line">
                 <div class="form-bottom">
@@ -60,5 +88,36 @@
                 valid_elements : '*[*]'
             });
         });
+    </script>
+
+    <script src="{{ asset('vendor/webkul/admin/assets/js/clipboard.js') }}"></script>
+    <script>
+
+        let new_product = new ClipboardJS('#new-products');
+        let featured_products = new ClipboardJS('#featured-products');
+        let slider = new ClipboardJS('#slider');
+
+        slider.on('success', function (e) {
+            $('.copy-tip').fadeIn(10);
+            setTimeout(() => {
+                $('.copy-tip').fadeOut(500);
+            }, 500);
+        });
+
+        featured_products.on('success', function (e) {
+            $('.copy-tip').fadeIn(10);
+            setTimeout(() => {
+                $('.copy-tip').fadeOut(500);
+            }, 500);
+        });
+
+        new_product.on('success', function (e) {
+            $('.copy-tip').fadeIn(10);
+            setTimeout(() => {
+                $('.copy-tip').fadeOut(500);
+            }, 500);
+        });
+
+
     </script>
 @endpush

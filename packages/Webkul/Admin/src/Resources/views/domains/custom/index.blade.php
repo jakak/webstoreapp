@@ -41,7 +41,7 @@
             position: absolute;
             display: none;
             background-color: #c7c7c7;
-            width: 70px;
+            width: 170px;
             text-align: center;
             box-shadow: 0 0 10px #000;
             bottom: 55px;
@@ -70,7 +70,7 @@
                         <input type="text" class="no-display control btn btn-primary" id="cname" name="cname"
                                readonly value="domain.mystore.ng">
                         <span class="fas fa-copy copy" style="color: #FFFFFF"></span>
-                        <span class="copy-tip">Copied</span>
+                        <span class="copy-tip">Copied to Clipboard</span>
                     </div>
                     <label class="sub-title" for="cname">
                         {{ __('admin::app.settings.domains.add-cname-text') }}
