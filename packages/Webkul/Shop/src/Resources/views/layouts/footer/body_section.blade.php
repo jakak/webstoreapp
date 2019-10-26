@@ -9,15 +9,16 @@
         position: relative;
         display: inline-block;
     }
-   .copy-tip {
-        position: absolute;
+    .copy-tip {
         display: none;
-        background-color: #c7c7c7;
+        background-color: #79c142;
+        color: #FFFFFF;
         width: 170px;
         text-align: center;
         box-shadow: 0 0 10px #000;
-        bottom: 55px;
-        right: 30%;
+        position: absolute;
+        top: 10px;
+        right: 10px;
         border-radius: 5px;
     }
 </style>
@@ -39,9 +40,7 @@
                             <h4><label for="home_page_content">{{ __('admin::app.settings.channels.sections-shortcodes') }}</label></h4>
 
                             <ul style="list-style: disc !important; margin-left: 19px; white-space: pre;">
-                                <div class="no-display">
-                                    <span class="copy-tip">Copied to Clipboard</span>
-                                </div>
+                                <span class="copy-tip">Copied to Clipboard</span>
                                 <li>Slider — <i id="copy_slider">@php echo '@'.'include("shop::home.slider")'; @endphp </i><span data-clipboard-target="#copy_slider" id="slider" class="fas fa-copy copy" style="color: #79c142;"></span></li>
 
                                 <li>Featured Products — <i id="copy_featured">@php echo '@'.'include("shop::home.featured-products")' @endphp</i> <span data-clipboard-target="#copy_featured" id="featured-products" class="fas fa-copy copy" style="color: #79c142;"></span></li>
