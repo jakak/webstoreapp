@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="page-content">
-            <form action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
+            <form id="my_form" action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
                     <accordian :title="'Storefront Logo & Favicon'" :active="true">
@@ -97,6 +97,10 @@
                                     @endforeach
                                 </div>
                             </div>
+
+                            <div><a href="javascript:{}" onclick="document.querySelector('#restore').click(); return false;">Restore</a> Default Colors</div>
+                            <input style="display: none" id="restore" type="submit" name="restore" value="restore_id">
+
                         </div>
                     </accordian>
                 </div>

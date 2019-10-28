@@ -123,18 +123,31 @@ class ThemeController extends Controller
         $data = (object) request()->all();
 
         ColorPicker::truncate();
+        if (request()->has('restore')){
+            $colorPicker = ColorPicker::updateOrCreate([
+                'top_menu_bg' => 'ffffff',
+                'top_menu_text' => '000000',
+                'cart_button_bg' => 'b670af',
+                'cart_button_text' => 'ffffff',
+                'footer_bg' => 'f2f2f2',
+                'footer_title' => 'a5a5a5',
+                'footer_text' => '242424',
+                'footer_button' => '242424'
+            ]);
+            return $colorPicker;
+        } else {
+            $colorPicker = ColorPicker::updateOrCreate([
+                'top_menu_bg' => $data->top_menu_bg,
+                'top_menu_text' => $data->top_menu_text,
+                'cart_button_bg' => $data->cart_button_bg,
+                'cart_button_text' => $data->cart_button_text,
+                'footer_bg' => $data->footer_bg,
+                'footer_title' => $data->footer_title,
+                'footer_text' => $data->footer_text,
+                'footer_button' => $data->footer_button
+            ]);
 
-        $colorPicker = ColorPicker::updateOrCreate([
-            'top_menu_bg' => $data->top_menu_bg,
-            'top_menu_text' => $data->top_menu_text,
-            'cart_button_bg' => $data->cart_button_bg,
-            'cart_button_text' => $data->cart_button_text,
-            'footer_bg' => $data->footer_bg,
-            'footer_title' => $data->footer_title,
-            'footer_text' => $data->footer_text,
-            'footer_button' => $data->footer_button
-        ]);
-
-        return $colorPicker;
+            return $colorPicker;
+        }
     }
 }

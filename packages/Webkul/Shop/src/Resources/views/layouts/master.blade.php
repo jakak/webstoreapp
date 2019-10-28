@@ -49,6 +49,8 @@
 
         .nav a {
             color: {{ '#'.core()->getColorPicker()->top_menu_text }} !important;
+        }
+        .header .header-bottom {
             background: {{ '#'.core()->getColorPicker()->top_menu_bg }} !important;
         }
 

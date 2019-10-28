@@ -493,7 +493,7 @@ Route::group(['middleware' => ['web']], function () {
                 ->defaults('_config', [ 'view' => 'admin::themes.index' ])
                 ->name('admin.themes.index')
             ;
-            Route::get('/theme-manager/customize', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@customize')
+            Route::get('/storemanager/customize/appearance', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@customize')
                 ->defaults('_config', [ 'view' => 'admin::themes.customize' ])
                 ->name('admin.themes.customize')
             ;
@@ -544,15 +544,15 @@ Route::group(['middleware' => ['web']], function () {
                 ->name('admin.domains.show');
 
             // footer content
-            Route::get('footer/content','Webkul\Shop\Http\Controllers\SliderController@create')->defaults('_config',[
+            Route::get('/customize/footer-section','Webkul\Shop\Http\Controllers\SliderController@create')->defaults('_config',[
                 'view' => 'shop::layouts.footer.footer_content'
             ])->name('admin.footer.content');
 
-            Route::get('footer/body/section','Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@footerSection')->defaults('_config',[
+            Route::get('/storemanager/customize/hompage-layout','Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@footerSection')->defaults('_config',[
                 'view' => 'shop::layouts.footer.body_section'
             ])->name('admin.homepage.layout');
 
-            Route::get('/theme-manager/sliders', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@customize')
+            Route::get('/storemanager/customize/sliders', 'Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@customize')
                 ->defaults('_config', [ 'view' => 'admin::themes.customize' ])
                 ->name('admin.themes.slider')
             ;
