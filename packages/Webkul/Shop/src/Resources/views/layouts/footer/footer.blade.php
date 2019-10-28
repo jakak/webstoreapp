@@ -6,7 +6,7 @@
                 <span class="list-heading">{{ __('shop::app.footer.page-links') }}</span>
                 <div class="form-container">
                     <div class="control-group">
-                        <ul class="list-group">
+                        <ul class="text-color list-group">
                             @foreach(App\FooterPage::all() as $page)
                                 @if($page->name != "none")
                                     <li><a href="{{ $page->url  }}">{{ $page->name }}</a></li>

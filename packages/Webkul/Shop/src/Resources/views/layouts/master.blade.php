@@ -28,82 +28,110 @@
 
     {!! view_render_event('bagisto.shop.layout.head') !!}
 
+    {{-- Render Style from database --}}
+    <style>
+        .footer {
+            background-color: {{ '#'.core()->getColorPicker()->footer_bg }} !important;
+        }
+        .list-group a {
+            color: {{ '#'.core()->getColorPicker()->footer_text }} !important;
+        }
+        .btn-primary {
+            background-color: {{ '#'.core()->getColorPicker()->footer_button }} !important;
+        }
+        .list-heading {
+            color: {{ '#'.core()->getColorPicker()->footer_title }} !important;
+        }
+        .addtocart {
+            background: {{ '#'.core()->getColorPicker()->cart_button_bg }} !important;
+            color: {{ '#'.core()->getColorPicker()->cart_button_text }} !important;
+        }
+
+        .nav a {
+            color: {{ '#'.core()->getColorPicker()->top_menu_text }} !important;
+        }
+        .header .header-bottom {
+            background: {{ '#'.core()->getColorPicker()->top_menu_bg }} !important;
+        }
+
+    </style>
+
 </head>
 
 <body @if (app()->getLocale() == 'ar')class="rtl"@endif>
 
-    {!! view_render_event('bagisto.shop.layout.body.before') !!}
+{!! view_render_event('bagisto.shop.layout.body.before') !!}
 
-    <div id="app">
-        <flash-wrapper ref='flashes'></flash-wrapper>
+<div id="app">
+    <flash-wrapper ref='flashes'></flash-wrapper>
 
-        <div class="main-container-wrapper">
+    <div class="main-container-wrapper">
 
-            {!! view_render_event('bagisto.shop.layout.header.before') !!}
+        {!! view_render_event('bagisto.shop.layout.header.before') !!}
 
-            @include('shop::layouts.header.index')
+        @include('shop::layouts.header.index')
 
-            {!! view_render_event('bagisto.shop.layout.header.after') !!}
+        {!! view_render_event('bagisto.shop.layout.header.after') !!}
 
-            @yield('slider')
+        @yield('slider')
 
-            <div class="content-container">
+        <div class="content-container">
 
-                {!! view_render_event('bagisto.shop.layout.content.before') !!}
+            {!! view_render_event('bagisto.shop.layout.content.before') !!}
 
-                @yield('content-wrapper')
+            @yield('content-wrapper')
 
-                {!! view_render_event('bagisto.shop.layout.content.after') !!}
+            {!! view_render_event('bagisto.shop.layout.content.after') !!}
 
-            </div>
-
-        </div>
-
-        {!! view_render_event('bagisto.shop.layout.footer.before') !!}
-
-        @include('shop::layouts.footer.footer')
-
-        {!! view_render_event('bagisto.shop.layout.footer.after') !!}
-
-        <div class="footer-bottom">
-            <custom-footer credit="{{core()->getCurrentChannel()->footer_credit}}"></custom-footer>
-            {{-- <p>
-                &copy; <script>document.write(new Date().getFullYear());</script>. Kling Bake Shop | <a href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
-            </p> --}}
         </div>
 
     </div>
-    <script type="text/javascript">
-        window.flashMessages = [];
 
-        @if ($success = session('success'))
-            window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
-        @elseif ($warning = session('warning'))
-            window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
-        @elseif ($error = session('error'))
-            window.flashMessages = [{'type': 'alert-error', 'message': "{{ $error }}" }
-            ];
-        @elseif ($info = session('info'))
-            window.flashMessages = [{'type': 'alert-info', 'message': "{{ $info }}" }
-            ];
-        @endif
+    {!! view_render_event('bagisto.shop.layout.footer.before') !!}
+
+    @include('shop::layouts.footer.footer')
+
+    {!! view_render_event('bagisto.shop.layout.footer.after') !!}
+
+    <div class="footer-bottom">
+        <custom-footer credit="{{core()->getCurrentChannel()->footer_credit}}"></custom-footer>
+        {{-- <p>
+            &copy; <script>document.write(new Date().getFullYear());</script>. Kling Bake Shop | <a href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
+        </p> --}}
+    </div>
+
+</div>
+<script type="text/javascript">
+    window.flashMessages = [];
+
+    @if ($success = session('success'))
+        window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
+    @elseif ($warning = session('warning'))
+        window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
+    @elseif ($error = session('error'))
+        window.flashMessages = [{'type': 'alert-error', 'message': "{{ $error }}" }
+    ];
+    @elseif ($info = session('info'))
+        window.flashMessages = [{'type': 'alert-info', 'message': "{{ $info }}" }
+    ];
+    @endif
 
         window.serverErrors = [];
-        @if(isset($errors))
-            @if (count($errors))
-                window.serverErrors = @json($errors->getMessages());
-            @endif
-        @endif
-    </script>
+    @if(isset($errors))
+        @if (count($errors))
+        window.serverErrors = @json($errors->getMessages());
+    @endif
+    @endif
+</script>
 
-    <script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
+<script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
-    @stack('scripts')
+@stack('scripts')
 
-    {!! view_render_event('bagisto.shop.layout.body.after') !!}
+{!! view_render_event('bagisto.shop.layout.body.after') !!}
 
-    <div class="modal-overlay"></div>
+<div class="modal-overlay"></div>
 
 </body>
 

@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="page-content">
-            <form action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
+            <form id="my_form" action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
                     <accordian :title="'Storefront Logo & Favicon'" :active="true">
@@ -20,13 +20,13 @@
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.storefront_logo') }}
 
-                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? 'storage/' . $channel->logo : '' }}"'  size="min-small" ></image-wrapper>
+                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{ $channel->logo_url() ? 'storage/' . $channel->logo : 'themes/default/assets/images/logo.svg' }}"'  size="min-small" ></image-wrapper>
                             </div>
 
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.favicon') }}
 
-                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? 'storage/' . $channel->favicon : '' }}"' ></image-wrapper>
+                                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url() ? 'storage/' . $channel->favicon : 'themes/default/assets/images/favicon.ico' }}"' ></image-wrapper>
                             </div>
                         </div>
                     </accordian>
@@ -97,6 +97,10 @@
                                     @endforeach
                                 </div>
                             </div>
+
+                            <div><a href="javascript:{}" onclick="document.querySelector('#restore').click(); return false;">Restore</a> Default Colors</div>
+                            <input style="display: none" id="restore" type="submit" name="restore" value="restore_id">
+
                         </div>
                     </accordian>
                 </div>
