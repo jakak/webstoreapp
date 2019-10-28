@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(\AddNewAttributeSeeder::class);
         $this->call(\UpdateAttributesTable::class);
         $this->call(\CustomAttributeGroupSeeder::class);
+        $this->call(\ModifyMetaAttributes::class);
     }
 }

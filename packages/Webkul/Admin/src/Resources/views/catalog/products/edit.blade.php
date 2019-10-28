@@ -134,7 +134,7 @@
                             </accordian>
                         @endif
                         @endif
-                        @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type !== 'simple')
+                        @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type !== 'simple' && !in_array(strtolower($attributeGroup->name), (new \Webkul\Attribute\Models\AttributeFamily())->getNonConfigurableGroups()))
                             @if (count($attributeGroup->custom_attributes))
                                 <accordian :title="'{{ __($attributeGroup->name) }}'" :active="true">
                                     <div slot="body">

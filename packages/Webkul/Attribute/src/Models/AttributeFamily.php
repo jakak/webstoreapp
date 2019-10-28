@@ -51,6 +51,14 @@ class AttributeFamily extends Model
     /**
      * @return array
      */
+    public function getNonConfigurableGroups()
+    {
+        return ['shipping', 'price'];
+    }
+
+    /**
+     * @return array
+     */
     public function getDefaultGroupIds()
     {
         $ids = [];
