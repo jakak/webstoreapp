@@ -394,7 +394,7 @@ return [
             'price' => 'Price',
             'boolean' => 'Boolean',
             'select' => 'Select',
-            'multiselect' => 'Multiselect',
+            'multiselect' => 'Multi Select',
             'datetime' => 'Datetime',
             'date' => 'Date',
             'label' => 'Label',
