@@ -29,59 +29,29 @@
                     @csrf()
                     <input name="_method" type="hidden" value="PUT">
 
-                    <accordian :title="'{{ __('admin::app.catalog.attributes.general') }}'" :active="true">
-                        <div slot="body">
-                            <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
-                                <label for="code" class="required">{{ __('admin::app.catalog.attributes.code') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="code" name="code" value="{{ $attribute->code }}" disabled="disabled" data-vv-as="&quot;{{ __('admin::app.catalog.attributes.code') }}&quot;" v-code/>
-                                <input type="hidden" name="code" value="{{ $attribute->code }}"/>
-                                <span class="control-error" v-if="errors.has('code')">@{{ errors.first('code') }}</span>
-                            </div>
+                    <div style="padding: 20px">
+                        <input type="hidden" class="control" id="code" name="code" value="{{ old('code') }}">
 
-                            <div class="control-group">
-                                <?php $selectedOption = old('type') ?: $attribute->type ?>
-                                <label for="type">{{ __('admin::app.catalog.attributes.type') }}</label>
-                                <select class="control" id="type" disabled="disabled">
-                                    <option value="text" {{ $selectedOption == 'text' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.text') }}
-                                    </option>
-                                    <option value="textarea" {{ $selectedOption == 'textarea' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.textarea') }}
-                                    </option>
-                                    <option value="price" {{ $selectedOption == 'price' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.price') }}
-                                    </option>
-                                    <option value="boolean" {{ $selectedOption == 'boolean' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.boolean') }}
-                                    </option>
-                                    <option value="select" {{ $selectedOption == 'select' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.select') }}
-                                    </option>
-                                    <option value="multiselect" {{ $selectedOption == 'multiselect' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.multiselect') }}
-                                    </option>
-                                    <option value="datetime" {{ $selectedOption == 'datetime' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.datetime') }}
-                                    </option>
-                                    <option value="date" {{ $selectedOption == 'date' ? 'selected' : '' }}>
-                                        {{ __('admin::app.catalog.attributes.date') }}
-                                    </option>
-                                </select>
-                                <input type="hidden" name="type" value="{{ $attribute->type }}"/>
-                            </div>
+                        <div class="control-group">
+                            <?php $selectedOption = old('type') ?: $attribute->type ?>
+                            <label for="type">{{ __('admin::app.catalog.attributes.type') }}</label>
+                            <select class="control" id="type" disabled="disabled">
+                                <option value="select" {{ $selectedOption == 'select' ? 'selected' : '' }}>
+                                    {{ __('admin::app.catalog.attributes.select') }}
+                                </option>
+                                <option value="multiselect" {{ $selectedOption == 'multiselect' ? 'selected' : '' }}>
+                                    {{ __('admin::app.catalog.attributes.multiselect') }}
+                                </option>
+                            </select>
+                            <input type="hidden" name="type" value="{{ $attribute->type }}"/>
                         </div>
-                    </accordian>
 
-                    <accordian :title="'{{ __('admin::app.catalog.attributes.label') }}'" :active="true">
-                        <div slot="body">
-
-                            <div class="control-group" :class="[errors.has('admin_name') ? 'has-error' : '']">
-                                <label for="admin_name" class="required">{{ __('admin::app.catalog.attributes.admin') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="admin_name" name="admin_name" value="{{ old('admin_name') ?: $attribute->admin_name }}" data-vv-as="&quot;{{ __('admin::app.catalog.attributes.admin_name') }}&quot;"/>
-                                <span class="control-error" v-if="errors.has('admin_name')">@{{ errors.first('admin_name') }}</span>
-                            </div>
+                        <div class="control-group" :class="[errors.has('admin_name') ? 'has-error' : '']">
+                            <label for="admin_name" class="required">{{ __('admin::app.catalog.attributes.admin') }}</label>
+                            <input type="text" v-validate="'required'" class="control" id="admin_name" name="admin_name" value="{{ old('admin_name') ?: $attribute->admin_name }}" data-vv-as="&quot;{{ __('admin::app.catalog.attributes.admin_name') }}&quot;"/>
+                            <span class="control-error" v-if="errors.has('admin_name')">@{{ errors.first('admin_name') }}</span>
                         </div>
-                    </accordian>
+                    </div>
 
                     <div class="{{ in_array($attribute->type, ['select', 'multiselect', 'checkbox']) ?: 'hide' }}">
                         <accordian :title="'{{ __('admin::app.catalog.attributes.options') }}'" :active="true" :id="'options'">
@@ -199,7 +169,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>{{ __('admin::app.catalog.attributes.admin_name') }}</th>
+                            <th>{{ __('admin::app.catalog.attributes.admin') }}</th>
 
                             <th>{{ __('admin::app.catalog.attributes.position') }}</th>
 
