@@ -44,12 +44,15 @@ class ThemeController extends Controller
 
     public function update()
     {
-        $channel = Channel::first();
-        $channel->update(request()->all());
-        // $this->channel->update( request()->all(), Channel::first()->id);
-        $this->channel->uploadImages( request()->all(), $channel);
-        $this->channel->uploadImages(request()->all(), $channel, 'favicon');
-        $this->colorPicker();
+        if (request()->has('home_page_content')) {
+            $channel = Channel::first();
+            $channel->update(request()->all());
+            // $this->channel->update( request()->all(), Channel::first()->id);
+            $this->channel->uploadImages( request()->all(), $channel);
+            $this->channel->uploadImages(request()->all(), $channel, 'favicon');
+        } else {
+            $this->colorPicker();
+        }
 
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Channel']));
 
