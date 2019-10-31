@@ -531,6 +531,8 @@ return [
         'colors' => [
             'top-menu-background' => 'Top Menu Background',
             'to-menu-text' => 'Top Menu Text',
+            'top-menu-hover' => 'Top Menu Hover',
+            'hyperlinks' => 'Hyperlinks',
             'add-to-cart-button-background' => 'Add to Cart Button Backgound',
             'add-to-cart-button-text' => 'Add to Cart Button Text',
             'footer-background' => 'Footer Background',

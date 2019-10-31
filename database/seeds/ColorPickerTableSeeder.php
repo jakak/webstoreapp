@@ -15,6 +15,8 @@ class ColorPickerTableSeeder extends Seeder
         ColorPicker::updateOrCreate([
             'top_menu_bg' => 'ffffff',
             'top_menu_text' => '4f5b64',
+            'top_menu_hover' => '4f5b64',
+            'hyperlinks' => '79c142',
             'cart_button_bg' => '79c142',
             'cart_button_text' => 'ffffff',
             'footer_bg' => 'f2f2f2',

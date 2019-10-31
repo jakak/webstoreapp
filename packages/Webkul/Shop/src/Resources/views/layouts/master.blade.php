@@ -53,6 +53,12 @@
         .header .header-bottom {
             background: {{ '#'.core()->getColorPicker()->top_menu_bg }} !important;
         }
+        input:active, .link, .hyperlink, .remove-filter-link, .checkout-process .col-main ul.checkout-steps li.active {
+            color: {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
+        }
+        input:focus {
+            border-color: {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
+        }
 
     </style>
 
@@ -94,9 +100,9 @@
     {!! view_render_event('bagisto.shop.layout.footer.after') !!}
 
     <div class="footer-bottom">
-        <custom-footer credit="{{core()->getCurrentChannel()->footer_credit}}"></custom-footer>
+        <custom-footer  credit="{{core()->getCurrentChannel()->footer_credit}}"></custom-footer>
         {{-- <p>
-            &copy; <script>document.write(new Date().getFullYear());</script>. Kling Bake Shop | <a href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
+            &copy; <script>document.write(new Date().getFullYear());</script>. Kling Bake Shop | <a class="hyperlink" href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
         </p> --}}
     </div>
 

@@ -52,6 +52,22 @@
 
                             <div class="wrap-control">
                                 <div class="control-group">
+                                    <label for="first_name">{{ __('admin::app.settings.colors.top-menu-hover') }}</label>
+                                    @foreach(App\ColorPicker::all() as $color)
+                                        <input  class="jscolor control" id="first_name" name="top_menu_hover" value="{{ $color->top_menu_hover }}"/>
+                                    @endforeach
+                                </div>
+
+                                <div class="control-group last-name">
+                                    <label for="last_name" >{{ __('admin::app.settings.colors.hyperlinks') }}</label>
+                                    @foreach(App\ColorPicker::all() as $color)
+                                        <input  class="control jscolor" style="color: #fff;" id="last_name" name="hyperlinks" value="{{ $color->hyperlinks }}" />
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="wrap-control">
+                                <div class="control-group">
                                     <label for="first_name">{{ __('admin::app.settings.colors.add-to-cart-button-background') }}</label>
                                     @foreach(App\ColorPicker::all() as $color)
                                         <input  class="control jscolor" id="first_name" name="cart_button_bg" value="{{ $color->cart_button_bg }}"/>

@@ -13,7 +13,7 @@
                 </li>
             </ul>
 
-            <ul class="search-container" style="width:600px">
+            <ul class="centralized search-container" style="width:600px">
 
                 <li class="search-group">
                     <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
