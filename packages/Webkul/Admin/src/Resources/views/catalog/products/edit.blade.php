@@ -30,7 +30,7 @@
                     @foreach ($product->attribute_family->attribute_groups as $attributeGroup)
                         @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type === 'simple' && in_array(strtolower($attributeGroup->name), ( new \Webkul\Attribute\Models\AttributeFamily())->getDefaultGroups()))
                             @if (count($attributeGroup->custom_attributes))
-                            <accordian :title="'{{ __($attributeGroup->name) }}'" :active="true">
+                            <accordian :title="'{{ $attributeGroup->name === 'General' ? 'Product Information': $attributeGroup->name }}'" :active="true">
                                 <div slot="body">
 
                                     @foreach ($attributeGroup->custom_attributes as $attribute)
@@ -66,7 +66,7 @@
                                                     @if($attribute->code !== 'visible_individually')
                                                         <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
                                                                 <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
-                                                                    {{ $attribute->admin_name }}
+                                                                    {{ $attribute->admin_name === 'URL Key' ? 'URL Slug' : $attribute->admin_name }}
 
                                                                     @if ($attribute->type == 'price')
                                                                         <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
@@ -112,7 +112,7 @@
 
                                                         <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
                                                             <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
-                                                                {{ $attribute->admin_name }}
+                                                                {{ $attribute->admin_name === 'URL Key' ? 'URL Slug' : $attribute->admin_name }}
 
                                                                 @if ($attribute->type == 'price')
                                                                     <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
@@ -136,7 +136,7 @@
                         @endif
                         @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type !== 'simple' && !in_array(strtolower($attributeGroup->name), (new \Webkul\Attribute\Models\AttributeFamily())->getNonConfigurableGroups()))
                             @if (count($attributeGroup->custom_attributes))
-                                <accordian :title="'{{ __($attributeGroup->name) }}'" :active="true">
+                                <accordian :title="'{{ $attributeGroup->name === 'General' ? 'Product Information': $attributeGroup->name }}'" :active="true">
                                     <div slot="body">
 
                                         @foreach ($attributeGroup->custom_attributes as $attribute)
@@ -172,7 +172,7 @@
                                                         @if($attribute->code !== 'visible_individually')
                                                             <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
                                                                 <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
-                                                                    {{ $attribute->admin_name }}
+                                                                    {{ $attribute->admin_name === 'URL Key' ? 'URL Slug' : $attribute->admin_name }}
 
                                                                     @if ($attribute->type == 'price')
                                                                         <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
@@ -218,7 +218,7 @@
 
                                                         <div class="control-group {{ $attribute->type }}" :class="[errors.has('{{ $attribute->code }}') ? 'has-error' : '']">
                                                             <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
-                                                                {{ $attribute->admin_name }}
+                                                                {{ $attribute->admin_name === 'URL Key' ? 'URL Slug' : $attribute->admin_name }}
 
                                                                 @if ($attribute->type == 'price')
                                                                     <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>

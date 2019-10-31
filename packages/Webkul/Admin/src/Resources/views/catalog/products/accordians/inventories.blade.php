@@ -17,13 +17,13 @@
 
             ?>
             <div class="control-group" :class="[errors.has('inventories[{{ $inventorySource->id }}]') ? 'has-error' : '']">
-                <label>{{ $inventorySource->name }}</label>
+                <label>{{ $inventorySource->name === 'Default' ? 'Available Quantity' : $inventorySource->name }}</label>
 
                 <input type="text" v-validate="'numeric|min:0'" name="inventories[{{ $inventorySource->id }}]" class="control" value="{{ $qty }}" data-vv-as="&quot;{{ $inventorySource->name }}&quot;"/>
-                
+
                 <span class="control-error" v-if="errors.has('inventories[{{ $inventorySource->id }}]')">@{{ errors.first('inventories[{!! $inventorySource->id !!}]') }}</span>
             </div>
-        
+
         @endforeach
 
     </div>
