@@ -24025,7 +24025,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   * (c) 2017 Abdelrahman Awad
   * @license MIT
   */
-// 
+//
 
 /**
  * Gets the data attribute. the name must be kebab-case.
@@ -24498,7 +24498,7 @@ var merge = function (target, source) {
   return target;
 };
 
-// 
+//
 
 var ErrorBag = function ErrorBag () {
   this.items = [];
@@ -24775,7 +24775,7 @@ ErrorBag.prototype._scope = function _scope (field) {
   return null;
 };
 
-// 
+//
 
 var LOCALE = 'en';
 
@@ -24906,7 +24906,7 @@ Dictionary.prototype.setAttribute = function setAttribute (locale, key, attribut
 
 Object.defineProperties( Dictionary.prototype, prototypeAccessors$2 );
 
-// 
+//
 
 var normalizeValue = function (value) {
   if (isObject(value)) {
@@ -25024,7 +25024,7 @@ I18nDictionary.prototype.setAttribute = function setAttribute (locale, key, valu
 
 Object.defineProperties( I18nDictionary.prototype, prototypeAccessors$3 );
 
-// 
+//
 
 var defaultConfig = {
   locale: 'en',
@@ -25361,7 +25361,7 @@ Generator.resolveGetter = function resolveGetter (el, vnode, model) {
   }
 };
 
-// 
+//
 
 var DEFAULT_OPTIONS = {
   targetOf: null,
@@ -25915,7 +25915,7 @@ Field.prototype.destroy = function destroy () {
 
 Object.defineProperties( Field.prototype, prototypeAccessors$1 );
 
-// 
+//
 
 var FieldBag = function FieldBag () {
   this.items = [];
@@ -25997,7 +25997,7 @@ FieldBag.prototype.push = function push (item) {
 
 Object.defineProperties( FieldBag.prototype, prototypeAccessors$4 );
 
-// 
+//
 
 var RULES = {};
 var STRICT_MODE = true;
@@ -26731,7 +26731,7 @@ Validator.prototype._validate = function _validate (field, value, silent) {
 Object.defineProperties( Validator.prototype, prototypeAccessors );
 Object.defineProperties( Validator, staticAccessors );
 
-// 
+//
 
 /* istanbul ignore next */
 var fakeFlags = createProxy({}, {
@@ -26850,7 +26850,7 @@ var mixin = {
   }
 };
 
-// 
+//
 
 /**
  * Finds the requested field by id from the context object.
@@ -27079,7 +27079,7 @@ if (isDefinedGlobally()) {
   VeeValidate.Validator.addLocale(locale);
 }
 
-// 
+//
 
 function use (plugin, options) {
   if ( options === void 0 ) options = {};
@@ -29708,7 +29708,7 @@ function cleanEscapedString$1 (input) {
 
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
-// 
+//
 
 /**
  * Custom parse behavior on top of date-fns parse function.
@@ -30840,7 +30840,7 @@ var Rules = {
   url: url
 };
 
-// 
+//
 
 var normalize = function (fields) {
   if (Array.isArray(fields)) {
@@ -32991,7 +32991,7 @@ var render = function() {
     ),
     _c(
       "a",
-      { attrs: { href: "https://aboutsic.com/webmaster", target: "_blank" } },
+      { attrs: { class: "hyperlink", href: "https://aboutsic.com/webmaster", target: "_blank" } },
       [_vm._v("Webmaster")]
     )
   ])

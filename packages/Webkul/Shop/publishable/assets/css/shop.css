@@ -92,7 +92,7 @@
 }
 
 .cart-icon {
-  background-image: url("../images/icon-carta.svg");
+  background-image: url("../images/icon-cart.svg");
   width: 24px;
   height: 24px;
 }
@@ -2518,6 +2518,7 @@ section.cart .cart-content .right-side {
 .checkout-process .col-main ul.checkout-steps li .decorator {
   height: 48px;
   width: 48px;
+  background-size: 50%;
   border: 1px solid black;
   border-radius: 50%;
   display: -webkit-inline-box;
