@@ -50,14 +50,21 @@
         .nav a {
             color: {{ '#'.core()->getColorPicker()->top_menu_text }} !important;
         }
+        .nav a:hover {
+            color: {{ '#'.core()->getColorPicker()->top_menu_hover }} !important;
+        }
+
         .header .header-bottom {
             background: {{ '#'.core()->getColorPicker()->top_menu_bg }} !important;
         }
-        input:active, .link, .hyperlink, .remove-filter-link, .checkout-process .col-main ul.checkout-steps li.active {
+        .link, .hyperlink, .remove-filter-link, .checkout-process .col-main ul.checkout-steps li.active {
             color: {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
         }
-        input:focus {
+        input:focus, select:focus {
             border-color: {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
+        }
+        .decorator {
+            border: 1px solid {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
         }
 
     </style>

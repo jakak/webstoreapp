@@ -1039,8 +1039,8 @@ section.slider-block div.slider-content div.slider-control .light-right-icon {
 
 .header .header-top div.left-content ul.search-container li.search-group .search-field {
   height: 38px;
-  border: 2px solid #C7C7C7;
-  border-radius: 3px;
+  border: 1px solid #C7C7C7;
+  border-radius: 7px;
   border-right: none;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -1060,8 +1060,8 @@ ul.centralized {
           box-sizing: border-box;
   height: 38px;
   width: 38px;
-  border: 2px solid #C7C7C7;
-  border-top-right-radius: 3px;
+  border: 1px solid #C7C7C7;
+  border-top-right-radius: 7px;
   border-bottom-right-radius: 3px;
 }
 
@@ -1749,7 +1749,7 @@ ul.centralized {
 .main .top-toolbar .pager select {
   background: #F2F2F2;
   border: 1px solid #C7C7C7;
-  border-radius: 3px;
+  border-radius: 7px;
   color: #242424;
   padding: 10px;
 }
@@ -2297,7 +2297,7 @@ section.cart .cart-content .right-side {
       -ms-flex-direction: row;
           flex-direction: row;
   border: 1px solid #C7C7C7;
-  border-radius: 3px;
+  border-radius: 7px;
 }
 
 .cart-item-list .item .item-image {
@@ -2380,7 +2380,7 @@ section.cart .cart-content .right-side {
 .cart-item-list .item .item-details .misc .control-group .control {
   height: 38px;
   width: 60px;
-  border-radius: 3px;
+  border-radius: 7px;
   text-align: center;
   line-height: 38px;
 }
@@ -3540,25 +3540,14 @@ section.review .review-layouter .ratings-reviews .right-side .rater .line-bar .l
 }
 
 .rtl .header .header-top div.left-content ul.search-container li.search-group .search-field {
-  height: 38px;
-  border: 1px solid #C7C7C7;
-  border-radius: 7px;
-  border-right: none;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  padding-left: 12px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  border-left: none;
+  border-right: 2px solid #C7C7C7;
+  padding-right: 12px;
+  padding-left: 0px;
 }
 
 .rtl .header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 38px;
-  width: 38px;
   border: 1px solid #C7C7C7;
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 3px;
 }
 
 .rtl .header .header-top div.right-content .currency-switcher .dropdown-list {
