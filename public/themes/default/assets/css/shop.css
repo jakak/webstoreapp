@@ -1062,7 +1062,7 @@ ul.centralized {
   width: 38px;
   border: 1px solid #C7C7C7;
   border-top-right-radius: 7px;
-  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 7px;
 }
 
 .header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper button {
@@ -2044,7 +2044,7 @@ section.product-detail div.layouter .form-container .details .product-price .spe
 section.product-detail div.layouter .form-container .details .stock-status {
   margin-bottom: 15px;
   font-weight: 600;
-  color: #FC6868;
+  color: #ff0000;
 }
 
 section.product-detail div.layouter .form-container .details .stock-status.active {
