@@ -7,7 +7,7 @@
 <div class="auth-content">
 
     <div class="sign-up-text">
-        {{ __('shop::app.customer.signup-text.account_exists') }} - <a href="{{ route('customer.session.index') }}">{{ __('shop::app.customer.signup-text.title') }}</a>
+        {{ __('shop::app.customer.signup-text.account_exists') }} - <a class="hyperlink" href="{{ route('customer.session.index') }}">{{ __('shop::app.customer.signup-text.title') }}</a>
     </div>
 
     {!! view_render_event('bagisto.shop.customers.signup.before') !!}

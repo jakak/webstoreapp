@@ -124,7 +124,6 @@ class ThemeController extends Controller
     public function colorPicker()
     {
         $data = (object) request()->all();
-//dd($data);
         ColorPicker::truncate();
         if (request()->has('restore')){
             $colorPicker = ColorPicker::updateOrCreate([
