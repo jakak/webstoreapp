@@ -57,7 +57,7 @@
         .header .header-bottom {
             background: {{ '#'.core()->getColorPicker()->top_menu_bg }} !important;
         }
-        .link, .hyperlink, .remove-filter-link, .checkout-process .col-main ul.checkout-steps li.active {
+        .link, .hyperlink, .remove-filter-link, .completed, .checkout-process .col-main ul.checkout-steps li.active {
             color: {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
         }
         input:focus, select:focus {
