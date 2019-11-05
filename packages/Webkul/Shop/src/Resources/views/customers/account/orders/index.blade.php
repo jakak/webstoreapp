@@ -40,7 +40,7 @@
 
                                 <tr>
                                     <td data-value="{{  __('shop::app.customer.account.order.index.order_id') }}">
-                                        <a href="{{ route('customer.orders.view', $order->id) }}">
+                                        <a class="hyperlink" href="{{ route('customer.orders.view', $order->id) }}">
                                             #{{ $order->id }}
                                         </a>
                                     </td>

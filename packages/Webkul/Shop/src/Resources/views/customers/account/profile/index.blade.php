@@ -19,7 +19,7 @@
             <span class="account-heading">{{ __('shop::app.customer.account.profile.index.title') }}</span>
 
             <span class="account-action">
-                <a href="{{ route('customer.profile.edit') }}">{{ __('shop::app.customer.account.profile.index.edit') }}</a>
+                <a class="hyperlink" href="{{ route('customer.profile.edit') }}">{{ __('shop::app.customer.account.profile.index.edit') }}</a>
             </span>
 
             <div class="horizontal-rule"></div>

@@ -158,7 +158,7 @@
                                     <div class="secton-title">
                                         <span>{{ __('shop::app.customer.account.order.view.individual-invoice', ['invoice_id' => $invoice->id]) }}</span>
 
-                                        <a href="{{ route('customer.orders.print', $invoice->id) }}" class="pull-right">
+                                        <a class="hyperlink" href="{{ route('customer.orders.print', $invoice->id) }}" class="pull-right">
                                             {{ __('shop::app.customer.account.order.view.print') }}
                                         </a>
                                     </div>
