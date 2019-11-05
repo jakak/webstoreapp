@@ -42,14 +42,22 @@
                         <span class="control-error" v-if="errors.has('last_name')">@{{ errors.first('last_name') }}</span>
                     </div>
 
+                    <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
+                        <label for="email" class="required">{{ __('shop::app.customer.account.profile.email') }}</label>
+                        <input type="email" class="control" name="email" value="{{ old('email') ?? $customer->email }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.profile.email') }}&quot;">
+                        <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
+                    </div>
+
                     <div class="control-group" :class="[errors.has('gender') ? 'has-error' : '']">
                         <label for="email" class="required">{{ __('shop::app.customer.account.profile.gender') }}</label>
 
                         <select name="gender" class="control" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.profile.gender') }}&quot;">
-                            <option value=""  @if ($customer->gender == "") selected @endif></option>
-                            <option value="Other"  @if ($customer->gender == "Other") selected @endif>Other</option>
-                            <option value="Male"  @if ($customer->gender == "Male") selected @endif>Male</option>
+                            <option value=""  @if ($customer->gender == "") selected  @endif>Select Gender</option>
                             <option value="Female" @if ($customer->gender == "Female") selected @endif>Female</option>
+                            <option value="Male"  @if ($customer->gender == "Male") selected @endif>Male</option>
+                            <option value="Other"  @if ($customer->gender == "Other") selected @endif>Other</option>
+
+
                         </select>
                         <span class="control-error" v-if="errors.has('gender')">@{{ errors.first('gender') }}</span>
                     </div>
@@ -60,11 +68,6 @@
                         <span class="control-error" v-if="errors.has('date_of_birth')">@{{ errors.first('date_of_birth') }}</span>
                     </div>
 
-                    <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
-                        <label for="email" class="required">{{ __('shop::app.customer.account.profile.email') }}</label>
-                        <input type="email" class="control" name="email" value="{{ old('email') ?? $customer->email }}" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.profile.email') }}&quot;">
-                        <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
-                    </div>
 
                     <div class="control-group" :class="[errors.has('oldpassword') ? 'has-error' : '']">
                         <label for="password">{{ __('shop::app.customer.account.profile.opassword') }}</label>

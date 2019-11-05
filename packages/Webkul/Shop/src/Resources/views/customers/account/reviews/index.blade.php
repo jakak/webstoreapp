@@ -42,7 +42,7 @@
 
                                 <div class="info">
                                     <div class="product-name">
-                                        <a href="{{ url()->to('/').'/products/'.$review->product->url_key }}" title="{{ $review->product->name }}">
+                                        <a class="hyperlink" href="{{ url()->to('/').'/products/'.$review->product->url_key }}" title="{{ $review->product->name }}">
                                             {{$review->product->name}}
                                         </a>
                                     </div>

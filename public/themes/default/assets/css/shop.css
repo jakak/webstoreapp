@@ -2980,7 +2980,7 @@ section.review .review-layouter .ratings-reviews .right-side .rater .line-bar .l
 }
 
 .auth-content {
-  padding-top: 15%;
+  padding-top: 5%;
   padding-bottom: 15%;
 }
 
@@ -2989,7 +2989,7 @@ section.review .review-layouter .ratings-reviews .right-side .rater .line-bar .l
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   color: #A5A5A5;
   text-align: center;
 }
@@ -3001,11 +3001,12 @@ section.review .review-layouter .ratings-reviews .right-side .rater .line-bar .l
   display: -ms-flexbox;
   display: flex;
   border: 1px solid #C7C7C7;
+  border-radius: 7px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-width: 500px;
+  max-width: 400px;
   min-width: 320px;
   padding: 25px;
 }
@@ -3025,9 +3026,10 @@ section.review .review-layouter .ratings-reviews .right-side .rater .line-bar .l
 }
 
 .auth-content .login-form .forgot-password-link {
-  font-size: 17px;
-  color: #0031F0;
+  font-size: 14px;
+  color: #79C142;
   margin-bottom: 5%;
+  text-align: center;
 }
 
 .auth-content .login-form .signup-confirm {
@@ -3036,7 +3038,7 @@ section.review .review-layouter .ratings-reviews .right-side .rater .line-bar .l
 
 .auth-content .login-form .btn-primary {
   width: 100%;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .account-content {
