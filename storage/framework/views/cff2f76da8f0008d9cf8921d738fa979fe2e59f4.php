@@ -1,29 +1,31 @@
 <div class="sidebar">
-    @foreach ($menu->items as $menuItem)
+    <?php $__currentLoopData = $menu->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="menu-block">
             <div class="menu-block-title">
-                {{ __('shop::app.layouts.manage-account') }}
+                <?php echo e(__('shop::app.layouts.manage-account')); ?>
+
                 <i class="icon icon-arrow-down right" id="down-icon"></i>
             </div>
 
             <div class="menu-block-content">
                 <ul class="menubar">
-                    @foreach ($menuItem['children'] as $subMenuItem)
-                        <li class="menu-item {{ $menu->getActive($subMenuItem) }}">
-                            <a href="{{ $subMenuItem['url'] }}">
-                                {{ trans($subMenuItem['name']) }}
+                    <?php $__currentLoopData = $menuItem['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subMenuItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li class="menu-item <?php echo e($menu->getActive($subMenuItem)); ?>">
+                            <a href="<?php echo e($subMenuItem['url']); ?>">
+                                <?php echo e(trans($subMenuItem['name'])); ?>
+
                             </a>
 
                             <i class="icon angle-right-icon"></i>
                         </li>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
             </div>
         </div>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     $(document).ready(function() {
         $(".icon.icon-arrow-down.right").on('click', function(e){
@@ -40,4 +42,4 @@
         });
     });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>

@@ -3,13 +3,14 @@
 return [
     'layouts' => [
         'my-account' => 'My Account',
+        'manage-account' => 'Manage Account',
         'profile' => 'Profile',
         'address' => 'Address',
         'reviews' => 'Reviews',
         'wishlist' => 'Wishlist',
         'orders' => 'Orders',
     ],
-    
+
     'common' => [
         'error' => 'Something went wrong. Please try again later.'
     ],
@@ -120,8 +121,8 @@ return [
         ],
 
         'login-text' => [
-            'no_account' => 'Account does not exist',
-            'title' => 'Sign Up',
+            'new-customer' => 'New Customer?',
+            'title' => 'Create Acccount',
         ],
 
         'login-form' => [

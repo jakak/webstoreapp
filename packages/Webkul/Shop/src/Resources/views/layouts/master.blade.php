@@ -66,6 +66,12 @@
         .decorator {
             border: 1px solid {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
         }
+        .menu-block .menubar li.active a {
+            color: {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
+        }
+        .tabs ul li.active a {
+            border-bottom: 3px solid {{ '#'.core()->getColorPicker()->hyperlinks }} !important;
+        }
 
     </style>
 

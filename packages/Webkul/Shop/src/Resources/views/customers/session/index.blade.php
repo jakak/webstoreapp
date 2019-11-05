@@ -5,9 +5,6 @@
 @section('content-wrapper')
 
     <div class="auth-content">
-        <div class="sign-up-text">
-            {{ __('shop::app.customer.login-text.no_account') }} - <a class="hyperlink" href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.title') }}</a>
-        </div>
 
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
 
@@ -19,18 +16,22 @@
                 {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
 
                 <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
-                    <label for="email" class="required">{{ __('shop::app.customer.login-form.email') }}</label>
+                    <label for="email">{{ __('shop::app.customer.login-form.email') }}</label>
                     <input type="text" class="control" name="email" v-validate="'required|email'" value="{{ old('email') }}" data-vv-as="&quot;{{ __('shop::app.customer.login-form.email') }}&quot;">
                     <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                 </div>
 
                 <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
-                    <label for="password" class="required">{{ __('shop::app.customer.login-form.password') }}</label>
+                    <label for="password">{{ __('shop::app.customer.login-form.password') }}</label>
                     <input type="password" class="control" name="password" v-validate="'required|min:6'" value="{{ old('password') }}" data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;">
                     <span class="control-error" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
                 </div>
 
                 {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
+
+                <div class="sign-up-text">
+                    <a class="hyperlink" href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.new-customer') }} {{ __('shop::app.customer.login-text.title') }}</a>
+                </div>
 
                 <div class="forgot-password-link">
                     <a class="hyperlink" href="{{ route('customer.forgot-password.create') }}">{{ __('shop::app.customer.login-form.forgot_pass') }}</a>

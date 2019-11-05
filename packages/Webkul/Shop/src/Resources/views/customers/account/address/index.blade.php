@@ -18,7 +18,7 @@
 
             @if (! $addresses->isEmpty())
                 <span class="account-action">
-                    <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
+                    <a class="hyperlink" href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
                 </span>
             @else
                 <span></span>
@@ -32,7 +32,7 @@
             @if ($addresses->isEmpty())
                 <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
                 <br/>
-                <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
+                <a class="hyperlink" href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
             @else
                 <div class="address-holder">
                     @foreach ($addresses as $address)
@@ -48,13 +48,13 @@
 
                                 <div class="control-links mt-20">
                                     <span>
-                                        <a href="{{ route('customer.address.edit', $address->id) }}">
+                                        <a class="hyperlink" href="{{ route('customer.address.edit', $address->id) }}">
                                             {{ __('shop::app.customer.account.address.index.edit') }}
                                         </a>
                                     </span>
 
                                     <span>
-                                        <a href="{{ route('address.delete', $address->id) }}" onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')">
+                                        <a  class="hyperlink" href="{{ route('address.delete', $address->id) }}" onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')">
                                             {{ __('shop::app.customer.account.address.index.delete') }}
                                         </a>
                                     </span>
@@ -64,7 +64,7 @@
                                     <span class="default-address badge badge-md badge-success">{{ __('shop::app.customer.account.address.index.default') }}</span>
                                 @else
                                     <div class="make-default mt-20">
-                                        <a href="{{ route('make.default.address', $address->id) }}" class="btn btn-md btn-primary">{{ __('shop::app.customer.account.address.index.make-default') }}</a>
+                                        <a  href="{{ route('make.default.address', $address->id) }}" class="btn btn-md btn-primary">{{ __('shop::app.customer.account.address.index.make-default') }}</a>
                                     </div>
                                 @endif
 
