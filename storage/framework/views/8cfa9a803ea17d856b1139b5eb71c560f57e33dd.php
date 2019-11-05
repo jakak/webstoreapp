@@ -33,6 +33,10 @@
                 <?php echo view_render_event('bagisto.shop.customers.login_form_controls.after'); ?>
 
 
+                <div class="control-group">
+                    <input class="btn btn-primary btn-md" type="submit" value="<?php echo e(__('shop::app.customer.login-form.button_title')); ?>">
+                </div>
+
                 <div class="sign-up-text">
                     <a class="hyperlink" href="<?php echo e(route('customer.register.index')); ?>"><?php echo e(__('shop::app.customer.login-text.new-customer')); ?> <?php echo e(__('shop::app.customer.login-text.title')); ?></a>
                 </div>
@@ -48,8 +52,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-
-                <input class="btn btn-primary btn-md" type="submit" value="<?php echo e(__('shop::app.customer.login-form.button_title')); ?>">
+                
             </div>
         </form>
 
