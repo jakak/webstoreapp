@@ -13,7 +13,7 @@ abstract class Payment
      * @var Cart
      */
     protected $cart;
-    
+
     /**
      * Checks if payment method is available
      *

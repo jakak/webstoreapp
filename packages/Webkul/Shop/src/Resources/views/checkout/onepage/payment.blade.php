@@ -44,6 +44,9 @@
                         </div>
                     @else
                         <span class="control-info">{{ $payment['description'] }}</span>
+                        @if($payment['method_title'] == 'Paystack Payment')
+                            <span style="margin-top:1em" class="control-info"><img src="https://res.cloudinary.com/webstore-cloud/image/upload/c_scale,w_250/v1567929421/Paystack/paystack-badge-cards_nji4dn.png" /></span>
+                        @endif
                     @endif
                 @endforeach
 

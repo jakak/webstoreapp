@@ -46,19 +46,20 @@
                 <input class="btn btn-primary btn-md" type="submit" value="<?php echo e(__('shop::app.customer.forgot-password.submit')); ?>">
             </div>
 
-            <div class="control-group" style="margin-bottom: 0px;">
-                <a href="<?php echo e(route('customer.session.index')); ?>">
+            <div class="control-group" style="padding-right: 31px; margin-bottom: 0px;">
+                <center><a class="hyperlink" href="<?php echo e(route('customer.session.index')); ?>">
                     <i class="icon primary-back-icon"></i>
                     Back to Sign In
-                </a>
+                </a></center>
             </div>
 
         </div>
     </form>
-    
+
     <?php echo view_render_event('bagisto.shop.customers.forget_password.before'); ?>
 
 
 </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('shop::layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

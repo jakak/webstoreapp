@@ -43,16 +43,16 @@
                 <input class="btn btn-primary btn-md" type="submit" value="{{ __('shop::app.customer.forgot-password.submit') }}">
             </div>
 
-            <div class="control-group" style="margin-bottom: 0px;">
-                <a href="{{ route('customer.session.index') }}">
+            <div class="control-group" style="padding-right: 31px; margin-bottom: 0px;">
+                <center><a class="hyperlink" href="{{ route('customer.session.index') }}">
                     <i class="icon primary-back-icon"></i>
                     Back to Sign In
-                </a>
+                </a></center>
             </div>
 
         </div>
     </form>
-    
+
     {!! view_render_event('bagisto.shop.customers.forget_password.before') !!}
 
 </div>

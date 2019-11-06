@@ -25,7 +25,7 @@ class Paystack extends Payment
 
     public function getDescription()
     {
-        return 'Pay securely using paystack';
+        return "We've made making payment easy for you.";
     }
 
     public function getOtherDetails()

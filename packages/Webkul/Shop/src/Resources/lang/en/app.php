@@ -91,7 +91,7 @@ return [
 
     'customer' => [
         'signup-text' => [
-            'account_exists' => 'You already have an account.',
+            'existing-customer' => 'Existing Customer?',
             'title' => 'Sign In'
         ],
 
@@ -127,7 +127,7 @@ return [
 
         'login-form' => [
             'page-title' => 'Customer - Login',
-            'title' => 'Sign In',
+            'title' => 'Welcome',
             'email' => 'Email',
             'password' => 'Password',
             'forgot_pass' => 'Reset password',
