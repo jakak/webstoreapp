@@ -19,6 +19,17 @@ class Payment
     {
         $paymentMethods = [];
 
+        $paystack = app(Config::get('paystack')['paystack_payments']['class']);
+
+        if ($paystack->isAvailable()) {
+            array_push($paymentMethods, [
+                'method' => $paystack->getCode(),
+                'method_title' => $paystack->getTitle(),
+                'description' => $paystack->getDescription(),
+                'other_details' => $paystack->getOtherDetails() ?? null
+            ]);
+        }
+
         foreach (Config::get('paymentmethods') as $paymentMethod) {
             $object = app($paymentMethod['class']);
 
@@ -31,16 +42,7 @@ class Payment
                 ];
             }
         }
-        $paystack = app(Config::get('paystack')['paystack_payments']['class']);
 
-        if ($paystack->isAvailable()) {
-            array_push($paymentMethods, [
-                'method' => $paystack->getCode(),
-                'method_title' => $paystack->getTitle(),
-                'description' => $paystack->getDescription(),
-                'other_details' => $paystack->getOtherDetails() ?? null,
-            ]);
-        }
 
         $cart = Cart::getCart();
 
