@@ -166,7 +166,7 @@
                                     <div class="secton-title">
                                         <span><?php echo e(__('shop::app.customer.account.order.view.individual-invoice', ['invoice_id' => $invoice->id])); ?></span>
 
-                                        <a href="<?php echo e(route('customer.orders.print', $invoice->id)); ?>" class="pull-right">
+                                        <a class="hyperlink" href="<?php echo e(route('customer.orders.print', $invoice->id)); ?>" class="pull-right">
                                             <?php echo e(__('shop::app.customer.account.order.view.print')); ?>
 
                                         </a>
@@ -444,4 +444,5 @@
     </div>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('shop::layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

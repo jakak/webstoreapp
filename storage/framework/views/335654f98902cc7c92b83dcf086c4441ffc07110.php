@@ -12,7 +12,7 @@
 
             <?php if(count($items)): ?>
             <div class="account-action">
-                <a href="<?php echo e(route('customer.wishlist.removeall')); ?>"><?php echo e(__('shop::app.wishlist.deleteall')); ?></a>
+                <a class="hyperlink" href="<?php echo e(route('customer.wishlist.removeall')); ?>"><?php echo e(__('shop::app.wishlist.deleteall')); ?></a>
             </div>
             <?php endif; ?>
             <div class="horizontal-rule"></div>
@@ -69,4 +69,5 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('shop::layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

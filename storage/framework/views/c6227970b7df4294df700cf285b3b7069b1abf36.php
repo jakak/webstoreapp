@@ -5,9 +5,6 @@
 <?php $__env->startSection('content-wrapper'); ?>
 
     <div class="auth-content">
-        <div class="sign-up-text">
-            <?php echo e(__('shop::app.customer.login-text.no_account')); ?> - <a class="hyperlink" href="<?php echo e(route('customer.register.index')); ?>"><?php echo e(__('shop::app.customer.login-text.title')); ?></a>
-        </div>
 
         <?php echo view_render_event('bagisto.shop.customers.login.before'); ?>
 
@@ -22,19 +19,27 @@
 
 
                 <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
-                    <label for="email" class="required"><?php echo e(__('shop::app.customer.login-form.email')); ?></label>
+                    <label for="email"><?php echo e(__('shop::app.customer.login-form.email')); ?></label>
                     <input type="text" class="control" name="email" v-validate="'required|email'" value="<?php echo e(old('email')); ?>" data-vv-as="&quot;<?php echo e(__('shop::app.customer.login-form.email')); ?>&quot;">
                     <span class="control-error" v-if="errors.has('email')">{{ errors.first('email') }}</span>
                 </div>
 
                 <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
-                    <label for="password" class="required"><?php echo e(__('shop::app.customer.login-form.password')); ?></label>
+                    <label for="password"><?php echo e(__('shop::app.customer.login-form.password')); ?></label>
                     <input type="password" class="control" name="password" v-validate="'required|min:6'" value="<?php echo e(old('password')); ?>" data-vv-as="&quot;<?php echo e(__('shop::app.customer.login-form.password')); ?>&quot;">
                     <span class="control-error" v-if="errors.has('password')">{{ errors.first('password') }}</span>
                 </div>
 
                 <?php echo view_render_event('bagisto.shop.customers.login_form_controls.after'); ?>
 
+
+                <div class="control-group">
+                    <input class="btn btn-primary btn-md" type="submit" value="<?php echo e(__('shop::app.customer.login-form.button_title')); ?>">
+                </div>
+
+                <div class="sign-up-text">
+                    <a class="hyperlink" href="<?php echo e(route('customer.register.index')); ?>"><?php echo e(__('shop::app.customer.login-text.new-customer')); ?> <?php echo e(__('shop::app.customer.login-text.title')); ?></a>
+                </div>
 
                 <div class="forgot-password-link">
                     <a class="hyperlink" href="<?php echo e(route('customer.forgot-password.create')); ?>"><?php echo e(__('shop::app.customer.login-form.forgot_pass')); ?></a>
@@ -48,7 +53,6 @@
                     </div>
                 </div>
 
-                <input class="btn btn-primary btn-md" type="submit" value="<?php echo e(__('shop::app.customer.login-form.button_title')); ?>">
             </div>
         </form>
 

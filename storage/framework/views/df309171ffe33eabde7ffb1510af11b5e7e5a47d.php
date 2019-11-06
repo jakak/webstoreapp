@@ -18,7 +18,7 @@
             <span class="account-heading"><?php echo e(__('shop::app.customer.account.profile.index.title')); ?></span>
 
             <span class="account-action">
-                <a href="<?php echo e(route('customer.profile.edit')); ?>"><?php echo e(__('shop::app.customer.account.profile.index.edit')); ?></a>
+                <a class="hyperlink" href="<?php echo e(route('customer.profile.edit')); ?>"><?php echo e(__('shop::app.customer.account.profile.index.edit')); ?></a>
             </span>
 
             <div class="horizontal-rule"></div>

@@ -2,8 +2,7 @@
     <?php $__currentLoopData = $menu->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="menu-block">
             <div class="menu-block-title">
-                <?php echo e(trans($menuItem['name'])); ?>
-
+                <?php echo e(__('shop::app.layouts.manage-account')); ?>
 
                 <i class="icon icon-arrow-down right" id="down-icon"></i>
             </div>

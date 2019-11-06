@@ -17,7 +17,7 @@
 
             <?php if(! $addresses->isEmpty()): ?>
                 <span class="account-action">
-                    <a href="<?php echo e(route('customer.address.create')); ?>"><?php echo e(__('shop::app.customer.account.address.index.add')); ?></a>
+                    <a class="hyperlink" href="<?php echo e(route('customer.address.create')); ?>"><?php echo e(__('shop::app.customer.account.address.index.add')); ?></a>
                 </span>
             <?php else: ?>
                 <span></span>
@@ -32,7 +32,7 @@
             <?php if($addresses->isEmpty()): ?>
                 <div><?php echo e(__('shop::app.customer.account.address.index.empty')); ?></div>
                 <br/>
-                <a href="<?php echo e(route('customer.address.create')); ?>"><?php echo e(__('shop::app.customer.account.address.index.add')); ?></a>
+                <a class="hyperlink" href="<?php echo e(route('customer.address.create')); ?>"><?php echo e(__('shop::app.customer.account.address.index.add')); ?></a>
             <?php else: ?>
                 <div class="address-holder">
                     <?php $__currentLoopData = $addresses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $address): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -49,14 +49,14 @@
 
                                 <div class="control-links mt-20">
                                     <span>
-                                        <a href="<?php echo e(route('customer.address.edit', $address->id)); ?>">
+                                        <a class="hyperlink" href="<?php echo e(route('customer.address.edit', $address->id)); ?>">
                                             <?php echo e(__('shop::app.customer.account.address.index.edit')); ?>
 
                                         </a>
                                     </span>
 
                                     <span>
-                                        <a href="<?php echo e(route('address.delete', $address->id)); ?>" onclick="deleteAddress('<?php echo e(__('shop::app.customer.account.address.index.confirm-delete')); ?>')">
+                                        <a  class="hyperlink" href="<?php echo e(route('address.delete', $address->id)); ?>" onclick="deleteAddress('<?php echo e(__('shop::app.customer.account.address.index.confirm-delete')); ?>')">
                                             <?php echo e(__('shop::app.customer.account.address.index.delete')); ?>
 
                                         </a>
@@ -67,7 +67,7 @@
                                     <span class="default-address badge badge-md badge-success"><?php echo e(__('shop::app.customer.account.address.index.default')); ?></span>
                                 <?php else: ?>
                                     <div class="make-default mt-20">
-                                        <a href="<?php echo e(route('make.default.address', $address->id)); ?>" class="btn btn-md btn-primary"><?php echo e(__('shop::app.customer.account.address.index.make-default')); ?></a>
+                                        <a  href="<?php echo e(route('make.default.address', $address->id)); ?>" class="btn btn-md btn-primary"><?php echo e(__('shop::app.customer.account.address.index.make-default')); ?></a>
                                     </div>
                                 <?php endif; ?>
 

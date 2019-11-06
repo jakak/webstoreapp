@@ -44,7 +44,7 @@
 
                                 <div class="info">
                                     <div class="product-name">
-                                        <a href="<?php echo e(url()->to('/').'/products/'.$review->product->url_key); ?>" title="<?php echo e($review->product->name); ?>">
+                                        <a class="hyperlink" href="<?php echo e(url()->to('/').'/products/'.$review->product->url_key); ?>" title="<?php echo e($review->product->name); ?>">
                                             <?php echo e($review->product->name); ?>
 
                                         </a>
@@ -83,4 +83,5 @@
         </div>
     </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('shop::layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

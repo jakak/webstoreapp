@@ -41,7 +41,7 @@
 
                                 <tr>
                                     <td data-value="<?php echo e(__('shop::app.customer.account.order.index.order_id')); ?>">
-                                        <a href="<?php echo e(route('customer.orders.view', $order->id)); ?>">
+                                        <a class="hyperlink" href="<?php echo e(route('customer.orders.view', $order->id)); ?>">
                                             #<?php echo e($order->id); ?>
 
                                         </a>
@@ -98,4 +98,5 @@
     </div>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('shop::layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

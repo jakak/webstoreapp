@@ -67,6 +67,12 @@
         .decorator {
             border: 1px solid <?php echo e('#'.core()->getColorPicker()->hyperlinks); ?> !important;
         }
+        .menu-block .menubar li.active a {
+            color: <?php echo e('#'.core()->getColorPicker()->hyperlinks); ?> !important;
+        }
+        .tabs ul li.active a {
+            border-bottom: 3px solid <?php echo e('#'.core()->getColorPicker()->hyperlinks); ?> !important;
+        }
 
     </style>
 
