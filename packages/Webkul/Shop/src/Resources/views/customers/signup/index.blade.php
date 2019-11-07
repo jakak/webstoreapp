@@ -54,8 +54,8 @@
 <span class="checkbox">
                 <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.agreement') }}&quot;">
      <label class="checkbox-view" for="checkbox2"></label>
-                <span>{{ __('shop::app.customer.signup-form.agree') }}
-                    <a class="hyperlink" href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a class="hyperlink" href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
+                <span>{{ __('shop::app.customer.signup-form.accept') }}
+                    <a class="hyperlink" href="/terms-of-use">{{ __('shop::app.customer.signup-form.terms') }}</a> </a>
                 </span>
 </span>
                     <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>
