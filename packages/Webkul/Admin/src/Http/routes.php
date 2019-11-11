@@ -546,7 +546,7 @@ Route::group(['middleware' => ['web']], function () {
             // footer content
             Route::get('/customize/footer-section','Webkul\Shop\Http\Controllers\SliderController@create')->defaults('_config',[
                 'view' => 'shop::layouts.footer.footer_content'
-            ])->name('admin.footer.content');
+            ])->name('admin.footer.section');
 
             Route::get('/storemanager/customize/hompage-layout','Webkul\Admin\Http\Controllers\ThemeManager\ThemeController@footerSection')->defaults('_config',[
                 'view' => 'shop::layouts.footer.body_section'

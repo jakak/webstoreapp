@@ -48,12 +48,18 @@ return [
         'subscribe-newsletter' => 'Subscribe to Newsletter',
         'subscribe' => 'Subscribe',
         'locale' => 'Locale',
-		'page-links' => 'Page Links',
-		'store-info' => 'Store Info',
-		'secure-shopping' => 'Secure Shopping',
-		'social' => 'Connect with us',
-		'customer-care' => 'Customer Care',
+        'page-links' => 'Page Links',
+        'store-info' => 'Store Info',
+        'secure-shopping' => 'Secure Shopping',
+        'social' => 'Connect with us',
+        'customer-care' => 'Customer Care',
         'currency' => 'Currency',
+        'icon-theme' => [
+            'default' => 'Default Icons',
+            'square' => 'Square Icons',
+            'flat' => 'Flat Icons',
+            'cute' => 'Cute Icons'
+        ]
     ],
 
     'subscription' => [
@@ -104,10 +110,8 @@ return [
             'password' => 'Password',
             'confirm_pass' => 'Confirm Password',
             'button_title' => 'Register',
-            'agree' => 'Agree',
-            'terms' => 'Terms',
-            'conditions' => 'Conditions',
-            'using' => 'by using this website',
+            'accept' => 'Accept',
+            'terms' => 'Terms of Use',
             'agreement' => 'Agreement',
             'success' => 'Account created successfully. A verification email has beeen sent to your email address.',
             'success-verify-email-not-sent' => 'Account created successfully, but verification email is not sent.',
