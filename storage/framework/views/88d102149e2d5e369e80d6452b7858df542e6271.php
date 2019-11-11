@@ -45,10 +45,9 @@
                 <span class="list-heading"><?php echo e(__('shop::app.footer.social')); ?></span>
                 <div class="form-container">
                     <div class="control-group">
-                        <a href="https://instagram.com/#"><span><i class="fab fa-instagram" style="font-size: 1.5em; color: #4F5B64; margin-right: 15px;"></i></span></a>
-                        <a href="https://twitter.com/#"><span><i class="fab fa-twitter" style="font-size: 1.5em; color: #1da1f2; margin-right: 15px;"></i></span></a>
-                        <a href="https://facebook.com/#"><span><i class="fab fa-facebook-square fa-1x" style="font-size: 1.5em; color: #3b5998; margin-right: 15px;"></i></span></a>
-                        <a href="+234 803 671 9340"><span><i class="fab fa-whatsapp" style="font-size: 1.5em; color: #25d366; margin-right: 15px;"></i></span></a>
+                        <?php $__currentLoopData = App\SocialIcon::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <a href="<?php echo e($social->url); ?>"><?php echo $social->icon; ?></a>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 

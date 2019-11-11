@@ -166,8 +166,8 @@ return [
         'icon-class' => '',
     ], [
         'key' => 'settings.theme.footer',
-        'name' => 'admin::app.layouts.footer-content',
-        'route' => 'admin.footer.content',
+        'name' => 'admin::app.layouts.footer-section',
+        'route' => 'admin.footer.section',
         'sort' => 4,
         'icon-class' => '',
     ], [
