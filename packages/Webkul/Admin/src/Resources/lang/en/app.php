@@ -43,7 +43,7 @@ return [
         'theme-design' => 'Appearance',
         'theme-sliders' => 'Sliders',
         'homepage-layout' => 'Homepage Layout',
-        'footer-content' => 'Footer Section',
+        'footer-section' => 'Footer Section',
         'users' => 'Staff Accounts',
         'roles' => 'Roles',
         'sliders' => 'Sliders',
@@ -674,6 +674,8 @@ return [
             'url' => 'Link URL',
             'social' => 'Select Social',
             'username' => 'Username',
+            'social-username' => 'Mange Social Media Usernames',
+            'icon-theme' => 'Select Social Media  Icon Theme'
         ],
 
         'tax-categories' => [

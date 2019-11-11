@@ -4,6 +4,7 @@ namespace Webkul\Admin\Http\Controllers\ThemeManager;
 
 use App\ColorPicker;
 use App\FooterPage;
+use App\SocialIcon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Webkul\Core\Models\Channel;
@@ -74,10 +75,17 @@ class ThemeController extends Controller
      * Handle footer pages, social, credit links
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function createNewFooterPages(Request $request)
     {
         $data = $request->all();
+
+        $this->socialIcons($data);
+
+        // Save footer credit
+        $channel = Channel::first();
+        $channel->update(['footer_credit' => $data['footer_credit']]);
 
         $contents = [
             $data["content-1"],
@@ -155,5 +163,94 @@ class ThemeController extends Controller
 
             return $colorPicker;
         }
+    }
+
+    /**
+     * Handle socal icons logic
+     * @param $data
+     */
+    private function socialIcons($data)
+    {
+        //Get the Icon themes and their names
+        $iconThemes = $data['radio'];
+        $splitThemes = explode(' / ', $iconThemes);
+
+        // Get all icons themes from the collection
+        $getIconName_1 = $splitThemes[0];
+        $getIconName_2 = $splitThemes[1];
+        $getIconName_3 = $splitThemes[2];
+        $getIconName_4 = $splitThemes[3];
+        $getIconName_5 = $splitThemes[4];
+        $getIconName_6 = $splitThemes[5];
+
+        // Split out the icons and names
+        $splitName_1 = explode('  ', $getIconName_1);
+        $splitName_2 = explode('  ', $getIconName_2);
+        $splitName_3 = explode('  ', $getIconName_3);
+        $splitName_4 = explode('  ', $getIconName_4);
+        $splitName_5 = explode('  ', $getIconName_5);
+        $splitName_6 = explode('  ', $getIconName_6);
+
+        // Get all social names and url in an array
+        $socials = [
+            [
+                $data['social_1'],
+                $data['name_1'],
+            ], [
+                $data['social_2'],
+                $data['name_2'],
+            ], [
+                $data['social_3'],
+                $data['name_3'],
+            ], [
+                $data['social_4'],
+                $data['name_4'],
+            ], [
+                $data['social_5'],
+                $data['name_5'],
+            ]
+
+        ];
+
+        SocialIcon::truncate();
+
+        // Access each icon and save in database
+        foreach ($socials as $social){
+            $getSocial = SocialIcon::create([
+                'name' => $social[0],
+                'url'  => $social[1]
+            ]);
+
+            switch ($splitName_2[0]) {
+                case $getSocial->name:
+                    SocialIcon::where('id', $getSocial->id)->update(['icon' => $splitName_2[1], 'icon_name' => $splitName_1[0]]);
+                    break;
+            }
+
+            switch ($splitName_3[0]) {
+                case $getSocial->name:
+                    SocialIcon::where('id', $getSocial->id)->update(['icon' => $splitName_3[1], 'icon_name' => $splitName_1[0]]);
+                    break;
+            }
+
+            switch ($splitName_4[0]) {
+                case $getSocial->name:
+                    SocialIcon::where('id', $getSocial->id)->update(['icon' => $splitName_4[1], 'icon_name' => $splitName_1[0]]);
+                    break;
+            }
+
+            switch ($splitName_5[0]) {
+                case $getSocial->name:
+                    SocialIcon::where('id', $getSocial->id)->update(['icon' => $splitName_5[1], 'icon_name' => $splitName_1[0]]);
+                    break;
+            }
+
+            switch ($splitName_6[0]) {
+                case $getSocial->name:
+                    SocialIcon::where('id', $getSocial->id)->update(['icon' => $splitName_6[1], 'icon_name' => $splitName_1[0]]);
+                    break;
+            }
+        }
+
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Webkul\Admin\Database\Seeders;
 
+use ColorPickerTableSeeder;
+use DefaultSocialIconTableSeeder;
+use FooterContentTableSeeder;
 use Illuminate\Database\Seeder;
 use Webkul\Category\Database\Seeders\DatabaseSeeder as CategorySeeder;
 use Webkul\Attribute\Database\Seeders\DatabaseSeeder as AttributeSeeder;
@@ -27,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerSeeder::class);
         $this->call(FooterContentTableSeeder::class);
         $this->call(ColorPickerTableSeeder::class);
+        $this->call(DefaultSocialIconTableSeeder::class);
     }
 }

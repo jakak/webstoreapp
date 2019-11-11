@@ -2,6 +2,8 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use App\SocialIcon;
+use Webkul\Core\Models\Channel;
 use Webkul\Shop\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -43,9 +45,15 @@ class SliderController extends controller
      */
 
     public function create() {
-        $channels = core()->getAllChannels();
-
-        return view($this->_config['view']);
+        $channel = Channel::first();
+        $socials = [
+           'Whatsapp',
+           'Facebook',
+           'Twitter',
+           'Instagram',
+           'Youtube'
+       ];
+        return view($this->_config['view'], ['socials' => $socials, 'channel' => $channel]);
     }
 
     /**
