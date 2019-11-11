@@ -30,7 +30,16 @@
                     @foreach ($product->attribute_family->attribute_groups as $attributeGroup)
                         @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type === 'simple' && in_array(strtolower($attributeGroup->name), ( new \Webkul\Attribute\Models\AttributeFamily())->getDefaultGroups()))
                             @if (count($attributeGroup->custom_attributes))
-                            <accordian :title="'{{ $attributeGroup->name === 'General' ? 'Product Information': $attributeGroup->name }}'" :active="true">
+                                @if($attributeGroup->name === 'General')
+                                    <accordian :title="'Product Information'" :active="true">
+                                    @php
+                                        $displayFormAccordians = true;
+                                    @endphp
+                                @elseif($attributeGroup->name === 'Meta Description')
+                                    <accordian :title="'SEO & META'" :active="true">
+                                @else
+                                    <accordian :title="'{{ $attributeGroup->name }}'" :active="true">
+                                @endif
                                 <div slot="body">
 
                                     @foreach ($attributeGroup->custom_attributes as $attribute)
@@ -132,11 +141,29 @@
 
                                 </div>
                             </accordian>
+                            @if($displayFormAccordians)
+                                @if ($form_accordians)
+                                    @include('admin::catalog.products.accordians.categories', ['accordian' => $form_accordians->items['categories']])
+                                    @include('admin::catalog.products.accordians.images', ['accordian' => $form_accordians->items['images']])
+                                @endif
+                                @php
+                                    $displayFormAccordians = false;
+                                @endphp
+                            @endif
                         @endif
                         @endif
                         @if(($attributeGroup->name !== 'CustomAttributeGroup') && $product->type !== 'simple' && !in_array(strtolower($attributeGroup->name), (new \Webkul\Attribute\Models\AttributeFamily())->getNonConfigurableGroups()))
                             @if (count($attributeGroup->custom_attributes))
-                                <accordian :title="'{{ $attributeGroup->name === 'General' ? 'Product Information': $attributeGroup->name }}'" :active="true">
+                                @if($attributeGroup->name === 'General')
+                                    <accordian :title="'Product Information'" :active="true">
+                                    @php
+                                        $displayFormAccordians = true;
+                                    @endphp
+                                @elseif($attributeGroup->name === 'Meta Description')
+                                    <accordian :title="'SEO & META'" :active="true">
+                                @else
+                                    <accordian :title="'{{ $attributeGroup->name }}'" :active="true">
+                                @endif
                                     <div slot="body">
 
                                         @foreach ($attributeGroup->custom_attributes as $attribute)
@@ -239,18 +266,23 @@
 
                                     </div>
                                 </accordian>
+                                @if($displayFormAccordians)
+                                    @if ($form_accordians)
+                                        @include('admin::catalog.products.accordians.categories', ['accordian' => $form_accordians->items['categories']])
+                                        @include('admin::catalog.products.accordians.images', ['accordian' => $form_accordians->items['images']])
+                                    @endif
+                                    @php
+                                        $displayFormAccordians = false;
+                                    @endphp
+                                @endif
                             @endif
                         @endif
                     @endforeach
                 @endif
 
                 @if ($form_accordians)
-
-                    @foreach ($form_accordians->items as $accordian)
-
-                        @include ($accordian['view'])
-
-                    @endforeach
+                    @include('admin::catalog.products.accordians.inventories', ['accordian' => $form_accordians->items['inventories']])
+                    @include('admin::catalog.products.accordians.variations', ['accordian' => $form_accordians->items['variations']])
 
                 @endif
 
