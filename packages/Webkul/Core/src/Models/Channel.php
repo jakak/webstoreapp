@@ -17,7 +17,7 @@ class Channel extends Model
     protected $fillable = ['code', 'name', 'email', 'business_name', 'phone_number',
         'address', 'city', 'postal_code', 'state', 'country', 'status', 'description',
         'theme', 'home_page_content', 'footer_content', 'footer_credit', 'hostname', 'default_locale_id',
-        'base_currency_id', 'root_category_id', 'receives_notification'];
+        'base_currency_id', 'root_category_id', 'receives_notification', 'new_product_row', 'new_featured_row'];
 
     /**
      * Get the channel locales.
