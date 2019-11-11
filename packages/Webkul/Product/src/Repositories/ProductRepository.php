@@ -529,22 +529,30 @@ class ProductRepository extends Repository
      */
     public function getNewProducts()
     {
-        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) {
-                $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
+        $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
+        $channelProperty = Channel::first();
+        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) use ($channel, $channelProperty) {
 
-                $locale = request()->get('locale') ?: app()->getLocale();
+            $locale = request()->get('locale') ?: app()->getLocale();
 
-                return $query->distinct()
-                        ->addSelect('product_flat.*')
-                        ->where('product_flat.status', 1)
-                        ->where('product_flat.new', 1)
-                        ->where('product_flat.channel', $channel)
-                        ->orderBy('product_id', 'desc');
-            })->paginate(10);
+            return $query->distinct()
+                ->addSelect('product_flat.*')
+                ->where('product_flat.status', 1)
+                ->where('product_flat.new', 1)
+                ->where('product_flat.channel', $channel)
+                ->orderBy('product_id', 'desc');
+        })->paginate($this->productsToPaginate($channelProperty->new_product_row));
 
         return $results;
     }
 
+    public function productsToPaginate($select)
+    {
+        if (is_null($select)) {
+            $select = 1;
+        }
+        return $select * 4;
+    }
     /**
      * Returns featured product
      *
@@ -552,18 +560,17 @@ class ProductRepository extends Repository
      */
     public function getFeaturedProducts()
     {
-        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) {
-                $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
+        $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
+        $channelProperty = Channel::first();
+        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) use ($channel, $channelProperty) {
 
-                $locale = request()->get('locale') ?: app()->getLocale();
-
-                return $query->distinct()
-                        ->addSelect('product_flat.*')
-                        ->where('product_flat.status', 1)
-                        ->where('product_flat.featured', 1)
-                        ->where('product_flat.channel', $channel)
-                        ->orderBy('product_id', 'desc');
-            })->paginate(10);
+            return $query->distinct()
+                ->addSelect('product_flat.*')
+                ->where('product_flat.status', 1)
+                ->where('product_flat.featured', 1)
+                ->where('product_flat.channel', $channel)
+                ->orderBy('product_id', 'desc');
+        })->paginate($this->productsToPaginate($channelProperty->new_featured_row));
 
         return $results;
     }

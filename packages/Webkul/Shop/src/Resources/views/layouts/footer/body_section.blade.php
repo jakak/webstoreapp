@@ -30,8 +30,6 @@
             </div>
         </div>
         <div class="page-content">
-
-
             <form action="{{ route('admin.themes.store') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
@@ -57,7 +55,22 @@
 
                     <accordian :title="'Product Rows'" :active="false">
                         <div slot="body">
-                            <p>Nothing Yet</p>
+                            <div class="control-group">
+                                <label for="row-featured">Number of Row(s) for Featured Products</label>
+                                <select name="new_featured_row" id="row-featured" class="control">
+                                    @foreach([1 => '1 Row', 2 => '2 Rows',3 => '3 Rows', 4 => '4 Rows', 5 => '5 Rows'] as $key => $row)
+                                        <option value="{{$key}}" {{$channel->new_featured_row === $key? 'selected': ''}}>{{$row}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="control-group">
+                                <label for="row-new">Number of Row(s) for New Products</label>
+                                <select name="new_product_row" id="row-new" class="control">
+                                    @foreach([1 => '1 Row', 2 => '2 Rows',3 => '3 Rows', 4 => '4 Rows', 5 => '5 Rows'] as $key => $row)
+                                        <option value="{{$key}}" {{$channel->new_product_row === $key? 'selected': ''}}>{{$row}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </accordian>
                 </div>
