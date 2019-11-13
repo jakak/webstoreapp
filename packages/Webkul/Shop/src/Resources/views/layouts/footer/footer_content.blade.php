@@ -17,11 +17,11 @@
             <form action="{{ route('admin.configuration.footer.pages.create') }}" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     @csrf
-                    <accordian :title="'Page Links'" :active="true">
+                    <accordian :title="'Page Links'" :active="false">
                             @include('shop::layouts.footer.page_link')
                     </accordian>
 
-                    <accordian :title="'Social Links'" :active="false">
+                    <accordian :title="'Social Links'" :active="true">
                             @include('shop::layouts.footer.social_link')
                     </accordian>
 
