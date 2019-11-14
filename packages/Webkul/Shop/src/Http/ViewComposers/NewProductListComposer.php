@@ -24,8 +24,7 @@ class NewProductListComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
-     * @return void
+     * @param Product $product
      */
     public function __construct(Product $product)
     {
