@@ -3,6 +3,7 @@
 namespace Webkul\Checkout\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 use Webkul\Product\Models\Product;
 use Webkul\Checkout\Models\CartItem;
 use Webkul\Checkout\Models\CartAddress;
@@ -11,6 +12,8 @@ use Webkul\Checkout\Models\CartShippingRate;
 
 class Cart extends Model
 {
+    use Rememberable;
+
     protected $table = 'cart';
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
