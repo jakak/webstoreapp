@@ -2,15 +2,12 @@
 
 namespace Webkul\Category\Models;
 
-use Watson\Rememberable\Rememberable;
 use Webkul\Core\Eloquent\TranslatableModel;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Support\Facades\Storage;
 
 class Category extends TranslatableModel
 {
-    use Rememberable;
-
     use NodeTrait;
 
     public $translatedAttributes = ['name', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords'];

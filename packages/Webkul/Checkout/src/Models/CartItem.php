@@ -3,14 +3,11 @@
 namespace Webkul\Checkout\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Watson\Rememberable\Rememberable;
 use Webkul\Product\Models\Product;
 
 
 class CartItem extends Model
 {
-    use Rememberable;
-
     protected $table = 'cart_items';
 
     protected $casts = [

@@ -3,12 +3,9 @@
 namespace Webkul\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Watson\Rememberable\Rememberable;
 
 class SubscribersList extends Model
 {
-    use Rememberable;
-
     /**
      * The attributes that are mass assignable.
      *

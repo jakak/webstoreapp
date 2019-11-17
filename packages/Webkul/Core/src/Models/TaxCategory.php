@@ -3,14 +3,11 @@
 namespace Webkul\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Watson\Rememberable\Rememberable;
 use Webkul\Core\Models\TaxRate;
 use Webkul\Core\Models\TaxMap;
 
 class TaxCategory extends Model
 {
-    use Rememberable;
-
     /**
      * The attributes that are mass assignable.
      *
