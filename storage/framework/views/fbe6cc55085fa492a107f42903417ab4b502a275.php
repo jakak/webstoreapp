@@ -29,6 +29,8 @@
             </div>
         </div>
         <div class="page-content">
+
+
             <form action="<?php echo e(route('admin.themes.store')); ?>" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     <?php echo csrf_field(); ?>
@@ -54,22 +56,7 @@
 
                     <accordian :title="'Product Rows'" :active="false">
                         <div slot="body">
-                            <div class="control-group">
-                                <label for="row-featured">Number of Row(s) for Featured Products</label>
-                                <select name="new_featured_row" id="row-featured" class="control">
-                                    <?php $__currentLoopData = [1 => '1 Row', 2 => '2 Rows',3 => '3 Rows', 4 => '4 Rows', 5 => '5 Rows']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($key); ?>" <?php echo e($channel->new_featured_row === $key? 'selected': ''); ?>><?php echo e($row); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-                            </div>
-                            <div class="control-group">
-                                <label for="row-new">Number of Row(s) for New Products</label>
-                                <select name="new_product_row" id="row-new" class="control">
-                                    <?php $__currentLoopData = [1 => '1 Row', 2 => '2 Rows',3 => '3 Rows', 4 => '4 Rows', 5 => '5 Rows']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($key); ?>" <?php echo e($channel->new_product_row === $key? 'selected': ''); ?>><?php echo e($row); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-                            </div>
+                            <p>Nothing Yet</p>
                         </div>
                     </accordian>
                 </div>
