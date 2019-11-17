@@ -3,13 +3,10 @@
 namespace Webkul\Checkout\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Watson\Rememberable\Rememberable;
 use Webkul\Checkout\Models\CartShippingRate;
 
 class CartAddress extends Model
 {
-    use Rememberable;
-
     protected $table = 'cart_address';
 
     protected $fillable = ['first_name', 'last_name', 'email', 'address1', 'address2', 'city', 'state', 'postcode',  'country', 'phone', 'address_type', 'cart_id'];

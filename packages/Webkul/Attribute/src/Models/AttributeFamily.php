@@ -3,14 +3,11 @@
 namespace Webkul\Attribute\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Watson\Rememberable\Rememberable;
 use Webkul\Attribute\Models\AttributeGroup;
 use Webkul\Product\Models\Product;
 
 class AttributeFamily extends Model
 {
-    use Rememberable;
-
     public $timestamps = false;
 
     protected $fillable = ['code', 'name'];

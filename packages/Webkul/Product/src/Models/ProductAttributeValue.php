@@ -3,16 +3,11 @@
 namespace Webkul\Product\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Watson\Rememberable\Rememberable;
 use Webkul\Attribute\Models\Attribute;
 use Webkul\Core\Models\Channel;
 
 class ProductAttributeValue extends Model
 {
-    use Rememberable;
-
-    public $rememberFor = 1;
-
     public $timestamps = false;
 
     protected $with = ['attribute'];
