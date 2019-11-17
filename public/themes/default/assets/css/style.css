@@ -304,48 +304,6 @@
   background-image: url("../images/Icon-star.svg");
 }
 
-/* Social media icon */
-.fa-facebook-flat {
-  background: url("../images/facebook-flat.svg");
-  width: 20px;
-  height: 20px;
-}
-
-.fa-whatsapp-flat {
-  background: url("../images/whatsapp-flat.svg");
-  width: 20px;
-  height: 20px;
-}
-
-.fa-youtube-flat {
-  background: url("../images/youtube-flat.svg");
-  width: 20px;
-  height: 20px;
-}
-
-.fa-twitter-flat {
-  background: url("../images/twitter-flat.svg");
-  width: 20px;
-  height: 20px;
-}
-
-.fa-instagram-flat {
-  background: url("../images/instagram-flat.svg");
-  width: 20px;
-  height: 20px;
-}
-.fa-instagram-square {
-  background: url("../images/instagram-square.svg");
-  width: 20px;
-  height: 20px;
-}
-
-.fa-instagram-cute {
-  background: url("../images/instagram-cute.svg");
-  width: 20px;
-  height: 20px;
-}
-
 .grid-container {
   display: block;
   width: 100%;

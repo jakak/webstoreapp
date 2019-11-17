@@ -674,7 +674,7 @@ return [
             'url' => 'Link URL',
             'social' => 'Select Social',
             'username' => 'Username',
-            'social-username' => 'Manage Social Media Usernames',
+            'social-username' => 'Mange Social Media Usernames',
             'icon-theme' => 'Select Social Media  Icon Theme'
         ],
 
