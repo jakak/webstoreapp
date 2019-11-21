@@ -24,7 +24,8 @@ class FeaturedProductListComposer
     /**
      * Bind data to the view.
      *
-     * @param Product $product
+     * @param  View  $view
+     * @return void
      */
     public function __construct(Product $product)
     {
