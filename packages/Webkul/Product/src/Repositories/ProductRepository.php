@@ -498,7 +498,6 @@ class ProductRepository extends Repository
      *
      * @param string $slug
      * @return mixed
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function findBySlugOrFail($slug, $columns = null)
     {
