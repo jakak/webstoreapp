@@ -60,14 +60,8 @@
             height: 8px;
             border-radius: 50%;
         }
-
-        /* Control the padding of the buttons */
-        .control-group {
-            width: auto;
-        }
-        /* Control the width of the input field */
-        div.wrap-control {
-            max-width: none !important;
+        div.wrap-control > .control-group {
+            width: 68% !important;
         }
     </style>
 <?php $__env->stopSection(); ?>
