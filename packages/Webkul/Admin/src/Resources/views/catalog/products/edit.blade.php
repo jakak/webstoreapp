@@ -160,7 +160,7 @@
                                         $displayFormAccordians = true;
                                     @endphp
                                 @elseif($attributeGroup->name === 'Meta Description')
-                                    <accordian :title="'SEO & META'" :active="true">
+                                    <accordian :title="'SEO & Meta'" :active="true">
                                 @else
                                     <accordian :title="'{{ $attributeGroup->name }}'" :active="true">
                                 @endif
@@ -283,7 +283,6 @@
                 @if ($form_accordians)
                     @include('admin::catalog.products.accordians.inventories', ['accordian' => $form_accordians->items['inventories']])
                     @include('admin::catalog.products.accordians.variations', ['accordian' => $form_accordians->items['variations']])
-
                 @endif
 
                 <hr class="horizontal-line">
