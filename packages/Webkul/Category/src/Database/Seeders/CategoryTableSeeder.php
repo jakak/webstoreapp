@@ -14,12 +14,31 @@ class CategoryTableSeeder extends Seeder
 
         $now = Carbon::now();
 
+        // Category 1
         DB::table('categories')->insert([
-            ['id' => '1','position' => '1','image' => NULL,'status' => '1','_lft' => '1','_rgt' => '14','parent_id' => NULL, 'created_at' => $now, 'updated_at' => $now]
+            ['id' => '1','position' => '1','image' => NULL,'status' => '1','_lft' => '6','_rgt' => '7','parent_id' => NULL, 'created_at' => $now, 'updated_at' => $now]
         ]);
 
         DB::table('category_translations')->insert([
-            ['id' => '1','name' => 'Root','slug' => 'root','description' => 'Root','meta_title' => '','meta_description' => '','meta_keywords' => '','category_id' => '1','locale' => 'en']
+            ['id' => '1','name' => 'Category 1','slug' => 'category-1','description' => 'category 1','meta_title' => '','meta_description' => '','meta_keywords' => '','category_id' => '1','locale' => 'en']
+        ]);
+
+        // Category 2
+        DB::table('categories')->insert([
+            ['id' => '2','position' => '2','image' => NULL,'status' => '1','_lft' => '8','_rgt' => '9','parent_id' => NULL, 'created_at' => $now, 'updated_at' => $now]
+        ]);
+
+        DB::table('category_translations')->insert([
+            ['id' => '2','name' => 'Category 2','slug' => 'category-2','description' => 'category 2','meta_title' => '','meta_description' => '','meta_keywords' => '','category_id' => '2','locale' => 'en']
+        ]);
+
+        // Category 3
+        DB::table('categories')->insert([
+            ['id' => '3','position' => '3','image' => NULL,'status' => '1','_lft' => '10','_rgt' => '11','parent_id' => NULL, 'created_at' => $now, 'updated_at' => $now]
+        ]);
+
+        DB::table('category_translations')->insert([
+            ['id' => '3','name' => 'Category 3','slug' => 'category-3','description' => 'category 3','meta_title' => '','meta_description' => '','meta_keywords' => '','category_id' => '3','locale' => 'en']
         ]);
     }
 }

@@ -97,7 +97,6 @@
                                     </thead>
 
                                     <tbody>
-                                    @dd($configurableFamily->configurable_attributes)
                                         @foreach ($configurableFamily->configurable_attributes as $attribute)
                                             <tr>
                                                 <td>
