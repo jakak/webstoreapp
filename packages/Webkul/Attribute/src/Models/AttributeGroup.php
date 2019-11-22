@@ -3,12 +3,15 @@
 namespace Webkul\Attribute\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Rememberable\Rememberable;
 use Webkul\Attribute\Models\Attribute;
 
 class AttributeGroup extends Model
 {
+    use Rememberable;
+
     public $timestamps = false;
-    
+
     protected $fillable = ['name', 'position', 'is_user_defined'];
 
     /**
