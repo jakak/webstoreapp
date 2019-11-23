@@ -1513,7 +1513,7 @@ ul.centralized {
 }
 
 .footer .footer-content .footer-list-container .list-container .list-group {
-  padding-top: 25px;
+  padding-top: 10px;
 }
 
 .footer .footer-content .footer-list-container .list-container .list-group a {
@@ -1535,7 +1535,7 @@ ul.centralized {
 }
 
 .footer .footer-content .footer-list-container .list-container .form-container {
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 .footer .footer-content .footer-list-container .list-container .form-container .control-group .subscribe-field {
