@@ -36,7 +36,7 @@
                                         $displayFormAccordians = true;
                                     @endphp
                                 @elseif($attributeGroup->name === 'Meta Description')
-                                    <accordian :title="'SEO & META'" :active="true">
+                                    <accordian :title="'Seo & Meta'" :active="true">
                                 @else
                                     <accordian :title="'{{ $attributeGroup->name }}'" :active="true">
                                 @endif
@@ -160,7 +160,7 @@
                                         $displayFormAccordians = true;
                                     @endphp
                                 @elseif($attributeGroup->name === 'Meta Description')
-                                    <accordian :title="'SEO & Meta'" :active="true">
+                                    <accordian :title="'Seo & Meta'" :active="true">
                                 @else
                                     <accordian :title="'{{ $attributeGroup->name }}'" :active="true">
                                 @endif
