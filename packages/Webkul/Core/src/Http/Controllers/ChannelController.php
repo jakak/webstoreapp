@@ -117,14 +117,16 @@ class ChannelController extends Controller
         $this->validate(request(), [
             'code' => ['required', 'unique:channels,code,' . $id, new \Webkul\Core\Contracts\Validations\Code],
             'name' => 'required',
-            'locales' => 'required|array|min:1',
+            'description' => 'required',
             'inventory_sources' => 'required|array|min:1',
-            'default_locale_id' => 'required',
-            'currencies' => 'required|array|min:1',
-            'base_currency_id' => 'required',
-            'root_category_id' => 'required',
-            'logo.*' => 'mimes:jpeg,jpg,bmp,png',
-            'favicon.*' => 'mimes:jpeg,jpg,bmp,png'
+            'business_name' => 'required',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'postal_code' => 'required',
+            'state' => 'required',
+            'country' => 'required',
         ]);
 
         Event::fire('core.channel.update.before', $id);
@@ -134,11 +136,11 @@ class ChannelController extends Controller
         if ($request->receives_notification == "on") {
             $data['receives_notification'] = 1;
         } else {
-           $data['receives_notification'] = 0;
+            $data['receives_notification'] = 0;
         }
 
         $channel = $this->channel->update($data, $id);
-        // dd($channel);
+
         Event::fire('core.channel.update.after', $channel);
         $mailSetting = MailSetting::first();
         if ($mailSetting) {

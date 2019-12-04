@@ -7,7 +7,7 @@ use Watson\Rememberable\Rememberable;
 
 class CategoryTranslation extends Model
 {
-    use Rememberable;
+//    use Rememberable;
 
     public $timestamps = false;
 
