@@ -59,14 +59,9 @@ class ChannelRepository extends Repository
     public function update(array $data, $id, $attribute = "id")
     {
         $channel = $this->find($id);
+        $channel->root_category_id = 1;
 
         $channel->update($data);
-
-//        $channel->locales()->sync($data['locales']);
-
-        $channel->currencies()->sync($data['currencies']);
-
-//        $channel->inventory_sources()->sync($data['inventory_sources']);
 
         $this->uploadImages($data, $channel);
 
