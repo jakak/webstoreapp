@@ -14,7 +14,7 @@ return [
         'logout' => 'Logout',
         'storefront' => 'Storefront',
 		'subscription' => 'Subscription',
-		'get-support' => 'Get Support',
+		'get-help' => 'Get Help',
 		'manage-paystack' => 'Manage Paystack',
         'dashboard' => 'Dashboard',
         'sales' => 'Sales',

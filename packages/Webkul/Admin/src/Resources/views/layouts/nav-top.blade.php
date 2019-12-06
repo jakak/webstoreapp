@@ -45,7 +45,7 @@
                                 <a href="https://dashboard.paystack.com" target="_blank">{{ trans('admin::app.layouts.manage-paystack') }}</a>
                             </li>
                             <li>
-                                <a href="https://help.webstore.ng" target="_blank">{{ trans('admin::app.layouts.get-support') }}</a>
+                                <a href="https://help.webstore.ng" target="_blank">{{ trans('admin::app.layouts.get-help') }}</a>
                             </li>
                         </ul>
                         <hr style="height:1px; border:none; color:#e8e8e8; background:#e8e8e8;">
