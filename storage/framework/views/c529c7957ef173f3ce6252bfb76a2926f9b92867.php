@@ -72,7 +72,7 @@
             <flash-wrapper ref='flashes'></flash-wrapper>
 
             <div class="center-box">
-            
+
                 <div class="adjacent-center">
 
                     <div class="brand-logo">
@@ -86,7 +86,7 @@
                             <a href="<?php echo e(route('shop.home.index')); ?>"><?php echo e(trans('admin::app.layouts.storefront')); ?> <i class="fas fa-external-link-alt"></i></a>
                         </p>
 						<p>
-                            Need help? <a href="https://help.webstore.ng" target="_blank"><?php echo e(trans('admin::app.layouts.get-support')); ?></a>
+                            Need help? <a href="https://help.webstore.ng" target="_blank"><?php echo e(trans('admin::app.layouts.get-help')); ?></a>
                         </p>
                     </div>
 
@@ -116,6 +116,6 @@
         <script type="text/javascript" src="<?php echo e(asset('vendor/webkul/ui/assets/js/ui.js')); ?>"></script>
 
         <?php echo $__env->yieldContent('javascript'); ?>
-        
+
     </body>
 </html>
