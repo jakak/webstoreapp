@@ -16,11 +16,11 @@
             <form action="<?php echo e(route('admin.configuration.footer.pages.create')); ?>" enctype="multipart/form-data" method="POST">
                 <div class="form-container">
                     <?php echo csrf_field(); ?>
-                    <accordian :title="'Page Links'" :active="false">
+                    <accordian :title="'Page Links'" :active="true">
                             <?php echo $__env->make('shop::layouts.footer.page_link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     </accordian>
 
-                    <accordian :title="'Social Links'" :active="true">
+                    <accordian :title="'Social Links'" :active="false">
                             <?php echo $__env->make('shop::layouts.footer.social_link', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     </accordian>
 

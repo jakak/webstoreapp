@@ -186,7 +186,7 @@ class ProductController extends Controller
     public function update(ProductForm $request, $id)
     {
         $product = $this->product->update(request()->all(), $id);
-
+        $this->productGrid->updateWhere($product);
         session()->flash('success', trans('admin::app.response.update-success', ['name' => 'Product']));
 
         return redirect()->route($this->_config['redirect']);

@@ -72,7 +72,7 @@
     <div class="wrap-control">
         <div class="control-group">
             <label for="first_name"><?php echo e(__('admin::app.settings.footer.social')); ?></label>
-            <select type="text" v-validate="'required'" id="social_1" class="control"  onchange="defaultIcon()" name="social_1">
+            <select type="text" v-validate="'required'" id="social_1" class="control social"  onchange="defaultIcon()" name="social_1">
                 <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($social); ?>" <?php $__currentLoopData = App\SocialIcon::skip(0)->take(1)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($socialName->name == $social ? "selected"  : ""); ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>><?php echo e($social); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -88,7 +88,7 @@
     <div class="wrap-control">
         <div class="control-group">
             <label for="first_name"><?php echo e(__('admin::app.settings.footer.social')); ?></label>
-            <select type="text" v-validate="'required'" id="social_2" class="control"  onchange="secondName()"  name="social_2">
+            <select type="text" v-validate="'required'" id="social_2" class="control social"  onchange="secondName()"  name="social_2">
                 <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($social); ?>" <?php $__currentLoopData = App\SocialIcon::skip(1)->take(1)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($socialName->name == $social ? "selected"  : ""); ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>><?php echo e($social); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -104,7 +104,7 @@
     <div class="wrap-control">
         <div class="control-group">
             <label for="first_name"><?php echo e(__('admin::app.settings.footer.social')); ?></label>
-            <select type="text" v-validate="'required'" id="social_3" class="control"  onchange="thirdName()"  name="social_3">
+            <select type="text" v-validate="'required'" id="social_3" class="control social"  onchange="thirdName()"  name="social_3">
                 <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($social); ?>" <?php $__currentLoopData = App\SocialIcon::skip(2)->take(1)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($socialName->name == $social ? "selected"  : ""); ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>><?php echo e($social); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -120,7 +120,7 @@
     <div class="wrap-control">
         <div class="control-group">
             <label for="first_name"><?php echo e(__('admin::app.settings.footer.social')); ?></label>
-            <select type="text" v-validate="'required'" id="social_4" class="control"  onchange="fourthName()"  name="social_4">
+            <select type="text" v-validate="'required'" id="social_4" class="control social"  onchange="fourthName()"  name="social_4">
                 <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($social); ?>" <?php $__currentLoopData = App\SocialIcon::skip(3)->take(1)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($socialName->name == $social ? "selected"  : ""); ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>><?php echo e($social); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -137,7 +137,7 @@
     <div class="wrap-control">
         <div class="control-group">
             <label for="first_name"><?php echo e(__('admin::app.settings.footer.social')); ?></label>
-            <select type="text" v-validate="'required'" id="social_5" class="control"  onchange="fivethName()"  name="social_5">
+            <select type="text" v-validate="'required'" id="social_5" class="control social"  onchange="fivethName()"  name="social_5">
                 <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($social); ?>" <?php $__currentLoopData = App\SocialIcon::skip(4)->take(1)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($socialName->name == $social ? "selected"  : ""); ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>><?php echo e($social); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -154,6 +154,10 @@
 
 <?php $__env->startPush('scripts'); ?>
     <script>
+
+        
+
+
         
         function defaultIcon() {
             const value = document.getElementById("social_1").value;

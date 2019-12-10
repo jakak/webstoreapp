@@ -36,7 +36,7 @@ class AddNewAttributeSeeder extends Seeder
         ]);
 
         DB::table('attribute_group_mappings')->insert(
-            ['attribute_id' => $attribute_id,'attribute_group_id' => '1','position' => '11']
+            ['attribute_id' => $attribute_id,'attribute_group_id' => '1','position' => '5']
         );
 
         foreach ([5,6] as $num) {
