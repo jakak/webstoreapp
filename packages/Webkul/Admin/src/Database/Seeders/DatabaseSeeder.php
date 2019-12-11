@@ -7,6 +7,7 @@ use DefaultSocialIconTableSeeder;
 use FooterContentTableSeeder;
 use Illuminate\Database\Seeder;
 use MailSettingsTableSeeder;
+use ThemeTableSeeder;
 use Webkul\Category\Database\Seeders\DatabaseSeeder as CategorySeeder;
 use Webkul\Attribute\Database\Seeders\DatabaseSeeder as AttributeSeeder;
 use Webkul\Core\Database\Seeders\DatabaseSeeder as CoreSeeder;
@@ -33,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ColorPickerTableSeeder::class);
         $this->call(DefaultSocialIconTableSeeder::class);
         $this->call(MailSettingsTableSeeder::class);
+        $this->call(ThemeTableSeeder::class);
     }
 }

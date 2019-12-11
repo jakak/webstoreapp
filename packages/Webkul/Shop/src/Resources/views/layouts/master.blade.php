@@ -114,9 +114,6 @@
 
     <div class="footer-bottom">
         <custom-footer  credit="{{core()->getCurrentChannel()->footer_credit}}"></custom-footer>
-        {{-- <p>
-            &copy; <script>document.write(new Date().getFullYear());</script>. Kling Bake Shop | <a class="hyperlink" href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
-        </p> --}}
     </div>
 
 </div>

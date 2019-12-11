@@ -1,6 +1,6 @@
 <template>
     <p>
-        &copy; {{getDate()}} {{credit}} | <a href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
+        &copy; {{getDate()}} {{credit}} | <a class="hyperlink" href="https://haqqman.com/webmaster" target="_blank">Webmaster</a>
     </p>
 </template>
 

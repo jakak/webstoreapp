@@ -122,7 +122,6 @@
 
     <div class="footer-bottom">
         <custom-footer  credit="<?php echo e(core()->getCurrentChannel()->footer_credit); ?>"></custom-footer>
-        
     </div>
 
 </div>
