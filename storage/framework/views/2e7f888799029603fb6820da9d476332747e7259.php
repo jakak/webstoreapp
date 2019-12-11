@@ -220,7 +220,7 @@
 <script type="text/x-template" id="country-template">
 
     <div>
-        <select type="text" v-validate="'required'" class="control" id="<?php echo e($firstField); ?>[<?php echo e($secondField); ?>][<?php echo e($thirdField); ?>][<?php echo e('country'); ?>]" name="<?php echo e($firstField); ?>[<?php echo e($secondField); ?>][<?php echo e($thirdField); ?>][<?php echo e('country'); ?>]" v-model="country" data-vv-as="&quot;<?php echo e(__('admin::app.customers.customers.country')); ?>&quot;" @change="someHandler">
+        <select type="country" v-validate="'required'" class="control" id="<?php echo e($firstField); ?>[<?php echo e($secondField); ?>][<?php echo e($thirdField); ?>][<?php echo e('country'); ?>]" name="<?php echo e($firstField); ?>[<?php echo e($secondField); ?>][<?php echo e($thirdField); ?>][<?php echo e('country'); ?>]" v-model="country" data-vv-as="&quot;<?php echo e(__('admin::app.customers.customers.country')); ?>&quot;" @change="someHandler">
             <option value=""></option>
 
             <?php $__currentLoopData = core()->countries(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

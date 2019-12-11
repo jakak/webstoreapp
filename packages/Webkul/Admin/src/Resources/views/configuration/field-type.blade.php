@@ -211,7 +211,7 @@
 <script type="text/x-template" id="country-template">
 
     <div>
-        <select type="text" v-validate="'required'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{'country' }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ 'country' }}]" v-model="country" data-vv-as="&quot;{{ __('admin::app.customers.customers.country') }}&quot;" @change="someHandler">
+        <select type="country" v-validate="'required'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{'country' }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ 'country' }}]" v-model="country" data-vv-as="&quot;{{ __('admin::app.customers.customers.country') }}&quot;" @change="someHandler">
             <option value=""></option>
 
             @foreach (core()->countries() as $country)

@@ -625,6 +625,7 @@ return [
             'code' => 'Webstore Name',
             'business_name' => 'Webstore Title',
             'email' => 'Email Address',
+            'store_email' => 'Store Email',
             'phone_number' => 'Business Mobile Number',
             'address' => 'Address',
             'city' => 'City',
