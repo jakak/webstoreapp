@@ -15,7 +15,7 @@ class MailSettingsTableSeeder extends Seeder
         MailSetting::truncate();
 
         MailSetting::create([
-            'logo' => '',
+            'logo' => '../../../vendor/webkul/ui/assets/images/placeholder-icon.svg',
             'host' => 'smtp.yandex.com',
             'port' => '465',
             'encryption' => 'SSL',
