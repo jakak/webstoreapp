@@ -73,7 +73,7 @@ return [
       ], [
         'name' => 'state',
         'title' => 'State',
-        'type' => 'state',
+        'type' => 'text',
         'validation' => 'required',
         'channel_based' => true,
         'locale_based' => true

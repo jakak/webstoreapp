@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']" >
-                                <label for="email" class="required">{{ __('admin::app.settings.channels.email') }}</label>
+                                <label for="email" class="required">{{ __('admin::app.settings.channels.store_email') }}</label>
                                 <input v-validate="'required'" class="control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.settings.channels.email') }}&quot;" value="{{ old('email') ?: $channel->email }}"/>
                                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                             </div>

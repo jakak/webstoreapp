@@ -86,7 +86,7 @@
                             <a href="<?php echo e(route('shop.home.index')); ?>"><?php echo e(trans('admin::app.layouts.storefront')); ?> <i class="fas fa-external-link-alt"></i></a>
                         </p>
 						<p>
-                            Need help? <a href="https://help.webstore.ng" target="_blank"><?php echo e(trans('admin::app.layouts.get-help')); ?></a>
+                            Need support? <a href="https://help.webstore.ng" target="_blank"><?php echo e(trans('admin::app.layouts.get-help')); ?></a>
                         </p>
                     </div>
 
