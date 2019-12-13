@@ -131,30 +131,34 @@ return [
     'key'=> 'pages',
     'name' => 'Manage Pages',
     'sort' => 3
-  ], [
-    'key' => 'pages.all',
-    'name' => 'Custom Pages',
-    'sort' => 1
-  ], [
+  ],  [
         'key' => 'pages.about',
         'name' => 'About',
-        'sort' => 2
+        'sort' => 1
     ],  [
         'key' => 'pages.refund',
         'name' => 'Refund Policy',
-        'sort' => 3
+        'sort' => 2
     ], [
         'key' => 'pages.return',
         'name' => 'Return Policy',
-        'sort' => 4
+        'sort' => 3
     ], [
         'key' => 'pages.privacy',
         'name' => 'Privacy Policy',
-        'sort' => 5
+        'sort' => 4
     ],  [
         'key' => 'pages.terms',
         'name' => 'Terms Of Use',
-        'sort' => 6
+        'sort' => 5
+    ],  [
+        'key' => 'blog',
+        'name' => 'Manage Blog',
+        'sort' => 4
+    ],  [
+        'key' => 'blog.posts',
+        'name' => 'Manage Blog',
+        'sort' => 1
     ],
 
 ];

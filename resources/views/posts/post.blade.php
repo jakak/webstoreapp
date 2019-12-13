@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>{{ $page->meta_title }}</title>
+    <title>{{ $post->meta_title }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,8 +21,8 @@
     @yield('head')
 
     @section('seo')
-        <meta name="description" content="{{ $page->meta_description }}"/>
-        <meta name="keywords" content="{{ $page->meta_keywords }}">
+        <meta name="description" content="{{ $post->meta_description }}"/>
+        <meta name="keywords" content="{{ $post->meta_keywords }}">
     @show
 
     @stack('css')
@@ -61,10 +61,10 @@
         @yield('slider')
 
         <h3><div class="breadcrumb">
-                <span class="">{{ $page->name }}</span>
+                <span class="">{{ $post->title }}</span>
             </div></h3>
         <div class="content-container">
-            {!! $page->content !!}
+            {!! $post->content !!}
         </div>
 
     </div>

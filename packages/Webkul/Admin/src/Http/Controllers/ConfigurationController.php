@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Webkul\Admin\Facades\Configuration;
+use Webkul\Admin\Models\Blog;
 use Webkul\Core\Models\Channel;
 use Webkul\Core\Repositories\CoreConfigRepository as CoreConfig;
 use Webkul\Core\Tree;
@@ -336,21 +337,27 @@ class ConfigurationController extends Controller
         }
     }
 
-    public function createNewPage(Request $request)
+    /**
+     * Create blog post
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createNewPost(Request $request)
     {
-        if ($request->input('name') !== ''
+        if ($request->input('title') !== ''
             && $request->input('url') !== ''
             && $request->input('content') !== '') {
             if ($request->has('id')) {
 //                Update the page
-                $page = Page::find($request->all()['id']);
-                $page->update($request->all());
-                session()->flash('success', 'Page updated successfully');
+                $post = Blog::find($request->all()['id']);
+                $post->update($request->all());
+                session()->flash('success', 'Post updated successfully');
                 return redirect()->back();
             } else {
                 try {
-                    $page = Page::create($request->all());
-                    session()->flash('success', 'Page created successfully');
+
+                    $post = Blog::create($request->all());
+                    session()->flash('success', 'Post created successfully');
                     return redirect()->back();
                 } catch (\Exception $e) {
                     session()->flash('error', $e->getMessage());
@@ -395,17 +402,22 @@ class ConfigurationController extends Controller
     public function getPageDetails($pageSlug)
     {
         $str = str_replace('-', ' ', $pageSlug);
-        $page = Page::where('name', $str)->first();
+        $post = Blog::where('title', $str)->first();
 
-        return $page;
+        return $post;
     }
 
-    public function deletePage($page)
+    /**
+     * Delete blog post
+     * @param $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deletePost($post)
     {
-        $page = Page::where('name', $page)->first();
-        $page->delete();
+        $post = Blog::where('title', $post)->first();
+        $post->delete();
 
-        session()->flash('success', 'Page deleted successfully.');
+        session()->flash('success', 'Post deleted successfully.');
         return redirect()->back();
     }
 }
