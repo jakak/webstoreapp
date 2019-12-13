@@ -20,7 +20,7 @@ class PageController extends Controller
     {
         $post = str_replace('-', ' ', $post);
         $post = Blog::where('title', $post)->first();
-        if ($post && $post->status === 'published') {
+        if ($post && $post->status === 'publish') {
             return view('posts.post')->with([
                 'post' => $post
             ]);
