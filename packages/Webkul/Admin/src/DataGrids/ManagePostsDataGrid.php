@@ -25,7 +25,7 @@ class ManagePostsDataGrid extends DataGrid
     {
         $this->addColumn([
             'index' => 'title',
-            'label' => 'Page Name',
+            'label' => 'Post Title',
             'type' => 'string',
             'searchable' => false,
             'sortable' => true,
@@ -33,7 +33,7 @@ class ManagePostsDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'url',
-            'label' => 'Page URL',
+            'label' => 'Post URL',
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
