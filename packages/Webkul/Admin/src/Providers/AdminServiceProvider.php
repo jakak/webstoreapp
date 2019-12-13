@@ -31,6 +31,8 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__ . '/../../publishable/assets' => public_path('vendor/webkul/admin/assets'),
         ], 'public');
 
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
+
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'admin');
 
         $this->composeView();
@@ -44,7 +46,7 @@ class AdminServiceProvider extends ServiceProvider
             Handler::class
         );
     }
-    
+
     /**
      * Register services.
      *
@@ -127,7 +129,7 @@ class AdminServiceProvider extends ServiceProvider
 
         return $tree;
     }
-    
+
     /**
      * Register package config.
      *

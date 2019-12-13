@@ -3,7 +3,7 @@
         <div class="footer-list-container">
 
             <div class="list-container">
-                <span class="list-heading"><?php echo e(__('shop::app.footer.page-links')); ?></span>
+                <span class="list-heading"><?php echo e(__('shop::app.footer.featured-posts')); ?></span>
                 <div class="form-container">
                     <div class="control-group">
                         <ul class="text-color list-group">

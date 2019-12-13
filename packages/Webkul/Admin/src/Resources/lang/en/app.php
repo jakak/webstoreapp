@@ -671,7 +671,7 @@ return [
         ],
 
         'footer' => [
-            'title' => 'Select Pages',
+            'post' => 'Select Post',
             'url' => 'Link URL',
             'social' => 'Select Social',
             'username' => 'Username',
