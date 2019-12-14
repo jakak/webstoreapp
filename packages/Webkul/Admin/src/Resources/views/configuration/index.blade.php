@@ -286,7 +286,7 @@
                     entityCreationPage = document.querySelector('#createNewPage');
                     entityPage = document.querySelector('#managePagesPage');
                     document.querySelector('.page_url').innerHTML = (
-                        location.origin + '/pages/' );
+                        location.origin + '/posts/' );
                 }
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
@@ -349,6 +349,7 @@
                 }
             });
             function editPage(url) {
+                document.querySelector('#manage-edit').innerHTML = 'Edit Post';
                 url = decodeURI(url.search.substring(1)).sluggify();
                 fetch(`/storemanager/configuration/pages/${url}/details`)
                     .then(response => response.json())
@@ -367,6 +368,8 @@
                                     // TODO: Figure out how to update the select2 component.
                                 }
                             }
+
+
                         }
                         const inp = document.createElement('input');
                         inp.type="hidden";

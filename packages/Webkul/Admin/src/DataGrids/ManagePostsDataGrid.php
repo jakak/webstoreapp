@@ -41,7 +41,7 @@ class ManagePostsDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'url', // Setting index to url inorder to render the button correctly
-            'label' => 'View Pages',
+            'label' => 'View Posts',
             'type' => 'button',
             'sortable' => false,
             'searchable' => false,
