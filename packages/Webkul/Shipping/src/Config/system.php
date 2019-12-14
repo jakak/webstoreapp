@@ -129,7 +129,7 @@ return [
     'sort' => 3
   ], [
     'key'=> 'pages',
-    'name' => 'Manage Pages',
+    'name' => 'Store Pages',
     'sort' => 3
   ],  [
         'key' => 'pages.about',
@@ -153,7 +153,7 @@ return [
         'sort' => 5
     ],  [
         'key' => 'blog',
-        'name' => 'Manage Blog',
+        'name' => 'Blog Manager',
         'sort' => 4
     ],  [
         'key' => 'blog.posts',

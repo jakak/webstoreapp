@@ -2,7 +2,7 @@
     <div class="page-header">
         <div class="page-title">
             <h1>
-                Manage Blog
+                Manage Posts
             </h1>
         </div>
 
@@ -22,9 +22,8 @@
     <div class="page-header">
 
         <div class="page-title">
-            <h1>
-                <span class="back-arrow"><i class="fa fa-angle-left"></i></span> New Post
-            </h1>
+            <h1><span class="back-arrow"><i class="fa fa-angle-left"></i></span> </h1>
+            <h1 id="manage-edit"> New Post </h1>
         </div>
 
     </div>
@@ -39,7 +38,7 @@
             </div>
             <div class="control-group text" :class="">
                 <label for="page_url">
-                    <strong>Page URL &mdash; </strong><span class="page_url"></span>
+                    <strong>Post URL &mdash; </strong><span class="page_url"></span>
                 </label>
                 <input readonly type="hidden" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
             </div>
