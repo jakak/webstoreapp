@@ -23,7 +23,7 @@
 
         <div class="page-title">
             <h1><span class="back-arrow"><i class="fa fa-angle-left"></i></span> </h1>
-            <h1 id="manage-edit"> New Post </h1>
+            <h1 id="manage-edit"> Create New Post </h1>
         </div>
 
     </div>
