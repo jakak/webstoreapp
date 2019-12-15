@@ -468,6 +468,19 @@ hr.horizontal-line {
     grid-row-gap: 15px;
     margin-top: 30px;
   }
+
+  /* Large screens ---------- */
+  @media screen and (min-width: 1600px){
+    .dashboard-stats {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .sale-stock {
+      grid-template-columns: repeat(auto-fill, minmax(435px, 1fr));
+    }
+
+  }
+
 }
 // admin dashboard css ends here
 
