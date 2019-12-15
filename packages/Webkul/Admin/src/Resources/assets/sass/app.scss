@@ -400,7 +400,7 @@ hr.horizontal-line {
 
   .dashboard-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-auto-rows: auto;
     grid-column-gap: 30px;
     grid-row-gap: 15px;
@@ -462,7 +462,7 @@ hr.horizontal-line {
     width: 100%;
     display: inline-block;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(435px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-auto-rows: auto;
     grid-column-gap: 30px;
     grid-row-gap: 15px;
