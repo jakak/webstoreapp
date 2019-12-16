@@ -32,5 +32,10 @@ use Webkul\Core\Repositories\SliderRepository as Sliders;
 
         return view($this->_config['view'])->with('sliderData',$all_sliders->toArray());
     }
+
+    public function maintenance()
+    {
+        return view($this->_config['view']);
+    }
 }
 

@@ -119,6 +119,7 @@ class ChannelController extends Controller
             'name' => 'required',
             'description' => 'required',
             'inventory_sources' => 'required|array|min:1',
+            'status' => 'required',
             'business_name' => 'required',
             'email' => 'required|email',
             'phone_number' => 'required',

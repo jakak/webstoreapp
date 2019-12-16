@@ -62,14 +62,14 @@
                                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                             </div>
 
-                            {{-- <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
-                                <span class="checkbox">
-                                    <input type="checkbox" id="receives_notification"  name="receives_notification" {{ $channel->receives_notification ? 'checked' : '' }}>
+{{--                             <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">--}}
+{{--                                <span class="checkbox">--}}
+{{--                                    <input type="checkbox" id="receives_notification"  name="receives_notification" {{ $channel->receives_notification ? 'checked' : '' }}>--}}
 
-                                    <label class="checkbox-view" for="receives_notification"></label>
-                                        Get notified when a customer places an order.
-                                </span>
-                            </div> --}}
+{{--                                    <label class="checkbox-view" for="receives_notification"></label>--}}
+{{--                                        Get notified when a customer places an order.--}}
+{{--                                </span>--}}
+{{--                            </div>--}}
 
                             <div class="control-group" :class="[errors.has('phone_number') ? 'has-error' : '']" >
                                 <label for="phone_number" class="required">{{ __('admin::app.settings.channels.phone_number') }}</label>
@@ -77,13 +77,6 @@
                                 <span class="control-error" v-if="errors.has('phone_number')">@{{ errors.first('phone_number') }}</span>
                             </div>
 
-
-
-{{--                             <div class="control-group">
-                                <label for="description">{{ __('admin::app.settings.channels.description') }}</label>
-                                <textarea class="control" id="description" name="description">{{ old('description') ?: $channel->description }}</textarea>
-                            </div>
- --}}
                             <div class="control-group" :class="[errors.has('inventory_sources[]') ? 'has-error' : '']">
                                 <label for="inventory_sources" class="required">{{ __('admin::app.settings.channels.inventory_sources') }}</label>
                                 <?php $selectedOptionIds = old('inventory_sources') ?: $channel->inventory_sources->pluck('id')->toArray() ?>
@@ -97,18 +90,16 @@
                                 <span class="control-error" v-if="errors.has('inventory_sources[]')">@{{ errors.first('inventory_sources[]') }}</span>
                             </div>
 
-{{--                            <div class="control-group" :class="[errors.has('root_category_id') ? 'has-error' : '']">--}}
-{{--                                <label for="root_category_id" class="required">{{ __('admin::app.settings.channels.root-category') }}</label>--}}
-                                <?php $selectedOption = old('root_category_id') ?: $channel->root_category_id ?>
-{{--                                <select v-validate="'required'" class="control" id="root_category_id" name="root_category_id" data-vv-as="&quot;{{ __('admin::app.settings.channels.root-category') }}&quot;">--}}
-{{--                                    @foreach (app('Webkul\Category\Repositories\CategoryRepository')->getRootCategories() as $category)--}}
-{{--                                        <option value="{{ $category->id }}" {{ $selectedOption == $category->id ? 'selected' : '' }}>--}}
-{{--                                            {{ $category->name }}--}}
-{{--                                        </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                                <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>--}}
-{{--                            </div>--}}
+                            <div class="control-group" :class="[errors.has('status') ? 'has-error' : '']">
+                                <label for="status" class="required">{{ __('admin::app.settings.channels.root-category') }}</label>
+                                <?php $selectedOption = old('status') ?: $channel->status ?>
+                                <select v-validate="'required'" class="control" id="status" name="status" data-vv-as="&quot;{{ __('admin::app.settings.channels.root-category') }}&quot;">
+                                        <option value="Online" {{ $selectedOption == 'online' ? 'selected' : '' }}>Online</option>
+                                        <option value="Maintenance Mode" {{ $selectedOption == 'Maintenance Mode' ? 'selected' : '' }}>Maintenance Mode</option>
+                                        <option value="Coming Soon" {{ $selectedOption == 'Coming Soon' ? 'selected' : '' }}>Coming Soon</option>
+                                </select>
+                                <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>
+                            </div>
 
                         </div>
                     </accordian>

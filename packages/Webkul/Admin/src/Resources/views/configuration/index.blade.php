@@ -341,6 +341,7 @@
             document.querySelector('.back-arrow').addEventListener('click', function() {
                 document.querySelector('#createNewPage').classList.add('d-none');
                 document.querySelector('#managePagesPage').classList.remove('d-none');
+                location.reload();
             });
             document.querySelectorAll('.capitalize-tr tr').forEach(tr => {
                 const linker = tr.querySelector('td:nth-child(2)');
