@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@if(core()->getCurrentChannel()->status == 'Online' || auth()->guard('admin')->user())
+    <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
 <head>
@@ -152,3 +153,6 @@
 </body>
 
 </html>
+@elseif(core()->getCurrentChannel()->status == 'Maintenance Mode')
+    @include('shop::mode.maintenance')
+@endif

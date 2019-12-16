@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php if(core()->getCurrentChannel()->status == 'Online' || auth()->guard('admin')->user()): ?>
+    <!DOCTYPE html>
 <html lang="<?php echo e(app()->getLocale()); ?>">
 
 <head>
@@ -161,3 +162,6 @@
 </body>
 
 </html>
+<?php elseif(core()->getCurrentChannel()->status == 'Maintenance Mode'): ?>
+    <?php echo $__env->make('shop::mode.maintenance', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php endif; ?>
