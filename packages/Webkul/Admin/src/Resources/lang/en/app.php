@@ -12,7 +12,7 @@ return [
     'layouts' => [
         'my-account' => 'My Account',
         'logout' => 'Logout',
-        'storefront' => 'Storefront',
+        'storefront' => 'Go to Storefront',
 		'subscription' => 'Subscription',
 		'get-help' => 'Get Help',
 		'manage-paystack' => 'Manage Paystack',

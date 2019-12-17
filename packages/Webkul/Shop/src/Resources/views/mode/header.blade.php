@@ -1,4 +1,4 @@
-<div class="navbar-top">
+<div class="header-maintenance">
     <div class="navbar-top-left">
         <div class="brand-logo">
             <a href="{{ route('admin.dashboard.index') }}">
@@ -56,6 +56,10 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <div  class="profile-info">
+                <a style="color: #79C142" href="{{ route('admin.dashboard.index') }}" title="{{ trans('shop::app.header.storemanager-title') }}">{{ trans('shop::app.header.storemanager') }} <i class="fas fa-external-link-alt"></i></a>
             </div>
 
         </div>
