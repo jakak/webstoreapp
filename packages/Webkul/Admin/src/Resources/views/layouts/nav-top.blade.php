@@ -58,10 +58,6 @@
                 </div>
             </div>
 
-            <div  class="profile-info">
-                <a style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}">{{ core()->getCurrentChannel()->name }} <i class="fas fa-external-link-alt"></i></a>
-            </div>
-
         </div>
     </div>
 </div>

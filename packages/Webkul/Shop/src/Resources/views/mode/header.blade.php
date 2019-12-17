@@ -59,7 +59,7 @@
             </div>
 
             <div  class="profile-info">
-                <a style="color: #79C142" href="{{ route('shop.home.index') }}" title="{{ trans('shop::app.header.storemanager-title') }}">{{ trans('shop::app.header.storemanager') }} <i class="fas fa-external-link-alt"></i></a>
+                <a style="color: #79C142" href="{{ route('admin.dashboard.index') }}" title="{{ trans('shop::app.header.storemanager-title') }}">{{ trans('shop::app.header.storemanager') }} <i class="fas fa-external-link-alt"></i></a>
             </div>
 
         </div>
