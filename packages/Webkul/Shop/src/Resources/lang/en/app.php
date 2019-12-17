@@ -34,7 +34,9 @@ return [
         'wishlist' => 'Wishlist',
         'cart' => 'Cart',
         'logout' => 'Logout',
-        'search-text' => 'Search products here'
+        'search-text' => 'Search products here',
+        'storemanager' => 'Store Manager',
+        'storemanager-title' =>  'Go to Store Manager'
     ],
 
     'minicart' => [
