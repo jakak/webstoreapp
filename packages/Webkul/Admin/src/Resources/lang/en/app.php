@@ -640,6 +640,7 @@ return [
             'currencies' => 'Currencies',
             'base-currency' => 'Base Currency',
             'root-category' => 'Root Category',
+            'store-status' => 'Store Status',
             'inventory_sources' => 'Inventory Sources',
             'design' => 'Design',
             'theme' => 'Theme',

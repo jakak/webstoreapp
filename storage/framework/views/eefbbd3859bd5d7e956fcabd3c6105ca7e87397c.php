@@ -92,6 +92,12 @@
         <?php echo view_render_event('bagisto.shop.layout.header.before'); ?>
 
 
+        <?php if(core()->getCurrentChannel()->status == 'Maintenance Mode' || core()->getCurrentChannel()->status == 'Opening Soon' && auth()->guard('admin')->user()): ?>
+            <?php echo $__env->make('shop::mode.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+        <?php endif; ?>
         <?php echo $__env->make('shop::layouts.header.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
         <?php echo view_render_event('bagisto.shop.layout.header.after'); ?>
@@ -149,6 +155,25 @@
     <?php endif; ?>
 </script>
 
+
+<script>
+    window.announcekit = (window.announcekit || { queue: [], on: function(n, x) { window.announcekit.queue.push([n, x]); }, push: function(x) { window.announcekit.queue.push(x); } });
+    window.announcekit.push({
+        "widget": "https://announcekit.app/widget/48CcJq",
+        "selector": ".announcekit-widget",
+        "version": 2,
+
+        // Style config for badge:
+        badge: {
+            style: {
+                position: "absolute",
+                top: "12px"
+            }
+        }
+    })
+</script>
+<script async src="https://cdn.announcekit.app/widget.js"></script>
+
 <script type="text/javascript" src="<?php echo e(bagisto_asset('js/shop.js')); ?>"></script>
 <script type="text/javascript" src="<?php echo e(asset('vendor/webkul/ui/assets/js/ui.js')); ?>"></script>
 
@@ -164,4 +189,6 @@
 </html>
 <?php elseif(core()->getCurrentChannel()->status == 'Maintenance Mode'): ?>
     <?php echo $__env->make('shop::mode.maintenance', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php elseif(core()->getCurrentChannel()->status == 'Opening Soon'): ?>
+    <?php echo $__env->make('shop::mode.opening-soon', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php endif; ?>

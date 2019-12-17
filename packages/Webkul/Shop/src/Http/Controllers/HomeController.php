@@ -33,9 +33,22 @@ use Webkul\Core\Repositories\SliderRepository as Sliders;
         return view($this->_config['view'])->with('sliderData',$all_sliders->toArray());
     }
 
+     /**
+      * Render opening soon mode
+      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+      */
     public function maintenance()
     {
         return view($this->_config['view']);
     }
+
+     /**
+      * Render opening soon mode
+      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+      */
+     public function openingSoon()
+     {
+         return view($this->_config['view']);
+     }
 }
 

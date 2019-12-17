@@ -91,12 +91,12 @@
                             </div>
 
                             <div class="control-group" :class="[errors.has('status') ? 'has-error' : '']">
-                                <label for="status" class="required">{{ __('admin::app.settings.channels.root-category') }}</label>
+                                <label for="status" class="required">{{ __('admin::app.settings.channels.store-status') }}</label>
                                 <?php $selectedOption = old('status') ?: $channel->status ?>
                                 <select v-validate="'required'" class="control" id="status" name="status" data-vv-as="&quot;{{ __('admin::app.settings.channels.root-category') }}&quot;">
                                         <option value="Online" {{ $selectedOption == 'online' ? 'selected' : '' }}>Online</option>
                                         <option value="Maintenance Mode" {{ $selectedOption == 'Maintenance Mode' ? 'selected' : '' }}>Maintenance Mode</option>
-                                        <option value="Coming Soon" {{ $selectedOption == 'Coming Soon' ? 'selected' : '' }}>Coming Soon</option>
+                                        <option value="Opening Soon" {{ $selectedOption == 'Opening Soon' ? 'selected' : '' }}>Opening Soon</option>
                                 </select>
                                 <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>
                             </div>
