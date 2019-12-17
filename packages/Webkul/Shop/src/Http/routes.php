@@ -286,6 +286,10 @@ Route::group(['middleware' => ['web', 'theme', 'currency']], function () {
         Route::get('/maintenance',     'Webkul\Shop\Http\Controllers\HomeController@maintenance')->defaults('_config', [
             'view' => 'shop::mode.maintenance'
         ])->name('mode.maintenance');
+
+        Route::get('/opening/soon',     'Webkul\Shop\Http\Controllers\HomeController@openingSoon')->defaults('_config', [
+            'view' => 'shop::mode.opening-soon'
+        ])->name('mode.opening.soon');
     });
 
     // External pages route starts here

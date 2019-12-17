@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <title>Maintenance Mode</title>
+    <title>Opening Soon</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,12 +41,12 @@
 
 <div id="app">
     <div class="mode-center">
-        <img src="https://res.cloudinary.com/webstore-cloud/image/upload/w_400,f_png,c_scale/v1575262569/Theme%20Manager/webstore-locked_csu6ln.svg">
+       <img src="https://res.cloudinary.com/webstore-cloud/image/upload/w_400,f_png,c_scale/v1576487786/Theme%20Manager/webstore-openingsoon-illustration_amnji2.svg">
 
         <div class="content">
-            <h1>Maintenance Mode</h1>
-            <p> Stay calm! We are in the process of improving your shopping experience.</p>
-            <p>Please check back soon.</p>
+            <h1>Opening Soon</h1>
+            <p> The wait is almost over! We're presently updating our inventory and will be open for business soon.</p>
+            <p>Follow us on our social media channels. Be the first to know when we open.</p>
 
             @foreach( App\SocialIcon::all() as $social )
                 <a href="{{$social->url}}">{!! $social->icon !!}</a>
