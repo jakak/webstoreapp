@@ -671,6 +671,10 @@ return [
             'delete-fail' => 'Slider Item Successfully Deleted'
         ],
 
+        'blog' => [
+            'set-featured-image' => 'Set Featured Image',
+        ],
+
         'footer' => [
             'post' => 'Select Post',
             'url' => 'Link URL',

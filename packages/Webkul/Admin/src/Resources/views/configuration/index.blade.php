@@ -357,6 +357,7 @@
                     .then(response => {
                         for (const key in response) {
                             if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                console.log(response[key])
                                 document.querySelector('[name='+key+']').value = response[key];
                                 if (key === 'url') {
                                     document.querySelector('.page_url').innerHTML = response[key];
@@ -365,8 +366,18 @@
                                     document.querySelector('[name='+key+']').innerHTML = response[key];
                                     initEditor();
                                 }
-                                else if (key === 'status') {
+                                if (key === 'status') {
                                     // TODO: Figure out how to update the select2 component.
+                                }
+                                else if (key === 'image') {
+                                    var image = document.querySelector('.has-image').querySelector('img');
+                                    image.src  = '/storage/'+response[key];
+
+                                    if (response[key] === null) {
+                                        image.src = '../../../vendor/webkul/ui/assets/images/placeholder-icon.svg';
+                                    }
+
+
                                 }
                             }
 
