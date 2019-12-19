@@ -18,7 +18,7 @@
         {!! $postGrid->render() !!}
     </div>
 </div>
-<form method="POST" action="{{ route('admin.configuration.post.create') }}" class="d-none" id="createNewPage">
+<form method="POST" action="{{ route('admin.configuration.post.create') }}" enctype="multipart/form-data" class="d-none" id="createNewPage">
     <div class="page-header">
 
         <div class="page-title">
@@ -53,6 +53,16 @@
                     </select>
                 </div>
             </div>
+
+            <div class="control-group" :class="[errors.has('image') ? 'has-error' : '']">
+                <label for="new_image">{{ __('admin::app.settings.sliders.image') }}</label>
+                <image-wrapper
+                    :button-label="'{{ __('admin::app.settings.blog.set-featured-image') }}'" :images='"{{  '../../../vendor/webkul/ui/assets/images/placeholder-icon.svg' }}"' name="image"
+                    :multiple="false" sub-title="Recommended slider size is (1500 * 600)px" size="ex-large"
+                >
+                </image-wrapper>
+            </div>
+
             <div class="control-group">
                 <label for="page_content">Post Content</label>
                 <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>

@@ -337,38 +337,6 @@ class ConfigurationController extends Controller
         }
     }
 
-    /**
-     * Create blog post
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function createNewPost(Request $request)
-    {
-        if ($request->input('title') !== ''
-            && $request->input('url') !== ''
-            && $request->input('content') !== '') {
-            if ($request->has('id')) {
-//                Update the page
-                $post = Blog::find($request->all()['id']);
-                $post->update($request->all());
-                session()->flash('success', 'Post updated successfully');
-                return redirect()->back();
-            } else {
-                try {
-
-                    $post = Blog::create($request->all());
-                    session()->flash('success', 'Post created successfully');
-                    return redirect()->back();
-                } catch (\Exception $e) {
-                    session()->flash('error', $e->getMessage());
-                    return redirect()->back();
-                }
-            }
-        } else {
-            session()->flash('error', 'Some required content are missing.');
-            return redirect()->back();
-        }
-    }
 
     /**
      *  Create New Store Info
@@ -408,6 +376,53 @@ class ConfigurationController extends Controller
     }
 
     /**
+     * Create blog post
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createNewPost(Request $request)
+    {
+
+        $postImage = $this->postImage($request);
+
+        if ($request->input('title') !== ''
+            && $request->input('url') !== ''
+            && $request->input('content') !== '') {
+            if ($request->has('id')) {
+             // Update the page
+                $post = Blog::find($request->all()['id']);
+
+                // Check if file exists in database
+                if($post->image !== null) {
+                    $explode = explode('/', $post->image);
+                    // Check if file exists in file storage
+                    if (file_exists(storage_path('app/public/post/image/' . $explode[3]))) {
+                        unlink(storage_path('app/public/post/image/' . $explode[3]));
+                    }
+                }
+                $post->update($request->all());
+                $post->update(['image' => $postImage]);
+                session()->flash('success', 'Post updated successfully');
+                return redirect()->back();
+            } else {
+                try {
+
+                    $post = Blog::create($request->except('attachments'));
+                    $post->update(['image' => $postImage]);
+                    session()->flash('success', 'Post created successfully');
+                    return redirect()->back();
+                } catch (\Exception $e) {
+                    session()->flash('error', $e->getMessage());
+                    return redirect()->back();
+                }
+            }
+        } else {
+            session()->flash('error', 'Some required content are missing.');
+            return redirect()->back();
+        }
+    }
+
+    /**
      * Delete blog post
      * @param $post
      * @return \Illuminate\Http\RedirectResponse
@@ -415,9 +430,30 @@ class ConfigurationController extends Controller
     public function deletePost($post)
     {
         $post = Blog::where('title', $post)->first();
+        // Check if file exists in database
+        if($post->image !== null) {
+            $explode = explode('/', $post->image);
+            unlink(storage_path('app/public/post/image/' . $explode[3]));
+        }
         $post->delete();
 
         session()->flash('success', 'Post deleted successfully.');
         return redirect()->back();
+    }
+
+    /**
+     * Handle logic to upload featured image
+     * @param $request
+     * @return string
+     */
+    private function postImage($request)
+    {
+        foreach ($request->attachments as $imageId => $image) {
+            $file = 'attachments' . '.' . $imageId;
+            $dir = 'post/image/';
+            if ($request->hasFile($file)) {
+                return request()->file($file)->store($dir);
+            }
+        }
     }
 }

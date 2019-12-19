@@ -40,6 +40,10 @@
             display: inline-block;
             padding-bottom: 7px;
         }
+        img.content-center {
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -64,6 +68,9 @@
                 <span class="">{{ $post->title }}</span>
             </div></h3>
         <div class="content-container">
+            @if($post->image !== null)
+                <img  class="content-center" src="{{ Storage::url($post->image) }}" width="500" height="300">
+            @endif
             {!! $post->content !!}
         </div>
 

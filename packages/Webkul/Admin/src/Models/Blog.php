@@ -8,7 +8,7 @@ class Blog extends Model
 {
     protected $table = 'blogs';
 
-    public $fillable = ['title', 'url', 'status', 'content', 'meta_title', 'meta_keywords', 'meta_description'];
+    public $fillable = ['title', 'url', 'status', 'content', 'image', 'meta_title', 'meta_keywords', 'meta_description'];
 
     protected $except = ['_token' ];
 }
