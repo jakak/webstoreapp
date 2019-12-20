@@ -44,6 +44,29 @@
             display: block;
             margin: 0 auto;
         }
+        /* Mobile phones (portrait and landscape) ---------- */
+        @media screen and (max-width: 767px) {
+            img.content-center {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        /* Tablets and iPads (portrait and landscape) ---------- */
+        @media screen and (min-width: 768px) and (max-width: 1025px){
+            img.content-center {
+                width: 100%;
+                height: 300px;
+            }
+        }
+
+        /* High resolution desktops and laptops ---------- */
+        @media screen and (min-width: 1280px) {
+            img.content-center {
+                width: 1270px;
+                height: 500px;
+            }
+        }
     </style>
 </head>
 
@@ -69,7 +92,7 @@
             </div></h3>
         <div class="content-container">
             @if($post->image !== null)
-                <img  class="content-center" src="{{ Storage::url($post->image) }}" width="500" height="300">
+                <img  class="content-center" src="{{ Storage::url($post->image) }}">
             @endif
             {!! $post->content !!}
         </div>
