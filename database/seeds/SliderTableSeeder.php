@@ -16,19 +16,19 @@ class SliderTableSeeder extends Seeder
 
         Slider::create([
             'title' => 'Demo Slider 1',
-            'path' => 'Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
+            'path' => 'default_slider/Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
             'channel_id' => 1
         ]);
 
         Slider::create([
             'title' => 'Demo Slider 2',
-            'path' => 'Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
+            'path' => 'default_slider/Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
             'channel_id' => 1
         ]);
 
         Slider::create([
             'title' => 'Demo Slider 3',
-            'path' => 'Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
+            'path' => 'default_slider/Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
             'channel_id' => 1
         ]);
     }

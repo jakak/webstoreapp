@@ -106,7 +106,10 @@ class SliderRepository extends Repository
         if ($uploaded) {
             $sliderItem = $this->find($id);
 
-            $deleted = Storage::delete($sliderItem->path);
+            $sliderItem = explode('/', $sliderItem->path);
+            if (file_exists(storage_path('app/public/slider_images/'.$channelName.'/' . $sliderItem[1]))) {
+                unlink(storage_path('app/public/slider_images/' . $channelName . '/' . $sliderItem[1]));
+            }
 
             $data['path'] = $uploaded;
         } else {
