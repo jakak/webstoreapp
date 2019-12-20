@@ -44,6 +44,7 @@ class SliderRepository extends Repository
     public function save(array $data)
     {
         $channelName = $this->channel->find($data['channel_id'])->name;
+        dd($channelName);
 
         $dir = 'slider_images/' . $channelName;
 
