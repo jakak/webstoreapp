@@ -389,19 +389,21 @@ class ConfigurationController extends Controller
             && $request->input('url') !== ''
             && $request->input('content') !== '') {
             if ($request->has('id')) {
-             // Update the page
+                // Update the page
                 $post = Blog::find($request->all()['id']);
 
                 // Check if file exists in database
-                if($post->image !== null) {
+                if ($post->image !== null && $postImage !== null) {
                     $explode = explode('/', $post->image);
                     // Check if file exists in file storage
                     if (file_exists(storage_path('app/public/post/image/' . $explode[3]))) {
                         unlink(storage_path('app/public/post/image/' . $explode[3]));
                     }
                 }
+
                 $post->update($request->all());
-                $post->update(['image' => $postImage]);
+                $postImage !== null ? $post->update(['image' => $postImage]) : '';
+
                 session()->flash('success', 'Post updated successfully');
                 return redirect()->back();
             } else {
