@@ -15,19 +15,19 @@ class SliderTableSeeder extends Seeder
         Slider::truncate();
 
         Slider::create([
-            'title' => 'Demo Slider 1',
+            'title' => 'Sample Slider 1',
             'path' => 'default_slider/Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
             'channel_id' => 1
         ]);
 
         Slider::create([
-            'title' => 'Demo Slider 2',
+            'title' => 'Sample Slider 2',
             'path' => 'default_slider/Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
             'channel_id' => 1
         ]);
 
         Slider::create([
-            'title' => 'Demo Slider 3',
+            'title' => 'Sample Slider 3',
             'path' => 'default_slider/Zbleq21bzaBfYG02iWpu3MyX2fUY0Hg9FJNWC9at.jpeg',
             'channel_id' => 1
         ]);
