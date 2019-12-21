@@ -2,6 +2,7 @@
 
 namespace Webkul\Admin\Http\Controllers;
 
+use App\FooterPage;
 use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -432,6 +433,11 @@ class ConfigurationController extends Controller
     public function deletePost($post)
     {
         $post = Blog::where('title', $post)->first();
+        FooterPage::where('url', $post->url)->update([
+            'page_id' => 'none',
+            'name' => 'none',
+            'url' => 'none',
+        ]);
         // Check if file exists in database
         if($post->image !== null) {
             $explode = explode('/', $post->image);

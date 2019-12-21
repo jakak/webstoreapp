@@ -48,7 +48,7 @@
         @media screen and (max-width: 767px) {
             img.content-center {
                 width: 100%;
-                height: 200px;
+                height: 100%;
             }
         }
 
@@ -56,15 +56,15 @@
         @media screen and (min-width: 768px) and (max-width: 1025px){
             img.content-center {
                 width: 100%;
-                height: 300px;
+                height: 100%;
             }
         }
 
         /* High resolution desktops and laptops ---------- */
         @media screen and (min-width: 1280px) {
             img.content-center {
-                width: 1270px;
-                height: 500px;
+                width: 100%;
+                height: 100%;
             }
         }
     </style>

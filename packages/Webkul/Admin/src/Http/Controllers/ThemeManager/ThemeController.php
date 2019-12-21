@@ -114,7 +114,7 @@ class ThemeController extends Controller
 
             DB::commit();
 
-            session()->flash('success', 'Pages published successfully');
+            session()->flash('success', 'Footer section has been successfully updated.');
             return redirect()->back();
 
         }  catch (\Exception $e) {
