@@ -10,11 +10,11 @@
             </a>
         </li>
         <li
-            @if (url()->current() === route('admin.account.subscription'))
+            @if (url()->current() === route('admin.account.subscription') || url()->current() === route('admin.account.payment-method'))
             class="active"
             @endif
         >
-            <a href="#">
+            <a href="{{ route('admin.account.subscription') }}">
                 Subscription
                 <i class="angle-right-icon"></i>
             </a>

@@ -179,6 +179,26 @@ return [
         'current-password' => 'Current Password'
     ],
 
+    'subscription' => [
+        'title' => 'Subscription',
+        'billing' => 'Billing information',
+        'payment-method' => 'Payment Method',
+        'subscribe' => 'Subscribe'
+    ],
+
+    'select-plan' => [
+        'title' => 'Select Subscription Plan',
+        'make-payment' => 'Make Payment',
+        'plan' => 'Subscription Plan',
+        'standard' => 'Standard',
+    ],
+
+    'payment-method' => [
+        'title' => 'Payment Methods',
+        'add-payment' => 'Add Payment Method',
+
+    ],
+
     'users' => [
         'forget-password' => [
             'title' => 'Forget Password',
