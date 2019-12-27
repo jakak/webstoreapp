@@ -182,7 +182,7 @@ return [
     'subscription' => [
         'title' => 'Subscription',
         'billing' => 'Billing information',
-        'payment-method' => 'Payment Method',
+        'payment-method' => 'Payment Methods',
         'subscribe' => 'Subscribe'
     ],
 

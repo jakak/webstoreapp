@@ -43,7 +43,7 @@
                 <h2><p>You have 14 days left in your trial</p></h2>
                 <p>Scale your Webstore your way - no hidden fees</p>
                 <hr class="horizontal-line">
-                <p>Your Subscription are renewed using your active payment method. <a href="">Learn more</a> </p>
+                <p>Your subscription are renewed using your active payment method. <a href="">Learn more</a> </p>
                 <div class="table">
                     <div class="grid-container">
                         <table class="table">
@@ -53,7 +53,7 @@
                                     Subscription Plan
                                 </th>
                                 <th>
-                                    Start
+                                    Trial Start
                                 </th>
                                 <th>
                                     Trial Ends
@@ -75,8 +75,8 @@
                                 <td>{{ '22/12/2019' }}</td>
                                 <td>{{ '04/01/2020' }}</td>
                                 <td>{{ 'Jan 04, 2020' }}</td>
-                                <td>{{ 'VISA *** *** *** 232441' }}</td>
-                                <td>{{ 'Free Trail' }}</td>
+                                <td>{{ 'VISA *** *** *** 4105' }}</td>
+                                <td>{{ 'Free Trial' }}</td>
                             </tr>
                             </tbody>
                         </table>
