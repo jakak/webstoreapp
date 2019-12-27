@@ -27,6 +27,7 @@
                 <div class="page-header">
                     <div class="page-title">
                         <h1>
+                            <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? window.location = '{{ url('/storemanager/account/subscription') }}' :  history.go(-1) ;"></i>
                             {{ __('admin::app.payment-method.title') }}
                         </h1>
                     </div>
@@ -62,7 +63,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{{ 'VISA *** *** *** 736282' }}</td>
+                                <td>{{ 'VISA *** *** *** 4105' }}</td>
                                 <td>{{ 'John Doe' }}</td>
                                 <td>{{ '04/01/2020' }}</td>
                                 <td>{{ 'Naira' }}</td>
