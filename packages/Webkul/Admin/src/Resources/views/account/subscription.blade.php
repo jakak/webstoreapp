@@ -43,7 +43,7 @@
                 <h2><p>You have 14 days left in your trial</p></h2>
                 <p>Scale your Webstore your way - no hidden fees</p>
                 <hr class="horizontal-line">
-                <p>Your subscription are renewed using your active payment method. <a href="">Learn more</a> </p>
+                <p>Your subscriptions are renewed using your active payment method. <a href="">Learn more</a> </p>
                 <div class="table">
                     <div class="grid-container">
                         <table class="table">
@@ -65,7 +65,7 @@
                                     Payment Method
                                 </th>
                                 <th>
-                                    Total
+                                    Amount
                                 </th>
                             </tr>
                             </thead>
@@ -90,12 +90,11 @@
 
                 <div style="margin-bottom: 80px">
                     <img  src="https://res.cloudinary.com/webstore-cloud/image/upload/c_scale,w_250/v1567929421/Paystack/paystack-badge-cards_nji4dn.png">
-                    <button onclick="subscription()" style="float: right;" type="submit" class="btn btn-md btn-primary">
+                    <a onclick="subscription()" style="float: right;" href="{{ route('admin.account.select-plan') }}" class="btn btn-md btn-primary">
                         {{ __('admin::app.subscription.subscribe') }}
-                    </button>
+                    </a>
                 </div>
             </div>
-            @includeIf('admin::account.select-plan')
         </div>
     </div>
 @stop

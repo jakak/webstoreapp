@@ -9,11 +9,32 @@
         .modal-container {
             display: none;
             width: 580px !important;
-            left: 52% !important;
-            padding: 0px 10px 15px;
+            left: 58% !important;
+            padding: 0px 15px 15px;
         }
         .right {
             float: right;
+        }
+        .space {
+            margin-left: 9px;
+        }
+        .btn-outline-primary {
+            background: #fff;
+            color: #79c142 !important;
+            border: 1px solid #79c142;
+            padding: 8px 16px !important;
+        }
+        .btn-outline-primary:hover {
+            background: #79c142;
+            color: #fff !important;
+            position: initial;
+        }
+        .md-center {
+            padding-top: 13px;
+        }
+        img {
+            float: left;
+            margin-right:5px;
         }
     </style>
 @stop
@@ -67,21 +88,26 @@
                                 <td>{{ 'John Doe' }}</td>
                                 <td>{{ '04/01/2020' }}</td>
                                 <td>{{ 'Naira' }}</td>
-                                <td><a class="btn btn-md btn-primary" href="">Remove Card</a> </td>
+                                <td><a class="btn btn-md btn-primary" onclick="removeCardModal()" href="#">Remove Card</a> </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
+                {{-- Add Payment Methods modal --}}
                 <div id="paymentModal" class="modal-container">
                     <div><a class="right" href="#" onclick="paymentModal()"><i class="icon remove-icon"></i></a> <h2>Add New Card</h2></div>
-
-                    <p>This is the payment method where your subscriptions will be deducted from. Please ensure these payment method belongs to you.</p>
-                    <p>When you add new payment method, we will debit your card the sum of  ₦100 for card verification only to ensure that your card is valid.</p>
-
+                    <p>Your credit or debit card will be charged for new subscriptions or to renew an existing subscription.</p>
                     <a href="" class="btn btn-md btn-primary right">Add Credit/Debit Card</a>
+                </div>
 
+                {{-- Remove Card Modal --}}
+                <div id="removeCardModal" class="modal-container">
+                    <div><a class="right" href="#" onclick="removeCardModal()"><i class="icon remove-icon"></i></a> <h2>Remove this payment method?</h2></div>
+                    <img src="{{ URL::to('vendor/webkul/admin/assets/images/store-manager-cancel.svg') }}"> <p class="md-center">Removing it means you won't be able to use this payment method for Webstore Products and services without adding it again.</p>
+
+                    <a href="" class="btn btn-md btn-primary right space">Remove</a> &nbsp; <button  onclick="removeCardModal()" class="right btn btn-md btn-outline-primary right">Cancel</button>
                 </div>
 
             </div>
@@ -92,6 +118,15 @@
     <script>
         function paymentModal() {
             var modal = document.getElementById("paymentModal");
+            if (modal.style.display === "block") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+            }
+        }
+
+        function removeCardModal() {
+            var modal = document.getElementById("removeCardModal");
             if (modal.style.display === "block") {
                 modal.style.display = "none";
             } else {

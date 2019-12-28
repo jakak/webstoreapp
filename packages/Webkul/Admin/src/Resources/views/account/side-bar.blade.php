@@ -10,7 +10,9 @@
             </a>
         </li>
         <li
-            @if (url()->current() === route('admin.account.subscription') || url()->current() === route('admin.account.payment-method'))
+            @if (url()->current() === route('admin.account.subscription') ||
+                url()->current() === route('admin.account.payment-method') ||
+                url()->current() === route('admin.account.select-plan'))
             class="active"
             @endif
         >

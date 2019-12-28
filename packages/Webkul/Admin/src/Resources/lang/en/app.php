@@ -190,7 +190,10 @@ return [
         'title' => 'Select Subscription Plan',
         'make-payment' => 'Make Payment',
         'plan' => 'Subscription Plan',
+        'duration' => 'Duration',
         'standard' => 'Standard',
+        'premium' => 'Premium',
+        'enterprise' => 'Enterprise',
     ],
 
     'payment-method' => [

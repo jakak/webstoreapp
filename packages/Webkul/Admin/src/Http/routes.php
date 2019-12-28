@@ -578,6 +578,10 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::account.payment-method'
             ])->name('admin.account.payment-method');
 
+            Route::get('/account/subscription/plan', 'Webkul\User\Http\Controllers\AccountController@subscriptionPlan')->defaults('_config', [
+                'view' => 'admin::account.select-plan'
+            ])->name('admin.account.select-plan');
+
             Route::get('/account/webstore-version', 'Webkul\User\Http\Controllers\AccountController@storeVersion')->defaults('_config', [
                 'view' => 'admin::account.webstore'
             ])->name('admin.account.webstore');
