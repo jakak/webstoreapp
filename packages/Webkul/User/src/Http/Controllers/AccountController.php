@@ -115,4 +115,9 @@ class AccountController extends Controller
     {
         return view($this->_config['view']);
     }
+
+    public function subscriptionPlan()
+    {
+        return view($this->_config['view']);
+    }
 }
