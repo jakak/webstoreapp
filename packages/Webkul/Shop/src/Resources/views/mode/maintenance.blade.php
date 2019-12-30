@@ -36,25 +36,13 @@
 
         /* Mobile phones (portrait and landscape) ---------- */
         @media screen and (max-width: 767px) {
-            div.img {
-                width: 100% !important;
-                height: 100%  !important;
+            img {
+                width: 100%;
             }
             .mode-center {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                text-align: center;
-                padding-right: 28px;
-                margin-left: -6%;
-                padding-bottom: 90px;
-                transform: translate(-30%, -38%);
-            }
-            .content {
-                height: 50px;
-                left: 50%;
-                text-align: center;
-                padding-top: 20px;
+                width: 100%;
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
 
