@@ -84,7 +84,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{{ 'VISA *** *** *** 4105' }}</td>
+                                <td>{{ 'VISA **** **** **** 4105' }}</td>
                                 <td>{{ 'John Doe' }}</td>
                                 <td>{{ '04/01/2020' }}</td>
                                 <td>{{ 'Naira' }}</td>
@@ -105,7 +105,7 @@
                 {{-- Remove Card Modal --}}
                 <div id="removeCardModal" class="modal-container">
                     <div><a class="right" href="#" onclick="removeCardModal()"><i class="icon remove-icon"></i></a> <h2>Remove this payment method?</h2></div>
-                    <img src="{{ URL::to('vendor/webkul/admin/assets/images/store-manager-cancel.svg') }}"> <p class="md-center">Removing it means you won't be able to use this payment method for Webstore Products and services without adding it again.</p>
+                    <img src="{{ URL::to('vendor/webkul/admin/assets/images/store-manager-cancel.svg') }}"> <p class="md-center">Removing it means you won't be able to use this payment method for Webstore products and services without adding it again.</p>
 
                     <a href="" class="btn btn-md btn-primary right space">Remove</a> &nbsp; <button  onclick="removeCardModal()" class="right btn btn-md btn-outline-primary right">Cancel</button>
                 </div>
