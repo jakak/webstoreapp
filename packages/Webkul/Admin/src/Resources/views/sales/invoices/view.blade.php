@@ -18,11 +18,6 @@
                 </h1>
             </div>
 
-            <div class="page-action">
-                <a href="{{ route('admin.sales.invoices.print', $invoice->id) }}" class="btn btn-md btn-primary">
-                    {{ __('admin::app.sales.invoices.print') }}
-                </a>
-            </div>
         </div>
 
         <div class="page-content">
@@ -273,6 +268,12 @@
                     </div>
                 </accordian>
 
+            </div>
+            <hr class="horizontal-line">
+            <div class="form-bottom">
+                <a href="{{ route('admin.sales.invoices.print', $invoice->id) }}" class="btn btn-md btn-primary">
+                    {{ __('admin::app.sales.invoices.print') }}
+                </a>
             </div>
         </div>
 
