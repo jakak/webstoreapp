@@ -30,7 +30,7 @@
             position: initial;
         }
         .md-center {
-            padding-top: 13px;
+            padding-top: 8px;
         }
         img {
             float: left;
@@ -98,7 +98,7 @@
                 {{-- Add Payment Methods modal --}}
                 <div id="paymentModal" class="modal-container">
                     <div><a class="right" href="#" onclick="paymentModal()"><i class="icon remove-icon"></i></a> <h2>Add New Card</h2></div>
-                    <p>Your credit or debit card will be charged for new subscriptions or to renew an existing subscription.</p>
+                    <img src="{{ URL::to('vendor/webkul/admin/assets/images/add-card.svg') }}"> <p class="md-center">Your credit or debit card will be charged for new subscriptions or to renew an existing subscription.</p>
                     <a href="" class="btn btn-md btn-primary right">Add Credit/Debit Card</a>
                 </div>
 
