@@ -116,4 +116,8 @@
       width: 500px !important;
       height: 200px !important;
     }
+  .ex-large {
+    width: 523px !important;
+    height: 200px !important;
+  }
 </style>

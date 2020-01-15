@@ -45,7 +45,7 @@
                                 <a href="https://dashboard.paystack.com" target="_blank">{{ trans('admin::app.layouts.manage-paystack') }}</a>
                             </li>
                             <li>
-                                <a href="https://help.webstore.ng" target="_blank">{{ trans('admin::app.layouts.get-support') }}</a>
+                                <a href="https://help.webstore.ng" target="_blank">{{ trans('admin::app.layouts.get-help') }}</a>
                             </li>
                         </ul>
                         <hr style="height:1px; border:none; color:#e8e8e8; background:#e8e8e8;">
@@ -56,10 +56,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <div  class="profile-info">
-                <a style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}">{{ core()->getCurrentChannel()->name }} <i class="fas fa-external-link-alt"></i></a>
             </div>
 
         </div>

@@ -748,7 +748,7 @@ class Cart {
         }
         if ($cart->shipping_method != 'free_free') {
             $shipping = Location::find($cart->shipping_method);
-            
+
             if ($shipping) {
                 $cart->grand_total = (float) $cart->grand_total + $shipping->rate;
                 $cart->base_grand_total = (float) $cart->base_grand_total + $shipping->rate;
@@ -827,7 +827,7 @@ class Cart {
                     }
                 }
             }
-            
+
             return true;
         }
     }
@@ -958,7 +958,7 @@ class Cart {
             $shippingPrice = $data['selected_shipping_rate']['price'];
             $baseShippingPrice = $data['selected_shipping_rate']['base_price'];
         }
-        
+
 
         $finalData = [
             'cart_id' => $this->getCart()->id,

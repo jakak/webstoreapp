@@ -44,6 +44,7 @@ class SliderRepository extends Repository
     public function save(array $data)
     {
         $channelName = $this->channel->find($data['channel_id'])->name;
+        dd($channelName);
 
         $dir = 'slider_images/' . $channelName;
 
@@ -105,7 +106,10 @@ class SliderRepository extends Repository
         if ($uploaded) {
             $sliderItem = $this->find($id);
 
-            $deleted = Storage::delete($sliderItem->path);
+            $sliderItem = explode('/', $sliderItem->path);
+            if (file_exists(storage_path('app/public/slider_images/'.$channelName.'/' . $sliderItem[1]))) {
+                unlink(storage_path('app/public/slider_images/' . $channelName . '/' . $sliderItem[1]));
+            }
 
             $data['path'] = $uploaded;
         } else {

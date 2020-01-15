@@ -6,6 +6,7 @@
                 :key='image.id'
                 :image="image"
                 :input-name="inputName"
+                :name="inputName"
                 :remove-button-label="removeButtonLabel"
                 @onRemoveImage="removeImage($event)"
                 :size="size"

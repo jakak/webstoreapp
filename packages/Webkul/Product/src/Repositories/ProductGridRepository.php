@@ -49,7 +49,8 @@ class ProductGridRepository extends Repository
                 'name' => $product->name,
                 'attribute_family_name' => $product->toArray()['attribute_family']['name'],
                 'price' => $this->price->getMinimalPrice($product),
-                'status' => $product->status
+                'status' => $product->status,
+                'quantity' => ''
             ];
 
             $qty = 0;
@@ -58,8 +59,9 @@ class ProductGridRepository extends Repository
                 $gridObject['type'] = $product->type;
             }
 
-            foreach ($product->toArray()['inventories'] as $inventorySource) {
-                $qty = $qty + $inventorySource['qty'];
+            $inventorySources = $product->fresh()->toArray()['inventories'];
+            foreach ($inventorySources as $inventorySource) {
+                $qty =+ $inventorySource['qty'];
             }
 
             $gridObject['quantity'] = $qty;
@@ -73,7 +75,8 @@ class ProductGridRepository extends Repository
                 'name' => $product->name,
                 'attribute_family_name' => $product->toArray()['attribute_family']['name'],
                 'price' => $this->price->getMinimalPrice($product),
-                'status' => $product->status
+                'status' => $product->status,
+                'quantity' => Null
             ];
             $qty = 0;
 
@@ -91,7 +94,8 @@ class ProductGridRepository extends Repository
                     'name' => $variant->name,
                     'attribute_family_name' => $variant->toArray()['attribute_family']['name'],
                     'price' => $this->price->getMinimalPrice($variant),
-                    'status' => $variant->status
+                    'status' => $variant->status,
+                    'quantity' => Null
                 ];
 
                 if ($variant->type == 'configurable') {
@@ -100,7 +104,7 @@ class ProductGridRepository extends Repository
                     $qty = 0;
 
                     foreach ($variant->toArray()['inventories'] as $inventorySource) {
-                        $qty = $qty + $inventorySource['qty'];
+                        $qty =+ $inventorySource['qty'];
                     }
 
                     $gridObject['quantity'] = $qty;

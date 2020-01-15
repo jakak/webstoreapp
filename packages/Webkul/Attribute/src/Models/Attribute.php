@@ -9,7 +9,7 @@ use Webkul\Attribute\Models\AttributeGroup;
 
 class Attribute extends TranslatableModel
 {
-    use Rememberable;
+//    use Rememberable;
 
     public $translatedAttributes = ['name'];
 

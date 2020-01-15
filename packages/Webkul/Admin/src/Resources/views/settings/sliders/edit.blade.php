@@ -16,11 +16,6 @@
                     </h1>
                 </div>
 
-                <div class="page-action">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ __('admin::app.settings.sliders.save-btn-title') }}
-                    </button>
-                </div>
             </div>
 
             <div class="page-content">
@@ -33,12 +28,12 @@
                         <input type="text" class="control" name="title" v-validate="'required'" data-vv-as="&quot;{{ __('admin::app.settings.sliders.title') }}&quot;" value="{{ $slider->title ?: old('title') }}">
                         <span class="control-error" v-if="errors.has('title')">@{{ errors.first('title') }}</span>
                     </div>
-
+                    <input type="hidden" name="channel_id" value="{{ core()->getDefaultChannel()->id }}">
                     <div class="control-group">
                         <image-wrapper
                             :button-label="'{{ __('admin::app.settings.sliders.upload-slider') }}'" input-name="image" url-transform="no-transform"
                             :multiple="false" :images='"{{ url('storage/'.$slider->path) }}"' sub-title="Recommended slider size is (1500 * 600)px"
-                            size="large"
+                            size="ex-large"
                         ></image-wrapper>
                     </div>
 
@@ -53,6 +48,12 @@
                     </div>
 
                 </div>
+                <hr class="horizontal-line">
+                <div class="form-bottom">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ __('admin::app.settings.sliders.save-btn-title') }}
+                    </button>
+                </div>
             </div>
         </form>
     </div>
@@ -66,7 +67,7 @@
             tinymce.init({
                 selector: 'textarea#tiny',
                 height: 200,
-                width: "100%",
+                width: "70%",
                 plugins: 'image imagetools media wordcount save fullscreen code',
                 toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
                 image_advtab: true,

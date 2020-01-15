@@ -1,3 +1,4 @@
-*
-!public/
+/db-blade-compiler
+/public/*
+!/public/default_slider/
 !.gitignore

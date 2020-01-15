@@ -2,11 +2,13 @@
 
 namespace Webkul\Admin\Http\Controllers;
 
+use App\FooterPage;
 use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Webkul\Admin\Facades\Configuration;
+use Webkul\Admin\Models\Blog;
 use Webkul\Core\Models\Channel;
 use Webkul\Core\Repositories\CoreConfigRepository as CoreConfig;
 use Webkul\Core\Tree;
@@ -336,32 +338,6 @@ class ConfigurationController extends Controller
         }
     }
 
-    public function createNewPage(Request $request)
-    {
-        if ($request->input('name') !== ''
-            && $request->input('url') !== ''
-            && $request->input('content') !== '') {
-            if ($request->has('id')) {
-//                Update the page
-                $page = Page::find($request->all()['id']);
-                $page->update($request->all());
-                session()->flash('success', 'Page updated successfully');
-                return redirect()->back();
-            } else {
-                try {
-                    $page = Page::create($request->all());
-                    session()->flash('success', 'Page created successfully');
-                    return redirect()->back();
-                } catch (\Exception $e) {
-                    session()->flash('error', $e->getMessage());
-                    return redirect()->back();
-                }
-            }
-        } else {
-            session()->flash('error', 'Some required content are missing.');
-            return redirect()->back();
-        }
-    }
 
     /**
      *  Create New Store Info
@@ -395,17 +371,97 @@ class ConfigurationController extends Controller
     public function getPageDetails($pageSlug)
     {
         $str = str_replace('-', ' ', $pageSlug);
-        $page = Page::where('name', $str)->first();
+        $post = Blog::where('title', $str)->first();
 
-        return $page;
+        return $post;
     }
 
-    public function deletePage($page)
+    /**
+     * Create blog post
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createNewPost(Request $request)
     {
-        $page = Page::where('name', $page)->first();
-        $page->delete();
 
-        session()->flash('success', 'Page deleted successfully.');
+        $postImage = $this->postImage($request);
+
+        if ($request->input('title') !== ''
+            && $request->input('url') !== ''
+            && $request->input('content') !== '') {
+            if ($request->has('id')) {
+                // Update the page
+                $post = Blog::find($request->all()['id']);
+
+                // Check if file exists in database
+                if ($post->image !== null && $postImage !== null) {
+                    $explode = explode('/', $post->image);
+                    // Check if file exists in file storage
+                    if (file_exists(storage_path('app/public/post/image/' . $explode[3]))) {
+                        unlink(storage_path('app/public/post/image/' . $explode[3]));
+                    }
+                }
+
+                $post->update($request->all());
+                $postImage !== null ? $post->update(['image' => $postImage]) : '';
+
+                session()->flash('success', 'Post updated successfully');
+                return redirect()->back();
+            } else {
+                try {
+
+                    $post = Blog::create($request->except('attachments'));
+                    $post->update(['image' => $postImage]);
+                    session()->flash('success', 'Post created successfully');
+                    return redirect()->back();
+                } catch (\Exception $e) {
+                    session()->flash('error', $e->getMessage());
+                    return redirect()->back();
+                }
+            }
+        } else {
+            session()->flash('error', 'Some required content are missing.');
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Delete blog post
+     * @param $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deletePost($post)
+    {
+        $post = Blog::where('title', $post)->first();
+        FooterPage::where('url', $post->url)->update([
+            'page_id' => 'none',
+            'name' => 'none',
+            'url' => 'none',
+        ]);
+        // Check if file exists in database
+        if($post->image !== null) {
+            $explode = explode('/', $post->image);
+            unlink(storage_path('app/public/post/image/' . $explode[3]));
+        }
+        $post->delete();
+
+        session()->flash('success', 'Post deleted successfully.');
         return redirect()->back();
+    }
+
+    /**
+     * Handle logic to upload featured image
+     * @param $request
+     * @return string
+     */
+    private function postImage($request)
+    {
+        foreach ($request->attachments as $imageId => $image) {
+            $file = 'attachments' . '.' . $imageId;
+            $dir = 'post/image/';
+            if ($request->hasFile($file)) {
+                return request()->file($file)->store($dir);
+            }
+        }
     }
 }

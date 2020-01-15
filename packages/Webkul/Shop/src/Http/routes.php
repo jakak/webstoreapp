@@ -114,6 +114,9 @@ Route::group(['middleware' => ['web', 'theme', 'currency']], function () {
 
     //customer routes starts here
     Route::prefix('customer')->group(function () {
+//        Route::get('/maintenance', function() {
+//            dd("yes");
+//        });
         // forgot Password Routes
         // Forgot Password Form Show
         Route::get('/forgot-password', 'Webkul\Customer\Http\Controllers\ForgotPasswordController@create')->defaults('_config', [
@@ -277,8 +280,20 @@ Route::group(['middleware' => ['web', 'theme', 'currency']], function () {
             });
         });
     });
+
+    // Switch mode for customers
+    Route::prefix('mode')->group(function () {
+        Route::get('/maintenance',     'Webkul\Shop\Http\Controllers\HomeController@maintenance')->defaults('_config', [
+            'view' => 'shop::mode.maintenance'
+        ])->name('mode.maintenance');
+
+        Route::get('/opening/soon',     'Webkul\Shop\Http\Controllers\HomeController@openingSoon')->defaults('_config', [
+            'view' => 'shop::mode.opening-soon'
+        ])->name('mode.opening.soon');
+    });
+
     // External pages route starts here
-    Route::get('/pages/{page}', 'App\Http\Controllers\PageController@showPage');
+    Route::get('/posts/{post}', 'App\Http\Controllers\PageController@showPost');
     Route::get('/{page}', 'App\Http\Controllers\PageController@showStoreInfo');
     //customer routes end here
 });
