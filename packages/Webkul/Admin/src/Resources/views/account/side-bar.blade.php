@@ -22,11 +22,11 @@
             </a>
         </li>
         <li
-            @if (url()->current() === route('admin.account.webstore'))
+            @if (url()->current() === route('admin.account.changelog'))
             class="active"
             @endif
         >
-            <a href="{{route('admin.account.webstore')}}">
+            <a href="{{route('admin.account.changelog')}}">
                 Changelog
                 <i class="angle-right-icon"></i>
             </a>
