@@ -27,7 +27,7 @@
             @endif
         >
             <a href="{{route('admin.account.webstore')}}">
-                Webstore Version
+                Changelog
                 <i class="angle-right-icon"></i>
             </a>
         </li>
