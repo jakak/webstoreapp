@@ -582,9 +582,9 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::account.select-plan'
             ])->name('admin.account.select-plan');
 
-            Route::get('/account/webstore-version', 'Webkul\User\Http\Controllers\AccountController@storeVersion')->defaults('_config', [
+            Route::get('/account/changelog', 'Webkul\User\Http\Controllers\AccountController@storeVersion')->defaults('_config', [
                 'view' => 'admin::account.webstore'
-            ])->name('admin.account.webstore');
+            ])->name('admin.account.changelog');
 
             Route::put('/account/edit', 'Webkul\User\Http\Controllers\AccountController@update')->name('admin.account.update');
 
