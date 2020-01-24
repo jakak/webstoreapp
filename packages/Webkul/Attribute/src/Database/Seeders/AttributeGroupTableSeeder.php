@@ -14,8 +14,8 @@ class AttributeGroupTableSeeder extends Seeder
         DB::table('attribute_groups')->insert([
             ['id' => '1','name' => 'General','position' => '1','is_user_defined' => '0','attribute_family_id' => '1'],
             ['id' => '2','name' => 'Description','position' => '2','is_user_defined' => '0','attribute_family_id' => '1'],
-            ['id' => '3','name' => 'Meta Description','position' => '3','is_user_defined' => '0','attribute_family_id' => '1'],
-            ['id' => '4','name' => 'Price','position' => '4','is_user_defined' => '0','attribute_family_id' => '1'],
+            ['id' => '3','name' => 'Meta Description','position' => '4','is_user_defined' => '0','attribute_family_id' => '1'],
+            ['id' => '4','name' => 'Price','position' => '3','is_user_defined' => '0','attribute_family_id' => '1'],
             ['id' => '5','name' => 'Shipping','position' => '5','is_user_defined' => '0','attribute_family_id' => '1']
         ]);
 
@@ -27,7 +27,7 @@ class AttributeGroupTableSeeder extends Seeder
             ['attribute_id' => '7','attribute_group_id' => '1','position' => '7'],
             ['attribute_id' => '8','attribute_group_id' => '1','position' => '8'],
             ['attribute_id' => '9','attribute_group_id' => '2','position' => '1'],
-            ['attribute_id' => '10','attribute_group_id' => '2','position' => '2'],
+            ['attribute_id' => '10','attribute_group_id' => '1','position' => '4'],
             ['attribute_id' => '11','attribute_group_id' => '4','position' => '1'],
             ['attribute_id' => '12','attribute_group_id' => '4','position' => '2'],
             ['attribute_id' => '13','attribute_group_id' => '4','position' => '3'],

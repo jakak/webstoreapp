@@ -9,7 +9,7 @@
     <div class="content full-page dashboard">
         <div class="page-header">
             <div class="page-title">
-                <h1>{{ __('admin::app.dashboard.title') }}</h1>
+                <h1>{{ __('admin::app.dashboard.title') }}  | </h1> <h3>  <a style="color: #79C142" href="{{ route('shop.home.index') }}" target="_blank" title="{{ trans('admin::app.layouts.storefront') }}">{{ core()->getCurrentChannel()->name }} <i class="fas fa-external-link-alt"></i></a></h3>
             </div>
 
             <div class="page-action">

@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Webkul\Admin\Models\Blog;
 use Webkul\Core\Models\FooterContent;
 
 class PageController extends Controller
 {
-    public function showPage($page)
+
+    /**
+     * Show post details in the storefront
+     * @param $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showPost($post)
     {
-        $page = str_replace('-', ' ', $page);
-        $page = Page::where('name', $page)->first();
-        if ($page && $page->status === 'Enabled') {
-            return view('pages.page')->with([
-                'page' => $page
+        $post = str_replace('-', ' ', $post);
+        $post = Blog::where('title', $post)->first();
+        if ($post && $post->status === 'publish') {
+            return view('posts.post')->with([
+                'post' => $post
             ]);
         }
         abort(404);

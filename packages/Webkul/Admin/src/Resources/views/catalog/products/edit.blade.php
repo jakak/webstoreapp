@@ -36,7 +36,7 @@
                                         $displayFormAccordians = true;
                                     @endphp
                                 @elseif($attributeGroup->name === 'Meta Description')
-                                    <accordian :title="'SEO & META'" :active="true">
+                                    <accordian :title="'SEO & Meta'" :active="true">
                                 @else
                                     <accordian :title="'{{ $attributeGroup->name }}'" :active="true">
                                 @endif
@@ -77,9 +77,15 @@
                                                                 <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>
                                                                     {{ $attribute->admin_name === 'URL Key' ? 'URL Slug' : $attribute->admin_name }}
 
+
                                                                     @if ($attribute->type == 'price')
                                                                         <span class="currency-code">({{ core()->currencySymbol(core()->getBaseCurrencyCode()) }})</span>
                                                                     @endif
+
+                                                                    @if ($attribute->admin_name == 'Weight')
+                                                                        ({{ 'kg' }})
+                                                                    @endif
+
                                                                 </label>
 
 

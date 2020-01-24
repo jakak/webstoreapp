@@ -11,7 +11,6 @@ class ProductAttributeValue extends Model
 {
     use Rememberable;
 
-    public $rememberFor = 1;
 
     public $timestamps = false;
 

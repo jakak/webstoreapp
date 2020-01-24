@@ -147,95 +147,9 @@
                     </div>
                 </div>
             </form>
-        @elseif(strpos(request()->url(), 'pages/all') !== false)
-            <div class="content" id="managePagesPage">
-                <div class="page-header">
-                    <div class="page-title">
-                        <h1>
-                            Custom Pages
-                        </h1>
-                    </div>
-
-                    <div class="page-action">
-                        <button id="addNewPage" class="btn btn-md btn-primary">
-                            Add New Page
-                        </button>
-                    </div>
-                </div>
-
-                <div class="page-content capitalize-tr">
-                    @inject('pageGrid', 'App\DataGrids\ManagePagesDataGrid')
-                    {!! $pageGrid->render() !!}
-                </div>
-            </div>
-            <form method="POST" action="{{ route('admin.configuration.pages.create') }}" class="d-none" id="createNewPage">
-                <div class="page-header">
-
-                    <div class="page-title">
-                        <h1>
-                            <span class="back-arrow"><i class="fa fa-angle-left"></i></span> Page Details
-                        </h1>
-                    </div>
-
-                </div>
-                <div class="page-content">
-                    <div class="form-container">
-                        @csrf
-                        <div class="control-group text" :class="">
-                            <label for="page_name" class="required" >
-                                Page Name
-                            </label>
-                            <input type="text" required v-validate="'required'" class="control" id="page_name" name="name" value="{{ old('name') ?: null }}" data-vv-as="state">
-                        </div>
-                        <div class="control-group text" :class="">
-                            <label for="page_url">
-                                <strong>Page URL &mdash; </strong><span class="page_url"></span>
-                            </label>
-                            <input readonly type="hidden" v-validate="'required'" class="control" id="page_url" name="url" value="{{ old('url') ?: null }}" data-vv-as="state">
-                        </div>
-                        <div class="control-group text" :class="">
-                            <label for="page_status" class="required" >
-                                Page Publish Status
-                            </label>
-                            <div>
-                                <select name="status" class="control" id="page_status">
-                                    <option value="Enabled">Enabled</option>
-                                    <option value="Disabled">Disabled</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="page_content">Page Content</label>
-                            <textarea class="control" id="page_content" name="content">{{ old('content') ?: null }}</textarea>
-                        </div>
-                        <div class="control-group text" :class="">
-                            <label for="meta_title" class="required" >
-                                Meta Title
-                            </label>
-                            <input id="meta_title" name="meta_title" class="control">
-                        </div>
-                        <div class="control-group text" :class="">
-                            <label for="meta_keywords" class="required" >
-                                Meta Keywords
-                            </label>
-                            <input name="meta_keywords" id="meta_keywords" class="control">
-                        </div>
-                        <div class="control-group text" :class="">
-                            <label for="meta_description" class="required" >
-                                Meta Description
-                            </label>
-                            <textarea name="meta_description" id="meta_description" class="control"></textarea>
-                        </div>
-                    </div>
-
-                    <hr class="horizontal-line">
-                    <div class="form-bottom">
-                        <button type="submit" class="btn btn-md btn-primary">
-                            {{ __('admin::app.configuration.save-btn-title') }}
-                        </button>
-                    </div>
-                </div>
-            </form>
+        {{--   Load blog posts --}}
+        @elseif(strpos(request()->url(), 'blog/posts') !== false)
+            @include('admin::configuration.blog.index')
 
             {{--  Loading about page   --}}
         @elseif(strpos(request()->url(), 'pages/about') !== false)
@@ -372,7 +286,7 @@
                     entityCreationPage = document.querySelector('#createNewPage');
                     entityPage = document.querySelector('#managePagesPage');
                     document.querySelector('.page_url').innerHTML = (
-                        location.origin + '/pages/' );
+                        location.origin + '/posts/' );
                 }
                 addButton.addEventListener('click', function addLocation (evt) {
                     entityCreationPage.classList.remove('d-none');
@@ -411,7 +325,7 @@
                 ;
             }
             pageSetup('location', setupEditPage);
-            @elseif(strpos(request()->url(), 'pages/all') !== false)
+            @elseif(strpos(request()->url(), 'blog/posts') !== false)
                 String.prototype.sluggify = function() {
                 return this.toLowerCase()
                     .replace(/[^\w ]+/g,'')
@@ -420,13 +334,14 @@
             };
             document.querySelector('#page_name').addEventListener('keyup', function(){
                 document.querySelector('#page_url').value = (
-                    location.origin + '/pages/' + this.value.sluggify());
+                    location.origin + '/posts/' + this.value.sluggify());
                 document.querySelector('.page_url').innerHTML = (
-                    location.origin + '/pages/' + this.value.sluggify());
+                    location.origin + '/posts/' + this.value.sluggify());
             });
             document.querySelector('.back-arrow').addEventListener('click', function() {
                 document.querySelector('#createNewPage').classList.add('d-none');
                 document.querySelector('#managePagesPage').classList.remove('d-none');
+                location.reload();
             });
             document.querySelectorAll('.capitalize-tr tr').forEach(tr => {
                 const linker = tr.querySelector('td:nth-child(2)');
@@ -435,12 +350,14 @@
                 }
             });
             function editPage(url) {
+                document.querySelector('#manage-edit').innerHTML = 'Edit Post';
                 url = decodeURI(url.search.substring(1)).sluggify();
                 fetch(`/storemanager/configuration/pages/${url}/details`)
                     .then(response => response.json())
                     .then(response => {
                         for (const key in response) {
                             if (response.hasOwnProperty(key) && key !== "id" && key !== "created_at" && key !== "updated_at") {
+                                console.log(response[key])
                                 document.querySelector('[name='+key+']').value = response[key];
                                 if (key === 'url') {
                                     document.querySelector('.page_url').innerHTML = response[key];
@@ -449,10 +366,22 @@
                                     document.querySelector('[name='+key+']').innerHTML = response[key];
                                     initEditor();
                                 }
-                                else if (key === 'status') {
+                                if (key === 'status') {
                                     // TODO: Figure out how to update the select2 component.
                                 }
+                                else if (key === 'image') {
+                                    var image = document.querySelector('.has-image').querySelector('img');
+                                    image.src  = '/storage/'+response[key];
+
+                                    if (response[key] === null) {
+                                        image.src = '../../../vendor/webkul/ui/assets/images/placeholder-icon.svg';
+                                    }
+
+
+                                }
                             }
+
+
                         }
                         const inp = document.createElement('input');
                         inp.type="hidden";
@@ -476,6 +405,7 @@
             initEditor();
             @elseif(strpos(request()->url(), 'pages/terms') !== false)
             initEditor();
+            @elseif(strpos(request()->url(), 'blog/all') !== false)
             @endif
 
         });

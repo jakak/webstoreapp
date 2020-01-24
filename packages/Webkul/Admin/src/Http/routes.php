@@ -92,9 +92,14 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/configuration/email/smtp', 'Webkul\Admin\Http\Controllers\ConfigurationController@saveEmailSettings')
                 ->name('admin.configuration.email');
 
+
+            // Blog post
             Route::get('/configuration/pages/edit', 'Webkul\Admin\Http\Controllers\ConfigurationController@newLocation')->name('admin.configuration.pages.edit');
-            Route::get('/configuration/pages/{page}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deletePage')->name('admin.configuration.pages.delete');
-            Route::post('/configuration/pages/create', 'Webkul\Admin\Http\Controllers\ConfigurationController@createNewPage')->name('admin.configuration.pages.create');
+            Route::get('/configuration/posts/{post}/delete', 'Webkul\Admin\Http\Controllers\ConfigurationController@deletePost')->name('admin.configuration.post.delete');
+            Route::post('/configuration/posts/create', 'Webkul\Admin\Http\Controllers\ConfigurationController@createNewPost')->name('admin.configuration.post.create');
+
+
+            // Blog end
 
             Route::post('/configuration/footer/content/create', 'Webkul\Admin\Http\Controllers\ConfigurationController@CreateNewStoreInfo')->name('admin.configuration.footer.content.create');
 
@@ -569,9 +574,17 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::account.subscription'
             ])->name('admin.account.subscription');
 
-            Route::get('/account/webstore-version', 'Webkul\User\Http\Controllers\AccountController@storeVersion')->defaults('_config', [
+            Route::get('/account/payment-method', 'Webkul\User\Http\Controllers\AccountController@paymentMethod')->defaults('_config', [
+                'view' => 'admin::account.payment-method'
+            ])->name('admin.account.payment-method');
+
+            Route::get('/account/subscription/plan', 'Webkul\User\Http\Controllers\AccountController@subscriptionPlan')->defaults('_config', [
+                'view' => 'admin::account.select-plan'
+            ])->name('admin.account.select-plan');
+
+            Route::get('/account/changelog', 'Webkul\User\Http\Controllers\AccountController@storeVersion')->defaults('_config', [
                 'view' => 'admin::account.webstore'
-            ])->name('admin.account.webstore');
+            ])->name('admin.account.changelog');
 
             Route::put('/account/edit', 'Webkul\User\Http\Controllers\AccountController@update')->name('admin.account.update');
 

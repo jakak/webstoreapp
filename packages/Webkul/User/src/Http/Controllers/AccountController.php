@@ -59,14 +59,6 @@ class AccountController extends Controller
      */
     public function storeVersion()
     {
-        return view($this->_config['view'], compact('user'));
-    }
-
-    /**
-     * @return Factory|View
-     */
-    public function subscription()
-    {
         $user = auth()->guard('admin')->user();
 
         return view($this->_config['view'], compact('user'));
@@ -107,5 +99,25 @@ class AccountController extends Controller
         session()->flash('success', 'Account changes saved successfully.');
 
         return back();
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function subscription()
+    {
+        $user = auth()->guard('admin')->user();
+
+        return view($this->_config['view'], compact('user'));
+    }
+
+    public function paymentMethod()
+    {
+        return view($this->_config['view']);
+    }
+
+    public function subscriptionPlan()
+    {
+        return view($this->_config['view']);
     }
 }

@@ -22,8 +22,9 @@
 
         @endif
 
-    @else
+    @elseif(request()->route('slug') == 'blog')
 
+    @else
         @if ($items = array_get($config->items, request()->route('slug') . '.children'))
 
             <ul>
