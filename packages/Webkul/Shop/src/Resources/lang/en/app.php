@@ -34,7 +34,9 @@ return [
         'wishlist' => 'Wishlist',
         'cart' => 'Cart',
         'logout' => 'Logout',
-        'search-text' => 'Search products here'
+        'search-text' => 'Search products here',
+        'storemanager' => 'Store Manager',
+        'storemanager-title' =>  'Go to Store Manager'
     ],
 
     'minicart' => [
@@ -48,7 +50,7 @@ return [
         'subscribe-newsletter' => 'Subscribe to Newsletter',
         'subscribe' => 'Subscribe',
         'locale' => 'Locale',
-        'page-links' => 'Page Links',
+        'featured-posts' => 'Featured Posts',
         'store-info' => 'Store Info',
         'secure-shopping' => 'Secure Shopping',
         'social' => 'Connect with us',

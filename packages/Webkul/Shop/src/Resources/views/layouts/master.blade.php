@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@if(core()->getCurrentChannel()->status == 'Online' || auth()->guard('admin')->user())
+    <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
 <head>
@@ -88,6 +89,12 @@
 
         {!! view_render_event('bagisto.shop.layout.header.before') !!}
 
+        @if(core()->getCurrentChannel()->status == 'Maintenance Mode' || core()->getCurrentChannel()->status == 'Opening Soon' && auth()->guard('admin')->user())
+            @include('shop::mode.header')
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+        @endif
         @include('shop::layouts.header.index')
 
         {!! view_render_event('bagisto.shop.layout.header.after') !!}
@@ -114,9 +121,6 @@
 
     <div class="footer-bottom">
         <custom-footer  credit="{{core()->getCurrentChannel()->footer_credit}}"></custom-footer>
-        {{-- <p>
-            &copy; <script>document.write(new Date().getFullYear());</script>. Kling Bake Shop | <a class="hyperlink" href="https://aboutsic.com/webmaster" target="_blank">Webmaster</a>
-        </p> --}}
     </div>
 
 </div>
@@ -143,6 +147,25 @@
     @endif
 </script>
 
+
+<script>
+    window.announcekit = (window.announcekit || { queue: [], on: function(n, x) { window.announcekit.queue.push([n, x]); }, push: function(x) { window.announcekit.queue.push(x); } });
+    window.announcekit.push({
+        "widget": "https://announcekit.app/widget/48CcJq",
+        "selector": ".announcekit-widget",
+        "version": 2,
+
+        // Style config for badge:
+        badge: {
+            style: {
+                position: "absolute",
+                top: "12px"
+            }
+        }
+    })
+</script>
+<script async src="https://cdn.announcekit.app/widget.js"></script>
+
 <script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
@@ -155,3 +178,8 @@
 </body>
 
 </html>
+@elseif(core()->getCurrentChannel()->status == 'Maintenance Mode')
+    @include('shop::mode.maintenance')
+@elseif(core()->getCurrentChannel()->status == 'Opening Soon')
+    @include('shop::mode.opening-soon')
+@endif

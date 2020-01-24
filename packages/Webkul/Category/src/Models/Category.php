@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class Category extends TranslatableModel
 {
-    use Rememberable;
+//    use Rememberable;
 
     use NodeTrait;
 
     public $translatedAttributes = ['name', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords'];
 
-    protected $fillable = ['position', 'status', 'parent_id'];
+    protected $fillable = ['position', 'status', 'parent_id', 'name', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords'];
 
     /**
      * Get image url for the category image.

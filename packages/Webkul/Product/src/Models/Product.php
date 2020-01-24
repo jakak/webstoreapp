@@ -15,9 +15,6 @@ use Webkul\Product\Models\ProductReview;
 
 class Product extends Model
 {
-    use Rememberable;
-
-    public $rememberFor = 1;
 
     protected $fillable = ['type', 'attribute_family_id', 'sku', 'parent_id'];
 

@@ -33,7 +33,7 @@
                         <label for="new_image">{{ __('admin::app.settings.sliders.image') }}</label>
                         <image-wrapper
                             :button-label="'{{ __('admin::app.settings.sliders.upload-slider') }}'" input-name="image"
-                            :multiple="false" sub-title="Recommended slider size is (1500 * 600)px"size="large"
+                            :multiple="false" sub-title="Recommended slider size is (1500 * 600)px"size="ex-large"
                         >
                         </image-wrapper>
                     </div>

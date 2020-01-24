@@ -19,11 +19,11 @@
         </div>
 
         <div class="page-content">
-            {{-- @inject('product','Webkul\Admin\DataGrids\ProductDataGrid')
-            {!! $product->render() !!} --}}
+             @inject('product','Webkul\Admin\DataGrids\ProductDataGrid')
+            {!! $product->render() !!}
 
-            @inject('products', 'Webkul\Admin\DataGrids\ProductDataGrid')
-            {!! $products->render() !!}
+{{--            @inject('products', 'Webkul\Admin\DataGrids\ProductDataGrid')--}}
+{{--            {!! $products->render() !!}--}}
         </div>
     </div>
 @stop

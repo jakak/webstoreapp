@@ -64,8 +64,8 @@ class CategoryRepository extends Repository
     public function getCategoryTree($id = null)
     {
         return $id
-            ? Category::orderBy('position', 'ASC')->where('id', '!=', $id)->get()->toTree()
-            : Category::orderBy('position', 'ASC')->get()->toTree();
+            ? Category::orderBy('position', 'ASC')->where('id', '!=', $id)->where('id', '!=', 1)->get()->toTree()
+            : Category::orderBy('position', 'ASC')->where('id', '!=', 1)->get()->toTree();
     }
 
 
@@ -141,6 +141,7 @@ class CategoryRepository extends Repository
 
         Event::fire('catalog.category.update.before', $id);
 
+        $category->update($data['en']);
         $category->update($data);
 
         $this->uploadImages($data, $category);

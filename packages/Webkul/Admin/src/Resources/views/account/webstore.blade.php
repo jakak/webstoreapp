@@ -26,12 +26,12 @@
                         <img src="{{ asset('vendor/webkul/ui/assets/images/webstore-logo.svg') }}" alt="Webstore by Haqqman"/>
                     </div>
                 </div>
-                <h2>{webstore-version}</h2>
-                <h4>Last updated {update-date}</h4>
+                <h2>@{{ changeLog.data.version }}</h2>
+                <h4>Last updated: @{{ changeLog.data.last_updated }}</h4>
                 <hr class="hr">
-                <h2>You have the latest version of webstore</h2>
-                <p>[Version Description]</p>
-                <button class="btn btn-md btn-primary">View Changelog</button>
+                <h2>@{{ changeLog.data.note }}</h2>
+                <p>@{{ changeLog.data.description }}</p>
+                <a href="https://announcekit.app/webstore/notifications" class="btn btn-md btn-primary">View Changelog</a>
             </div>
         </div>
     </div>

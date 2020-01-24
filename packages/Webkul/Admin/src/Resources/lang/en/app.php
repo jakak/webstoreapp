@@ -12,9 +12,9 @@ return [
     'layouts' => [
         'my-account' => 'My Account',
         'logout' => 'Logout',
-        'storefront' => 'Storefront',
+        'storefront' => 'Go to Storefront',
 		'subscription' => 'Subscription',
-		'get-support' => 'Get Support',
+		'get-help' => 'Get Help',
 		'manage-paystack' => 'Manage Paystack',
         'dashboard' => 'Dashboard',
         'sales' => 'Sales',
@@ -177,6 +177,29 @@ return [
         'confirm-password' => 'Confirm New Password',
         'change-password' => 'Change Account Password',
         'current-password' => 'Current Password'
+    ],
+
+    'subscription' => [
+        'title' => 'Subscription',
+        'billing' => 'Billing information',
+        'payment-method' => 'Payment Methods',
+        'subscribe' => 'Subscribe'
+    ],
+
+    'select-plan' => [
+        'title' => 'Select Subscription Plan',
+        'make-payment' => 'Make Payment',
+        'plan' => 'Subscription Plan',
+        'duration' => 'Duration',
+        'standard' => 'Standard',
+        'premium' => 'Premium',
+        'enterprise' => 'Enterprise',
+    ],
+
+    'payment-method' => [
+        'title' => 'Payment Methods',
+        'add-payment' => 'Add Payment Method',
+
     ],
 
     'users' => [
@@ -625,6 +648,7 @@ return [
             'code' => 'Webstore Name',
             'business_name' => 'Webstore Title',
             'email' => 'Email Address',
+            'store_email' => 'Store Email',
             'phone_number' => 'Business Mobile Number',
             'address' => 'Address',
             'city' => 'City',
@@ -639,6 +663,7 @@ return [
             'currencies' => 'Currencies',
             'base-currency' => 'Base Currency',
             'root-category' => 'Root Category',
+            'store-status' => 'Store Status',
             'inventory_sources' => 'Inventory Sources',
             'design' => 'Design',
             'theme' => 'Theme',
@@ -669,8 +694,12 @@ return [
             'delete-fail' => 'Slider Item Successfully Deleted'
         ],
 
+        'blog' => [
+            'set-featured-image' => 'Set Featured Image',
+        ],
+
         'footer' => [
-            'title' => 'Select Pages',
+            'post' => 'Select Post',
             'url' => 'Link URL',
             'social' => 'Select Social',
             'username' => 'Username',

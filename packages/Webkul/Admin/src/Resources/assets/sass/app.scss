@@ -49,7 +49,7 @@ body {
     }
   }
   .navbar-top-right {
-    width: 47%;
+    width: 50%;
     height: 60px;
     text-align: right;
     display: inline-block;
@@ -192,9 +192,8 @@ body {
           margin-top: 5px;
         }
 
-        h1 {
+        h1, h3{
           margin-bottom: 0;
-          vertical-align: middle;
           display: inline-block;
         }
       }
@@ -400,7 +399,7 @@ hr.horizontal-line {
 
   .dashboard-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-auto-rows: auto;
     grid-column-gap: 30px;
     grid-row-gap: 15px;
@@ -462,12 +461,25 @@ hr.horizontal-line {
     width: 100%;
     display: inline-block;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(435px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-auto-rows: auto;
     grid-column-gap: 30px;
     grid-row-gap: 15px;
     margin-top: 30px;
   }
+
+  /* Large screens ---------- */
+  @media screen and (min-width: 1600px){
+    .dashboard-stats {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .sale-stock {
+      grid-template-columns: repeat(auto-fill, minmax(435px, 1fr));
+    }
+
+  }
+
 }
 // admin dashboard css ends here
 
