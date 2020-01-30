@@ -116,7 +116,6 @@ class ChannelController extends Controller
     {
         $this->validate(request(), [
             'code' => ['required', 'unique:channels,code,' . $id, new \Webkul\Core\Contracts\Validations\Code],
-            'name' => 'required',
             'description' => 'required',
             'inventory_sources' => 'required|array|min:1',
             'status' => 'required',
