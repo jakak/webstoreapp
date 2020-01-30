@@ -46,7 +46,7 @@
                             <td>{{ 'MID-000000000' }}</td>
                             <td>{{ $channel->business_name }}</td>
                             <td>{{ $channel->hostname }}</td>
-                            <td>{{ $channel->created_at->format('M d, Y') ?: '' }}</td>
+                            <td>{{ $channel->created_at ? $channel->created_at->format('M d, Y') : '' }}</td>
                             <td style="text-transform: capitalize">{{ $channel->status }}</td>
                         </tr>
                     </tbody>
