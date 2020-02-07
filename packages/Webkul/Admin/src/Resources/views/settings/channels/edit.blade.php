@@ -4,6 +4,8 @@
     {{ __('admin::app.settings.channels.edit-title') }}
 @stop
 
+@push('styles')
+@endpush
 @section('content')
     <div class="content">
 
@@ -27,32 +29,25 @@
                     <accordian :title="'{{ __('admin::app.settings.channels.details-section') }}'" :active="true">
                         <div slot="body">
 
-                            <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
-                                <label for="name" class="required">{{ __('admin::app.settings.channels.code') }}</label>
-                                <input type="text" v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.settings.channels.code') }}&quot;" value="{{ $channel->name }}" />
-                                <input type="hidden" name="code" value="{{ $channel->code }}"/>
-                                <br><span >*Maximum of 20 Characters</span>
-                                <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
-                            </div>
-
                             <div class="control-group" :class="[errors.has('business_name') ? 'has-error' : '']">
-                                <label for="business_name" class="required">{{ __('admin::app.settings.channels.business_name') }}</label>
-                                <input v-validate="'required'" class="control" id="business_name" name="business_name"
-                                    data-vv-as="&quot;{{ __('admin::app.settings.channels.business_name') }}&quot;"
-                                    value="{{ old('business_name') ?: $channel->business_name }}"/>
+                                <label for="business_name" class="required">{{ __('admin::app.settings.channels.code') }}</label>
+                                <input id="maxname" type="text" v-validate="'required'" class="control" maxlength="20"  name="business_name" data-vv-as="&quot;{{ __('admin::app.settings.channels.code') }}&quot;" value="{{ $channel->business_name }}" />
+                                <input type="hidden" name="code" value="{{ old('business_name') ?: $channel->code }}"/>
+                                <br><span style="color: #bd081c; display: none" id="error">Maximum of 20 Characters</span>
                                 <span class="control-error" v-if="errors.has('business_name')">@{{ errors.first('business_name') }}</span>
                             </div>
 
-							<div class="control-group">
-                                <label for="hostname">{{ __('admin::app.settings.channels.hostname') }}</label>
-                                <input type="text" class="control" id="hostname" name="hostname" value="{{ $channel->hostname }}" placeholder="https://businessdomain.com"/>
+
+                            <div class="control-group">
+                                <label for="hostname">{{ __('admin::app.settings.channels.domain') }}</label>
+                                <input type="text" class="control" id="hostname" name="hostname" value="{{ $channel->hostname }}" placeholder="https://domain.websto.re"/>
                             </div>
 
                             <div class="control-group" :class="[errors.has('description') ? 'has-error' : '']">
                                 <label for="description" class="required">{{ __('admin::app.settings.channels.description') }}</label>
                                 <input v-validate="'required'" class="control" id="description" name="description"
-                                    data-vv-as="&quot;{{ __('admin::app.settings.channels.description') }}&quot;"
-                                    value="{{ old('description') ?: $channel->description }}"/>
+                                       data-vv-as="&quot;{{ __('admin::app.settings.channels.description') }}&quot;"
+                                       value="{{ old('description') ?: $channel->description }}"/>
                                 <span class="control-error" v-if="errors.has('description')">@{{ errors.first('description') }}</span>
                             </div>
 
@@ -62,14 +57,14 @@
                                 <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
                             </div>
 
-{{--                             <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">--}}
-{{--                                <span class="checkbox">--}}
-{{--                                    <input type="checkbox" id="receives_notification"  name="receives_notification" {{ $channel->receives_notification ? 'checked' : '' }}>--}}
+                            {{--                             <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">--}}
+                            {{--                                <span class="checkbox">--}}
+                            {{--                                    <input type="checkbox" id="receives_notification"  name="receives_notification" {{ $channel->receives_notification ? 'checked' : '' }}>--}}
 
-{{--                                    <label class="checkbox-view" for="receives_notification"></label>--}}
-{{--                                        Get notified when a customer places an order.--}}
-{{--                                </span>--}}
-{{--                            </div>--}}
+                            {{--                                    <label class="checkbox-view" for="receives_notification"></label>--}}
+                            {{--                                        Get notified when a customer places an order.--}}
+                            {{--                                </span>--}}
+                            {{--                            </div>--}}
 
                             <div class="control-group" :class="[errors.has('phone_number') ? 'has-error' : '']" >
                                 <label for="phone_number" class="required">{{ __('admin::app.settings.channels.phone_number') }}</label>
@@ -94,9 +89,9 @@
                                 <label for="status" class="required">{{ __('admin::app.settings.channels.store-status') }}</label>
                                 <?php $selectedOption = old('status') ?: $channel->status ?>
                                 <select v-validate="'required'" class="control" id="status" name="status" data-vv-as="&quot;{{ __('admin::app.settings.channels.root-category') }}&quot;">
-                                        <option value="Online" {{ $selectedOption == 'online' ? 'selected' : '' }}>Online</option>
-                                        <option value="Maintenance Mode" {{ $selectedOption == 'Maintenance Mode' ? 'selected' : '' }}>Maintenance Mode</option>
-                                        <option value="Opening Soon" {{ $selectedOption == 'Opening Soon' ? 'selected' : '' }}>Opening Soon</option>
+                                    <option value="Online" {{ $selectedOption == 'online' ? 'selected' : '' }}>Online</option>
+                                    <option value="Maintenance Mode" {{ $selectedOption == 'Maintenance Mode' ? 'selected' : '' }}>Maintenance Mode</option>
+                                    <option value="Opening Soon" {{ $selectedOption == 'Opening Soon' ? 'selected' : '' }}>Opening Soon</option>
                                 </select>
                                 <span class="control-error" v-if="errors.has('root_category_id')">@{{ errors.first('root_category_id') }}</span>
                             </div>
@@ -104,7 +99,7 @@
                         </div>
                     </accordian>
 
-					<accordian :title="'{{ __('admin::app.settings.channels.address-section') }}'" :active="true">
+                    <accordian :title="'{{ __('admin::app.settings.channels.address-section') }}'" :active="true">
                         <div slot="body">
 
                             <div class="control-group" :class="[errors.has('address') ? 'has-error' : '']" >
@@ -160,7 +155,26 @@
     </div>
 @stop
 
+@section('script')
+
+@stop
+
 @push('scripts')
+
+    <script>
+        document.getElementById('maxname').addEventListener('keyup', function() {
+            console.log(this)
+
+            if (this.value.length >= 20) {
+                document.getElementById('error').style.display = 'block';
+            } else {
+                document.getElementById('error').style.display = 'none';
+            }
+        })
+
+    </script>
+
+
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
@@ -176,4 +190,6 @@
             });
         });
     </script>
+
+
 @endpush

@@ -25,13 +25,16 @@
                     <thead>
                         <tr style="height: 50px;">
                             <th class="grid_head">
+                                Merchant ID
+                            </th>
+                            <th class="grid_head">
                                 Webstore Name
                             </th>
                             <th class="grid_head">
-                                Webstore Title
+                                Websto.re Domain
                             </th>
                             <th class="grid_head">
-                                Hostname
+                                Date Created
                             </th>
                             <th class="grid_head">
                                 Status
@@ -40,9 +43,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ $channel->name }}</td>
+                            <td>{{ 'MID-000000000' }}</td>
                             <td>{{ $channel->business_name }}</td>
                             <td>{{ $channel->hostname }}</td>
+                            <td>{{ $channel->created_at ? $channel->created_at->format('M d, Y') : '' }}</td>
                             <td style="text-transform: capitalize">{{ $channel->status }}</td>
                         </tr>
                     </tbody>
